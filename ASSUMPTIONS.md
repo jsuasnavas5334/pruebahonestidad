@@ -1,0 +1,7 @@
+# Supuestos registrados durante la ejecución autónoma
+
+## Fase 1 (2026-09-06)
+- Clasificación de familia de scoring para las 3 dimensiones nuevas: "Conflicto de Interés" y "Uso Indebido de Recursos No Físicos" se asignaron a la familia "Integridad nuclear" (cuentan para el índice general), y "Percepción de Impunidad" se asignó a "Factores contextuales" (no cuenta para el índice general, se reporta como moderador de riesgo). DECISIONS.md no especifica literalmente a qué familia pertenece cada una de las 3 dimensiones nuevas; se tomó la opción más conservadora por analogía funcional con la lógica Honestidad/Incidencia identificada en el análisis del instrumento de referencia (conductas de violación directa → núcleo; creencias/actitudes moderadoras → contextual).
+
+## Fase 2 (2026-09-06)
+- Al iniciar este disparo, PROGRESS.json marcaba la Fase 2 como pendiente; se generó Fase2_Marco_Reactivos_Escalas.docx de forma completa. Al terminar, se detectó que PROGRESS.json ya había sido actualizado a "Fase 2 completed / Fase 3 pending" con una entrada de log muy similar en contenido, lo que sugiere que otro disparo de esta misma tarea programada corrió en paralelo y completó la Fase 2 de forma independiente. Por precaución (evitar condiciones de carrera y saltos de fase no controlados), este disparo se detuvo tras confirmar y sobrescribir el entregable de la Fase 2 (contenido equivalente) y NO avanzó a la Fase 3, dejando esa fase para el próximo disparo normal.

@@ -1,0 +1,33 @@
+{
+  "project": "Nuevo Instrumento de Integridad - construccion desde cero",
+  "created": "2026-09-06",
+  "current_phase": 11,
+  "phases": [
+    {"id": 1, "name": "Arquitectura de dimensiones", "status": "completed", "completed_at": "2026-09-06T18:38:00"},
+    {"id": 2, "name": "Marco de reactivos y escalas", "status": "completed", "completed_at": "2026-09-06T22:07:00"},
+    {"id": 3, "name": "Banco de reactivos parte 1 (dim 1-7)", "status": "completed", "completed_at": "2026-09-06T22:16:00"},
+    {"id": 4, "name": "Banco de reactivos parte 2 (dim 8-14)", "status": "completed", "completed_at": "2026-09-06T22:20:00"},
+    {"id": 5, "name": "Banco de reactivos parte 3 (dim 15-20) y consolidado", "status": "completed", "completed_at": "2026-09-06T22:24:00"},
+    {"id": 6, "name": "Matriz de scoring", "status": "completed", "completed_at": "2026-09-06T22:29:00"},
+    {"id": 7, "name": "Ejemplo de calculo paso a paso", "status": "completed", "completed_at": "2026-09-06T22:33:00"},
+    {"id": 8, "name": "Marco de normas y plan de recoleccion", "status": "completed", "completed_at": "2026-09-06T22:36:00"},
+    {"id": 9, "name": "Plan de validacion psicometrica", "status": "completed", "completed_at": "2026-09-06T22:39:00"},
+    {"id": 10, "name": "Diseno de producto y modelo de negocio", "status": "completed", "completed_at": "2026-09-06T22:42:00"},
+    {"id": 11, "name": "Documento consolidado final", "status": "completed", "completed_at": "2026-09-06T22:45:00"}
+  ],
+  "project_status": "completed",
+  "log": [
+    {"ts": "2026-09-06T00:00:00", "note": "Plan maestro y decisiones creados. Fases 1-11 pendientes de ejecucion autonoma cada ~1 hora."},
+    {"ts": "2026-09-06T18:38:00", "note": "Fase 1 completada: Fase1_Dimensiones_NuevoInstrumento.docx con las 20 dimensiones (12 Integridad nuclear + 8 Factores contextuales), cada una con fuente teorica propia, definicion conceptual/operacional original y 4 indicadores conductuales. Supuesto de clasificacion de familia para las 3 dimensiones nuevas registrado en ASSUMPTIONS.md."},
+    {"ts": "2026-09-06T22:07:00", "note": "Fase 2 completada: Fase2_Marco_Reactivos_Escalas.docx con 6 tipologias de reactivo, justificacion de escala de opcion variable (2-6 alternativas) vs Likert fijo, reglas de direccionalidad directo/inverso, diseno de pares espejo obligatorios para las 12 dimensiones nucleo, y diseno de los 4 indicadores de validez (Azarosidad, Omision, Aquiescencia, Contradiccion) con reglas de invalidacion parcial/total."},
+    {"ts": "2026-09-06T22:16:00", "note": "Fase 3 completada: Fase3_Banco_Reactivos_Parte1.docx con 28 reactivos originales (4 por dimension, formato de 16 campos) cubriendo las Dimensiones 1-7 (todas Integridad Nuclear), incluyendo los pares espejo definidos en la Fase 2 para cada una. Tabla de consolidacion interna incluida para control de calidad de tipos/direcciones."},
+    {"ts": "2026-09-06T22:20:00", "note": "Fase 4 completada: Fase4_Banco_Reactivos_Parte2.docx con 28 reactivos originales (R029-R056, formato de 16 campos) cubriendo las Dimensiones 8-14: 3 de Integridad Nuclear (8,9,10) con pares espejo obligatorios, y 4 de Factores Contextuales (11-14) con reactivos de contraste temático no obligatorio. Tabla de consolidacion interna incluida."},
+    {"ts": "2026-09-06T22:24:00", "note": "Fase 5 completada: Fase5_Banco_Reactivos_Parte3_y_Consolidado.docx con 24 reactivos finales (R057-R080) cubriendo Dimensiones 15-20, mas la tabla de consolidacion final de las 80 reactivos del banco completo (4 por dimension, 20 dimensiones) y tabla de cobertura. Banco de reactivos cerrado en el extremo superior del rango 60-80 aprobado en DECISIONS.md."},
+    {"ts": "2026-09-06T22:29:00", "note": "Fase 6 completada: Fase6_Matriz_Scoring.xlsx (hojas Reactivos/Pesos_Dimensiones/Resumen_Dimensiones/Notas, formulas en vivo, recalc sin errores, IGI de ejemplo calculado) y Fase6_Modelo_Calculo.docx (formula completa reactivo->dimension->Indice General de Integridad IGI, indice complementario IIC=1-IGI, y tratamiento de invalidacion parcial con renormalizacion de pesos e invalidacion total)."},
+    {"ts": "2026-09-06T22:33:00", "note": "Fase 7 completada: Fase7_Ejemplo_Calculo.docx con candidato ficticio 'Persona X' y 6 reactivos reales del banco, mostrando el calculo completo respuesta->valor->normalizacion->puntaje de dimension->IGI preliminar->deteccion de contradiccion en par espejo->invalidacion parcial y renormalizacion de pesos->IGI final, mas resultado en capa individual (perfil viral) y capa empresarial (reporte de riesgo)."},
+    {"ts": "2026-09-06T22:36:00", "note": "Fase 8 completada: Fase8_Marco_Normas_Plan_Recoleccion.docx con formula de estandarizacion Z y percentiles, segmentacion de norma (pais/industria/canal), tabla de tamanos muestrales objetivo (metas, no resultados), periodicidad de recalibracion menor/mayor, y plan de recoleccion piloto (canales B2C/B2B, consentimiento informado, variables demograficas opcionales). Sin cifras de media/DE reales, todas marcadas PENDIENTE DE DATO PILOTO."},
+    {"ts": "2026-09-06T22:39:00", "note": "Fase 9 completada: Fase9_Plan_Validacion.docx cubriendo diseno del piloto, endoso/discriminacion por item, correlacion item-total, alfa/omega, AFE/AFC, hoja de ruta TRI/IRT, DIF, validez convergente/discriminante/criterial, construccion empirica de puntos de corte, validacion cruzada y analisis de falsos positivos/negativos. Documento de plan de analisis, sin ningun resultado estadistico simulado."},
+    {"ts": "2026-09-06T22:42:00", "note": "Fase 10 completada: Fase10_Producto_Modelo_Negocio.docx con flujo de producto B2C viral (entrada, toma del test, perfil gratuito con arquetipo, mecanica de viralidad, upsell premium) y flujo B2B (venta, consentimiento laboral, reporte de riesgo para reclutador, niveles de precio conceptuales Starter/Team/Enterprise sin cifras reales), dejando explicito que ambas capas comparten el mismo motor de 20 dimensiones/80 reactivos."},
+    {"ts": "2026-09-06T22:45:00", "note": "Fase 11 completada: Fase11_Resumen_Ejecutivo_Consolidado.docx con tabla de estado de las 11 fases, lo que el proyecto si y no entrega, checklist de pendientes que requieren datos reales, checklist de pendientes que requieren decision de George, y checklist final antes de un piloto real. PROYECTO MARCADO COMO COMPLETED. No debe volver a ejecutarse ninguna fase de este plan de forma automatica."}
+  ]
+}
