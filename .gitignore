@@ -1,4 +1,21 @@
-﻿Thumbs.db
+# Archivos de sistema operativo
+.DS_Store
+Thumbs.db
 desktop.ini
-~$*.docx
-~$*.xlsx
+
+# Archivos temporales de Word/LibreOffice al tener el archivo abierto
+~$*.doc*
+~$*.xls*
+.~lock.*#
+
+# Carpetas de trabajo interno (verificación de PDFs, recálculos de prueba)
+pdf_check/
+recalced/
+
+# Archivo CONFIDENCIAL: excluido por defecto de Git.
+# Este archivo contiene los pesos y multiplicadores exactos del modelo (ver DECISIONS.md,
+# regla "que nadie pueda tener acceso más que tú y yo"). Si este repositorio es privado y
+# solo tú tienes acceso (nadie más lo puede clonar ni ver), puedes borrar la siguiente línea
+# para incluirlo también en Git. Si el repositorio se va a compartir con alguien más
+# (colaboradores, repositorio público, etc.), déjalo excluido.
+CONFIDENCIAL_Formulas_Calculo_IGI.docx

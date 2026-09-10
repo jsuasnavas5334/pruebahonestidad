@@ -1,0 +1,41 @@
+Regenerar instrumento a Version 2 (21 dimensiones / 75 reactivos)
+
+Revision de constructo solicitada por George el 2026-09-09: se pasa de
+20 a 21 dimensiones, reorganizadas en tres grupos (5 Nucleo-Base
+obligatorias + 7 Nucleo-Adicionales configurables por puesto + 9
+Factores Contextuales que nunca entran al Indice General de Integridad),
+con nombres simples y directos en vez de tecnicos, y el banco de
+reactivos ajustado de 80 a 75 items (48 Nucleo + 27 Contextuales).
+
+Cambios de contenido:
+- DECISIONS.md y PLAN.md actualizados a la Version 2 (arquitectura,
+  matematica del banco de reactivos, fases a regenerar).
+- PROGRESS.json: las 11 fases del plan quedan "completed" bajo v2;
+  proyecto marcado como completo.
+- ASSUMPTIONS.md: registro de la revision de constructo, de las
+  decisiones de diseno tomadas para el banco v2 (tipos de reactivo y
+  par espejo por dimension), y de las limitaciones tecnicas de la
+  sesion (acceso de shell directo a esta carpeta no disponible; los
+  archivos se generaron en un entorno externo y se subieron de vuelta).
+
+Entregables regenerados (reemplazan integramente su version v1):
+- Fase1_Dimensiones_NuevoInstrumento.docx
+- Fase1B_Diccionario_Nombres_v1_a_v2.md (nuevo)
+- Fase2_Marco_Reactivos_Escalas.docx
+- Fase3_Banco_Reactivos_Parte1.docx (R001-R020, Nucleo-Base)
+- Fase4_Banco_Reactivos_Parte2.docx (R021-R048, Nucleo-Adicionales)
+- Fase5_Banco_Reactivos_Parte3_y_Consolidado.docx (R049-R075, Contextuales
+  + tabla consolidada de los 75 reactivos)
+- Fase6_Matriz_Scoring.xlsx (formulas en vivo, recalculadas sin errores)
+- Fase6_Modelo_Calculo.docx
+- Fase7_Ejemplo_Calculo.docx
+- Fase10_Producto_Modelo_Negocio.docx
+- Fase11_Resumen_Ejecutivo_Consolidado.docx
+
+Entregables sin cambios (no dependian de nombres/numero de dimensiones):
+- Fase8_Marco_Normas_Plan_Recoleccion.docx
+- Fase9_Plan_Validacion.docx
+
+Pendiente (fuera de esta sesion): recrear la tarea programada horaria
+de ejecucion autonoma (se autodesactivo al marcar el proyecto v1 como
+completo).
