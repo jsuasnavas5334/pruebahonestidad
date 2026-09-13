@@ -1,0 +1,1673 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   TEST HONESTIDAD — EL SISTEMA
+
+   ⚠️  ESTO ES UNA COPIA REPINTADA, NO UN SISTEMA NUEVO.
+   Estructura, medidas, curvas, tiempos y comportamientos son los del sistema
+   de origen, sin tocar. Lo ÚNICO que cambia es la paleta, y cada sitio donde
+   el cambio de color obligó a mover algo lleva su medida escrita al lado.
+   Si algo aquí difiere del original y no tiene una medida que lo justifique,
+   es un error: devuélvelo al original.
+
+   Todas las reglas viven aquí, y sólo aquí. Los HTML de al lado lo enlazan y
+   no declaran ni un color ni un tamaño propio.
+
+   Eso no es orden por gusto: es la única forma de que una regla se pueda
+   comprobar. Una regla repartida en cuatro ficheros son cuatro reglas que
+   un día dirán cosas distintas, y la que esté mal será la que nadie mira.
+
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+
+/* ── 1 · LAS FUENTES ────────────────────────────────────────────────────────
+   SF Pro Display para titulares, SF Pro Text para lo que se lee en frases.
+   Dos familias, cinco ficheros, ni uno más.
+
+   ⚠️  LICENCIA: la de Apple cubre diseñar y desarrollar PARA plataformas
+   Apple. Incrustarlas en un sitio comercial queda fuera. Queda escrito para
+   que sea una decisión y no un descuido. El recambio libre es Inter,
+   métricamente casi idéntica: es cambiar estas cinco líneas.
+
+   AQUÍ NO HAY UNA TERCERA LETRA. El original reserva una tipografía de
+   fantasía para su logotipo; esta pantalla no tiene logotipo ni icono, sólo
+   un rótulo, así que no hace falta. */
+
+@font-face{font-family:"SFProDisplay";src:url("fonts/SFProDisplay-Regular.woff2")  format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"SFProDisplay";src:url("fonts/SFProDisplay-Medium.woff2")   format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"SFProDisplay";src:url("fonts/SFProDisplay-Semibold.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"SFProText";   src:url("fonts/SFProText-Regular.woff2")     format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"SFProText";   src:url("fonts/SFProText-Medium.woff2")      format("woff2");font-weight:500;font-display:swap}
+
+
+/* ── 2 · EL COLOR Y LA MEDIDA ───────────────────────────────────────────────
+
+   LA REGLA QUE GOBIERNA TODO:
+   un borde es un cambio de tono, nunca una línea.
+
+   Si dos zonas necesitan separarse, una de las dos cambia de superficie.
+   Nada dibuja un filete de 1 px para explicarse y nada proyecta sombra.
+
+   LA ÚNICA EXCEPCIÓN ES EL CURSOR. En reposo no hay sombras ni líneas; bajo
+   el cursor puede haberlas — el halo del botón, el filete del `edge`, la
+   raya de la FAQ. El reposo es la composición que lee el ojo; el hover es la
+   respuesta a una mano que ya está ahí. Nada de esa excepción sale nunca en
+   una captura de la página quieta.
+
+   Si te encuentras escribiendo `border:` o `box-shadow:` fuera de un
+   `:hover`, la respuesta casi siempre es cambiar de superficie. */
+
+:root{
+  /* ── CINCO COLORES, Y SON CINCO DE VERDAD ─────────────────────────────
+     Dos se heredan y no se tocan: el blanco que no es blanco y el negro que
+     no es negro. Los otros tres son de esta paleta. */
+  --raised:#fbfbfb;   /* heredado · lo que sobresale: tarjetas, hojas, menús */
+  --lienzo:#e8f9fd;   /* el fondo de todo. Donde el original ponía perla */
+  --ink:   #1c1c1d;   /* heredado · el texto. Nunca negro puro */
+  --accent:#ff1e00;   /* el acento. Menos del 5% de la página */
+  --senal: #59ce8f;   /* lo que sale bien. No existe en el original */
+
+  /* ── Y EL +1 · EL GRIS ──────────────────────────────────────────────────
+     Lo aprobó Jorge por su nombre: «los 5 colores que te di, y quizás el gris
+     del filete que sí me gustó».
+
+     NO ES UN COLOR NUEVO DE VERDAD: es exactamente `--t65` -la tinta al 65 %-
+     puesta sobre el lienzo. #63696b. Lo que cambia es que aquí está declarado
+     como color PLENO, y eso importa: un velo cambia según lo que tenga detrás,
+     y un relleno no puede permitírselo. El mismo gris valía para una letra;
+     para una superficie hacía falta fijarlo.
+
+     HACE TRES TRABAJOS Y NINGUNO MÁS:
+       el anillo del filete y de todo lo que responde con una línea
+       el relleno al que se INVIERTEN los botones neutros al pasar
+       el relleno de un carril y del vector — el TERCERO, añadido con la
+       sección 19, y su razón está escrita entera allí: un relleno tiene que
+       leerse como una cantidad, las dos superficies claras dan 1,05 entre
+       ellas, y el color no puede codificar la respuesta correcta
+
+     Medido: rótulo blanco encima 5,39 · contra el lienzo 5,15 · contra el
+     blanco 5,39. Pasa AA en los tres. */
+  --gris:  #63696b;
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     REGLA DURA · LA TINTA ES PARA LAS LETRAS Y PARA EL PIE. Y NADA MÁS.
+     ═══════════════════════════════════════════════════════════════════════
+
+     Y ÉSTA SÍ SE APARTA DEL ORIGINAL A PROPÓSITO, por un motivo que no es de
+     diseño sino de marca. Allí el negro ES un color de marca, así que puede
+     pintar secciones enteras, botones y tarjetas. Aquí los colores de marca
+     son otros -el azul, el naranja y el verde-, y una sección negra no dice
+     «esta marca»: dice otra marca.
+
+         PERMITIDO    `footer{background:var(--ink)}`          una vez
+         PERMITIDO    la tinta como COLOR DE LETRA             siempre
+         PERMITIDO    los rellenos --f06 y --f08, que son tinta al 6 y al 8 %
+                      sobre otra superficie, no superficies de tinta
+
+         PROHIBIDO    un botón de tinta
+         PROHIBIDO    una sección de tinta
+         PROHIBIDO    una tarjeta, una hoja o un panel de tinta
+         PROHIBIDO    `background:var(--ink)` en cualquier sitio que no sea
+                      el pie
+
+     LO QUE ESTO OBLIGÓ A MOVER, y va listado para que nadie lo deshaga por
+     error creyendo que se apartó del original sin querer:
+
+         .btn.primary      era tinta      →  es el acento hondo
+         .btn.accent       RETIRADO       →  era lo mismo que el primario en
+                                             cuanto el primario dejó de ser
+                                             tinta. Ver su lápida más abajo
+         .arrow            era tinta      →  es el acento hondo
+         .faq-num::before  era tinta      →  es el acento hondo
+         .precio           era una hoja   →  es una hoja BLANCA
+                           de tinta
+         .sup-ink          RETIRADO       →  ver su lápida más abajo
+         .card .ir         era tinta      →  nace callado y se enciende
+
+     LOS CUATRO ESPEJOS CLAROS -`--c80`, `--c45`, `--c40`, `--c25`- existen
+     ahora SÓLO PARA EL PIE, porque el pie es la única superficie oscura que
+     queda. Lo mismo `.claro*` y `.btn.invert`. No se han retirado porque el
+     pie los necesita enteros, pero fuera de él no tienen dónde vivir.
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  /* NO HAY TERCER GRIS, Y NO HACE FALTA. El original tenía `--sunk` para lo
+     hundido. Aquí el fondo ya es un color, así que lo hundido es un velo de
+     tinta al 6% SOBRE el lienzo: da #dcecf0, diez puntos y medio por debajo.
+     Un escalón de verdad sin gastar una ficha. */
+
+  /* ── LÁPIDA · `--accent-hondo: #db1a00` FUE RETIRADO ────────────────────
+     Era un sexto hexadecimal, y lo cazó Jorge: «#db1a00 es invento tuyo».
+     Tenía razón. La paleta son CINCO colores y ese no era ninguno.
+
+     El problema que venía a tapar es real y no desaparece: sobre `#ff1e00` no
+     hay ningún rótulo pequeño que pase AA.
+
+         blanco sobre el acento    3,73
+         tinta  sobre el acento    4,41
+         lo que pide AA            4,50
+
+     LA DECISIÓN ES DE JORGE Y ESTÁ TOMADA: se queda el acento a pelo con
+     rótulo de TINTA, y los 0,09 que faltan son una DESVIACIÓN CONOCIDA Y
+     MEDIDA, no un descuido. Pasa para texto grande (3,0) y para componentes de
+     interfaz (3,0); suspende para texto normal por menos de una décima.
+
+     SI ALGÚN DÍA HAY QUE CERRARLA, hay dos salidas y ninguna necesita inventar
+     nada: subir el rótulo a 18,67 px en negrita, que lo convierte en texto
+     grande; o declarar un sexto tono de marca a propósito y con nombre.
+
+     Y LO QUE NO SE HACE es volver a meterlo por la puerta de atrás. */
+  /* El mismo, en componentes. Existe para poder dar opacidad sin `color-mix`,
+     que no llega a los navegadores de antes de 2023 — y cuando no llega, el
+     halo y el filete desaparecen sin avisar. Un efecto que se apaga solo en
+     un navegador viejo es peor que uno que no existe: nadie lo va a notar. */
+  --accent-rgb:255,30,0;
+
+  --ease:cubic-bezier(0.22,1,0.36,1);   /* la única curva del sitio */
+
+  --banda:6rem;   --banda-md:8rem;
+  --corta:4rem;   --corta-md:5rem;
+  --page:1120px;  --narrow:760px;  --measure:58ch;
+  --card:28px;    /* el ÚNICO radio del sistema */
+  --card-in:20px; /* el de una superficie DENTRO de otra: dos curvas de 28
+                     quedan concéntricas y el hueco se estrecha en la esquina */
+}
+
+*{box-sizing:border-box}
+
+/* NINGÚN ENLACE SE QUEDA CON EL AZUL DEL NAVEGADOR, y esto el original no lo
+   necesita porque allí no hay ni un `<a>` sin clase. Aquí sí puede haberlo, y
+   un azul de sistema es un color que no está en la paleta y que nadie eligió.
+
+   Se hereda el color del texto: un enlace dentro de un párrafo se distingue
+   por el subrayado, no por cambiar de tono. Los que sí tienen color propio
+   -`.btn`, `.card`, `.slide`, el pie, el aviso- lo declaran ellos y ganan por
+   especificidad. */
+a{color:inherit;text-decoration-color:var(--t30);text-underline-offset:2px;
+  transition:text-decoration-color .3s var(--ease)}
+a:hover{text-decoration-color:var(--accent)}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--lienzo);color:var(--ink);
+     font-family:"SFProText",-apple-system,system-ui,sans-serif}
+
+
+/* ── 3 · LO INVISIBLE ───────────────────────────────────────────────────────
+   Cuatro reglas que nadie ve y que todo el mundo nota si faltan. */
+
+/* La selección lleva el acento. Es gratis y es de las pocas veces que el
+   color aparece sin que haya un cursor encima de nada. */
+/* CLARO, como todo lo que se apoya en el acento. Era el último sitio que
+   llevaba tinta encima del naranja, y lo cazó `chismoso.mjs` en cuanto se
+   escribió la regla: la consistencia vale más que los 0,68 de diferencia
+   entre dos valores que suspenden igual. */
+::selection{background:var(--accent);color:var(--raised)}
+
+/* El foco se ve, pero nunca como contorno permanente. `:focus-visible` y no
+   `:focus`: el segundo dibuja el anillo también al hacer clic con el ratón,
+   que es ruido para quien no lo necesita. */
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* La barra es fija, así que un ancla sin esto aterriza DEBAJO de ella. Va en
+   el destino y no en el enlace: el destino sabe cuánto mide lo que lo tapa. */
+[id]{scroll-margin-top:6rem}
+
+/* Y el interruptor general. Quien pide menos movimiento recibe menos
+   movimiento, sin discusión. */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
+
+
+/* ── 4 · LA TIPOGRAFÍA — TRES CLASES Y NINGUNA MÁS ──────────────────────────
+   Ningún componente inventa un tamaño propio. Si algo pide un cuarto estilo,
+   la respuesta casi siempre es que no lo necesita. */
+
+.t-title{font-family:"SFProDisplay",-apple-system,system-ui,sans-serif;
+  font-weight:600;letter-spacing:-.035em;line-height:1.07;
+  font-size:clamp(1.75rem,1.05rem + 3.1vw,2.875rem);margin:0;text-wrap:balance}
+.t-title.is-hero{letter-spacing:-.042em;line-height:1.04;
+  font-size:clamp(2.125rem,1rem + 5vw,4rem)}
+.t-body{font-family:"SFProText",-apple-system,system-ui,sans-serif;
+  font-weight:400;line-height:1.68;letter-spacing:-.005em;
+  font-size:clamp(1rem,.955rem + .2vw,1.125rem);margin:0}
+.t-body.is-small{font-size:.875rem;line-height:1.6}
+.t-label{font-family:"SFProText",-apple-system,system-ui,sans-serif;
+  font-weight:500;text-transform:uppercase;letter-spacing:.14em;line-height:1.4;
+  font-size:clamp(.6875rem,.665rem + .1vw,.75rem);margin:0}
+
+/* EL PUNTO — la marca más pequeña de la página y por eso la más barata en la
+   que gastar el acento. Se lee como un punto que va en serio.
+
+   ── CORREGIDO · LA FRASE ANTERIOR ERA FALSA ─────────────────────────────
+   Decía «el único sitio donde el color se queda quieto», y ya no lo era
+   cuando se escribió: `.paso .num` y `.apagada-num` llevan el acento en
+   reposo desde que existen, y la marca de la sección 19 es la cuarta.
+
+   LO QUE SÍ ES CIERTO, y es la regla: el acento en reposo vive sólo en cosas
+   DIMINUTAS — un punto, un número al margen, la marca de una respuesta. Nunca
+   en una superficie. Lo que la hoja acota es la SUPERFICIE que ocupa, menos
+   del 5 % de la página, no el número de sitios. */
+.punto{color:var(--accent)}
+
+/* ── LA ESCALERA, Y ESTO ES TODA ─────────────────────────────────────────
+   Seis valores para el texto y tres para el relleno. No hay más, y no se
+   escriben a mano en ningún sitio: si necesitas un tono, es una de estas
+   fichas o no existe.
+
+   El proyecto hermano acabó con TRECE tonos de tinta, y los tres más usados
+   no llegaban a 2,2 de contraste. Trece no son matiz: son trece decisiones
+   que nadie tomó a propósito. Y esta semilla llegó a tener catorce antes de
+   que alguien los contara — por eso ahora hay un `node comprobar.mjs` que
+   los cuenta solo. */
+:root{
+  /* Sobre claro. El suelo de lo LEÍBLE es --t65: por debajo sólo vive lo
+     decorativo — ni una etiqueta de formulario, ni un error, ni un legal. */
+  --t100:#1c1c1d;                 /* 15,73 sobre el lienzo */
+  --t65:rgba(28,28,29,.65);       /*  5,22 — pasa AA */
+  --t30:rgba(28,28,29,.30);       /*  1,93 — decorativo, y sólo eso */
+
+  /* Sobre tinta. Cuatro, y cada uno con su motivo: la lista del precio, su
+     letra pequeña, la prosa del pie, y los enlaces del pie —que llevan el
+     suyo porque se PULSAN en vez de leerse, y ésa sí es una diferencia
+     funcional y no decorativa. */
+  --c80:rgba(251,251,251,.80);
+  --c45:rgba(251,251,251,.45);
+  --c40:rgba(251,251,251,.40);
+  --c25:rgba(251,251,251,.25);
+
+  /* Rellenos. No son texto y por eso no entran en la escalera. */
+  /* ── LÁPIDA · `--f06` y `--f08` YA NO PINTAN NINGUNA SUPERFICIE ─────────
+     Eran los rellenos del original, y aquí creaban un problema que allí no
+     existe: un velo de tinta al 6 % SOBRE EL LIENZO da #dcecf0, que es un
+     SEGUNDO CELESTE. Jorge lo vio en pantalla —«aquí hay dos tonos de
+     celeste»— y la auditoría lo confirmó: 16 sitios, más otros 16 de #eeeeee
+     sobre blanco. Catorce tonos fuera de la paleta en total.
+
+     LA REGLA QUE LOS SUSTITUYE, Y ES DURA:
+
+       UNA SUPERFICIE ES UN COLOR PLENO. Lienzo, blanco, o tinta (sólo el pie).
+       No hay una cuarta y no se fabrica con opacidad.
+
+       UN VELO DE TINTA ES PARA LETRAS Y PARA LÍNEAS. Nunca para un relleno.
+       Ahí viven `--t100`, `--t65`, `--t30` y el anillo del filete.
+
+     LO QUE ANTES ERA UN VELO, AHORA ES UNA DE DOS COSAS:
+       · LA SUPERFICIE VECINA  — campos, citas, huecos de foto, el paso de la
+                                 tarjeta. La vecina del lienzo es el blanco y
+                                 la vecina del blanco es el lienzo
+       · UN ANILLO EN --t65    — botones secundarios, la flecha, la píldora de
+                                 un dato. El mismo gris del filete
+
+     Las dos fichas siguen declaradas porque el pie las usa del otro lado
+     (`--c*`), pero NINGUNA pinta ya una superficie sobre claro. */
+  /* Y LAS DOS FICHAS SE RETIRAN TAMBIÉN. Sobrevivieron un rato «por si el pie
+     las necesitaba del otro lado», y no: el pie usa los espejos `--c*`. Una
+     ficha que no usa nadie es una invitación a volver a usarla. */
+  /* LÁPIDA · `--linea` FUE RETIRADA. Era una quinta opacidad de tinta para
+     una sola raya, la del separador de la entrada. Con `--t30` ya declarado
+     no hacía falta: una ficha que se usa una vez no es una ficha, es un valor
+     con nombre. La raya sigue existiendo y sigue siendo la ÚNICA línea en
+     reposo de todo el sistema — se gana el permiso porque no separa zonas,
+     eso lo hace el tono, sino que sostiene una palabra en medio de la nada. */
+}
+.ink{color:var(--t100)}
+.ink-65{color:var(--t65)}
+.ink-30{color:var(--t30)}
+.claro{color:var(--raised)}
+.claro-80{color:var(--c80)}
+.claro-45{color:var(--c45)}
+.claro-40{color:var(--c40)}
+.claro-25{color:var(--c25)}
+
+
+/* ── 5 · LA REJILLA Y EL ESPACIADO ──────────────────────────────────────────
+   Las bandas sólo pueden medir dos cosas: la normal y la corta. Un tercer
+   tamaño es el principio de una escala que nadie recuerda.
+
+   TRES ES EL TECHO en cualquier conjunto de iguales. Un cuarto obliga a
+   leerlos como lista en vez de verlos como conjunto. */
+
+section{padding:var(--banda) 0}
+section.corta{padding:var(--corta) 0}
+/* ── LAS SECCIONES ALTERNAN, Y NO SON TODAS DEL COLOR DEL LIENZO ──────────
+   El `body` es lienzo, así que una página que no declare nada sale entera
+   azul pálido. No debe: las dos superficies claras se turnan.
+
+       --lienzo   el azul pálido
+       --raised   el blanco que no es blanco
+
+   POR QUÉ SE TURNAN, Y NO ES DECORACIÓN. Una página de una sola superficie
+   obliga a que la separación entre bloques la haga el ESPACIO, y el espacio se
+   lee mal en cuanto un bloque es más alto que la pantalla: al recorrerla no se
+   sabe si se ha cambiado de sección o se sigue en la misma. Un cambio de
+   superficie sí se nota, y es el mismo mecanismo que separa una tarjeta de su
+   fondo: un borde es un cambio de tono.
+
+   LA REGLA DE USO, Y ES DURA:
+
+     1  DOS SECCIONES SEGUIDAS NO REPITEN SUPERFICIE. Si dos comparten tono,
+        son una sola sección con el doble de alto, y entonces sobra el corte.
+     2  LO QUE VA DENTRO CAMBIA CON ELLA. Una tarjeta es la superficie VECINA:
+        blanca sobre el lienzo, y de lienzo sobre blanco. Puesta al revés mide
+        1,00 de contraste, o sea que no está.
+     3  UNA BANDA A SANGRE -una fotografía, un vídeo- NO CUENTA como sección
+        a efectos de turno: no tiene superficie, tiene contenido. La de antes
+        y la de después siguen teniendo que ser distintas entre sí.
+     4  EL PIE NO ENTRA EN EL TURNO. Es tinta, siempre, y es la única. */
+.sup-raised{background:var(--raised)}
+.sup-lienzo{background:var(--lienzo)}
+/* LÁPIDA · `.sup-sunk` FUE RETIRADO. Era la tercera superficie, y se fabricaba
+   con un velo: sobre el lienzo daba #dcecf0 y sobre el blanco #eeeeee. Dos
+   tonos que no están en la paleta para hacer lo que ya hacen las otras dos
+   turnándose. Si una sección necesita separarse de la anterior, cambia de
+   superficie; no se inventa una tercera. */
+/* LÁPIDA · `.sup-ink` FUE RETIRADO. Pintaba una sección entera de tinta, y
+   eso es exactamente lo que prohíbe la regla dura de arriba. No se deja
+   comentado: una regla comentada es una regla que alguien reactiva sin leer
+   por qué se apagó. La única superficie de tinta del sistema es `footer`, y
+   la pinta `footer` directamente. */
+.wrap{max-width:var(--page);margin:0 auto;padding:0 1.5rem}
+.centro{max-width:var(--narrow);margin:0 auto;text-align:center;
+        display:flex;flex-direction:column;align-items:center}
+.measure{max-width:var(--measure)}
+@media (min-width:768px){
+  section{padding:var(--banda-md) 0}
+  section.corta{padding:var(--corta-md) 0}
+  .wrap{padding:0 2.5rem}
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   6 · LOS BOTONES — SIETE PIEZAS
+
+   Un componente base, cuatro variantes, tres tamaños, y cuatro piezas más
+   que existen porque hacen algo que el botón no puede hacer.
+
+   El tamaño varía la CAJA, nunca la letra: las etiquetas usan dos de los
+   tres estilos del documento y jamás inventan un cuarto.
+
+   DOS PROPIEDADES QUE PARECEN ADORNO Y NO LO SON:
+
+   `white-space:nowrap` — dentro de una fila flexible un hijo se encoge hasta
+   su min-content, y el min-content de un botón es su palabra más larga. Sin
+   esto, «Log in» se parte en «Log» y «in» en cuanto la fila aprieta. Pasó de
+   verdad en el proyecto hermano y no se vio venir, porque sólo aparece
+   cuando algo estrecha la barra. La etiqueta de un botón no se parte nunca:
+   que se salga si hace falta. Salirse se ve; partirse parece un diseño.
+
+   `flex-shrink:0` — por lo mismo, un renglón antes.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── EL ANILLO · el gris del filete, que ahora hace muchos trabajos ────────
+   Es la única línea que dibuja este sistema, y sólo bajo el cursor. Va en
+   `--t65`, el mismo tono que un rótulo secundario, así que línea y letra son
+   el mismo gris y no dos.
+
+   Se hace con `box-shadow:inset` y NO con `border`: un borde ocupa sitio, y
+   aparecer al pasar el ratón empujaría el contenido un píxel y toda la fila
+   daría un salto. Una sombra interior no ocupa nada y no mueve nada.
+
+   Medido sobre el lienzo: 5,15 de contraste. WCAG 1.4.11 pide 3,0 al contorno
+   que identifica un control, así que PASA — y el anillo del original, que iba
+   en acento al 35 %, daba 1,83 y no llegaba. */
+
+.btn{position:relative;display:inline-flex;flex-shrink:0;align-items:center;
+  justify-content:center;white-space:nowrap;border:0;border-radius:999px;
+  cursor:pointer;text-decoration:none;user-select:none;
+  font-family:"SFProText",-apple-system,system-ui,sans-serif;font-weight:500;
+  transition:background-color .3s var(--ease),color .3s var(--ease),
+             transform .3s var(--ease)}
+
+/* SE LEVANTA UN PÍXEL, Y ES LA MITAD DEL RELIEVE.
+   El original no lo tiene porque allí TODOS los botones cambian de color al
+   pasar: el primario salta de tinta a magenta, que es un salto enorme. Aquí el
+   primario ya ES el color de marca y no puede aclararse sin romper el rótulo
+   -no hay ningún rótulo que pase sobre él, ver su lápida- así que si el
+   relleno no se mueve y nada más se mueve, el botón se siente plano.
+   Levantarlo no gasta color y no toca el contraste. */
+.btn:hover{transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn:disabled:hover,.btn[aria-disabled="true"]:hover{transform:none}
+
+.btn.sm{height:2.25rem;padding:0 1.25rem;font-size:.875rem}
+.btn.md{height:2.75rem;padding:0 1.75rem;font-size:.875rem}
+.btn.lg{height:3.5rem;padding:0 2.25rem;font-size:1rem}
+
+/* TODOS LOS RELLENOS DE ACENTO VAN HONDOS, Y NO ES UNA VARIANTE DE ESTILO.
+   El original pone `var(--accent)` en los cuatro sitios de aquí abajo porque
+   su magenta aguanta un rótulo blanco. Éste no: 3,73 contra los 4,5 que pide
+   AA. Es el mismo botón con el mismo gesto, un punto más profundo. */
+
+/* ── EL REGISTRO DE LOS RÓTULOS, Y ES REGLA ────────────────────────────────
+   UN BOTÓN VA EN TIPO TÍTULO. «Entrar», «Ver el sistema», «Reintentar». Nunca
+   en versales.
+
+   LAS VERSALES SON DE OTRA COSA: de los enlaces del menú y de `.t-label`, o
+   sea de lo que ORDENA la página. Un botón no ordena, actúa.
+
+   Y la razón de que esto sea una regla y no un gusto es que se vio: en la
+   barra convivían «ENTRAR» y «Ver el sistema», uno al lado del otro y del
+   mismo tamaño. Dos registros en la misma fila no se leen como una decisión;
+   se leen como que a uno de los dos se le olvidó algo.
+
+   LA ÚNICA EXCEPCIÓN es `.card .ir`, el botón diminuto de una tarjeta, que va
+   en versales porque está compuesto como `.t-label` -11 px y mucho
+   espaciado-. No convive con ningún botón normal: dentro de una tarjeta es el
+   único que hay, y en una rejilla todos son él. */
+
+/* 1 · PRIMARIO — el acento a pelo, con rótulo CLARO.
+
+   ⚠️  DESVIACIÓN CONOCIDA, MEDIDA Y DECIDIDA. Sobre `#ff1e00` no hay ningún
+   rótulo pequeño que llegue a los 4,50 de AA:
+
+       blanco sobre el acento   3,73
+       tinta  sobre el acento   4,41
+       AA pide                  4,50
+
+   Las dos suspenden, así que no había una opción correcta: había dos fallos.
+   Jorge eligió el BLANCO, y lo dijo dos veces -«el botón naranja con texto
+   negro me choca», «se ve mejor con letras claras»-. Es una decisión de marca
+   sobre una diferencia de 0,68 entre dos valores que suspenden igual.
+
+   Queda escrito con los dos números para que sea una decisión y no un
+   descuido. Las dos salidas, si algún día hay que cerrarla: subir el rótulo a
+   18,67 px en negrita, que lo convierte en texto grande y entonces el umbral
+   es 3,0 y pasa; o declarar un sexto tono de marca a propósito. */
+.btn.primary{background:var(--accent);color:var(--raised)}
+/* Y SU HOVER NO OSCURECE EL RELLENO. Tenía `#b21500`, que lo ahondaba otros
+   3,8 puntos de luminancia: el botón más ruidoso de la página se APAGABA al
+   tocarlo, que es lo contrario de lo que un hover tiene que decir. Y aclararlo
+   no se puede: el tope para que el rótulo blanco siga pasando AA es el 17,5 %
+   de luminancia y el reposo ya está en el 15,8 %.
+   Así que el relleno se queda quieto y lo que responde es el relieve: se
+   levanta, y si va envuelto en `.halo`, se enciende. */
+.btn.primary:hover{background:var(--accent)}
+
+/* 2 · INVERTIDO — el mismo, sobre una superficie de tinta. O sea: SÓLO EN EL
+   PIE, que es la única que queda.
+
+   SU HOVER TAMPOCO CAMBIA DE RELLENO, y por la misma razón que el primario
+   mirada del revés. Allí el problema era que no puede aclararse más; aquí es
+   que no puede oscurecerse: el invertido en reposo ya es lo más luminoso que
+   hay sobre tinta, con 96,5 de luminancia, y saltar al acento lo bajaría a
+   15,8. Sobre una superficie oscura eso no se lee como «responde»: se lee como
+   que el botón se apaga.
+
+   Y además lo dejaba idéntico a un primario en reposo, que es el choque que
+   este archivo acaba de quitar del callado.
+
+   Responde el relieve: se levanta, como todos. */
+.btn.invert{background:var(--raised);color:var(--ink)}
+.btn.invert:hover{background:var(--raised);color:var(--ink)}
+
+/* ── 3 Y 6 · LOS DOS CALLADOS ──────────────────────────────────────────────
+   Y esto se hizo mal dos veces antes de entenderlo, así que va despacio.
+
+   UN CALLADO NACE DEL COLOR DE SU SECCIÓN. Por eso se llama callado: en reposo
+   casi no está. No compite con el principal, que es justo su trabajo — el
+   original lo dice con estas palabras: «se ve pálido al lado del principal».
+
+   Y AL PASAR EL CURSOR SALTA A LA OTRA SUPERFICIE CLARA. Ése es el suceso
+   entero: la pieza pasa de confundirse con el fondo a separarse de él.
+
+       sobre una sección BLANCA    `.btn.quiet`    blanco  →  lienzo
+       sobre una sección de LIENZO `.btn.lienzo`   lienzo  →  blanco
+
+   Son el mismo botón en las dos vecindades, y por eso son dos clases y no una:
+   cuál se usa lo decide la superficie que hay detrás, no el gusto.
+
+   ── LOS DOS INTENTOS ANTERIORES, Y POR QUÉ FALLARON ──────────────────────
+   EL PRIMERO saltaba al acento, copiando al original. Allí funciona porque su
+   primario es TINTA y los dos siguen siendo distintos; aquí el primario YA es
+   el acento, así que el callado se convertía en su vecino mientras durase el
+   cursor. La jerarquía desaparecía justo en el momento de decidir.
+
+   EL SEGUNDO saltaba al GRIS, buscando un salto grande. Y era grande -82
+   puntos- pero decía otra cosa: un botón secundario que se pone casi negro al
+   tocarlo pesa más que el principal que tiene al lado. Jorge: «este lo
+   nerfeaste, lo correcto es que tras hover quede celeste».
+
+   Lo que hace el bueno es sólo 4,5 puntos de luminancia, y basta: no hace
+   falta gritar para dejar de estar callado. */
+.btn.quiet{background:var(--raised);color:var(--ink)}
+.btn.quiet:hover{background:var(--lienzo);color:var(--ink)}
+
+.btn.lienzo{background:var(--lienzo);color:var(--ink)}
+.btn.lienzo:hover{background:var(--raised);color:var(--ink)}
+
+/* ── LA EXCEPCIÓN DE LA PANTALLA SUELTA, Y LLEVA SU MOTIVO ────────────────
+   Un callado casi no se ve en reposo, y eso está bien MIENTRAS HAYA UN
+   PRINCIPAL AL LADO: su trabajo es no competir con él.
+
+   En una pantalla suelta -la entrada- no hay principal: los callados son la
+   única acción que existe. Ahí «casi no se ve» deja de ser humildad y pasa a
+   ser un botón que no está.
+
+   Así que aquí el callado nace de la superficie VECINA -blanco sobre el
+   lienzo de la pantalla, visible- y al pasar se vacía al color de la pantalla
+   dejando el anillo. El relleno se va y la forma se queda: es la misma
+   inversión, leída al revés.
+
+   Y esto es una excepción local y acotada a `.pantalla`, no un segundo
+   sistema: fuera de ahí el callado se comporta como manda la regla. */
+.pantalla .btn.quiet:hover{background:var(--lienzo);
+  box-shadow:inset 0 0 0 1px var(--gris)}
+
+
+/* LÁPIDA · `.btn.accent` FUE RETIRADO, y no por capricho.
+   En el original tenía sentido porque el primario era tinta: el acento era
+   «el único botón que ya es de color antes de tocarlo». Con el primario
+   pintado de acento, los dos eran el MISMO BOTÓN con dos nombres, y dos
+   nombres para una pieza es la forma más barata de que un día se pinten
+   distinto. Si buscas el botón que remata un flujo, es `.btn.primary`. */
+
+/* ── Y DOS MÁS, PORQUE HAY DOS COLORES MÁS QUE EN EL ORIGINAL ─────────────
+   No son invención: cada color que puede rellenar un botón trae el suyo, y
+   esta paleta tiene un verde y un azul que aquélla no tenía.
+
+   5 · SEÑAL — lo que sale bien: confirmar, aceptar, terminar. El verde es
+   RELLENO y el rótulo va en TINTA: 8,64. Al revés —verde como letra sobre
+   claro— son 1,91 y no se lee. El verde no es nunca un color de texto. */
+.btn.senal{background:var(--senal);color:var(--ink)}
+/* SU HOVER SE VACÍA A BLANCO CON FILO Y LETRA EN GRIS. DOS COLORES, NO TRES.
+
+   Esto se intentó primero con el filo VERDE, que era la idea de Jorge -«un
+   botón blanco con línea y texto verdes»- y no salió bien, por dos razones que
+   conviene dejar escritas porque son distintas:
+
+   LA PRIMERA ES ARITMÉTICA. El texto no podía ser verde:
+
+       verde como TEXTO sobre blanco   1,91   y el texto pide 4,50
+       gris  como TEXTO sobre blanco   5,39   PASA
+
+   LA SEGUNDA LA VIO JORGE EN PANTALLA, y es la que manda: con el filo verde y
+   el rótulo en tinta, el botón tenía TRES colores a la vez -blanco, verde y
+   tinta- y eso se lee recargado. «Un botón con 3 colores es demasiado».
+
+   Así que la pieza se vacía entera a neutro: blanco de relleno, y filo y letra
+   del mismo gris. Dos colores y una sola idea. El verde se va del todo, que es
+   lo que hace que el cambio se note: son 48,2 puntos de salto en el relleno, el
+   más grande del sistema.
+
+   ── Y POR QUÉ EL FILO SÍ SE PERMITE AQUÍ ─────────────────────────────────
+   Porque es un HOVER: en reposo no hay líneas, bajo el cursor sí. Y no está
+   solo -el relleno acaba de cambiar de verde a blanco-, que es lo que separa
+   esto de un anillo suelto encima de una pieza que no se mueve. */
+.btn.senal:hover{background:var(--raised);color:var(--gris);
+  box-shadow:inset 0 0 0 1px var(--gris)}
+
+/* DESHABILITADO — una píldora teñida, no una versión pálida de sí mismo.
+   Apagar un botón de acento deja una mancha grande en una página cuya
+   regla es que el color sólo aparece bajo el cursor. */
+.btn:disabled,.btn[aria-disabled="true"]{
+/* NI RELLENO NI ANILLO. Un anillo en reposo es una línea en reposo. Y un
+   botón apagado no necesita que se le dibuje un contorno: necesita no
+   invitar, y para eso basta el rótulo en el peldaño más callado. */
+  background:transparent;color:var(--t30);
+  pointer-events:none;cursor:default}
+
+/* ── 5 · EL HALO (bloom) ────────────────────────────────────────────────────
+   Un resplandor del acento que existe SÓLO bajo el cursor.
+
+   ⚠️  ES UN ENVOLTORIO, NO UNA PROPIEDAD DEL BOTÓN. Se escribe
+   `<span class="halo"><a class="btn accent">…</a></span>`, y lo que brilla es
+   un pseudoelemento DETRÁS. Intentar resolverlo con un `box-shadow` en el
+   propio botón da otra cosa mucho más floja: una sombra proyectada no se
+   desenfoca a 24 px ni crece hacia fuera. Se probó y no se parecía.
+
+   Lleva `--accent`, el de marca, y no el hondo: aquí no hay texto encima que
+   proteger, y lo que se busca es que brille. `opacity:0` en
+   reposo, así que una captura de la página quieta sigue sin tener sombras.
+   Crece de -8px a -12px y de blur-lg a blur-xl mientras aparece.
+
+   Va en el botón que lleva la acción principal de la pantalla, y en uno
+   solo. Dos halos a la vez son dos acciones principales, que es ninguna. */
+.halo{position:relative;display:inline-flex}
+/* ── LO QUE NO SE PUEDE HACER AQUÍ, Y ME COSTÓ ROMPERLO PARA APRENDERLO ────
+
+   PROHIBIDO `mix-blend-mode` EN ESTE HALO. Se probó, se rompió y se revirtió.
+
+   La idea era buena en el papel: un rojo saturado desenfocado ENCIMA de un
+   fondo claro no lo ilumina, lo tapa -baja la luminancia del lienzo 55,9
+   puntos- así que `screen` parecía la salida, porque suma luz en vez de
+   restarla y matemáticamente no puede oscurecer.
+
+   LO QUE FALLA ES OTRA COSA: `mix-blend-mode` mezcla con TODO EL FONDO de su
+   contexto de apilado, no con el trozo de sección que hay detrás del botón. El
+   resplandor se fue detrás de la página y apareció como una banda pálida bajo
+   el botón, y de paso lavó el rótulo.
+
+   Y LA LECCIÓN NO ES SOBRE CSS: esto se escribió, se midió en una hoja de
+   cálculo, dio los números que buscaba, y se entregó SIN HABERLO VISTO. Una
+   medida de contraste no dice nada de cómo apila un navegador. Lo que se ve
+   sólo se comprueba mirándolo.
+
+   ── ASÍ QUE EL HALO ES UNA SOMBRA DE COLOR, Y SE ASUME ───────────────────
+   Sobre un fondo casi blanco no hay resplandor posible: cualquier cosa que se
+   pinte encima resta luz. Lo que se puede elegir es CUÁNTA y CÓMO:
+
+     un blob macizo al 55 %   resta 55,9 puntos de golpe   se lee sucio
+     un degradado radial      resta lo mismo SÓLO en el canto del botón y
+                              cae a cero enseguida          se lee como luz
+
+   Es el mismo pigmento repartido de otra forma. El degradado concentra el
+   color donde nace -pegado al botón- y lo suelta rápido, que es como se
+   comporta una luz de verdad; el blob lo reparte plano, que es como se
+   comporta una mancha.
+
+   Y el relieve hace la otra mitad: el botón se levanta 2 px al encenderse. */
+.halo::before{content:"";position:absolute;inset:-8px;border-radius:999px;
+  background:radial-gradient(closest-side,
+              rgba(var(--accent-rgb),.55) 35%, rgba(var(--accent-rgb),0) 100%);
+  opacity:0;filter:blur(14px);pointer-events:none;
+  transition:opacity .5s var(--ease),inset .5s var(--ease),filter .5s var(--ease)}
+.halo:hover::before{inset:-18px;opacity:1;filter:blur(22px)}
+.halo > .btn{position:relative;z-index:1}
+.halo:hover > .btn{transform:translateY(-2px)}
+
+/* ── 6 · EL FILETE (edge) ───────────────────────────────────────────────────
+   Un botón callado cuyo filete sólo existe bajo el cursor. ÉSTA es la pieza
+   que hace lo que parece pedir un borde: separa el botón del fondo con una
+   línea. Y por eso existe sólo en `:hover` — un filete en reposo rompería la
+   regla de que un borde es un cambio de tono.
+
+   Se dibuja con `box-shadow: inset` y NO con `border`. Un borde ocupa sitio:
+   aparecer al pasar el ratón empujaría el contenido un píxel y toda la fila
+   daría un salto. Una sombra interior no ocupa nada y no mueve nada. */
+.btn.edge{background:transparent;color:var(--gris);
+  box-shadow:inset 0 0 0 1px transparent;
+  transition:color .3s var(--ease),box-shadow .3s var(--ease),
+             transform .3s var(--ease)}
+
+/* SU HOVER ES EL ANILLO, Y EL ANILLO ES DEL COLOR DEL RÓTULO.
+
+   Esto cambió dos veces y la segunda es la buena.
+
+   EN EL ORIGINAL se enciende entero en magenta: el rótulo Y el anillo, a la
+   vez. Dos señales donde debería haber una -la regla de las tarjetas de este
+   mismo archivo ya lo dice para su caso- y además un salto de color brusco.
+
+   LA PRIMERA CORRECCIÓN fue pasar el rótulo a `--t100` y poner el anillo en
+   tinta al 22 %. Seguían siendo dos señales, y encima de dos pesos distintos:
+   un rótulo casi negro rodeado de una línea casi invisible.
+
+   AHORA SON UNA SOLA COSA. El rótulo no se mueve -se queda en `--t65`, donde
+   ya estaba- y lo único que ocurre es que aparece un anillo DEL MISMO TONO. Se
+   lee como que el botón se ha dibujado, no como que ha cambiado de color.
+
+   ── Y DE PASO ARREGLA ALGO QUE EL ORIGINAL NUNCA CUMPLIÓ ──────────────────
+   WCAG 1.4.11 pide 3,0 de contraste al contorno que identifica un control.
+   Medido sobre el lienzo:
+
+       anillo de acento al 35 %  (el original)    1,83   falla
+       anillo de tinta al 22 %   (mi primera)     1,58   falla, y peor
+       anillo en --t65           (éste)           5,15   PASA
+
+   Los dos anteriores se apoyaban, sin decirlo, en que quien identifica el
+   botón es su rótulo. Es cierto y sigue siéndolo, pero ahora el anillo también
+   se sostiene solo.
+
+   NO OCUPA SITIO: es `box-shadow:inset` y no `border`. Un borde empujaría el
+   contenido un píxel al aparecer y toda la fila daría un salto. */
+.btn.edge:hover{color:var(--gris);box-shadow:inset 0 0 0 1px var(--gris)}
+
+/* ── 7 · EL ENLACE QUE DESLIZA (slide) ──────────────────────────────────────
+   El enlace de la barra. El rótulo sube y sale de cuadro mientras su gemelo
+   entra por debajo, ya en acento. Puro `transform`.
+
+   La ventana mide EXACTAMENTE un renglón y recorta lo que sobra: si midiera
+   más, se verían las dos copias a la vez y el efecto no se leería. Por eso
+   el relleno va en el enlace y no en la ventana — el relleno en la ventana
+   agrandaría la caja recortada.
+
+   Y por eso `white-space:nowrap` aquí es más grave que en un botón: un
+   rótulo partido no se vería torcido, no se vería. La segunda mitad
+   desaparecería sin que nada quedara mal. */
+/* EL PESO ES 500 Y NO 400, y es lo único que se le añade al original.
+   Estos rótulos van en VERSALES, y una versal a 14 px con peso de párrafo se
+   lee delgada: las mayúsculas no tienen astas ascendentes ni descendentes que
+   le den cuerpo a la palabra, así que el mismo peso que sostiene un párrafo
+   aquí se queda corto. 500 es el peso que ya usan el botón y `.t-label`, o sea
+   todo lo demás que está compuesto en versales. No es una cuarta clase
+   tipográfica: es el mismo peso que el resto de los rótulos. */
+.slide{display:inline-block;text-decoration:none;white-space:nowrap;
+       font-weight:500;font-size:.875rem;line-height:1.6}
+.slide .ventana{position:relative;display:block;height:1.25rem;overflow:hidden}
+.slide .par{display:flex;flex-direction:column;
+            transition:transform .5s var(--ease)}
+.slide:hover .par{transform:translateY(-50%)}
+.slide .par span{display:flex;height:1.25rem;align-items:center;line-height:1}
+.slide .par span:first-child{color:var(--t65)}
+/* EL GEMELO VA EN TINTA, NO EN ACENTO. El original lo pone en magenta y allí
+   pasa; aquí el naranja como TEXTO sobre el lienzo da 3,57 y suspende. Así que
+   el rodillo es un cambio de peso de tono —de `--t65` a `--t100`, de 5,15 a
+   15,73— y sigue leyéndose como un texto que se va y otro que llega. */
+.slide .par span:last-child{color:var(--t100)}
+
+/* ── 8 · LA FLECHA (arrow) ──────────────────────────────────────────────────
+   Un envío circular. Al pasar el cursor, la flecha se va por la derecha
+   mientras otra entra por la izquierda, así que el trazo no parece pararse
+   nunca.
+
+   ESTA FLECHA SIGNIFICA «ADELANTE», ASÍ QUE SE VOLTEA. No es un adorno
+   redondo: es la punta que dice hacia dónde sigue esto. En una página que se
+   lee de derecha a izquierda, adelante es a la izquierda, y una flecha a la
+   derecha ahí dice «atrás». Se voltea la punta y también el movimiento.
+   Lo que NO se voltea es la caja: un círculo volteado es el mismo círculo. */
+.arrow{position:relative;display:flex;height:2.75rem;width:2.75rem;flex-shrink:0;
+  align-items:center;justify-content:center;overflow:hidden;border:0;
+  /* EL RELLENO ERA TINTA EN EL ORIGINAL. Aquí no puede: la flecha es un botón.
+     Nace callada -el mismo velo del `quiet`- y se enciende al pasar, que es
+     además más fiel a la regla de que el color sólo aparece bajo el cursor. */
+/* SIN RELLENO Y CON ANILLO. Era un velo de tinta; ahora es lo mismo que un
+     botón secundario: nada en reposo, el gris del filete al pasar. */
+/* EN REPOSO, LA SUPERFICIE VECINA. Tuvo un anillo un rato y estaba mal: un
+     anillo en reposo es una línea en reposo, y eso es exactamente lo que
+     prohíbe la primera regla de esta hoja. Lo cazó `chismoso.mjs`. */
+  border-radius:999px;cursor:pointer;background:var(--lienzo);color:var(--ink);
+  transition:background-color .3s var(--ease),color .3s var(--ease),
+             box-shadow .3s var(--ease)}
+.arrow.blanca{background:var(--raised)}   /* dentro de algo de lienzo */
+.arrow:hover{background:var(--accent);color:var(--raised)}
+.arrow.tono-acento{background:var(--accent);color:var(--raised)}
+.arrow.tono-acento:hover{background:var(--accent)}
+.arrow:disabled{opacity:.25;pointer-events:none}
+.arrow .pista{position:relative;display:block;height:100%;width:100%;overflow:hidden}
+.arrow .pista span{position:absolute;inset:0;display:flex;align-items:center;
+  justify-content:center;transition:transform .5s var(--ease)}
+.arrow .pista span:last-child{transform:translateX(-100%)}
+.arrow:hover .pista span:first-child{transform:translateX(100%)}
+.arrow:hover .pista span:last-child{transform:translateX(0)}
+[dir="rtl"] .arrow svg{transform:scaleX(-1)}
+[dir="rtl"] .arrow .pista span:last-child{transform:translateX(100%)}
+[dir="rtl"] .arrow:hover .pista span:first-child{transform:translateX(-100%)}
+[dir="rtl"] .arrow:hover .pista span:last-child{transform:translateX(0)}
+
+/* ── 9 · EL CAMPO ───────────────────────────────────────────────────────────
+   El único estilo de entrada del sitio. Relleno en reposo, sin contorno, y
+   se aclara al tocarlo. La misma altura y el mismo radio que un botón `md`,
+   para que un campo y su botón formen una fila y no dos objetos distintos. */
+.campo{height:2.75rem;width:100%;border:0;border-radius:999px;
+/* LA SUPERFICIE VECINA, no un velo. Sobre el lienzo un campo es blanco; sobre
+   una sección blanca lleva `.lienzo`. Era un velo de tinta al 6 %. */
+  background:var(--raised);padding:0 1.5rem;color:var(--ink);outline:none;
+  font-family:"SFProText",-apple-system,system-ui,sans-serif;
+  font-size:.875rem;line-height:1.6;
+  transition:background-color .3s var(--ease)}
+.campo::placeholder{color:var(--t30)}
+.campo.lienzo{background:var(--lienzo)}
+/* Y responde con el anillo, igual que los botones. */
+.campo:hover,.campo:focus{box-shadow:inset 0 0 0 1px var(--gris)}
+.campo.alto{height:3.5rem;font-size:1rem;padding:0 1.5rem}
+
+
+/* ── 10 · EL AVISO ──────────────────────────────────────────────────────────
+   Todo lo que la página dice cuando algo se tuerce pasa por aquí.
+
+   VA EN TINTA, NUNCA EN ACENTO. El acento es el color de lo que invita a
+   avanzar; gastarlo en lo que frena es celebrar el fallo. Antes cada
+   pantalla pintaba sus errores por su cuenta y las cuatro habían elegido
+   el acento sin saber unas de otras.
+
+   Aparecer ya es la señal: un texto que no estaba y ahora está es suficiente
+   para quien está mirando la pantalla. */
+.aviso{font-size:.875rem;line-height:1.6;color:var(--t65);margin:0}
+.aviso a{color:inherit;text-decoration:underline;
+  text-decoration-color:var(--t30);text-underline-offset:2px;
+  transition:color .3s var(--ease),text-decoration-color .3s var(--ease)}
+.aviso a:hover{color:var(--ink);text-decoration-color:var(--t65)}
+
+
+/* ── 11 · LA BARRA ──────────────────────────────────────────────────────────
+   Rejilla `1fr auto 1fr`, no `space-between`. Con tres hijos, repartir el
+   hueco sobrante en dos partes iguales es otra cosa que centrar: el centro
+   del hijo del medio cae desplazado por la diferencia de ancho entre la
+   marca y los botones. En el hermano eran 61,9 px — bastante para verse y
+   poco para estar seguro de que lo estás viendo.
+
+   `min-width:max-content` en el bloque derecho: sin eso el carril puede
+   apretarlo y los botones parten sus etiquetas. */
+header.barra{position:fixed;inset:0 0 auto 0;z-index:50;
+  transition:background-color .5s var(--ease)}
+/* OPACA Y DEL COLOR DEL LIENZO. Translúcida al 85 % daba #ebf9fd sobre una
+   sección blanca: un tono que no está en la paleta, y que además cambiaba
+   según lo que pasara por debajo. */
+header.barra.pegada{background:var(--lienzo)}
+.barra .fila{max-width:var(--page);margin:0 auto;height:5rem;padding:0 1.5rem;
+  display:flex;align-items:center;justify-content:space-between}
+/* AQUÍ NO HAY LOGOTIPO NI ICONO: la marca es una palabra. El original mete
+   una imagen y ajusta su altura; esto es texto, así que se compone con las
+   clases del documento y no necesita una regla de tamaño propia. */
+.barra .marca{font-family:"SFProDisplay",-apple-system,system-ui,sans-serif;
+  font-weight:600;font-size:1rem;letter-spacing:-.02em;color:var(--ink);
+  text-decoration:none}
+.barra nav{display:none;gap:2.25rem}
+.barra .acciones{display:none;gap:.75rem;min-width:max-content}
+@media (min-width:768px){
+  .barra .fila{display:grid;grid-template-columns:1fr auto 1fr;padding:0 2.5rem}
+  .barra .marca{justify-self:start}
+  .barra nav{display:flex;justify-self:center}
+  .barra .acciones{display:flex;justify-self:end}
+}
+
+
+/* ── 12 · LA APARICIÓN Y LA VENTANA ─────────────────────────────────────────
+   Dos comportamientos de scroll en todo el sitio. Dos, no siete.
+   Los números y el porqué están en seed.js.
+
+   ── LA APARICIÓN CAMBIÓ EL 6 DE SEPTIEMBRE ──────────────────────────────
+   Era opacidad y 18 px de subida. Jorge, mirando el sitio: «veo muy estática
+   la página, ¿le enchufas scroll effect a las secciones estáticas? Alguno
+   moderno, nada de fade in».
+
+   Se le montaron tres candidatos en el banco de pruebas de diseño y eligió
+   éste: «C es el más bello, moderno y no es invasivo; dura segundos pero se
+   ve claramente un cambio, que es la idea».
+
+   LA PIEZA ENTRA FUERA DE FOCO Y SE ENFOCA. El desenfoque es lo que hace el
+   trabajo; la opacidad y la escala solo lo acompañan, y por eso son suaves:
+   tres efectos fuertes a la vez se leen como una animación, y esto tiene que
+   leerse como una página que responde.
+
+   ── Y VA Y VUELVE, QUE ES LA OTRA MITAD ─────────────────────────────────
+   Jorge: «¿podrías ponerme un roll para que el efecto se muestre una y otra
+   vez si paso por la sección? De hecho en la página también debe funcionar
+   así».
+
+   Por eso hay DOS estados de reposo y no uno. `.abajo` es la pieza que aún no
+   ha llegado; `.arriba`, la que ya se fue. Sin esa distinción, al SUBIR la
+   página todo entraría desde abajo aunque venga de arriba, y eso se lee como
+   falso aunque nadie sepa decir por qué.
+
+   El desenfoque es lo más caro de pintar de los tres candidatos, así que
+   `will-change` avisa al navegador y la duración se queda corta: lo que se
+   busca es notar el cambio, no verlo llegar. */
+.reveal{transition:opacity .85s var(--ease),filter .85s var(--ease),
+                   transform .85s var(--ease);
+        will-change:filter,transform,opacity}
+.reveal.abajo {opacity:0;filter:blur(12px);transform:scale(1.015) translateY(10px)}
+.reveal.arriba{opacity:0;filter:blur(12px);transform:scale(1.015) translateY(-10px)}
+.reveal.visible{opacity:1;filter:none;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal,.reveal.abajo,.reveal.arriba{
+    opacity:1;filter:none;transform:none;transition:none}
+}
+
+.banda-foto{position:relative;width:100%;overflow:hidden;
+            aspect-ratio:16/9;background:var(--lienzo)}
+.banda-foto.blanca{background:var(--raised)}
+.banda-foto .ventana{height:100%;width:100%;will-change:clip-path}
+.banda-foto img{height:100%;width:100%;object-fit:cover;display:block;
+                will-change:transform}
+@media (prefers-reduced-motion:reduce){
+  .banda-foto .ventana{clip-path:none !important}
+  .banda-foto img{transform:none !important}
+}
+
+
+/* ── 13 · LAS PIEZAS DE CONTENIDO ───────────────────────────────────────────
+   Tarjeta, cita hundida y las tres columnas. */
+
+/* Radio 28, superficie elevada, y NADA MÁS. Sin borde y sin sombra. */
+/* UNA TARJETA ES LA SUPERFICIE VECINA, y por eso hay dos y no una. Es el
+   mismo problema que el de los dos botones secundarios, resuelto otra vez:
+   la vecina del lienzo es el blanco y la vecina del blanco es el lienzo.
+
+     .tarjeta          sobre una sección de LIENZO    es blanca
+     .tarjeta.lienzo   sobre una sección BLANCA       es de lienzo
+
+   Con una sola no hay tarjeta universal: la blanca sobre blanco mide 1,00. No
+   es sutil, es que no está. */
+.tarjeta{background:var(--raised);border-radius:var(--card);padding:2rem}
+.tarjeta.lienzo{background:var(--lienzo)}
+
+/* Sin comillas y sin filete: el cambio de superficie ya dice que es de otro. */
+/* LA SUPERFICIE VECINA. Era un velo, y sobre el lienzo daba #dcecf0: el
+   segundo celeste que vio Jorge. */
+.cita{background:var(--raised);border-radius:22px;padding:1.625rem 1.75rem;
+      max-width:var(--measure);margin:0 auto}
+.cita.lienzo{background:var(--lienzo)}
+
+/* LAS TRES COLUMNAS — sin paneles. La sección ya está sobre el tono hundido,
+   que es lo que la separa de la página; tres superficies más dentro serían
+   tono sobre tono. El blanco es el borde más callado que hay, y aquí basta. */
+.tres{display:grid;gap:3.5rem;text-align:center;max-width:1000px;margin:0 auto}
+.tres > div > p{max-width:30ch;margin-left:auto;margin-right:auto;
+                text-wrap:balance}
+
+/* ── LA ALINEACIÓN VERTICAL, Y ES ESTRICTA ────────────────────────────────
+   Tres columnas en fila tienen que empezar y terminar sus partes A LA MISMA
+   ALTURA. Si no, se leen como tres bloques que casualmente están juntos en vez
+   de como una serie, y eso es exactamente lo que un conjunto de iguales no
+   puede permitirse.
+
+   Y NO SE ARREGLA CON MÁRGENES, porque el texto no mide lo mismo en las tres:
+   una lleva cuatro renglones y otra tres, así que lo que vaya debajo sale
+   desplazado. Es el mismo fallo que resuelve `.card.apagada` con su banda
+   reservada de dos renglones.
+
+   Se arregla con una REJILLA de filas: icono, título, cuerpo, imagen. El
+   cuerpo se lleva el `1fr`, o sea todo el sobrante, así que la imagen queda
+   pegada abajo y las tres caen en la misma línea. `grid` y no `flex` porque un
+   flex reparte el sobrante entre todos los hijos y aquí tiene que llevárselo
+   uno solo. */
+/* ── Y LA OTRA MITAD ES EL COPY, Y TAMBIÉN ES REGLA ──────────────────────
+   EN UN CONJUNTO DE IGUALES, LOS TEXTOS MIDEN LO MISMO. No parecido: lo
+   mismo, dentro de un margen del 15 % de caracteres entre el más largo y el
+   más corto.
+
+   No es manía de maquetador. Una columna de cinco renglones al lado de una de
+   tres deja un agujero en la de tres, y ese agujero se lee como que falta
+   algo — cuando lo único que pasa es que alguien escribió de más. La rejilla
+   de arriba salva lo que va DEBAJO del texto; lo que no puede salvar es el
+   hueco que el texto deja dentro de su propia columna.
+
+   Y se arregla escribiendo, no maquetando: se recorta el largo o se alarga el
+   corto. Si un texto no cabe en la medida de sus hermanos, lo que está mal es
+   que sean hermanos.
+
+   Lo comprueba `chismoso.mjs`, que mide los hermanos de `.tres`, `.pasos` y
+   `.rejilla-tarjetas` y falla si se pasan del 15 %. */
+.tres > div{display:grid;grid-template-rows:auto auto 1fr auto;
+            justify-items:center;align-content:start}
+.tres > div > *{width:100%}
+.tres .hueco-foto{align-self:end}
+@media (min-width:768px){.tres{grid-template-columns:repeat(3,1fr);column-gap:4rem}}
+
+/* LOS PASOS — distintos de las tres columnas: aquí hay orden, y el orden se
+   dice con el número al margen. En escritorio el número se alinea con la
+   PRIMERA LÍNEA del título (`baseline`), no con la caja. */
+.pasos{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:4rem}
+.paso{display:flex;flex-direction:column;align-items:flex-start;gap:.75rem}
+.paso .num{color:var(--accent);flex-shrink:0}
+@media (min-width:768px){
+  .pasos{gap:5rem}
+  .paso{flex-direction:row;align-items:baseline;gap:2.5rem}
+  .paso .num{width:4rem;padding-top:.25rem}
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   13B · LAS CUATRO TARJETAS — REGLAS DURAS
+
+   ⚠️  EN EL SISTEMA DE ORIGEN ESTAS REGLAS VIVEN EN `tarjetas.html`, no en la
+   hoja. Aquí bajan a la hoja a propósito, y es la única reorganización que se
+   ha hecho: una semilla portátil no puede tener sus reglas de tarjeta dentro
+   de una página de muestra, porque el que la copie se llevará la hoja y
+   dejará la muestra. El contenido de las reglas no cambia.
+
+   NO SON CUATRO ESTILOS: SON CUATRO TRABAJOS, y la forma sale del trabajo.
+
+     CON VENTANA   enseña un sitio.       Lleva imagen. Es un enlace.
+     CON ICONO     ofrece una elección.   Lleva símbolo. Es un control.
+     CALLADA       lleva a otro sitio.    Sólo nombre y dato. Es una lista.
+     APAGADA       no lleva a ningún      Número, título, icono y texto.
+                   sitio: se lee.         Es un paso de una secuencia.
+
+   Elegir por lo que hace y no por cómo queda es lo que evita acabar con nueve
+   tarjetas parecidas.
+
+   ── LAS DIEZ REGLAS, Y NO SE NEGOCIAN PIEZA A PIEZA ───────────────────────
+
+    1  EN REPOSO NO SE PINTA.        `background:transparent`. Nunca una
+                                     superficie propia. Se ve el contenido
+                                     flotando, no una caja.
+    2  UNA SOLA SEÑAL AL PASAR.      La superficie sube UN peldaño a `--f06`.
+                                     Una señal. Nunca dos a la vez.
+    3  UNA SOLA REGIÓN DE HOVER.     La tarjeta entera es el objetivo. Nada de
+                                     dentro tiene `:hover` propio: el icono y
+                                     el título reaccionan al de la TARJETA.
+    4  EL TÍTULO SE DESPLAZA 4 px.   En 300 ms, con la curva del sistema.
+                                     Excepción única: si la cabecera va
+                                     centrada, no se desplaza — desplazar algo
+                                     centrado deshace lo que se centró.
+    5  TRES TINTAS Y NINGUNA MÁS.    Título `--t100`, cuerpo `--t65`, icono en
+                                     reposo `--t30`.
+    6  ICONO SIN CÁPSULA.            Trazo suelto de 24 px con `currentColor`,
+                                     tenue en reposo y firme al pasar. Ningún
+                                     disco debajo: un disco es una superficie
+                                     dibujada en reposo, y eso lo prohíbe la 1.
+    7  HUECO DE 4 px, RELLENO 28/24. El hueco no cambia con la pantalla. Casi
+                                     se tocan, separadas por aire y jamás por
+                                     una línea.
+    8  RADIO `--card-pro`, 16 px.    Y sólo esta pieza lo usa. Las hojas y los
+                                     paneles siguen con los 28 de `--card`.
+    9  NI `border` NI `box-shadow`   Salvo el filo de la apagada, que va en
+       EN REPOSO.                    `:hover`, que es donde se permite.
+   10  EL ACENTO, SÓLO EN UN SITIO.  El botón `.ir`, y sólo bajo el puntero. La
+                                     tarjeta NUNCA se pinta de acento: sobre el
+                                     acento la escalera de tinta se queda en un
+                                     peldaño, y una tarjeta con tres niveles de
+                                     texto deja de cumplir AA por construcción.
+
+   ── PROHIBIDO Y NO HACE FALTA VOLVER A DISCUTIRLO ─────────────────────────
+   Vuelta de acento en la tarjeta entera. Aro de luz que sigue al cursor.
+   Resplandor de `drop-shadow`. Velo sobre la cara. `backdrop-filter`.
+   `translateY` al pasar. Cápsulas bajo los iconos. Fondo propio en reposo.
+
+   Todo eso existió en el original, se probó, y se retiró. Y la lección no es
+   sobre CSS: las cuatro capas se construyeron en un día, y cada una existía
+   para arreglar el problema que había creado la anterior. La receta que las
+   sustituye tiene UNA capa: la superficie sube un peldaño.
+
+   ── Y LA REGLA QUE SE QUEDA ──────────────────────────────────────────────
+       Un color no se juzga solo. Se juzga contra su vecino.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* EL RADIO DE LA RECETA, 16 px, declarado una vez. Y tiene lógica propia: los
+   28 se eligieron para una tarjeta que se ve en reposo, donde la esquina es la
+   silueta. Ésta no se ve en reposo. */
+:root{--card-pro:16px}
+
+.card{
+  border-radius:var(--card-pro);
+  background:transparent;
+  color:var(--ink);
+  text-decoration:none;
+  text-align:start;
+  overflow:hidden;
+  position:relative;
+  padding:1.75rem 1.5rem;
+  transition:background-color .3s var(--ease)}
+
+/* EL ÚNICO PASO, Y ES LA ÚNICA SEÑAL QUE HAY. De nada a un peldaño. */
+/* EL PASO ES A LA SUPERFICIE VECINA. Era un velo al 6 %. */
+.card:hover,.card:focus-visible{background:var(--raised)}
+.card.lienzo:hover,.card.lienzo:focus-visible{background:var(--lienzo)}
+
+/* EL TÍTULO SE DESPLAZA, Y LO MANDA LA TARJETA. Nunca `.card__title:hover`:
+   una sola región de hover por tarjeta. Si el título tuviera el suyo, habría
+   dos objetivos donde el marcado promete uno, y con teclado se tabularía dos
+   veces. */
+.card .t-title,.card__title{transition:transform .3s var(--ease)}
+.card:hover .t-title,.card:hover .card__title,
+.card:focus-visible .t-title,.card:focus-visible .card__title{
+  transform:translateX(4px)}
+
+/* EL ICONO SE AFIRMA. Tenue en reposo, tinta fuerte al pasar. Con
+   `currentColor` en el SVG esto sale gratis y sin tocar el dibujo. */
+.card .card__icono{color:var(--t30);transition:color .3s var(--ease)}
+.card:hover .card__icono{color:var(--t100)}
+
+/* Y QUIEN PIDIÓ QUIETUD NO VE EL DESPLAZAMIENTO. El cambio de color se queda:
+   es información, no movimiento. */
+@media (prefers-reduced-motion:reduce){
+  .card .t-title,.card__title{transition:none}
+  .card:hover .t-title,.card:hover .card__title{transform:none}
+}
+
+/* LA REJILLA DE HUECO DIMINUTO. Cuatro píxeles: casi se tocan, separadas sólo
+   por aire. Con tarjetas transparentes un hueco grande deja de leerse como
+   rejilla y parecen bloques de texto sueltos. */
+.rejilla-tarjetas{display:grid;gap:4px;grid-template-columns:1fr}
+@media (min-width:640px){
+  .rejilla-tarjetas{grid-template-columns:repeat(var(--cols,3),minmax(0,1fr))}
+}
+
+/* EL BOTÓN DE LA TARJETA. En el original nace de TINTA y salta al acento
+   cuando el puntero entra en la TARJETA -no en el botón-. Aquí la tinta no
+   puede rellenar un botón, así que nace CALLADO, con el mismo velo del
+   `quiet`, y se enciende igual. Es además más fiel a la regla de que el color
+   sólo aparece bajo el cursor. */
+.card .ir{
+  display:inline-flex;align-items:center;justify-content:center;
+  height:2.25rem;min-width:4.5rem;padding:0 1.25rem;border:0;
+  border-radius:999px;background:var(--raised);color:var(--ink);
+  font-family:"SFProText",system-ui,sans-serif;font-weight:500;
+  text-transform:uppercase;letter-spacing:.14em;font-size:.6875rem;
+  white-space:nowrap;transition:background-color .3s var(--ease),
+  color .3s var(--ease)}
+.card:hover .ir,.card:focus-visible .ir{
+  background:var(--accent);color:var(--raised)}
+
+/* LA VENTANA DE LA TARJETA — Y AQUÍ ES DONDE VIVE EL HUECO DE FOTO.
+   LA FOTOGRAFÍA NO SE TIÑE NUNCA. Su caja tiene fondo propio y ese fondo es lo
+   ÚNICO que se ve en reposo en toda la tarjeta.
+
+   Que es más importante de lo que parece: la foto es lo que ancla a esta
+   tarjeta cuando el resto se vuelve invisible. Sin ella, una tarjeta de puro
+   texto flotando. Con ella, una imagen y su pie.
+
+   Y CUANDO TODAVÍA NO HAY FOTO, el hueco se queda y se rotula. Un hueco con su
+   proporción, su fondo y su símbolo dice «aquí va una imagen de 16:10»; un
+   hueco que se quita para ponerlo luego cambia la altura de la tarjeta el día
+   que llegue la foto, y entonces hay que rehacer la fila. */
+.card .ventana{aspect-ratio:16/10;background:var(--lienzo);
+  display:flex;align-items:center;justify-content:center;color:var(--t30)}
+.card .ventana img{width:100%;height:100%;object-fit:cover;display:block}
+.card .cuerpo{padding:1.75rem 1.5rem;display:flex;flex-direction:column;
+  align-items:flex-start;gap:1rem}
+
+/* EL HUECO DE FOTO SUELTO, fuera de una tarjeta: la misma idea con la
+   proporción de las bandas. Se rotula con un `.t-label` dentro. */
+.hueco-foto{aspect-ratio:16/9;background:var(--raised);border-radius:var(--card);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:.5rem;color:var(--t30);text-align:center;padding:1rem}
+.hueco-foto.lienzo{background:var(--lienzo)}
+
+/* LA REJILLA DE LA PALETA. Seis fichas, y el mismo hueco de 4 px que la de
+   tarjetas: son un conjunto de iguales y se leen como una rejilla. */
+.rejilla-paleta{display:grid;gap:4px;grid-template-columns:1fr}
+@media (min-width:560px){.rejilla-paleta{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:900px){.rejilla-paleta{grid-template-columns:repeat(3,1fr)}}
+.rejilla-paleta code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:.8125em}
+
+/* EL ICONO DE UNA COLUMNA. Trazo suelto de 28 px, sin cápsula y en `--t30`.
+   Mismo criterio que el de la tarjeta: un disco debajo sería una superficie
+   dibujada en reposo. Aquí no reacciona porque la columna no es un control:
+   si no se puede pulsar, no se enciende. */
+.icono-col{display:block;color:var(--t30)}
+.tres .icono-col svg{margin:0 auto}
+
+/* EL ICONO, SIN CÁPSULA. Era un disco que se volvía tinta bajo el cursor. La
+   cápsula se fue: era una superficie dibujada en reposo, que es exactamente lo
+   que esta tarjeta deja de hacer. */
+.card .simbolo{display:flex;align-items:center;justify-content:center;
+  height:1.5rem;width:1.5rem;background:none;color:var(--t30);
+  transition:color .3s var(--ease)}
+.card:hover .simbolo,.card:focus-visible .simbolo{color:var(--t100)}
+
+/* EL DATO QUE NO CAMBIA. Una pastilla que se queda quieta mientras todo lo
+   demás se enciende. Es para lo que NO es marketing: una clasificación, una
+   advertencia, un estado. El cine hace lo mismo, y el certificado de edad se
+   imprime igual en todos los carteles sin adaptarse al diseño de ninguno. */
+.card .dato{display:inline-flex;align-items:center;border-radius:999px;
+  padding:.3125rem .75rem;background:var(--raised);color:var(--t65)}
+.card .dato.lienzo{background:var(--lienzo)}
+
+/* LA CALLADA — sin botón. Un peldaño de superficie y el título que se
+   desplaza. Nada más. Es la de las listas: índices, «también te puede
+   interesar». Nueve de éstas en fila no pueden llevar cada una su `.ir`: sería
+   una pared de cápsulas y ninguna sería la acción principal. */
+.card.callada{display:flex;flex-direction:column;gap:.25rem;
+  padding:1.75rem 1.5rem;min-height:44px;
+  transition:background-color .3s var(--ease)}
+
+/* LA APAGADA — no lleva a ningún sitio: se lee.
+   En el original es la única que va sobre TINTA, y por eso la única cuyo
+   peldaño ACLARA. Aquí no hay superficies de tinta, así que va sobre el lienzo
+   como las otras tres y sube el mismo peldaño. Lo que la sigue distinguiendo
+   no es el fondo: es que NO TIENE `.ir`. La diferencia entre «lleva a un
+   sitio» y «esto se lee» la hace el botón, no el color.
+
+   Y no es un control: es un `div`. No se tabula y no tiene `:focus-visible`.
+   Darle uno sería prometer un clic que no existe.
+
+   SU ANATOMÍA — la cabecera al centro, la lectura a la izquierda:
+       01          número
+     Título        título
+       ⊙           icono
+     Cuerpo, a la izquierda   ← y sólo esto
+
+   Dos ejes con una regla no son dos ejes peleando: CENTRADO ES LA CABECERA, A
+   LA IZQUIERDA ES LO QUE SE LEE. Y sólo se permite aquí, porque esta tarjeta
+   va en fila contando una SECUENCIA: con la cabecera centrada los números caen
+   en la misma vertical y la fila se lee como una serie. */
+.card.apagada{display:grid;grid-template-rows:auto auto auto 1fr;
+  text-align:center;padding:2rem 1.5rem}
+.card.apagada:hover{box-shadow:inset 0 0 0 1.5px var(--accent)}
+.apagada-num{justify-self:center;color:var(--accent)}
+/* LA BANDA DE DOS RENGLONES NO SE PUEDE QUITAR: es lo único que hace que el
+   icono y el cuerpo empiecen a la misma altura en toda la fila. Y el sobrante
+   se reparte con `align-content:center`, porque pegado arriba todo el hueco
+   cae debajo de golpe y eso se lee como un agujero. `grid` y no `flex`: un
+   flex con un solo hijo anónimo lo dimensiona a contenido, y el título de dos
+   renglones dejaría de envolver donde debe.
+   `text-wrap:balance` no es un remate, es la condición: un título centrado de
+   dos renglones con anchos muy distintos se lee como un accidente. */
+.apagada-titulo{font-size:1.5rem;margin-top:.75rem;
+  display:grid;align-content:center;min-height:2.4em;text-wrap:balance}
+.apagada-icono{display:flex;align-items:center;justify-content:center;
+  margin:1rem auto 0;height:1.5rem;width:1.5rem;color:var(--t30);
+  transition:color .3s var(--ease)}
+.card.apagada:hover .apagada-icono{color:var(--t100)}
+/* LA EXCEPCIÓN DE LA REGLA 4: una cabecera centrada NO se desplaza. */
+.card.apagada .apagada-titulo{transform:none}
+.apagada-cuerpo{text-align:start;margin-top:1.25rem}
+.apagada-cuerpo p + p{margin-top:.625rem}
+
+
+/* ── 14 · LA FAQ ────────────────────────────────────────────────────────────
+   Acordeón numerado.
+
+   EN REPOSO NO HAY NADA ENTRE LAS PREGUNTAS SALVO ESPACIO. La raya sólo
+   existe bajo el cursor y bajo la fila abierta — que es exactamente la
+   excepción del hover, y contesta en acento como todo lo que se toca.
+
+   Y LAS PREGUNTAS VAN CENTRADAS PERO LAS RESPUESTAS A LA IZQUIERDA. Es la
+   única excepción deliberada al centrado de todo el sitio: un párrafo
+   centrado obliga al ojo a buscar el principio de cada línea, que es lo
+   contrario de lo que se está vendiendo. */
+.faq{max-width:760px;margin:0 auto;width:100%}
+.faq-fila{position:relative;width:100%;background:none;border:0;padding:0;
+          text-align:start;cursor:pointer;display:block}
+.faq-cab{display:flex;align-items:center;gap:1.25rem;padding:1.5rem 0}
+@media (min-width:768px){.faq-cab{gap:1.75rem}}
+
+/* El número, en un círculo que se llena cuando la fila se abre. */
+.faq-num{position:relative;display:flex;height:2.5rem;width:2.5rem;flex-shrink:0;
+         align-items:center;justify-content:center}
+.faq-num::before{content:"";position:absolute;inset:0;border-radius:999px;
+  background:var(--accent);transform:scale(.5);opacity:0;
+  transition:transform .3s var(--ease),opacity .3s var(--ease)}
+/* AL PASAR NO SE RELLENA A MEDIAS: eso era un velo. Crece y se queda
+   transparente; el que se llena es el círculo de la fila ABIERTA. */
+.faq-fila:hover .faq-num::before{transform:scale(.86);opacity:0}
+.faq-fila[aria-expanded="true"] .faq-num::before{transform:scale(1);opacity:1}
+.faq-num span{position:relative;z-index:1;color:var(--t30);
+              transition:color .2s var(--ease)}
+/* CLARO SOBRE EL ACENTO, COMO EL BOTÓN. Y ésa es la regla, no una excepción:
+
+       SOBRE EL ACENTO, EL RÓTULO ES CLARO. SIEMPRE.
+
+   Una sola decisión para todo el sistema, porque lo contrario es peor que
+   cualquiera de las dos opciones: un número en tinta sobre naranja al lado de
+   un botón en blanco sobre naranja son dos sistemas discutiendo en la misma
+   pantalla. La desviación de contraste es la misma que la del botón (3,73) y
+   está escrita entera en `.btn.primary`. */
+.faq-fila[aria-expanded="true"] .faq-num span{color:var(--raised)}
+
+/* La pregunta se aparta cuatro píxeles del número cuando la tocas. Es un
+   `transform` en píxeles, y un transform no sabe nada de `dir`: en árabe los
+   mismos cuatro píxeles la empujarían CONTRA el número. El signo se lee de
+   la dirección de la página en vez de escribirse dos veces. */
+.faq-q{flex:1;color:var(--t65);
+       transition:transform .3s var(--ease),color .3s var(--ease)}
+.faq-fila:hover .faq-q,.faq-fila[aria-expanded="true"] .faq-q{
+  transform:translateX(4px);color:var(--ink)}
+[dir="rtl"] .faq-fila:hover .faq-q,
+[dir="rtl"] .faq-fila[aria-expanded="true"] .faq-q{transform:translateX(-4px)}
+
+/* El signo `+` que gira 45° y se convierte en aspa. */
+.faq-mas{margin-inline-start:auto;display:flex;height:2rem;width:2rem;
+  flex-shrink:0;align-items:center;justify-content:center;
+  transition:transform .3s var(--ease)}
+.faq-fila[aria-expanded="true"] .faq-mas{transform:rotate(45deg)}
+.faq-mas svg{opacity:.35;transition:opacity .2s var(--ease)}
+.faq-fila:hover .faq-mas svg,
+.faq-fila[aria-expanded="true"] .faq-mas svg{opacity:1;color:var(--accent)}
+
+/* LA ÚNICA RAYA DE LA SECCIÓN, y sólo existe bajo el cursor o bajo la fila
+   abierta. Crece con `scaleX` desde su origen — y el origen se voltea a mano
+   en árabe, o subrayaría la pregunta empezando por el final. */
+.faq-raya{position:absolute;bottom:0;inset-inline-start:0;height:1px;width:100%;
+  background:var(--accent);transform:scaleX(0);transform-origin:left;
+  transition:transform .3s var(--ease)}
+[dir="rtl"] .faq-raya{transform-origin:right}
+.faq-fila:hover .faq-raya{transform:scaleX(.28)}
+.faq-fila[aria-expanded="true"] .faq-raya{transform:scaleX(1)}
+
+.faq-r{overflow:hidden;height:0;opacity:0;
+       transition:height .4s var(--ease),opacity .3s var(--ease)}
+.faq-fila[aria-expanded="true"] + .faq-r{opacity:1}
+.faq-r > div{padding:0 0 2rem 3.75rem;max-width:var(--measure)}
+@media (min-width:768px){.faq-r > div{padding-inline-start:4.25rem}}
+[dir="rtl"] .faq-r > div{padding-left:0}
+
+
+/* ── 15 · LA HOJA DESTACADA ─────────────────────────────────────────────────
+   En el original era una superficie de TINTA dentro de una página perla: lo
+   único que cambiaba de lado, y por eso se miraba.
+
+   Aquí no puede serlo, y la regla dura de arriba dice por qué. Lo que la hace
+   mirarse ahora es que SUBE: una hoja blanca sobre el lienzo, que es el mismo
+   mecanismo de toda tarjeta del sistema, con más relleno y más ancho.
+
+   Y lo que va dentro cambia de escalera con ella: texto en `ink` y `ink-65`,
+   no en `claro`. Los espejos claros son del pie. */
+.precio{max-width:540px;margin:0 auto;border-radius:var(--card);
+        background:var(--raised);padding:3.5rem 2rem;text-align:center}
+/* Y LA VECINA, por la misma regla que la tarjeta: sobre una sección BLANCA la
+   hoja tiene que ser de lienzo, o mide 1,00 contra su fondo y no está. */
+.precio.lienzo{background:var(--lienzo)}
+@media (min-width:768px){.precio{padding:4rem 3.5rem}}
+.precio ul{list-style:none;margin:3rem auto 0;padding:0;max-width:30ch;
+           text-align:start;display:flex;flex-direction:column;gap:1rem}
+
+
+/* ── 16 · EL PIE ────────────────────────────────────────────────────────────
+   La marca arriba, y DEBAJO LA MISMA FRASE EN PALABRAS: una imagen no se lee
+   — ni por quien conoce la empresa por primera vez, ni por una revisión que
+   tiene que confirmar el nombre. Va justo debajo y no tres párrafos más
+   abajo, porque lo que hace encontrable una frase aquí es dónde se sienta,
+   no cuánto brilla.
+
+   UN SOLO TONO PARA TODO LO QUE SE LEE. Este pie llegó a tener cuatro, que
+   no es contención: son cuatro decisiones que nadie tomó a propósito. Los
+   enlaces conservan el suyo porque se PULSAN en vez de leerse, y ésa sí es
+   una diferencia funcional.
+
+   Y el relleno invisible con el margen negativo que lo cancela: la fila se
+   ve igual y un pulgar recibe los 44 px que necesita. Un enlace que un
+   teléfono no puede acertar es un enlace que es decoración. */
+footer{background:var(--ink)}
+footer .wrap{display:flex;flex-direction:column;align-items:center;
+             text-align:center;padding-top:5rem;padding-bottom:5rem}
+@media (min-width:768px){footer .wrap{padding-top:6rem;padding-bottom:6rem}}
+footer .marca{font-family:"SFProDisplay",-apple-system,system-ui,sans-serif;
+  font-weight:600;font-size:1.25rem;letter-spacing:-.02em;color:var(--raised)}
+footer nav{margin-top:3rem;display:flex;flex-wrap:wrap;justify-content:center;
+           gap:.25rem 1rem}
+@media (min-width:768px){footer nav{gap:.25rem 1.5rem}}
+footer nav a{font-size:.875rem;text-decoration:none;color:var(--c40);
+  margin:-11px 0;padding:11px .5rem;white-space:nowrap;
+  transition:color .3s var(--ease)}
+/* SOBRE TINTA EL HOVER SUBE AL BLANCO, y no al acento como en el original:
+   el naranja sobre tinta mide 4,41 y el hondo 3,35. Los dos suspenden. Sobre
+   una superficie oscura lo que destaca es la luz, no el color. */
+footer nav a:hover{color:var(--raised)}
+
+
+/* ── 17 · LA PANTALLA SUELTA ────────────────────────────────────────────────
+   La entrada y los estados rotos no llevan barra ni pie: son pantallas, no
+   páginas. Una barra ahí ofrece salidas a quien está intentando entrar. */
+.pantalla{min-height:100vh;display:flex;align-items:center;justify-content:center;
+          padding:6rem 1.5rem;background:var(--lienzo)}
+.pantalla .caja{width:100%;max-width:380px;text-align:center}
+.volver{position:absolute;top:0;inset-inline-start:0;padding:1.75rem 1.5rem}
+@media (min-width:768px){.volver{padding:1.75rem 2.5rem}}
+
+
+/* ── 18 · EL SOPLÓN — BÓRRALO ───────────────────────────────────────────────
+   No va en una página real. Ver seed.js. */
+.soplon{position:fixed;right:16px;bottom:16px;z-index:99;display:flex;gap:.75rem;
+  align-items:center;background:var(--gris);color:var(--raised);
+  border-radius:999px;padding:10px 16px;
+  font:400 12px/1 "SFProText",system-ui,sans-serif}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   19 · LOS MECANISMOS DE RESPUESTA — CINCO PIEZAS NUEVAS
+
+   ⚠️  ESTA SECCIÓN NO ESTÁ EN EL SISTEMA DE ORIGEN. Es lo primero que este
+   proyecto le añade de verdad, y por eso va entera con su razón al lado.
+
+   ── POR QUÉ HACÍA FALTA AÑADIR ALGO ──────────────────────────────────────
+   Se hizo el inventario antes de escribir, y salió así: Seeds tiene siete
+   piezas de botón, un campo, una tarjeta, una cita, una flecha y un acordeón.
+   De entrada continua no tiene NADA. `.campo` es texto, y ningún mecanismo de
+   respuesta del test se contesta escribiendo salvo uno.
+
+   O sea que la pregunta «¿esto ya existe aquí con otro nombre?» tiene por una
+   vez la respuesta que no suele tener: no existe. Así que el sistema crece, y
+   crece en CINCO piezas y no en dieciséis:
+
+       .carril    un eje que se arrastra. Horizontal o vertical
+       .nivel     el trozo del carril que está lleno
+       .plano     dos ejes que se arrastran a la vez. Rectangular o redondo
+       .marca     el punto que la persona dejó
+       .pieza     un renglón que se arrastra para reordenar
+
+   Y una superficie de lectura, `.medida`, que es donde se enseña lo que el
+   mecanismo registró.
+
+   Lo que NO se añadió, porque ya estaba: el botón entero, el campo de texto,
+   la tarjeta como contenedor de estación, la cita como enunciado del ítem, el
+   radio de una superficie dentro de otra, la aparición al recorrer y las tres
+   clases tipográficas. Los dieciséis prototipos traían dieciséis chrome
+   propios; nada de eso sobrevive.
+
+   ── LA DECISIÓN DE COLOR, Y ES LA IMPORTANTE ─────────────────────────────
+   EL RELLENO DE UN CARRIL ES NEUTRO. No verde a un extremo y rojo al otro, y
+   no es una cuestión de gusto:
+
+       un eje que va de verde a rojo le entrega al evaluado el mapa de la
+       respuesta socialmente correcta
+
+   Y eso es exactamente el fallo que este banco de mecanismos existe para
+   evitar: si el instrumento señala dónde está la respuesta buena, deja de
+   medir a la persona y empieza a medir su lectura de la interfaz. La señal
+   `#59ce8f` está declarada en el sistema como «lo que sale bien», así que
+   usarla en un extremo de una escala de honestidad es decirlo en voz alta.
+
+   ── Y POR QUÉ EL RELLENO NO ES UNA SEGUNDA SUPERFICIE ────────────────────
+   Era la respuesta obvia -«un borde es un cambio de tono»- y no sirve, y esto
+   está medido:
+
+       el lienzo contra el blanco     1,05 : 1
+
+   Los dos claros están a 4,5 puntos de luminancia, que es justo lo que hace
+   que el `quiet` funcione como hover: un salto que se NOTA sin gritar. Pero un
+   relleno no señala un cambio de estado, tiene que leerse como una CANTIDAD, y
+   1,05 no es una cantidad poco contrastada: es nada.
+
+   ── ASÍ QUE ES EL GRIS, Y ÉSE ES SU TERCER TRABAJO ───────────────────────
+       el gris contra el lienzo   5,15      el gris con rótulo blanco   5,39
+
+   El mismo tono que ya identifica un control en este sistema —WCAG 1.4.11 pide
+   3,0 al contorno de un control y el anillo del filete pasa con ese 5,15— y el
+   único neutro PLENO de la paleta. Un velo de tinta no valdría: la regla dura
+   de la sección 4 dice que un velo es para letras y para líneas, nunca para un
+   relleno.
+
+   Queda anotado arriba, en la ficha `--gris`, que sus trabajos son tres.
+
+   ── LA MARCA SÍ LLEVA EL ACENTO, Y ES LA EXCEPCIÓN ───────────────────────
+   Un punto de 20 px sobre un plano de 16:5 ocupa el 0,4 % de su superficie, o
+   sea muy por debajo del 5 % en que la hoja acota el acento. Y se lo gana: la
+   marca es LO ÚNICO de la estación que puso la persona. Todo lo demás se lo
+   dio la página.
+
+   No hay rótulo encima, así que la desviación del primario no aplica aquí.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── EL CARRIL ─────────────────────────────────────────────────────────────
+   ALTURA 2,75rem, Y NO ES UN NÚMERO SUELTO: es la del `.btn.md` y la del
+   `.campo`, así que un carril y un botón forman una fila y no dos objetos de
+   alturas distintas. Y son los 44 px que el pie de este mismo archivo ya
+   declara como lo que necesita un pulgar. Un carril de 24 px se falla con el
+   dedo, y fallar el arrastre en un test de 40 ítems no es una molestia: es
+   ruido metido en el dato.
+
+   SIN MARCAS, SIN TICKS Y SIN CIFRA A LA VISTA. Es la mitad del mecanismo,
+   no una decisión estética: en cuanto hay un centro visible, el que no quiere
+   comprometerse se refugia ahí, y el punto medio deja de significar «ni una
+   cosa ni la otra» para significar «no contesté».
+
+   Nace de la superficie VECINA, por la misma regla que la tarjeta y el campo:
+   sobre una tarjeta blanca el carril es de lienzo, y al revés lleva `.blanca`. */
+.carril{position:relative;height:2.75rem;width:100%;border-radius:999px;
+  overflow:hidden;background:var(--lienzo);cursor:ew-resize;
+  touch-action:none;user-select:none}
+.carril.blanca{background:var(--raised)}
+
+/* VERTICAL — para repartir un presupuesto. El alto lo pone el contenedor,
+   porque un carril vertical mide lo que le dejen y no al revés.
+
+   ⚠️  Y CAMBIA DE RADIO, QUE NO ES UN DETALLE. Con los 999 px del horizontal
+   una columna de 240 × 144 no queda redondeada: queda REDONDA, y cuatro
+   columnas medio llenas se leen como cuatro lunas o cuatro quesitos, no como
+   un reparto que se compara de un vistazo. Aquí el radio correcto es el de una
+   superficie dentro de otra, `--card-in`, que es el que ya usan el plano y la
+   medida.
+
+   Esto no lo cazó ninguna comprobación y no podía: los 999 px eran correctos
+   para el carril horizontal, de donde se heredaron. Se vio mirando la página. */
+.carril.vertical{height:100%;width:100%;cursor:ns-resize;
+  border-radius:var(--card-in)}
+
+/* ── EL NIVEL ──────────────────────────────────────────────────────────────
+   El trozo lleno. UNA SOLA PIEZA PARA DOS TRABAJOS, y es a propósito:
+
+       desde el borde        `left:0` y un ancho          → una posición
+       una franja           `left` y un ancho             → un centro y una
+                                                             anchura
+
+   El segundo es el mecanismo del mapa de calor, donde la persona pinta una
+   ZONA en vez de marcar un punto y el ancho de esa zona es la variabilidad que
+   ella misma declara. Dos nombres para esto serían dos piezas que un día se
+   pintan distinto.
+
+   SIN TRANSICIÓN, Y ES LA ÚNICA PIEZA DEL SISTEMA QUE NO LLEVA LA CURVA.
+   La razón es que aquí no hay un cambio de estado que suavizar: el nivel va
+   pegado al dedo. Una curva de 0,3 s sobre algo que se arrastra se siente
+   exactamente como una pantalla que no responde — el dedo llega antes que el
+   relleno y el ojo lo lee como lag, no como suavidad. */
+.carril > .nivel{position:absolute;inset:0 auto 0 0;width:0;
+  background:var(--gris);transition:none}
+.carril.vertical > .nivel{inset:auto 0 0 0;width:auto;height:0}
+
+/* ── EL PLANO ──────────────────────────────────────────────────────────────
+   Dos ejes en un gesto.
+
+   NO LLEVA REJILLA, y el original del prototipo sí la llevaba: doce líneas
+   verticales al 28 % de opacidad. Se van las doce, porque una rejilla en
+   reposo son doce líneas en reposo y eso lo prohíbe la primera regla de esta
+   hoja. Lo que orienta son los rótulos de los extremos, compuestos en
+   `.t-label` FUERA del plano, que es donde no tapan la respuesta.
+
+   16:5 en el rectangular: más alto y el eje vertical invita a una precisión
+   que el dato no tiene; más bajo y deja de leerse como un plano.
+
+   REDONDO para el vector, y sin los tres aros concéntricos del prototipo: el
+   borde del círculo ya es un cambio de tono contra la tarjeta, y los aros de
+   dentro eran tres líneas más. */
+.plano{position:relative;width:100%;aspect-ratio:16/5;
+  border-radius:var(--card-in);overflow:hidden;background:var(--lienzo);
+  cursor:crosshair;touch-action:none;user-select:none}
+.plano.blanca{background:var(--raised)}
+.plano.redondo{aspect-ratio:1;border-radius:999px;max-width:13.75rem;
+  margin-inline:auto;overflow:visible}
+
+/* EL RETÉN — el plano redondo, hecho botón, para el mecanismo que se sostiene.
+   Es un `<button>` de verdad y no un `div`: se contesta con la barra
+   espaciadora igual que con el dedo, y un `div` no da eso.
+   `border:0` y `padding:0` porque un botón los trae del navegador. */
+.plano.reten{cursor:pointer;border:0;padding:0;font:inherit;color:var(--ink);
+  display:grid;place-items:center;overflow:hidden}
+.plano.reten > .nivel{inset:auto 0 0 0;width:auto;height:0}
+.plano.reten > .rotulo{position:relative;z-index:1;text-align:center}
+
+/* EL VECTOR — la línea que va del centro a la marca.
+   ES UNA LÍNEA Y SE PERMITE, y la distinción importa: la regla de esta hoja
+   prohíbe las líneas que EXPLICAN una separación, porque eso lo hace el tono.
+   Ésta no separa nada — es el trazo que la persona acaba de dibujar con el
+   dedo. Es contenido, igual que la letra de un párrafo. */
+.plano > svg{display:block;width:100%;height:100%}
+.vector{stroke:var(--gris);stroke-width:2.5;stroke-linecap:round}
+
+/* ── LA HUELLA ─────────────────────────────────────────────────────────────
+   El punto que dejó la persona. Ver la razón del acento arriba.
+
+   ⚠️  SE LLAMA `huella` Y NO `marca`, Y NO ES UN CAPRICHO DE NOMBRE. `.marca`
+   ya existe en este archivo: es el RÓTULO DE MARCA de la barra y del pie. Dos
+   piezas con el mismo nombre y distinto padre ya nos costó caro una vez —ver
+   la nota de `.ventana`, que significa dos cosas— y aquí habría sido peor: la
+   pieza nueva trae `position:absolute`, que por cascada le habría caído encima
+   a la palabra de la barra y la habría despegado de su rejilla. No lo habría
+   cazado ninguna comprobación, porque las dos reglas son correctas por
+   separado.
+
+   `pointer-events:none` para que no se robe el arrastre del plano que la
+   contiene: se arrastra el campo, no el punto. */
+.huella{position:absolute;height:1.25rem;width:1.25rem;
+  margin:-.625rem 0 0 -.625rem;border-radius:999px;background:var(--accent);
+  pointer-events:none}
+.carril > .huella{top:50%}
+
+/* ── LA PIEZA ──────────────────────────────────────────────────────────────
+   Un renglón que se arrastra para reordenar. Es el único mecanismo cuyo dato
+   no es una posición en un continuo sino un ORDEN completo, y por eso no podía
+   salir de un carril.
+
+   Nace de la vecina, y al levantarla salta a la otra superficie clara — el
+   mismo gesto del `quiet`, leído con la mano en vez de con el cursor. */
+.pieza{display:flex;align-items:center;gap:1rem;padding:.875rem 1.25rem;
+  border-radius:var(--card-in);background:var(--lienzo);cursor:grab;
+  touch-action:none;user-select:none;
+  transition:background-color .3s var(--ease)}
+.pieza.blanca{background:var(--raised)}
+.pieza.moviendo{cursor:grabbing;background:var(--raised)}
+.pieza.blanca.moviendo{background:var(--lienzo)}
+.pieza .orden{flex-shrink:0;width:1.5rem}
+/* Cuatro píxeles, el mismo hueco que la rejilla de tarjetas: casi se tocan y
+   las separa aire, nunca una línea. */
+.reorden{display:grid;gap:4px}
+
+/* ── LA MEDIDA ─────────────────────────────────────────────────────────────
+   Lo que el mecanismo registró, a la vista. Es una superficie DENTRO de otra,
+   así que lleva `--card-in` y no `--card`: dos curvas de 28 quedan
+   concéntricas y el hueco se estrecha en la esquina.
+
+   NO INVENTA UNA CUARTA CLASE TIPOGRÁFICA NI UNA TERCERA LETRA. Los dieciséis
+   prototipos traían IBM Plex Mono para esto. Aquí las claves van en `.t-label`
+   —que ya es versal, 500 y espaciada, o sea exactamente el registro de una
+   clave— y las cifras en las clases del documento con `tabular-nums`, que es
+   una PROPIEDAD numérica y no un estilo nuevo. Una columna de cifras que no se
+   alinea se lee como un error de maquetación; una tercera familia se lee como
+   otro sistema. */
+.medida{border-radius:var(--card-in);background:var(--lienzo);
+  padding:1.25rem 1.375rem;display:flex;flex-direction:column;gap:.875rem}
+.medida.blanca{background:var(--raised)}
+.cifra{font-variant-numeric:tabular-nums}
+.medida dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:.5rem 1rem}
+.medida dd{margin:0;text-align:end;font-variant-numeric:tabular-nums}
+
+/* ── LA ESTACIÓN ───────────────────────────────────────────────────────────
+   Una tarjeta del sistema con el mecanismo a la izquierda y su medida a la
+   derecha. Se apila en una columna en cuanto no caben las dos.
+
+   Y LAS OCHO VAN EN COLUMNA, NO EN REJILLA. La hoja dice que tres es el techo
+   en un conjunto de iguales, y eso sigue en pie: la regla habla de cuántos
+   bloques HERMANOS lee el ojo como una serie en una fila. Ocho estaciones una
+   debajo de otra no son una serie, son una lista, y una lista sí puede tener
+   ocho renglones — igual que `.pasos`, que tampoco tiene techo de tres. */
+.estacion{display:grid;gap:1.5rem;align-content:start}
+@media (min-width:900px){
+  .estacion{grid-template-columns:minmax(0,1fr) 16rem;gap:2rem}
+}
+/* ⚠️  Y EL PANEL NO SE ESTIRA. Por omisión una rejilla estira sus hijos al
+   alto de la fila, así que la medida salía como una caja blanca con el
+   contenido arriba y un palmo de hueco muerto abajo — media tarjeta de
+   superficie vacía en las nueve estaciones. Es la misma regla que ya cumple
+   `.tres` con su fila de `1fr`: nada se estira sobre hueco muerto.
+   NO LO CAZÓ NINGUNA COMPROBACIÓN, y no podía: el CSS era correcto, el
+   marcado era correcto y el contraste era correcto. Sólo se veía mirando la
+   página, que es exactamente lo que dice la tercera regla. */
+.estacion > .medida{align-self:start}
+.estaciones{display:grid;gap:1rem}
+.mecanismo{display:flex;flex-direction:column;gap:1rem;min-width:0}
+
+/* ── LAS FICHAS ────────────────────────────────────────────────────────────
+   Las cuatro columnas del reparto de suma constante, cada una con SU rótulo
+   debajo. La primera versión las puso en fila con los cuatro nombres juntos en
+   un renglón aparte, y no se sabía cuál era cuál: en un mecanismo cuyo dato es
+   la COMPARACIÓN entre cuatro, no saber qué columna es cuál lo deja sin dato.
+
+   Más altas que anchas, por eso el tope de 6rem: una caja de 240 × 144 es
+   apaisada, y una columna apaisada no se lee como una columna. Los 96 px que
+   quedan siguen siendo un objetivo cómodo para un pulgar — más del doble de
+   los 44 que pide.
+
+   CUATRO Y NO TRES, y la regla del techo sigue en pie: no son cuatro bloques
+   hermanos que el ojo lea como una serie, son las cuatro componentes de UN
+   vector. Separarlas en dos filas de dos rompería la comparación, que es el
+   mecanismo entero. */
+.fichas{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;
+  align-items:end}
+.fichas .columna{display:flex;flex-direction:column;gap:.625rem;min-width:0}
+.fichas .columna > .carril{height:9rem;max-width:6rem;margin-inline:auto}
+.fichas .columna > .rotulo{text-align:center}
+.fichas .cuenta{position:absolute;inset:.5rem 0 auto 0;text-align:center}
+
+/* LOS POLOS — las dos frases de los extremos de un eje. Frases concretas y no
+   adjetivos: «lo digo hoy, aunque me cueste el bono» mide algo y «muy de
+   acuerdo» no mide nada. */
+.polos{display:flex;justify-content:space-between;gap:1.5rem}
+.polos > *{max-width:44%;margin:0}
+.polos > *:last-child{text-align:end}
+
+/* LA LEYENDA de los cuatro cuadrantes del vector. Cuatro y no tres, y la regla
+   del techo no se rompe: no son cuatro bloques hermanos en una fila, son las
+   cuatro partes en que una flecha desde el centro divide un círculo. La
+   geometría pone el número, no el maquetador.
+   Se distinguen por su glifo de dirección y por su nombre. NO por color: un
+   cuadrante de color es un motivo con carga, y el motivo es justo lo que se
+   está midiendo. */
+.leyenda{display:grid;gap:.5rem;margin:0;padding:0;list-style:none}
+
+/* LA CORTINA — el modificador del revelado. Tapa el final del enunciado con la
+   superficie VECINA de la cita que cubre, así que lo oculto no es un borrón:
+   es un trozo de página que todavía no pasó. */
+.cita.tapada{position:relative;overflow:hidden}
+.cortina{position:absolute;inset:0 0 0 auto;width:0;background:var(--lienzo)}
+.cita.lienzo .cortina{background:var(--raised)}

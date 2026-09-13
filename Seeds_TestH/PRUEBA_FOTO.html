@@ -1,0 +1,23 @@
+<!doctype html><meta charset="utf-8"><title>Prueba de la foto</title>
+<body style="font-family:system-ui;padding:2rem;background:#e8f9fd">
+<h1>Prueba de la foto — sin CSS y sin JavaScript</h1>
+<p>Esta página no carga <code>seed.css</code> ni <code>seed.js</code>. Sólo pide la imagen.</p>
+<ol>
+  <li><b>Si ves la foto aquí abajo</b> → el archivo y la ruta están bien, y el fallo es mío, en el CSS.</li>
+  <li><b>Si ves un icono roto o el texto alternativo</b> → el navegador no consigue el archivo.</li>
+</ol>
+<hr>
+<p><b>1 · La imagen tal cual, sin una sola regla de estilo:</b></p>
+<img src="img/apreton.webp" alt="NO CARGA: esto es el texto alternativo" style="border:3px solid red">
+<hr>
+<p><b>2 · El mismo archivo abierto directo:</b>
+<a href="img/apreton.webp">pulsa aquí para abrir img/apreton.webp</a></p>
+<hr>
+<p id="d"></p>
+<script>
+var i=new Image(); var t=Date.now();
+i.onload =function(){document.getElementById("d").innerHTML="<b style='color:green'>CARGA BIEN</b> — "+i.naturalWidth+"×"+i.naturalHeight+" px, en "+(Date.now()-t)+" ms";};
+i.onerror=function(){document.getElementById("d").innerHTML="<b style='color:red'>NO CARGA</b> — el navegador no pudo leer img/apreton.webp";};
+i.src="img/apreton.webp";
+</script>
+</body>

@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Las tarjetas · Test Honestidad</title>
+<link rel="stylesheet" href="seed.css">
+<style>
+  /* Sólo del catálogo. Las REGLAS de tarjeta viven en `seed.css`, sección 13B.
+     Aquí sólo está la disposición de la muestra. */
+  .demo{display:grid;gap:2.5rem;padding:3rem 1.5rem;max-width:1120px;margin:0 auto}
+  .zona{padding:2.5rem;border-radius:var(--card)}
+  .zona.lienzo{background:var(--lienzo)}
+
+  .zona.blanca{background:var(--raised)}
+  .porque{max-width:62ch;margin-top:1rem;color:var(--t65)}
+</style>
+
+<!--
+  ═══════════════════════════════════════════════════════════════════════════
+  LAS CUATRO TARJETAS
+
+  ⚠️  LAS REGLAS ESTÁN EN `seed.css`, SECCIÓN 13B, no aquí. En el sistema de
+  origen viven dentro de esta página, y se bajaron a la hoja a propósito: una
+  semilla portátil no puede tener sus reglas de tarjeta dentro de una página de
+  muestra, porque el que la copie se llevará la hoja y dejará la muestra.
+
+  Esta página es sólo la muestra.
+
+  NO SON CUATRO ESTILOS: SON CUATRO TRABAJOS.
+
+      CON VENTANA   enseña un sitio.       Lleva imagen. Es un enlace.
+      CON ICONO     ofrece una elección.   Lleva símbolo. Es un control.
+      CALLADA       lleva a otro sitio.    Sólo nombre y dato. Es una lista.
+      APAGADA       no lleva a ningún      Número, título, icono y texto.
+                    sitio: se lee.         Es un paso de una secuencia.
+
+  ── LO QUE CAMBIA RESPECTO AL ORIGINAL, Y POR QUÉ ─────────────────────────
+  Allí la APAGADA es la única que vive sobre TINTA, y por eso la única cuyo
+  peldaño aclara en vez de oscurecer. Aquí no hay superficies de tinta -es
+  regla dura: la tinta es para las letras y para el pie- así que va sobre el
+  lienzo como las otras tres.
+
+  Y no pasa nada, porque lo que la distinguía nunca fue el fondo: es que NO
+  TIENE `.ir`. La diferencia entre «lleva a un sitio» y «esto se lee» la hace
+  el botón, no el color. Es una regla menos que recordar.
+
+  El botón `.ir` también nace de la superficie vecina en vez de tinta, por lo
+  mismo, y se enciende en acento cuando el puntero entra en la TARJETA.
+  ═══════════════════════════════════════════════════════════════════════════
+-->
+</head>
+
+<body>
+<div class="demo">
+
+  <div class="reveal">
+    <p class="t-label ink-30">Referencia interna</p>
+    <h1 class="t-title is-hero ink" style="margin-top:1rem">
+      Las cuatro tarjetas<span class="punto">.</span>
+    </h1>
+    <p class="t-body porque">
+      Una tarjeta es tarjeta porque <strong>reacciona</strong>, no porque esté
+      dibujada. En reposo no se pinta: es del color de lo que tenga detrás, y se
+      ve el contenido flotando en vez de una caja. Al pasar el cursor sube a la
+      <strong>superficie vecina</strong>: blanca sobre el lienzo, de lienzo
+      sobre blanco. Una señal, nunca dos.
+    </p>
+    <p class="t-body is-small porque">
+      Y el hueco entre ellas es de <strong>4 px</strong>: casi se tocan,
+      separadas sólo por aire y jamás por una línea. Con tarjetas transparentes
+      un hueco grande deja de leerse como rejilla y parecen bloques sueltos.
+    </p>
+  </div>
+
+
+  <!-- 1 · CON VENTANA ────────────────────────────────────────────────────── -->
+  <div class="reveal">
+    <h2 class="t-title ink" style="font-size:1.5rem">1 · Con ventana — enseña un sitio</h2>
+    <p class="t-body is-small porque">
+      Lleva imagen y es un enlace. <strong>La fotografía no se tiñe nunca</strong>:
+      su caja tiene fondo propio y ese fondo es lo único que se ve en reposo en
+      toda la tarjeta. Es lo que la ancla cuando el resto se vuelve invisible.
+    </p>
+    <p class="t-body is-small porque">
+      <strong>Y cuando todavía no hay foto, el hueco se queda y se rotula.</strong>
+      Un hueco con su proporción dice «aquí va una imagen de 16:10»; quitarlo
+      para ponerlo luego cambia la altura de la tarjeta el día que llegue la
+      foto, y entonces hay que rehacer la fila entera.
+    </p>
+  </div>
+
+  <div class="zona lienzo reveal">
+    <div class="rejilla-tarjetas" style="--cols:3">
+
+      <!-- CON SU FOTO -->
+      <a class="card" href="#" style="padding:0">
+        <div class="ventana">
+          <img src="img/apreton.webp" alt="Dos personas se dan la mano al cerrar un acuerdo">
+        </div>
+        <div class="cuerpo">
+          <span class="t-label ink-30">Con su fotografía</span>
+          <p class="t-title card__title" style="font-size:1.25rem">Un sitio que existe</p>
+          <p class="t-body is-small ink-65">
+            Cuando hay imagen, ocupa la ventana entera con <code>object-fit</code>.
+          </p>
+          <span class="ir">Ver</span>
+        </div>
+      </a>
+
+      <!-- EL HUECO ROTULADO -->
+      <a class="card" href="#" style="padding:0">
+        <div class="ventana">
+          <!-- EL HUECO DE FOTO. Conserva proporción, fondo y símbolo, y dice
+               qué falta. No se quita «hasta que llegue la imagen»: quitarlo
+               cambia la altura de la fila el día que llegue. -->
+          <div style="display:flex;flex-direction:column;align-items:center;gap:.5rem">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="8.5" cy="10" r="1.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="m4 17 5-5 4 4 3-3 4 4" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+            <span class="t-label">Aquí va una imagen · 16:10</span>
+          </div>
+        </div>
+        <div class="cuerpo">
+          <span class="t-label ink-30">Sin foto todavía</span>
+          <p class="t-title card__title" style="font-size:1.25rem">El hueco se rotula</p>
+          <p class="t-body is-small ink-65">
+            Proporción, fondo y símbolo. Dice qué falta y cuánto va a medir.
+          </p>
+          <span class="ir">Ver</span>
+        </div>
+      </a>
+
+      <!-- CON UN DATO QUE NO CAMBIA -->
+      <a class="card" href="#" style="padding:0">
+        <div class="ventana">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:.5rem">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="8.5" cy="10" r="1.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="m4 17 5-5 4 4 3-3 4 4" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+            <span class="t-label">Aquí va una imagen · 16:10</span>
+          </div>
+        </div>
+        <div class="cuerpo">
+          <span class="dato t-label">Un dato fijo</span>
+          <p class="t-title card__title" style="font-size:1.25rem">La pastilla que no se enciende</p>
+          <p class="t-body is-small ink-65">
+            Para lo que no es marketing: una clasificación, un estado, una
+            advertencia. Se queda quieta mientras todo lo demás reacciona.
+          </p>
+          <span class="ir">Ver</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+
+  <!-- 2 · CON ICONO ──────────────────────────────────────────────────────── -->
+  <div class="reveal">
+    <h2 class="t-title ink" style="font-size:1.5rem">2 · Con icono — ofrece una elección</h2>
+    <p class="t-body is-small porque">
+      Es un control, no un enlace: hace algo aquí. <strong>El icono va sin
+      cápsula</strong> —trazo suelto de 24 px con <code>currentColor</code>, tenue
+      en reposo y firme al pasar—. Ningún disco debajo: un disco es una
+      superficie dibujada en reposo, y eso lo prohíbe la regla 1.
+    </p>
+  </div>
+
+  <div class="zona blanca reveal">
+    <div class="rejilla-tarjetas" style="--cols:3">
+      <button type="button" class="card" style="display:grid;justify-items:start;gap:.5rem;cursor:pointer;border:0;font:inherit;background:transparent">
+        <span class="simbolo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        <p class="t-title card__title" style="font-size:1.25rem;margin-top:.5rem">Una elección</p>
+        <p class="t-body is-small ink-65">El icono se afirma cuando el puntero entra en la tarjeta, no en el icono.</p>
+      </button>
+      <button type="button" class="card" style="display:grid;justify-items:start;gap:.5rem;cursor:pointer;border:0;font:inherit;background:transparent">
+        <span class="simbolo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+          <path d="m8 12 3 3 5-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p class="t-title card__title" style="font-size:1.25rem;margin-top:.5rem">Otra</p>
+        <p class="t-body is-small ink-65">Una sola región de hover: la tarjeta entera es el objetivo.</p>
+      </button>
+      <button type="button" class="card" style="display:grid;justify-items:start;gap:.5rem;cursor:pointer;border:0;font:inherit;background:transparent">
+        <span class="simbolo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 6h16M4 12h16M4 18h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        <p class="t-title card__title" style="font-size:1.25rem;margin-top:.5rem">Y la tercera</p>
+        <p class="t-body is-small ink-65">Tres es el techo de cualquier conjunto de iguales. Con cuatro se lee como lista.</p>
+      </button>
+    </div>
+  </div>
+
+
+  <!-- 3 · CALLADA ────────────────────────────────────────────────────────── -->
+  <div class="reveal">
+    <h2 class="t-title ink" style="font-size:1.5rem">3 · Callada — lleva a otro sitio</h2>
+    <p class="t-body is-small porque">
+      Sin botón. Un peldaño de superficie y el título que se desplaza 4 px. Nada
+      más. Es la de las listas: índices, «también te puede interesar». Nueve de
+      éstas en fila no pueden llevar cada una su botón: sería una pared de
+      cápsulas y ninguna sería la acción principal.
+    </p>
+  </div>
+
+  <div class="zona blanca reveal">
+    <div class="rejilla-tarjetas" style="--cols:3">
+      <a class="card lienzo callada" href="#">
+        <p class="t-title card__title" style="font-size:1.125rem">Un elemento de lista</p>
+        <p class="t-body is-small ink-65">Un dato al lado</p>
+      </a>
+      <a class="card lienzo callada" href="#">
+        <p class="t-title card__title" style="font-size:1.125rem">Otro</p>
+        <p class="t-body is-small ink-65">Otro dato</p>
+      </a>
+      <a class="card lienzo callada" href="#">
+        <p class="t-title card__title" style="font-size:1.125rem">Y otro más</p>
+        <p class="t-body is-small ink-65">Y otro</p>
+      </a>
+    </div>
+  </div>
+
+
+  <!-- 4 · APAGADA ────────────────────────────────────────────────────────── -->
+  <div class="reveal">
+    <h2 class="t-title ink" style="font-size:1.5rem">4 · Apagada — no lleva a ningún sitio: se lee</h2>
+    <p class="t-body is-small porque">
+      <strong>No es un control: es un <code>div</code>.</strong> No se tabula y no
+      tiene <code>:focus-visible</code>. Darle uno sería prometer un clic que no
+      existe. Lo que dice que no lleva a ningún sitio es que no tiene botón.
+    </p>
+    <p class="t-body is-small porque">
+      Es la única de las cuatro con <strong>dos ejes</strong>, y la regla cabe en
+      una frase: <em>centrado es la cabecera, a la izquierda es lo que se lee.</em>
+      Sólo se permite aquí, porque esta tarjeta va en fila contando una
+      secuencia: con la cabecera centrada los números caen en la misma vertical
+      y la fila se lee como una serie.
+    </p>
+    <p class="t-body is-small porque">
+      El cuerpo no se centra, y es lo que hace que funcione: son 150 a 185
+      caracteres, y centrados dejarían el borde izquierdo dentado renglón a
+      renglón. Es la razón exacta por la que un libro centra el título del
+      capítulo y no el capítulo.
+    </p>
+  </div>
+
+  <div class="zona lienzo reveal">
+    <div class="rejilla-tarjetas" style="--cols:3">
+      <div class="card apagada">
+        <p class="t-title apagada-num" style="font-size:1.25rem">01</p>
+        <p class="t-title apagada-titulo">Se elige una superficie</p>
+        <span class="apagada-icono"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        <div class="apagada-cuerpo">
+          <p class="t-body is-small ink-65">
+            Lienzo para la página y blanco para lo que sube, turnándose. No hay
+            una tercera superficie: el pie es la única de tinta del sistema.
+          </p>
+        </div>
+      </div>
+      <div class="card apagada">
+        <p class="t-title apagada-num" style="font-size:1.25rem">02</p>
+        <p class="t-title apagada-titulo">Se compone con tres clases</p>
+        <span class="apagada-icono"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7h16M4 12h12M4 17h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        <div class="apagada-cuerpo">
+          <p class="t-body is-small ink-65">
+            Titular, cuerpo y rótulo, más la escalera de tinta. El suelo de lo
+            que hay que poder leer es el peldaño del 65 %.
+          </p>
+        </div>
+      </div>
+      <div class="card apagada">
+        <p class="t-title apagada-num" style="font-size:1.25rem">03</p>
+        <p class="t-title apagada-titulo">El color entra al final</p>
+        <span class="apagada-icono"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg></span>
+        <div class="apagada-cuerpo">
+          <p class="t-body is-small ink-65">
+            Y ocupa menos del 5 %. Si una pantalla necesita más acento para
+            entenderse, lo que falla es la jerarquía y no la paleta.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <p class="t-body is-small ink-30 reveal" style="margin-top:2rem">
+    ← <a href="index.html" style="color:inherit">volver al muestrario</a>
+    &nbsp;·&nbsp; <a href="efectos.html" style="color:inherit">los efectos</a>
+    &nbsp;·&nbsp; <a href="botones.html" style="color:inherit">las piezas</a>
+    &nbsp;·&nbsp; <a href="estados.html" style="color:inherit">los estados rotos</a>
+    &nbsp;·&nbsp; <a href="login.html" style="color:inherit">la entrada</a>
+  </p>
+
+</div>
+
+<script src="seed.js"></script>
+</body>
+</html>

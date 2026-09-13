@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Los efectos · Test Honestidad</title>
+<link rel="stylesheet" href="seed.css">
+<style>
+  /* Sólo del catálogo. Los EFECTOS viven en `seed.css` y `seed.js`. */
+  .pieza{padding:4.5rem 0 0}
+  .pieza h2{margin:0}
+  .pieza .porque{max-width:62ch;margin-top:1rem;color:var(--t65)}
+  .codigo{margin-top:1.5rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:12px;line-height:1.7;color:var(--t65);
+    background:var(--raised);border-radius:14px;padding:14px 18px;
+    overflow-x:auto;white-space:pre}
+  .numeros{margin-top:1.5rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:12px;line-height:1.9;color:var(--t65);white-space:pre}
+  /* EL ESPACIADOR. Alto de pantalla, para que haya recorrido de verdad entre
+     una demostración y la siguiente: un efecto de scroll no se puede enseñar
+     en una página que no se recorre. */
+  .aire{height:70vh;display:flex;align-items:flex-end;justify-content:center;
+    padding-bottom:2rem;color:var(--t30)}
+</style>
+
+<!--
+  ═══════════════════════════════════════════════════════════════════════════
+  LOS EFECTOS — catálogo
+
+  Esta página existe porque los efectos de scroll son los únicos del sistema
+  que NO SE PUEDEN ENSEÑAR EN UNA CAPTURA. Todo lo demás -un color, un botón,
+  una tarjeta- se ve en una imagen quieta; esto sólo se ve recorriendo.
+
+  Y por eso se rompieron sin que nadie lo notara. Ver la nota de abajo.
+
+  ── SON CUATRO, Y NI UNO MÁS ─────────────────────────────────────────────
+
+      1 · LA APARICIÓN   toda sección estática enfoca al entrar, y va y vuelve
+      2 · LA VENTANA     la fotografía se destapa mientras se posa
+      3 · EL RODILLO     el rótulo del menú rueda bajo el cursor
+      4 · LA BARRA       se tiñe al bajar
+
+  Un quinto comportamiento necesita una razón de peso escrita al lado, igual
+  que cualquier otra cosa que vaya contra el sistema.
+
+  ⚠️  LOS NÚMEROS SON LOS DEL SITIO REAL, y no se tocan aquí. Salen de
+  `src/lib/vista/aparicion.ts` del proyecto de origen.
+  ═══════════════════════════════════════════════════════════════════════════
+-->
+</head>
+
+<body>
+<div class="wrap" style="padding-top:5rem;padding-bottom:8rem;max-width:900px">
+
+  <p class="t-label ink-30 reveal">Referencia interna</p>
+  <h1 class="t-title is-hero ink reveal" data-delay=".05" style="margin-top:1rem">
+    Los efectos<span class="punto">.</span>
+  </h1>
+  <p class="t-body ink-65 reveal" data-delay=".1" style="margin-top:1.5rem;max-width:62ch">
+    Cuatro comportamientos y ninguno más. Son los únicos del sistema que
+    <strong>no se pueden enseñar en una captura</strong>: hay que recorrer la
+    página. Por eso tienen su propia hoja, y por eso se rompieron sin que nadie
+    lo notara.
+  </p>
+
+
+  <!-- EL DIAGNÓSTICO, ARRIBA DEL TODO ────────────────────────────────────── -->
+  <section class="pieza">
+    <h2 class="t-title ink">Si no ves nada, empieza por aquí</h2>
+    <p class="t-body porque">
+      Antes de tocar una línea: <strong>mira la pastilla de abajo a la
+      derecha.</strong> La dibuja <code>seed.js</code>, así que contesta tres
+      preguntas de golpe.
+    </p>
+    <div class="numeros">1 · ¿NO ESTÁ LA PASTILLA?
+    El guion no llegó a correr. Ése es el problema y no hay que
+    buscar más lejos: ni el CSS ni el marcado tienen la culpa.
+
+2 · ¿DICE «movimiento reducido: SÍ»?
+    Lo apaga el sistema operativo, no la página.
+      Windows   Accesibilidad › Efectos visuales › Efectos de animación
+      macOS     Accesibilidad › Pantalla › Reducir movimiento
+    La pastilla trae un botón para verlo igualmente.
+
+3 · ¿DICE «0 apariciones» y esperabas alguna?
+    Falta la clase `reveal` en el marcado.</div>
+    <p class="t-body is-small porque" style="margin-top:1.5rem">
+      La pastilla se llama <code>.soplon</code> y <strong>se borra antes de usar
+      esto en una página real</strong>: está en <code>seed.css</code> y en el
+      último bloque de <code>seed.js</code>.
+    </p>
+  </section>
+
+
+  <!-- 1 · LA APARICIÓN ───────────────────────────────────────────────────── -->
+  <section class="pieza">
+    <h2 class="t-title ink">1 · La aparición</h2>
+    <p class="t-body porque">
+      La pieza entra <strong>fuera de foco y se enfoca</strong>. El desenfoque
+      hace el trabajo; la opacidad y la escala sólo lo acompañan, y por eso son
+      suaves: tres efectos fuertes a la vez se leen como una animación, y esto
+      tiene que leerse como una página que responde.
+    </p>
+
+    <div class="numeros">desenfoque   12 px  →  0
+opacidad       0   →  1
+escala     1.015   →  1
+subida     ±10 px  →  0        el signo lo decide por dónde se fue
+duración    0,85 s             curva cubic-bezier(.22,1,.36,1)
+margen     0px 0px -28% 0px    SÓLO por abajo
+escalón     0,05 s             y nunca más de tres</div>
+
+    <p class="t-body is-small porque" style="margin-top:1.5rem">
+      <strong>El margen sólo recorta por abajo, y eso no es un detalle.</strong>
+      Con un margen arriba y abajo, una sección más alta que la pantalla dispara
+      en cuanto su <em>borde</em> superior cruza la raya — y para entonces lo que
+      hay dentro sigue por debajo del pliegue. El efecto ocurre entero fuera de
+      la vista y arriba sólo queda el rescoldo.
+    </p>
+    <p class="t-body is-small porque">
+      Y el margen de arriba se queda en <strong>cero a propósito</strong>: al
+      salir, la pieza espera a irse del todo, porque apagarla antes es ver
+      desaparecer algo que todavía se está leyendo.
+    </p>
+    <p class="t-body is-small porque">
+      <strong>Tres estados y no dos, y ésta es la parte que no es obvia.</strong>
+      Lo fácil es alternar entre visible y no visible; al probarlo sale el fallo:
+      al <em>subir</em> la página, las piezas entran desde abajo aunque vengan de
+      arriba. Se lee como falso y nadie sabe decir por qué. Así que el reposo son
+      dos sitios distintos, y cuál toca lo dice el borde superior del rectángulo.
+    </p>
+    <p class="t-body is-small porque">
+      <strong>Y se repite en cada pasada.</strong> No hay <code>unobserve</code>
+      ni <code>disconnect</code> al aparecer: era justo lo que impedía la segunda
+      vuelta. El observador se suelta al desmontar y en ningún otro momento.
+    </p>
+
+    <div class="codigo">&lt;p class="reveal"&gt;…&lt;/p&gt;
+&lt;p class="reveal" data-delay=".05"&gt;…&lt;/p&gt;    ← escalonada
+&lt;p class="reveal" data-delay=".1"&gt;…&lt;/p&gt;     ← y hasta aquí</div>
+  </section>
+
+  <div class="aire"><span class="t-label">baja despacio ↓</span></div>
+
+  <div class="reveal">
+    <p class="t-label ink-30">Ahora</p>
+    <p class="t-title" style="font-size:1.5rem;margin-top:.5rem">Esta pieza acaba de enfocarse</p>
+    <p class="t-body ink-65" style="margin-top:.75rem;max-width:62ch">
+      Sube y vuelve a bajar: se repite. Y fíjate en por dónde entra — si vienes
+      de arriba, entra desde arriba.
+    </p>
+  </div>
+
+  <div class="aire"><span class="t-label">sigue ↓</span></div>
+
+  <div>
+    <p class="t-label ink-30 reveal">Y escalonadas</p>
+    <p class="t-title reveal" data-delay=".05" style="font-size:1.5rem;margin-top:.5rem">
+      Tres peldaños de 0,05 s
+    </p>
+    <p class="t-body ink-65 reveal" data-delay=".1" style="margin-top:.75rem;max-width:62ch">
+      Primero el rótulo, después el titular, después el cuerpo. Ese desfase es
+      lo que hace que se lea como una entrada y no como un parpadeo. Con un
+      cuarto peldaño el último llega tarde y se nota que está esperando turno.
+    </p>
+  </div>
+
+  <div class="aire"><span class="t-label">la fotografía ↓</span></div>
+
+
+  <!-- 2 · LA VENTANA ─────────────────────────────────────────────────────── -->
+  <section class="pieza">
+    <h2 class="t-title ink">2 · La ventana</h2>
+    <p class="t-body porque">
+      La imagen <strong>no aparece: se destapa</strong>. Un recorte que se abre
+      mientras la fotografía se posa desde una escala mínima, y la esquina se
+      abre con ella.
+    </p>
+
+    <div class="numeros">recorte    14 %  →  0 %     inset por los cuatro lados
+radio      28 px →  0        empieza con el radio de tarjeta y acaba a sangre
+escala     1.12  →  1
+
+progreso 0   cuando su borde superior toca el fondo de la pantalla
+progreso 1   cuando su centro llega al centro</div>
+
+    <p class="t-body is-small porque" style="margin-top:1.5rem">
+      <strong>Se mide contra la propia banda, no contra el scroll de la
+      ventana.</strong> Así se comporta igual esté donde esté en la página.
+    </p>
+    <p class="t-body is-small porque">
+      <strong>El recorte máximo es del 14 %: en el peor momento se ve el 72 % de
+      la foto.</strong> Si alguna vez lees en esta carpeta un recorte del 100 %,
+      eso no es este efecto — es una imagen invisible, y se lee exactamente como
+      un fallo de carga. Pasó, costó tres rondas, y se arregló volviendo al
+      original.
+    </p>
+    <p class="t-body is-small porque">
+      Y la esquina abriéndose es medio efecto: algo que empieza con el radio de
+      las tarjetas del sistema y termina a sangre es el mismo gesto que hace el
+      resto — algo que <em>llega</em>, en vez de algo que aparece.
+    </p>
+
+    <div class="codigo">&lt;div class="banda-foto" data-ventana&gt;
+  &lt;div class="ventana"&gt;&lt;img src="…" alt="…"&gt;&lt;/div&gt;
+&lt;/div&gt;</div>
+    <p class="t-body is-small porque">
+      El CSS <strong>no esconde nada</strong>: es <code>seed.js</code> quien
+      escribe el <code>clip-path</code> en línea. Si el guion no corre, la foto
+      se ve entera.
+    </p>
+  </section>
+
+  <div class="aire"><span class="t-label">y aquí va ↓</span></div>
+
+  <div class="banda-foto" data-ventana style="max-width:none">
+    <div class="ventana">
+      <img src="img/apreton.webp"
+           alt="Dos personas se dan la mano por encima de una mesa al cerrar un acuerdo">
+    </div>
+  </div>
+  <p class="t-body is-small ink-30 reveal" style="text-align:center;margin-top:1rem">
+    Sube y baja para verlo entero: el recorte y la escala van a distinta
+    velocidad, y eso es lo que da profundidad sin usar una sombra.
+  </p>
+
+  <div class="aire"><span class="t-label">el menú ↓</span></div>
+
+
+  <!-- 3 · EL RODILLO ─────────────────────────────────────────────────────── -->
+  <section class="pieza">
+    <h2 class="t-title ink">3 · El rodillo</h2>
+    <p class="t-body porque">
+      El enlace del menú. El rótulo sube y sale de cuadro mientras su gemelo
+      entra por debajo. <strong>No es un texto que cambia de color: es un texto
+      que se va y otro que llega.</strong> Puro <code>transform</code>.
+    </p>
+
+    <div class="numeros">caja       1,25 rem de alto, exactamente un renglón, con overflow oculto
+columna    dos copias apiladas, y sube justo el 50 %
+duración   0,5 s, la misma curva del sistema
+reposo     --t65      →   al pasar   --t100</div>
+
+    <p class="t-body is-small porque" style="margin-top:1.5rem">
+      <strong>La caja mide exactamente un renglón y recorta lo que sobra.</strong>
+      Si midiera más, se verían las dos copias a la vez y el efecto no se leería.
+      Por eso el relleno va en el enlace y no en la caja.
+    </p>
+    <p class="t-body is-small porque">
+      <strong>Dos copias de texto y no un <code>::after</code>:</strong> un
+      pseudoelemento no se selecciona, no se traduce y no lo lee un lector de
+      pantalla. Y el gemelo va <code>aria-hidden</code>, o la etiqueta se
+      anunciaría dos veces seguidas.
+    </p>
+    <p class="t-body is-small porque">
+      Y por eso <code>white-space: nowrap</code> aquí es más grave que en un
+      botón: <strong>un rótulo partido no se vería torcido, no se vería</strong>.
+      La segunda mitad desaparecería sin que nada quedara mal.
+    </p>
+
+    <div style="margin-top:2.5rem;display:flex;gap:2.25rem;flex-wrap:wrap">
+      <a class="slide" href="#"><span class="ventana"><span class="par">
+        <span>PÁSAME EL CURSOR</span><span aria-hidden="true">PÁSAME EL CURSOR</span></span></span></a>
+      <a class="slide" href="#"><span class="ventana"><span class="par">
+        <span>Y A MÍ</span><span aria-hidden="true">Y A MÍ</span></span></span></a>
+    </div>
+
+    <div class="codigo">&lt;a class="slide" href="#"&gt;
+  &lt;span class="ventana"&gt;&lt;span class="par"&gt;
+    &lt;span&gt;RÓTULO&lt;/span&gt;&lt;span aria-hidden="true"&gt;RÓTULO&lt;/span&gt;
+  &lt;/span&gt;&lt;/span&gt;
+&lt;/a&gt;</div>
+
+    <p class="t-body is-small porque">
+      <strong><code>.ventana</code> significa dos cosas distintas en este
+      sistema</strong>, y las desambigua el padre: dentro de <code>.slide</code>
+      es esta caja de un renglón; dentro de <code>.banda-foto</code> es el
+      recorte de la fotografía. Si alguien las unifica, el menú entero
+      desaparece.
+    </p>
+  </section>
+
+
+  <!-- 4 · LA BARRA ───────────────────────────────────────────────────────── -->
+  <section class="pieza">
+    <h2 class="t-title ink">4 · La barra se tiñe al bajar</h2>
+    <p class="t-body porque">
+      Transparente arriba, del color del lienzo a partir de 24 px de scroll.
+      <strong>No aparece ninguna línea:</strong> cambia de superficie, como todo
+      lo demás del sistema.
+    </p>
+    <p class="t-body is-small porque">
+      Opaca y no translúcida: al 85 % daba un tono que no está en la paleta, y
+      además cambiaba según lo que pasara por debajo.
+    </p>
+    <div class="codigo">&lt;header class="barra"&gt;…&lt;/header&gt;      →  se le añade .tenida</div>
+  </section>
+
+
+  <!-- Y LO QUE APAGA TODO ────────────────────────────────────────────────── -->
+  <section class="pieza">
+    <h2 class="t-title ink">Y quien pide menos movimiento recibe menos movimiento</h2>
+    <p class="t-body porque">
+      Los cuatro obedecen a <code>prefers-reduced-motion</code>, y lo resuelve
+      <strong>el CSS</strong> y no el guion: así vale también si
+      <code>seed.js</code> no llega a correr. La aparición nace puesta, la
+      ventana nace abierta, y las transiciones bajan a 0,01 s.
+    </p>
+    <p class="t-body is-small porque">
+      <strong>Es la causa número uno de «no veo ningún efecto».</strong> No es un
+      fallo de la página: es una preferencia del sistema operativo, y se
+      respeta.
+    </p>
+  </section>
+
+
+  <p class="t-body is-small ink-30 reveal" style="margin-top:4rem">
+    ← <a href="index.html" style="color:inherit">volver al muestrario</a>
+    &nbsp;·&nbsp; <a href="botones.html" style="color:inherit">las piezas</a>
+    &nbsp;·&nbsp; <a href="tarjetas.html" style="color:inherit">las tarjetas</a>
+    &nbsp;·&nbsp; <a href="estados.html" style="color:inherit">los estados rotos</a>
+    &nbsp;·&nbsp; <a href="login.html" style="color:inherit">la entrada</a>
+  </p>
+
+</div>
+
+<script src="seed.js"></script>
+</body>
+</html>

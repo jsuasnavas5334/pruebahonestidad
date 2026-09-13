@@ -1,0 +1,731 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Los mecanismos de respuesta · Test Honestidad</title>
+<!-- NI UNA REGLA PROPIA Y NI UNA PETICIÓN A UN TERCERO. Toda la hoja está en
+     `seed.css` y las fuentes se sirven de `fonts/` con rutas relativas. Los dos
+     prototipos de los que sale esta página traían 25 hexadecimales y seis
+     peticiones a Google Fonts; aquí no queda ninguna de las dos cosas. -->
+<link rel="stylesheet" href="seed.css">
+</head>
+<body>
+
+<header class="barra">
+  <div class="fila">
+    <a class="marca" href="index.html">Test Honestidad</a>
+    <nav>
+      <a class="slide" href="#capas"><span class="ventana"><span class="par">
+        <span>CAPAS</span><span aria-hidden="true">CAPAS</span></span></span></a>
+      <a class="slide" href="#estaciones"><span class="ventana"><span class="par">
+        <span>ESTACIONES</span><span aria-hidden="true">ESTACIONES</span></span></span></a>
+      <a class="slide" href="#corte"><span class="ventana"><span class="par">
+        <span>EL CORTE</span><span aria-hidden="true">EL CORTE</span></span></span></a>
+      <a class="slide" href="index.html"><span class="ventana"><span class="par">
+        <span>EL SISTEMA</span><span aria-hidden="true">EL SISTEMA</span></span></span></a>
+    </nav>
+    <div class="acciones">
+      <a class="btn edge sm" href="index.html">Ver el sistema</a>
+    </div>
+  </div>
+</header>
+
+
+<!-- ═══ 1 · RAISED ═══════════════════════════════════════════════════════ -->
+<section class="sup-raised" style="padding-top:9rem">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="t-label ink-65">Banco de mecanismos · v1</p>
+      <h1 class="t-title is-hero" style="margin-top:1rem;max-width:24ch">
+        Ocho formas de contestar<span class="punto">.</span>
+      </h1>
+      <p class="t-body ink-65" style="margin-top:1.5rem;max-width:58ch">
+        Una escala cerrada le entrega al evaluado el mapa de las respuestas
+        correctas: cinco casillas son cinco sitios donde esconderse. Ninguno de
+        estos ocho se lo entrega. Están vivos — pruébalos.
+      </p>
+      <p class="t-body is-small ink-65" style="margin-top:1.25rem;max-width:58ch">
+        Salieron de dieciséis prototipos. Dieciséis nombres no eran dieciséis
+        comportamientos: los que hacían el mismo trabajo con otro gesto están
+        enterrados al final de la página, con el motivo escrito.
+      </p>
+      <div style="margin-top:2rem;display:flex;gap:.75rem;flex-wrap:wrap">
+        <a class="btn primary md" href="#estaciones">Ir a las estaciones</a>
+        <button class="btn edge md" type="button" data-reiniciar>Reiniciar las estaciones</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ 2 · LIENZO ═══════════════════════════════════════════════════════ -->
+<section class="sup-lienzo" id="capas">
+  <div class="wrap">
+    <div class="centro reveal">
+      <p class="t-label ink-65">Las tres capas</p>
+      <h2 class="t-title" style="margin-top:.75rem">Qué mide un test de honestidad</h2>
+      <p class="t-body ink-65 measure" style="margin-top:1rem">
+        Nadie contesta «sí, miento». La honestidad no se pregunta: se infiere de
+        la consistencia interna, del costo que la persona declara estar
+        dispuesta a pagar, y de cómo responde y no sólo qué responde.
+      </p>
+    </div>
+    <div class="tres reveal" data-delay="0.05" style="margin-top:3.5rem">
+      <div>
+        <span class="icono-col"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 6h14M5 12h14M5 18h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        <p class="t-title" style="font-size:1.5rem;margin-top:1rem">Contenido</p>
+        <p class="t-body ink-65" style="margin-top:.75rem">
+          Dilemas concretos con un costo real, nunca adjetivos. «Un cliente te
+          transfiere de más y no lo nota» mide algo; «cuán íntegro eres» no mide
+          nada en absoluto.
+        </p>
+      </div>
+      <div>
+        <span class="icono-col"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 18c3-9 6-9 8 0s5 5 8-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        <p class="t-title" style="font-size:1.5rem;margin-top:1rem">Comportamiento</p>
+        <p class="t-body ink-65" style="margin-top:.75rem">
+          Cada mecanismo registra el valor y además cómo se produjo: latencia,
+          correcciones, deriva. Una casilla sólo puede registrar el resultado
+          final, y nada más.
+        </p>
+      </div>
+      <div>
+        <span class="icono-col"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        <p class="t-title" style="font-size:1.5rem;margin-top:1rem">Consistencia</p>
+        <p class="t-body ink-65" style="margin-top:.75rem">
+          El puntaje sale de la varianza entre respuestas que deberían
+          coincidir, no de una sola. Con cinco casillas esa distancia no llega a
+          existir nunca.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ 3 · RAISED · LAS NUEVE ESTACIONES ════════════════════════════════
+     Las tarjetas son de LIENZO porque la sección es blanca: una tarjeta es la
+     superficie vecina, y puesta al revés mide 1,00 contra su fondo.
+     Dentro de una tarjeta de lienzo, la vecina vuelve a ser el blanco — de ahí
+     el `.blanca` de cada carril, cada plano y cada medida.
+     ══════════════════════════════════════════════════════════════════════ -->
+<section class="sup-raised" id="estaciones">
+  <div class="wrap">
+    <div class="centro reveal">
+      <p class="t-label ink-65">Las estaciones</p>
+      <h2 class="t-title" style="margin-top:.75rem">Ordenadas por lo que entregan</h2>
+      <p class="t-body ink-65 measure" style="margin-top:1rem">
+        La numeración no es decorativa: va de un solo número a un orden
+        completo. Cada panel de la derecha enseña exactamente lo que quedaría
+        guardado por respuesta.
+      </p>
+    </div>
+
+    <div class="estaciones" style="margin-top:3rem">
+
+      <!-- ── 1 · B · BARRA CIEGA ───────────────────────────────────────── -->
+      <article class="tarjeta lienzo estacion reveal" data-mec="B">
+        <div class="mecanismo">
+          <p class="t-label ink-65">01 · un escalar</p>
+          <h3 class="t-title" style="font-size:1.5rem">Barra ciega</h3>
+          <p class="t-body is-small ink-65">
+            Una banda sin marcas, sin escalones y sin cifra. Al no haber un
+            centro visible desaparece el imán del punto medio, que es donde se
+            refugia todo el que no quiere comprometerse.
+          </p>
+          <div class="cita">
+            <p class="t-label ink-65">Ítem de muestra</p>
+            <p class="t-body is-small" style="margin-top:.5rem">
+              Cometiste un error que le costó plata al equipo. Nadie sabe que
+              fue tuyo y ya no se puede revertir.
+            </p>
+          </div>
+          <div class="carril blanca" data-carril tabindex="0" role="slider"
+               aria-label="Barra continua sin marcas"
+               aria-valuemin="0" aria-valuemax="100" aria-valuenow="63">
+            <div class="nivel" style="width:63%"></div>
+          </div>
+          <div class="polos">
+            <p class="t-body is-small ink-65">Lo digo hoy, aunque me cueste el bono</p>
+            <p class="t-body is-small ink-65">Lo dejo pasar, no cambia nada</p>
+          </div>
+        </div>
+        <aside class="medida blanca">
+          <p class="t-label ink-65">Lo que se registra</p>
+          <div>
+            <p class="t-title cifra" style="font-size:1.75rem" data-out="valor">63,4</p>
+            <p class="t-label ink-65" style="margin-top:.25rem">Posición · 0 a 100</p>
+          </div>
+          <dl>
+            <dt class="t-body is-small ink-65">Latencia</dt><dd class="t-body is-small" data-out="lat">2 110 ms</dd>
+            <dt class="t-body is-small ink-65">Correcciones</dt><dd class="t-body is-small" data-out="corr">3</dd>
+            <dt class="t-body is-small ink-65">Deriva</dt><dd class="t-body is-small" data-out="deriva">27 pts</dd>
+            <dt class="t-body is-small ink-65">Deliberación</dt><dd class="t-body is-small" data-out="delib">3 480 ms</dd>
+          </dl>
+          <p class="t-label ink-65" data-demo>De demostración hasta que lo toques</p>
+        </aside>
+      </article>
+
+      <!-- ── 2 · D · PRESIÓN SOSTENIDA ─────────────────────────────────── -->
+      <article class="tarjeta lienzo estacion reveal" data-mec="D">
+        <div class="mecanismo">
+          <p class="t-label ink-65">02 · un escalar, con costo físico</p>
+          <h3 class="t-title" style="font-size:1.5rem">Presión sostenida</h3>
+          <p class="t-body is-small ink-65">
+            Se mantiene apretado mientras la frase se sienta verdadera. Es el
+            único de los ocho donde afirmar más cuesta más: el costo del gesto
+            va alineado con la magnitud declarada.
+          </p>
+          <div class="cita">
+            <p class="t-label ink-65">Ítem de muestra</p>
+            <p class="t-body is-small" style="margin-top:.5rem">
+              Sostén mientras esto sea verdad: «devolvería la plata aunque
+              tuviera la certeza absoluta de que nadie lo notaría jamás».
+            </p>
+          </div>
+          <button class="plano redondo reten blanca" type="button" data-reten>
+            <span class="nivel"></span>
+            <span class="rotulo t-label ink-65">Mantén<br>presionado</span>
+          </button>
+          <p class="t-body is-small ink-65">
+            El llenado sube a ritmo constante y topa a los cuatro segundos.
+            Nadie ve un número: ve un nivel y decide cuándo parar.
+          </p>
+        </div>
+        <aside class="medida blanca">
+          <p class="t-label ink-65">Lo que se registra</p>
+          <div>
+            <p class="t-title cifra" style="font-size:1.75rem" data-out="valor">58</p>
+            <p class="t-label ink-65" style="margin-top:.25rem">Nivel · 0 a 100</p>
+          </div>
+          <dl>
+            <dt class="t-body is-small ink-65">Sostenido</dt><dd class="t-body is-small" data-out="sostenido">2 320 ms</dd>
+            <dt class="t-body is-small ink-65">Latencia</dt><dd class="t-body is-small" data-out="lat">970 ms</dd>
+            <dt class="t-body is-small ink-65">Reintentos</dt><dd class="t-body is-small" data-out="reintentos">1</dd>
+            <dt class="t-body is-small ink-65">Llegó al tope</dt><dd class="t-body is-small" data-out="tope">no</dd>
+          </dl>
+          <p class="t-label ink-65" data-demo>De demostración hasta que lo toques</p>
+        </aside>
+      </article>
+
+      <!-- ── 3 · J · MAPA DE CALOR ─────────────────────────────────────── -->
+      <article class="tarjeta lienzo estacion reveal" data-mec="J">
+        <div class="mecanismo">
+          <p class="t-label ink-65">03 · un escalar y su anchura</p>
+          <h3 class="t-title" style="font-size:1.5rem">Mapa de calor</h3>
+          <p class="t-body is-small ink-65">
+            Se pinta una franja, no se marca un punto. El centro es la posición
+            y el ancho es la variabilidad que la persona declara de sí misma.
+            Ningún otro mecanismo le deja decir «depende».
+          </p>
+          <div class="cita">
+            <p class="t-label ink-65">Ítem de muestra</p>
+            <p class="t-body is-small" style="margin-top:.5rem">
+              Pinta cuánto te aplica «cumplo lo que prometo», en general y no
+              en un momento puntual.
+            </p>
+          </div>
+          <div class="carril blanca" data-carril tabindex="0" role="slider"
+               aria-label="Zona pintada"
+               aria-valuemin="0" aria-valuemax="100" aria-valuenow="52">
+            <div class="nivel" style="left:40%;width:24%"></div>
+            <div class="huella" style="left:52%"></div>
+          </div>
+          <div class="polos">
+            <p class="t-body is-small ink-65">Casi nunca</p>
+            <p class="t-body is-small ink-65">Casi siempre</p>
+          </div>
+        </div>
+        <aside class="medida blanca">
+          <p class="t-label ink-65">Lo que se registra</p>
+          <div>
+            <p class="t-title cifra" style="font-size:1.75rem" data-out="valor">52</p>
+            <p class="t-label ink-65" style="margin-top:.25rem">Centro · 0 a 100</p>
+          </div>
+          <dl>
+            <dt class="t-body is-small ink-65">Ancho de zona</dt><dd class="t-body is-small" data-out="ancho">24 pts</dd>
+            <dt class="t-body is-small ink-65">Latencia</dt><dd class="t-body is-small" data-out="lat">1 480 ms</dd>
+            <dt class="t-body is-small ink-65">Correcciones</dt><dd class="t-body is-small" data-out="corr">0</dd>
+            <dt class="t-body is-small ink-65">Ambivalencia</dt><dd class="t-body is-small" data-out="ambivalencia">moderada</dd>
+          </dl>
+          <p class="t-label ink-65" data-demo>De demostración hasta que lo toques</p>
+        </aside>
+      </article>
+
+      <!-- ── 4 · A · PANEL DE DOS EJES ─────────────────────────────────── -->
+      <article class="tarjeta lienzo estacion reveal" data-mec="A">
+        <div class="mecanismo">
+          <p class="t-label ink-65">04 · dos escalares en un gesto</p>
+          <h3 class="t-title" style="font-size:1.5rem">Panel de dos ejes</h3>
+          <p class="t-body is-small ink-65">
+            Un campo continuo. El eje horizontal es la posición; el vertical,
+            cuánta certeza tiene esa posición. Un solo clic entrega dos
+            números, y es el más difícil de explicar de los ocho.
+          </p>
+          <div class="cita">
+            <p class="t-label ink-65">Ítem de muestra</p>
+            <p class="t-body is-small" style="margin-top:.5rem">
+              Un proveedor te ofrece cinco por ciento de comisión personal por
+              elegirlo. Su producto es igual de bueno que el del competidor.
+            </p>
+          </div>
+          <div class="plano blanca" data-plano tabindex="0" role="slider"
+               aria-label="Panel de respuesta de dos ejes"
+               aria-valuemin="-100" aria-valuemax="100" aria-valuenow="-42">
+            <div class="huella" style="left:29%;top:26%"></div>
+          </div>
+          <div class="polos">
+            <p class="t-body is-small ink-65">Lo rechazo y lo informo</p>
+            <p class="t-body is-small ink-65">Lo acepto, es parte del juego</p>
+          </div>
+          <p class="t-label ink-65">Arriba, lo tengo clarísimo · abajo, dudo</p>
+        </div>
+        <aside class="medida blanca">
+          <p class="t-label ink-65">Lo que se registra</p>
+          <div>
+            <p class="t-title cifra" style="font-size:1.75rem" data-out="valor">−42</p>
+            <p class="t-label ink-65" style="margin-top:.25rem">Posición · −100 a +100</p>
+          </div>
+          <dl>
+            <dt class="t-body is-small ink-65">Certeza</dt><dd class="t-body is-small" data-out="certeza">74</dd>
+            <dt class="t-body is-small ink-65">Latencia</dt><dd class="t-body is-small" data-out="lat">1 340 ms</dd>
+            <dt class="t-body is-small ink-65">Correcciones</dt><dd class="t-body is-small" data-out="corr">2</dd>
+            <dt class="t-body is-small ink-65">Deriva</dt><dd class="t-body is-small" data-out="deriva">18 pts</dd>
+          </dl>
+          <p class="t-label ink-65" data-demo>De demostración hasta que lo toques</p>
+        </aside>
+      </article>
+
+      <!-- ── 5 · C · VECTOR DESDE EL CENTRO ────────────────────────────── -->
+      <article class="tarjeta lienzo estacion reveal" data-mec="C">
+        <div class="mecanismo">
+          <p class="t-label ink-65">05 · categoría e intensidad</p>
+          <h3 class="t-title" style="font-size:1.5rem">Vector desde el centro</h3>
+          <p class="t-body is-small ink-65">
+            Se arrastra desde el centro hacia afuera. El cuadrante dice qué
+            motivo pesó; la distancia, cuánto. Quedarse en el centro también es
+            una respuesta: no me movió nada.
+          </p>
+          <div class="cita">
+            <p class="t-label ink-65">Ítem de muestra</p>
+            <p class="t-body is-small" style="margin-top:.5rem">
+              La última vez que no dijiste toda la verdad en el trabajo: qué te
+              movió, y con qué fuerza.
+            </p>
+          </div>
+          <div class="plano redondo blanca" data-plano tabindex="0" role="application"
+               aria-label="Vector de motivo e intensidad">
+            <svg viewBox="0 0 220 220" aria-hidden="true">
+              <line class="vector" x1="110" y1="110" x2="164" y2="66"></line>
+            </svg>
+            <div class="huella" style="left:74.5%;top:30%"></div>
+          </div>
+          <ul class="leyenda">
+            <li class="t-body is-small ink-65">↗ Conveniencia — me servía a mí</li>
+            <li class="t-body is-small ink-65">↖ Lealtad — a una persona, no a la regla</li>
+            <li class="t-body is-small ink-65">↙ Cuidado — proteger a otro del daño</li>
+            <li class="t-body is-small ink-65">↘ Miedo — a la consecuencia</li>
+          </ul>
+        </div>
+        <aside class="medida blanca">
+          <p class="t-label ink-65">Lo que se registra</p>
+          <div>
+            <p class="t-title cifra" style="font-size:1.75rem" data-out="valor">71</p>
+            <p class="t-label ink-65" style="margin-top:.25rem">Intensidad · 0 a 100</p>
+          </div>
+          <dl>
+            <dt class="t-body is-small ink-65">Motivo</dt><dd class="t-body is-small" data-out="motivo">Conveniencia</dd>
+            <dt class="t-body is-small ink-65">Ángulo</dt><dd class="t-body is-small" data-out="angulo">39°</dd>
+            <dt class="t-body is-small ink-65">Latencia</dt><dd class="t-body is-small" data-out="lat">2 890 ms</dd>
+            <dt class="t-body is-small ink-65">Cambios de cuadrante</dt><dd class="t-body is-small" data-out="corr">1</dd>
+          </dl>
+          <p class="t-label ink-65" data-demo>De demostración hasta que lo toques</p>
+        </aside>
+      </article>
+
+      <!-- ── 6 · H · REPARTO DE FICHAS ─────────────────────────────────── -->
+      <article class="tarjeta lienzo estacion reveal" data-mec="H">
+        <div class="mecanismo">
+          <p class="t-label ink-65">06 · un vector de cuatro que suma diez</p>
+          <h3 class="t-title" style="font-size:1.5rem">Reparto de fichas</h3>
+          <p class="t-body is-small ink-65">
+            Diez fichas entre cuatro motivos. La suma es constante, así que
+            subir una baja lo disponible para las otras: no hay forma de
+            aprobar los cuatro a la vez. Es el único que obliga a un canje.
+          </p>
+          <div class="cita">
+            <p class="t-label ink-65">Ítem de muestra</p>
+            <p class="t-body is-small" style="margin-top:.5rem">
+              La última vez que aceptaste una tarea que sabías mal planteada,
+              qué pesó y cuánto. Quedan dos fichas por repartir.
+            </p>
+          </div>
+          <div class="fichas">
+            <div class="columna">
+              <div class="carril vertical blanca" data-ficha="Evitar el conflicto"
+                   tabindex="0" role="slider" aria-label="Evitar el conflicto"
+                   aria-valuemin="0" aria-valuemax="10" aria-valuenow="3">
+                <div class="nivel" style="height:30%"></div>
+                <p class="cuenta t-label cifra" data-n>3</p>
+              </div>
+              <p class="rotulo t-label ink-65">Conflicto</p>
+            </div>
+            <div class="columna">
+              <div class="carril vertical blanca" data-ficha="Quedar bien"
+                   tabindex="0" role="slider" aria-label="Quedar bien"
+                   aria-valuemin="0" aria-valuemax="10" aria-valuenow="2">
+                <div class="nivel" style="height:20%"></div>
+                <p class="cuenta t-label cifra" data-n>2</p>
+              </div>
+              <p class="rotulo t-label ink-65">Quedar bien</p>
+            </div>
+            <div class="columna">
+              <div class="carril vertical blanca" data-ficha="Falta de tiempo"
+                   tabindex="0" role="slider" aria-label="Falta de tiempo"
+                   aria-valuemin="0" aria-valuemax="10" aria-valuenow="2">
+                <div class="nivel" style="height:20%"></div>
+                <p class="cuenta t-label cifra" data-n>2</p>
+              </div>
+              <p class="rotulo t-label ink-65">Tiempo</p>
+            </div>
+            <div class="columna">
+              <div class="carril vertical blanca" data-ficha="Me convenía"
+                   tabindex="0" role="slider" aria-label="Me convenía"
+                   aria-valuemin="0" aria-valuemax="10" aria-valuenow="1">
+                <div class="nivel" style="height:10%"></div>
+                <p class="cuenta t-label cifra" data-n>1</p>
+              </div>
+              <p class="rotulo t-label ink-65">Me convenía</p>
+            </div>
+          </div>
+          <div class="polos">
+            <p class="t-label ink-65">Diez fichas entre los cuatro motivos</p>
+            <p class="t-label ink-65">Sin repartir: <span class="cifra" data-bolsa>2</span></p>
+          </div>
+        </div>
+        <aside class="medida blanca">
+          <p class="t-label ink-65">Lo que se registra</p>
+          <div>
+            <p class="t-title" style="font-size:1.375rem" data-out="valor">Evitar el conflicto</p>
+            <p class="t-label ink-65" style="margin-top:.25rem">Motivo principal</p>
+          </div>
+          <dl>
+            <dt class="t-body is-small ink-65">Reparto</dt><dd class="t-body is-small" data-out="reparto">3-2-2-1</dd>
+            <dt class="t-body is-small ink-65">Latencia</dt><dd class="t-body is-small" data-out="lat">1 660 ms</dd>
+            <dt class="t-body is-small ink-65">Ajustes</dt><dd class="t-body is-small" data-out="ajustes">0</dd>
+            <dt class="t-body is-small ink-65">Concentración</dt><dd class="t-body is-small" data-out="concentracion">baja</dd>
+          </dl>
+          <p class="t-label ink-65" data-demo>De demostración hasta que lo toques</p>
+        </aside>
+      </article>
+
+      <!-- ── 7 · P · REORDENAMIENTO ────────────────────────────────────── -->
+      <article class="tarjeta lienzo estacion reveal" data-mec="P">
+        <div class="mecanismo">
+          <p class="t-label ink-65">07 · un orden completo</p>
+          <h3 class="t-title" style="font-size:1.5rem">Reordenamiento</h3>
+          <p class="t-body is-small ink-65">
+            Se ordenan las consecuencias de más a menos pesadas. El dato no es
+            una posición en un continuo sino una jerarquía entera, y los cruces
+            antes de fijar son la señal extra.
+          </p>
+          <div class="cita">
+            <p class="t-label ink-65">Ítem de muestra</p>
+            <p class="t-body is-small" style="margin-top:.5rem">
+              Si mintieras y te descubrieran, qué te pesaría más. Ordena de
+              mayor a menor peso.
+            </p>
+          </div>
+          <div class="reorden" data-reorden>
+            <div class="pieza blanca" data-item="1">
+              <span class="orden t-label ink-65">1</span>
+              <span class="t-body is-small" data-texto>Perder la confianza del equipo</span>
+            </div>
+            <div class="pieza blanca" data-item="2">
+              <span class="orden t-label ink-65">2</span>
+              <span class="t-body is-small" data-texto>Que se entere mi jefe directo</span>
+            </div>
+            <div class="pieza blanca" data-item="3">
+              <span class="orden t-label ink-65">3</span>
+              <span class="t-body is-small" data-texto>Sentirme mal conmigo mismo</span>
+            </div>
+            <div class="pieza blanca" data-item="4">
+              <span class="orden t-label ink-65">4</span>
+              <span class="t-body is-small" data-texto>Tener que dar explicaciones</span>
+            </div>
+          </div>
+          <div>
+            <button class="btn senal sm" type="button" data-fijar>Fijar el orden</button>
+          </div>
+        </div>
+        <aside class="medida blanca">
+          <p class="t-label ink-65">Lo que se registra</p>
+          <div>
+            <p class="t-title" style="font-size:1.375rem" data-out="valor">Perder la confianza…</p>
+            <p class="t-label ink-65" style="margin-top:.25rem">Mayor peso</p>
+          </div>
+          <dl>
+            <dt class="t-body is-small ink-65">Cruces antes de fijar</dt><dd class="t-body is-small" data-out="cruces">0</dd>
+            <dt class="t-body is-small ink-65">Tiempo hasta fijar</dt><dd class="t-body is-small" data-out="hasta">—</dd>
+            <dt class="t-body is-small ink-65">Orden final</dt><dd class="t-body is-small" data-out="orden">1-2-3-4</dd>
+          </dl>
+          <p class="t-label ink-65" data-demo>De demostración hasta que lo toques</p>
+        </aside>
+      </article>
+
+      <!-- ── 8 · F · PALABRA LIBRE ─────────────────────────────────────── -->
+      <article class="tarjeta lienzo estacion reveal" data-mec="F">
+        <div class="mecanismo">
+          <p class="t-label ink-65">08 · texto libre, posición inferida</p>
+          <h3 class="t-title" style="font-size:1.5rem">Palabra libre</h3>
+          <p class="t-body is-small ink-65">
+            Ninguna escala a la vista: la persona escribe y el sistema ubica.
+            Máxima libertad para el evaluado y máxima carga para el diseño, y
+            es el que más ruido introduce al comparar personas.
+          </p>
+          <div class="cita">
+            <p class="t-label ink-65">Ítem de muestra</p>
+            <p class="t-body is-small" style="margin-top:.5rem">
+              En una palabra: qué hiciste la última vez que te convenía callar.
+            </p>
+          </div>
+          <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+            <input class="campo lienzo" style="flex:1 1 14rem" type="text" value="omití"
+                   maxlength="40" aria-label="Tu respuesta en una palabra" data-campo>
+            <button class="btn primary md" type="button" data-ubicar>Ubicar</button>
+          </div>
+          <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+            <button class="btn edge sm" type="button" data-sugerencia="lo dije igual">lo dije igual</button>
+            <button class="btn edge sm" type="button" data-sugerencia="maticé">maticé</button>
+            <button class="btn edge sm" type="button" data-sugerencia="me callé">me callé</button>
+            <button class="btn edge sm" type="button" data-sugerencia="mentí">mentí</button>
+          </div>
+          <div class="carril blanca" data-carril role="img"
+               aria-label="Posición inferida y su banda de error" aria-valuenow="42">
+            <div class="nivel" style="left:64%;width:14%"></div>
+            <div class="huella" style="left:71%"></div>
+          </div>
+          <div class="polos">
+            <p class="t-body is-small ink-65">Dije la verdad completa</p>
+            <p class="t-body is-small ink-65">Mentí de frente</p>
+          </div>
+        </div>
+        <aside class="medida blanca">
+          <p class="t-label ink-65">Lo que se registra</p>
+          <div>
+            <p class="t-title cifra" style="font-size:1.75rem" data-out="valor">+42</p>
+            <p class="t-label ink-65" style="margin-top:.25rem">Posición inferida · −100 a +100</p>
+          </div>
+          <dl>
+            <dt class="t-body is-small ink-65">Término</dt><dd class="t-body is-small" data-out="termino">omití</dd>
+            <dt class="t-body is-small ink-65">Confianza</dt><dd class="t-body is-small" data-out="confianza">86 %</dd>
+            <dt class="t-body is-small ink-65">Banda de error</dt><dd class="t-body is-small" data-out="banda">± 14</dd>
+            <dt class="t-body is-small ink-65">Latencia</dt><dd class="t-body is-small" data-out="lat">6 200 ms</dd>
+          </dl>
+          <p class="t-label ink-65" data-demo>Léxico de maqueta, no un modelo</p>
+        </aside>
+      </article>
+
+      <!-- ── 9 · N · EL MODIFICADOR ────────────────────────────────────── -->
+      <article class="tarjeta lienzo estacion reveal" data-mec="N" data-modificador>
+        <div class="mecanismo">
+          <p class="t-label ink-65">Modificador · no es un noveno mecanismo</p>
+          <h3 class="t-title" style="font-size:1.5rem">Revelado progresivo</h3>
+          <p class="t-body is-small ink-65">
+            El revelado no captura una respuesta: controla cómo se presenta el
+            ítem. Se monta encima de cualquiera de los ocho, así que no compite
+            con ellos — los multiplica. Acá va sobre la barra ciega.
+          </p>
+          <div class="cita tapada">
+            <p class="t-label ink-65">Ítem de muestra · se descubre arrastrando</p>
+            <p class="t-body is-small" style="margin-top:.5rem">
+              Tu jefe te pide que le digas a un cliente que el envío está en
+              camino, cuando todavía ni salió del depósito, porque total va a
+              llegar antes de que se dé cuenta.
+            </p>
+            <div class="cortina" style="width:94%"></div>
+          </div>
+          <div class="carril blanca" data-revelar tabindex="0" role="slider"
+               aria-label="Revelar el enunciado"
+               aria-valuemin="0" aria-valuemax="100" aria-valuenow="6">
+            <div class="nivel" style="width:6%"></div>
+          </div>
+          <div class="polos">
+            <p class="t-label ink-65" data-estado>6 % leído</p>
+            <p class="t-label ink-65">Arrastra para descubrir</p>
+          </div>
+          <div class="carril blanca" data-carril tabindex="0" role="slider"
+               aria-label="Respuesta en barra ciega"
+               aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+            <div class="nivel" style="width:50%"></div>
+          </div>
+          <div class="polos">
+            <p class="t-body is-small ink-65">Le digo la verdad al cliente</p>
+            <p class="t-body is-small ink-65">Digo lo que me pidió mi jefe</p>
+          </div>
+          <div>
+            <button class="btn primary sm" type="button" data-responder>Responder ahora</button>
+          </div>
+        </div>
+        <aside class="medida blanca">
+          <p class="t-label ink-65">Lo que se registra</p>
+          <div>
+            <p class="t-title cifra" style="font-size:1.75rem" data-out="revelado">—</p>
+            <p class="t-label ink-65" style="margin-top:.25rem">Revelado al responder</p>
+          </div>
+          <dl>
+            <dt class="t-body is-small ink-65">Respuesta</dt><dd class="t-body is-small" data-out="valor">50,0</dd>
+            <dt class="t-body is-small ink-65">Tiempo hasta responder</dt><dd class="t-body is-small" data-out="hasta">—</dd>
+            <dt class="t-body is-small ink-65">Leyó todo</dt><dd class="t-body is-small" data-out="completo">—</dd>
+            <dt class="t-body is-small ink-65">Latencia</dt><dd class="t-body is-small" data-out="lat">—</dd>
+          </dl>
+          <p class="t-label ink-65" data-demo>De demostración hasta que lo toques</p>
+        </aside>
+      </article>
+
+    </div>
+
+    <!-- LA ADVERTENCIA VA AQUÍ Y NO AL FINAL, porque al final no se lee. -->
+    <div class="cita lienzo reveal" style="margin-top:2.5rem;max-width:none">
+      <p class="t-label ink-65">Una advertencia, y vale más que el entusiasmo</p>
+      <p class="t-body is-small" style="margin-top:.75rem">
+        La telemetría es un buen argumento de diseño y un mal detector de
+        mentiras. La evidencia sobre latencia y trayectoria del cursor como
+        indicadores de engaño muestra efectos reales pero modestos, y frágiles
+        fuera del laboratorio: una conexión lenta, una pantalla táctil o
+        simplemente releer el ítem producen el mismo patrón que la vacilación
+        culpable. Sirve para marcar ítems que valga la pena repreguntar, nunca
+        como puntaje. Y ningún mecanismo continuo salva un ítem mal escrito: la
+        resolución del input no puede superar la calidad de la pregunta.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ 4 · LIENZO · LAS LÁPIDAS ═════════════════════════════════════════ -->
+<section class="sup-lienzo" id="corte">
+  <div class="wrap">
+    <div class="centro reveal">
+      <p class="t-label ink-65">El corte</p>
+      <h2 class="t-title" style="margin-top:.75rem">Siete enterrados, con su motivo</h2>
+      <p class="t-body ink-65 measure" style="margin-top:1rem">
+        Un mecanismo se elige por lo que hace, no por cómo queda. Estos siete
+        hacían el trabajo de otro con un gesto distinto. No quedan comentados
+        en ninguna parte: un bloque comentado es un bloque que alguien reactiva
+        sin leer por qué se apagó.
+      </p>
+    </div>
+    <div class="rejilla-tarjetas reveal" data-delay="0.05" style="--cols:2;margin-top:3rem">
+      <div class="card callada">
+        <p class="t-label ink-65">Era · E</p>
+        <p class="t-title" style="font-size:1.25rem">Balanza de dos platos</p>
+        <p class="t-body is-small ink-65" style="margin-top:.5rem">
+          Variante de la barra ciega. Su eje era un canje entre dos valores con
+          nombre, pero el dato seguía siendo un escalar bipolar. El encuadre de
+          canje se recupera escribiendo los polos como dos cosas que no pueden
+          ganar las dos.
+        </p>
+      </div>
+      <div class="card callada">
+        <p class="t-label ink-65">Era · G</p>
+        <p class="t-title" style="font-size:1.25rem">Trazo de convicción</p>
+        <p class="t-body is-small ink-65" style="margin-top:.5rem">
+          Variante de la barra ciega. Añadía la forma del trazo como firma de
+          certeza, y ese constructo ya lo mide el mapa de calor con el ancho de
+          la franja — que además no obliga a nadie a dibujar bien con el dedo.
+        </p>
+      </div>
+      <div class="card callada">
+        <p class="t-label ink-65">Era · I</p>
+        <p class="t-title" style="font-size:1.25rem">Cascada de pares forzados</p>
+        <p class="t-body is-small ink-65" style="margin-top:.5rem">
+          Tres barras ciegas seguidas. Medía consistencia dentro del ítem
+          repitiendo la redacción, y eso no es un mecanismo: es un diseño de
+          ítems. Los pares invertidos separados en el test hacen lo mismo sin
+          triplicar el gesto.
+        </p>
+      </div>
+      <div class="card callada">
+        <p class="t-label ink-65">Era · K</p>
+        <p class="t-title" style="font-size:1.25rem">Ventana de arrepentimiento</p>
+        <p class="t-body is-small ink-65" style="margin-top:.5rem">
+          Una barra ciega con temporizador. Lo que medía —intuición contra
+          deliberación— ya está en la telemetría de los ocho: la deliberación
+          es el tiempo entre el primer contacto y soltar, y se registra sin
+          añadir una espera.
+        </p>
+      </div>
+      <div class="card callada">
+        <p class="t-label ink-65">Era · L</p>
+        <p class="t-title" style="font-size:1.25rem">Inclinación del dispositivo</p>
+        <p class="t-body is-small ink-65" style="margin-top:.5rem">
+          Una barra ciega con giroscopio. Pide permiso, no existe en
+          escritorio, y su simulación por arrastre era literalmente la barra.
+          Un mecanismo que en la mitad de los aparatos es otro mecanismo no es
+          un mecanismo.
+        </p>
+      </div>
+      <div class="card callada">
+        <p class="t-label ink-65">Era · M</p>
+        <p class="t-title" style="font-size:1.25rem">Nube semántica</p>
+        <p class="t-body is-small ink-65" style="margin-top:.5rem">
+          El mismo comportamiento que el vector: un punto arrastrado por un
+          plano donde la posición elige categoría y la distancia da la fuerza.
+          El vector etiqueta cuadrantes y la nube dispersaba palabras. Dos
+          nombres, un comportamiento.
+        </p>
+      </div>
+      <div class="card callada">
+        <p class="t-label ink-65">Era · O</p>
+        <p class="t-title" style="font-size:1.25rem">Control bimanual</p>
+        <p class="t-body is-small ink-65" style="margin-top:.5rem">
+          El mismo dato que el panel de dos ejes, con dos gestos en vez de uno.
+          Añadía el desfase temporal entre ejes, que es telemetría de un gesto
+          que sólo existe en un teléfono sostenido con los dos pulgares.
+        </p>
+      </div>
+      <div class="card callada">
+        <p class="t-label ink-65">Y el chrome de los dos prototipos</p>
+        <p class="t-title" style="font-size:1.25rem">Veintitrés clases duplicadas</p>
+        <p class="t-body is-small ink-65" style="margin-top:.5rem">
+          Las dos páginas de origen repetían literalmente su cabecera, su panel
+          de medida, su cita y su botón de reinicio. Nada de eso sobrevive: lo
+          hace el sistema, que ya tenía una tarjeta, una cita, un campo y el
+          botón entero.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="wrap">
+    <p class="marca">Test Honestidad</p>
+    <p class="t-body is-small claro-45" style="margin-top:1rem;max-width:46ch">
+      Banco de mecanismos de respuesta. Es un banco de pruebas y no la interfaz
+      del test: el panel de medida está a la vista a propósito, y en el test
+      real el evaluado no puede ver lo que se le mide.
+    </p>
+    <nav>
+      <a href="index.html">El sistema</a>
+      <a href="botones.html">Las piezas</a>
+      <a href="tarjetas.html">Las tarjetas</a>
+      <a href="efectos.html">Los efectos</a>
+      <a href="estados.html">Los estados rotos</a>
+    </nav>
+    <p class="t-body is-small claro-25" style="margin-top:2rem">
+      © <span data-anio>2026</span> · Banco interno
+    </p>
+  </div>
+</footer>
+
+<script src="seed.js"></script>
+<script src="mecanismos.js"></script>
+</body>
+</html>

@@ -1,0 +1,853 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seis Formas de Responder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html{color-scheme:light dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<style>
+:root{
+  --ground:#E7EAEE; --surface:#F3F5F8; --surface-2:#DBDFE5; --sunken:#CED4DB;
+  --ink:#15181C; --ink-2:#484F58; --ink-3:#79818B; --line:#C3C9D1;
+  --cold:#2B6B8E; --warm:#BE5730; --mid:#8B9199;
+  --ok:#3F7A52; --warn:#9A6B1F;
+  --shadow:0 1px 2px rgba(20,25,32,.08), 0 8px 24px -16px rgba(20,25,32,.35);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#121519; --surface:#191D22; --surface-2:#222831; --sunken:#0C0F12;
+    --ink:#E5E9ED; --ink-2:#A6AEB7; --ink-3:#737B85; --line:#2C333C;
+    --cold:#5FA8CA; --warm:#E0825A; --mid:#79818B;
+    --ok:#68A87C; --warn:#C9A055;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#121519; --surface:#191D22; --surface-2:#222831; --sunken:#0C0F12;
+  --ink:#E5E9ED; --ink-2:#A6AEB7; --ink-3:#737B85; --line:#2C333C;
+  --cold:#5FA8CA; --warm:#E0825A; --mid:#79818B;
+  --ok:#68A87C; --warn:#C9A055;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--ground); color:var(--ink);
+  font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  font-size:16px; line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  padding:0 20px 96px;
+}
+.wrap{max-width:1060px; margin:0 auto}
+h1,h2,h3{text-wrap:balance; margin:0}
+.serif{font-family:"Instrument Serif", Georgia, "Times New Roman", serif; font-weight:400; letter-spacing:.01em}
+.mono{font-family:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace}
+.eyebrow{
+  font-family:"IBM Plex Mono", monospace; font-size:11px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-3);
+}
+p{margin:0}
+a{color:var(--cold)}
+:focus-visible{outline:2px solid var(--cold); outline-offset:3px; border-radius:2px}
+
+/* ---------- cabecera ---------- */
+header{padding:64px 0 40px; border-bottom:1px solid var(--line)}
+.h-grid{display:grid; grid-template-columns:1.35fr 1fr; gap:48px; align-items:end}
+h1{font-family:"Instrument Serif", Georgia, serif; font-size:clamp(42px,6vw,72px); line-height:1.02; letter-spacing:-.01em}
+h1 em{font-style:italic; color:var(--cold)}
+.lede{margin-top:20px; font-size:18px; color:var(--ink-2); max-width:52ch}
+.premisa{
+  border-left:2px solid var(--warm); padding:2px 0 2px 18px;
+  font-size:14.5px; color:var(--ink-2); display:flex; flex-direction:column; gap:10px;
+}
+.premisa b{color:var(--ink); font-weight:600}
+
+/* ---------- secciones ---------- */
+section{padding:56px 0; border-bottom:1px solid var(--line)}
+.sec-head{display:flex; flex-direction:column; gap:10px; margin-bottom:32px; max-width:66ch}
+.sec-head h2{font-family:"Instrument Serif",Georgia,serif; font-size:clamp(28px,3.4vw,40px); line-height:1.1}
+.sec-head p{color:var(--ink-2); font-size:16px}
+
+/* ---------- semilla ---------- */
+.semilla{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line)}
+.sem-cell{background:var(--surface); padding:22px 20px; display:flex; flex-direction:column; gap:10px}
+.sem-cell h3{font-size:15px; font-weight:600; letter-spacing:-.005em}
+.sem-cell p{font-size:14px; color:var(--ink-2)}
+.sem-cell ul{margin:0; padding-left:16px; font-size:14px; color:var(--ink-2); display:flex; flex-direction:column; gap:6px}
+.capa{display:flex; align-items:baseline; gap:10px}
+.capa .k{font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--warm); letter-spacing:.1em}
+
+/* ---------- estación ---------- */
+.estaciones{display:flex; flex-direction:column; gap:28px}
+.est{
+  background:var(--surface); border:1px solid var(--line);
+  display:grid; grid-template-columns:minmax(0,1fr) 244px;
+}
+.est-main{padding:26px 28px 30px; display:flex; flex-direction:column; gap:18px; min-width:0}
+.est-tag{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+.est-code{
+  font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.12em;
+  color:var(--surface); background:var(--ink); padding:3px 8px;
+}
+.est-code.suya{background:var(--warm)}
+.est-main h3{font-family:"Instrument Serif",Georgia,serif; font-size:27px; line-height:1.15}
+.est-desc{font-size:14.5px; color:var(--ink-2); max-width:60ch}
+.pregunta{
+  font-size:15px; color:var(--ink); background:var(--surface-2);
+  padding:12px 14px; border-left:2px solid var(--cold); max-width:62ch;
+}
+.pregunta span{display:block; font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); font-family:"IBM Plex Mono",monospace; margin-bottom:4px}
+
+/* telemetría */
+.tele{
+  background:var(--sunken); border-left:1px solid var(--line);
+  padding:22px 20px; display:flex; flex-direction:column; gap:14px;
+  font-family:"IBM Plex Mono",monospace;
+}
+.tele-title{font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3)}
+.tele-main{display:flex; flex-direction:column; gap:2px}
+.tele-val{font-size:34px; line-height:1; font-weight:500; font-variant-numeric:tabular-nums; letter-spacing:-.02em}
+.tele-unit{font-size:11px; color:var(--ink-3); letter-spacing:.08em}
+.tele-rows{display:flex; flex-direction:column; gap:7px; border-top:1px solid var(--line); padding-top:12px}
+.tele-row{display:flex; justify-content:space-between; align-items:baseline; gap:8px; font-size:12px}
+.tele-row .k{color:var(--ink-3)}
+.tele-row .v{font-variant-numeric:tabular-nums; color:var(--ink-2); font-weight:500; text-align:right}
+.demo{font-size:10.5px; color:var(--warn); letter-spacing:.06em}
+
+/* ---------- A: panel cromático ---------- */
+.panel{
+  position:relative; width:100%; height:190px; cursor:crosshair; touch-action:none;
+  border:1px solid var(--line); overflow:hidden; user-select:none;
+}
+.panel-bg{position:absolute; inset:0; background:linear-gradient(90deg, var(--cold) 0%, var(--mid) 50%, var(--warm) 100%)}
+.panel-fade{position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8%, var(--surface) 100%); opacity:.86}
+.panel-grid{position:absolute; inset:0; background-image:linear-gradient(90deg, rgba(127,127,127,.28) 1px, transparent 1px); background-size:12.5% 100%}
+.mark{position:absolute; width:20px; height:20px; margin:-10px 0 0 -10px; border-radius:50%; border:2px solid var(--surface); box-shadow:0 0 0 1.5px var(--ink); pointer-events:none; transition:none}
+.axis-lbl{display:flex; justify-content:space-between; font-size:12px; color:var(--ink-2); margin-top:8px}
+.axis-lbl .mid-lbl{color:var(--ink-3); font-size:11px}
+.axis-y{display:flex; justify-content:space-between; font-size:11px; color:var(--ink-3); font-family:"IBM Plex Mono",monospace; letter-spacing:.06em; margin-top:6px}
+
+/* ---------- B: barra ciega ---------- */
+.ciega{position:relative; height:64px; background:var(--surface-2); border:1px solid var(--line); cursor:ew-resize; touch-action:none; user-select:none; overflow:hidden}
+.ciega-fill{position:absolute; inset:0 auto 0 0; background:linear-gradient(90deg, color-mix(in srgb, var(--cold) 22%, transparent), color-mix(in srgb, var(--cold) 55%, transparent))}
+.ciega-hand{position:absolute; top:0; bottom:0; width:3px; margin-left:-1.5px; background:var(--ink)}
+.polos{display:flex; justify-content:space-between; gap:20px; margin-top:10px; font-size:13.5px; color:var(--ink-2)}
+.polos span{max-width:38%}
+.polos span:last-child{text-align:right}
+
+/* ---------- C: vector radial ---------- */
+.radial-wrap{display:flex; gap:24px; align-items:center; flex-wrap:wrap}
+.radial{position:relative; width:220px; height:220px; flex:none; touch-action:none; user-select:none; cursor:crosshair}
+.radial svg{display:block; width:100%; height:100%}
+.radial-legend{display:flex; flex-direction:column; gap:8px; font-size:13px; color:var(--ink-2); min-width:180px}
+.radial-legend div{display:flex; gap:9px; align-items:baseline}
+.radial-legend .dot{width:8px; height:8px; flex:none; border-radius:50%; transform:translateY(-1px)}
+
+/* ---------- D: presión ---------- */
+.presion{display:flex; gap:20px; align-items:center; flex-wrap:wrap}
+.hold{
+  position:relative; width:172px; height:172px; border-radius:50%; border:1px solid var(--line);
+  background:var(--surface-2); color:var(--ink); cursor:pointer; touch-action:none; user-select:none;
+  overflow:hidden; display:grid; place-items:center; padding:0; font:inherit;
+}
+.hold-fill{position:absolute; left:0; right:0; bottom:0; height:0%; background:color-mix(in srgb, var(--warm) 38%, transparent)}
+.hold-lbl{position:relative; font-family:"IBM Plex Mono",monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase; text-align:center; line-height:1.6}
+.presion-note{font-size:13.5px; color:var(--ink-2); max-width:34ch}
+
+/* ---------- E: balanza ---------- */
+.balanza{padding:8px 0 0}
+.beam-box{height:120px; position:relative; display:grid; place-items:center}
+.beam{width:82%; height:4px; background:var(--ink); transform-origin:center; position:relative}
+.pan{position:absolute; top:-6px; width:16px; height:16px; border-radius:50%; background:var(--surface); border:2px solid var(--ink)}
+.pan.l{left:-8px} .pan.r{right:-8px}
+.pivot{position:absolute; left:50%; top:2px; width:0; height:0; margin-left:-13px; border-left:13px solid transparent; border-right:13px solid transparent; border-top:26px solid var(--ink-3)}
+.rail{position:relative; height:36px; background:var(--surface-2); border:1px solid var(--line); cursor:ew-resize; touch-action:none; user-select:none}
+.peso{position:absolute; top:50%; width:26px; height:26px; margin:-13px 0 0 -13px; background:var(--warm); border-radius:3px; box-shadow:var(--shadow)}
+
+/* ---------- F: palabra ---------- */
+.palabra{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+.palabra input{
+  flex:1 1 280px; min-width:0; font:inherit; font-size:16px; padding:12px 14px;
+  background:var(--surface-2); border:1px solid var(--line); color:var(--ink);
+}
+.palabra button, .reset{
+  font-family:"IBM Plex Mono",monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+  padding:12px 18px; background:var(--ink); color:var(--surface); border:none; cursor:pointer;
+}
+.palabra button:hover, .reset:hover{background:var(--cold)}
+.sugerencias{display:flex; gap:7px; flex-wrap:wrap; margin-top:4px}
+.chip{font-size:12.5px; padding:5px 11px; background:var(--surface-2); border:1px solid var(--line); color:var(--ink-2); cursor:pointer; font-family:"IBM Plex Mono",monospace}
+.chip:hover{border-color:var(--cold); color:var(--ink)}
+.mapa{position:relative; height:44px; border:1px solid var(--line); background:linear-gradient(90deg, color-mix(in srgb,var(--cold) 30%, transparent), color-mix(in srgb,var(--mid) 18%, transparent), color-mix(in srgb,var(--warm) 30%, transparent))}
+.mapa-mark{position:absolute; top:0; bottom:0; width:3px; margin-left:-1.5px; background:var(--ink)}
+.mapa-band{position:absolute; top:0; bottom:0; background:color-mix(in srgb, var(--ink) 12%, transparent); border-left:1px dashed var(--ink-3); border-right:1px dashed var(--ink-3)}
+
+/* ---------- tabla ---------- */
+.tabla-scroll{overflow-x:auto; border:1px solid var(--line)}
+table{border-collapse:collapse; width:100%; min-width:760px; background:var(--surface); font-size:14px}
+th,td{padding:12px 14px; text-align:left; border-bottom:1px solid var(--line); vertical-align:top}
+thead th{font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); font-weight:400; background:var(--surface-2)}
+tbody tr:last-child td{border-bottom:none}
+td.nom{font-weight:600; white-space:nowrap}
+.bar{display:flex; align-items:center; gap:8px; font-family:"IBM Plex Mono",monospace; font-size:12px; font-variant-numeric:tabular-nums; color:var(--ink-2)}
+.bar i{display:block; height:6px; background:var(--cold); flex:none}
+.bar i.w{background:var(--warm)}
+
+/* ---------- cierre ---------- */
+.cierre{display:grid; grid-template-columns:1.15fr 1fr; gap:44px; align-items:start}
+.veredicto{display:flex; flex-direction:column; gap:16px}
+.veredicto h2{font-family:"Instrument Serif",Georgia,serif; font-size:34px; line-height:1.1}
+.veredicto p{color:var(--ink-2); font-size:15.5px}
+.veredicto .clave{color:var(--ink); font-weight:600}
+.decidir{background:var(--surface); border:1px solid var(--line); padding:24px 22px; display:flex; flex-direction:column; gap:14px}
+.decidir h3{font-size:14px; font-weight:600}
+.decidir ol{margin:0; padding-left:20px; display:flex; flex-direction:column; gap:11px; font-size:14px; color:var(--ink-2)}
+.honesto{margin-top:34px; padding:18px 20px; border:1px dashed var(--warn); font-size:14px; color:var(--ink-2)}
+.honesto b{color:var(--ink)}
+
+.reset{background:transparent; color:var(--ink-3); border:1px solid var(--line); padding:8px 14px}
+.reset:hover{background:transparent; color:var(--ink); border-color:var(--ink-3)}
+.foot{padding-top:40px; display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap}
+.foot p{font-size:12.5px; color:var(--ink-3); font-family:"IBM Plex Mono",monospace; letter-spacing:.04em}
+
+@media (max-width:880px){
+  .h-grid{grid-template-columns:1fr; gap:28px; align-items:start}
+  .est{grid-template-columns:1fr}
+  .tele{border-left:none; border-top:1px solid var(--line)}
+  .semilla{grid-template-columns:1fr}
+  .cierre{grid-template-columns:1fr; gap:32px}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none !important; animation:none !important}}
+</style>
+
+<div class="wrap">
+
+<header>
+  <div class="h-grid">
+    <div>
+      <p class="eyebrow">Semilla · Test de honestidad · v0</p>
+      <h1>Seis formas<br>de <em>responder</em></h1>
+      <p class="lede">Antes de escribir una sola pregunta hay que resolver el mecanismo. Una escala cerrada le entrega al evaluado el mapa de las respuestas correctas. Estos seis prototipos no se lo entregan. Todos funcionan: probálos.</p>
+    </div>
+    <div class="premisa">
+      <p><b>El problema con "muy satisfactorio / poco satisfactorio":</b> cinco casillas son cinco lugares donde esconderse. La persona no busca su verdad, busca la casilla socialmente aceptable más cercana.</p>
+      <p><b>El objetivo:</b> un gesto, sin números a la vista, resolución continua, y una segunda capa de datos que la persona no está administrando conscientemente.</p>
+    </div>
+  </div>
+</header>
+
+<section id="semilla">
+  <div class="sec-head">
+    <p class="eyebrow">01 · La semilla</p>
+    <h2>Qué mide realmente un test de honestidad</h2>
+    <p>Nadie contesta "sí, miento". Los instrumentos que funcionan no preguntan por la honestidad: la infieren de la consistencia interna, del costo que la persona declara estar dispuesta a pagar, y de cómo responde, no solo qué responde.</p>
+  </div>
+  <div class="semilla">
+    <div class="sem-cell">
+      <div class="capa"><span class="k">CAPA 1</span><h3>Contenido</h3></div>
+      <p>Dilemas concretos con costo real, no adjetivos. "Un cliente te transfiere de más y no lo nota" mide algo. "¿Qué tan íntegro eres?" no mide nada.</p>
+      <ul>
+        <li><b>Sesgo de deseabilidad:</b> ítems que casi nadie puede negar honestamente ("nunca he llegado tarde"). Negarlos todos delata maquillaje.</li>
+        <li><b>Costo declarado:</b> a cuánto renuncia por sostener la conducta. La honestidad barata no es dato.</li>
+        <li><b>Pares invertidos:</b> el mismo dilema en dos redacciones opuestas, separadas en el test.</li>
+      </ul>
+    </div>
+    <div class="sem-cell">
+      <div class="capa"><span class="k">CAPA 2</span><h3>Comportamiento</h3></div>
+      <p>Cada mecanismo de abajo registra, además del valor, cómo se produjo ese valor. Esa es la ventaja de un input continuo sobre una casilla: la casilla solo registra el resultado.</p>
+      <ul>
+        <li><b>Latencia:</b> tiempo hasta el primer contacto.</li>
+        <li><b>Correcciones:</b> cuántas veces cambió de dirección antes de soltar.</li>
+        <li><b>Deriva:</b> distancia entre el primer punto tocado y el punto final.</li>
+        <li><b>Deliberación:</b> tiempo entre el primer contacto y la confirmación.</li>
+      </ul>
+    </div>
+    <div class="sem-cell">
+      <div class="capa"><span class="k">CAPA 3</span><h3>Consistencia</h3></div>
+      <p>El puntaje no sale de una respuesta: sale de la varianza entre respuestas que deberían coincidir. Ahí es donde una escala continua rinde y una de cinco puntos se queda muda.</p>
+      <ul>
+        <li>Con 5 casillas, dos respuestas coherentes y dos maquilladas se ven igual.</li>
+        <li>Con 200 puntos de resolución, la distancia entre pares invertidos es una señal medible.</li>
+        <li>Un evaluado que quiere mentir bien tiene que recordar coordenadas, no categorías. Es mucho más caro.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="mecanismos">
+  <div class="sec-head">
+    <p class="eyebrow">02 · Los mecanismos</p>
+    <h2>Su idea, y cinco que compiten con ella</h2>
+    <p>Cada estación está viva. Interactuá y mirá el panel de telemetría a la derecha: eso es exactamente lo que quedaría guardado por respuesta. Los valores que ves ahora son de demostración.</p>
+  </div>
+
+  <div class="estaciones">
+
+    <!-- A -->
+    <article class="est" data-est="A">
+      <div class="est-main">
+        <div class="est-tag"><span class="est-code suya">MEC · A</span><span class="eyebrow">Su idea · un clic, dos dimensiones</span></div>
+        <h3>Panel cromático</h3>
+        <p class="est-desc">Un campo continuo. El eje horizontal es la posición; el vertical, cuánta fuerza tiene esa posición. Un solo clic entrega dos números. Nadie ve una casilla, nadie ve una cifra.</p>
+        <div class="pregunta"><span>Ítem de muestra</span>Un proveedor te ofrece 5% de comisión personal por elegirlo. Su producto es igual de bueno que el del competidor. Marcá dónde caés.</div>
+        <div class="panel" data-panel tabindex="0" role="slider" aria-label="Panel de respuesta bidimensional" aria-valuemin="-100" aria-valuemax="100" aria-valuenow="-42">
+          <div class="panel-bg"></div><div class="panel-fade"></div><div class="panel-grid"></div>
+          <div class="mark" data-mark style="left:29%; top:26%; background:color-mix(in srgb, var(--cold) 58%, var(--mid))"></div>
+        </div>
+        <div>
+          <div class="axis-lbl"><span>Lo rechazo y lo informo</span><span class="mid-lbl">zona gris</span><span>Lo acepto, es parte del juego</span></div>
+          <div class="axis-y"><span>↑ arriba = lo tengo clarísimo</span><span>abajo = dudo ↓</span></div>
+        </div>
+      </div>
+      <aside class="tele">
+        <p class="tele-title">Telemetría</p>
+        <div class="tele-main"><div class="tele-val" data-out="x">−42</div><div class="tele-unit">POSICIÓN · −100 a +100</div></div>
+        <div class="tele-rows">
+          <div class="tele-row"><span class="k">certeza</span><span class="v" data-out="y">74</span></div>
+          <div class="tele-row"><span class="k">latencia</span><span class="v" data-out="lat">1 340 ms</span></div>
+          <div class="tele-row"><span class="k">correcciones</span><span class="v" data-out="corr">2</span></div>
+          <div class="tele-row"><span class="k">deriva</span><span class="v" data-out="drift">18 pts</span></div>
+          <div class="tele-row"><span class="k">resolución</span><span class="v">201 × 101</span></div>
+        </div>
+        <p class="demo" data-demo>◆ valores de demostración</p>
+      </aside>
+    </article>
+
+    <!-- B -->
+    <article class="est" data-est="B">
+      <div class="est-main">
+        <div class="est-tag"><span class="est-code">MEC · B</span><span class="eyebrow">Un arrastre · sin números</span></div>
+        <h3>Barra ciega</h3>
+        <p class="est-desc">Una banda sin marcas, sin ticks, sin porcentaje. Solo dos frases concretas en los extremos. Al no haber un centro visible ni cifras, desaparece el imán del punto medio, que es donde se refugia todo el que no quiere comprometerse.</p>
+        <div class="pregunta"><span>Ítem de muestra</span>Cometiste un error que le costó plata al equipo. Nadie sabe que fue tuyo y ya no se puede revertir.</div>
+        <div class="ciega" data-ciega tabindex="0" role="slider" aria-label="Barra continua sin marcas" aria-valuemin="0" aria-valuemax="100" aria-valuenow="63">
+          <div class="ciega-fill" data-fill style="width:63%"></div>
+          <div class="ciega-hand" data-hand style="left:63%"></div>
+        </div>
+        <div class="polos"><span>Lo digo hoy, aunque me cueste el bono</span><span>Lo dejo pasar, no cambia nada</span></div>
+      </div>
+      <aside class="tele">
+        <p class="tele-title">Telemetría</p>
+        <div class="tele-main"><div class="tele-val" data-out="x">63,4</div><div class="tele-unit">POSICIÓN · 0 a 100</div></div>
+        <div class="tele-rows">
+          <div class="tele-row"><span class="k">latencia</span><span class="v" data-out="lat">2 110 ms</span></div>
+          <div class="tele-row"><span class="k">correcciones</span><span class="v" data-out="corr">3</span></div>
+          <div class="tele-row"><span class="k">deriva</span><span class="v" data-out="drift">27 pts</span></div>
+          <div class="tele-row"><span class="k">deliberación</span><span class="v" data-out="dwell">3 480 ms</span></div>
+          <div class="tele-row"><span class="k">sesgo al centro</span><span class="v">no medible</span></div>
+        </div>
+        <p class="demo" data-demo>◆ valores de demostración</p>
+      </aside>
+    </article>
+
+    <!-- C -->
+    <article class="est" data-est="C">
+      <div class="est-main">
+        <div class="est-tag"><span class="est-code">MEC · C</span><span class="eyebrow">Un gesto · categoría + intensidad</span></div>
+        <h3>Vector desde el centro</h3>
+        <p class="est-desc">Se arrastra desde el centro hacia afuera. El ángulo dice <em>qué</em> motivo pesó; la distancia, <em>cuánto</em>. Es la única de las seis que resuelve en un movimiento una pregunta cualitativa y una cuantitativa. Quedarse en el centro también es una respuesta: "no me movió nada".</p>
+        <div class="pregunta"><span>Ítem de muestra</span>La última vez que no dijiste toda la verdad en el trabajo: ¿qué te movió, y con qué fuerza?</div>
+        <div class="radial-wrap">
+          <div class="radial" data-radial tabindex="0" role="application" aria-label="Vector de motivo e intensidad">
+            <svg viewBox="0 0 220 220" aria-hidden="true">
+              <circle cx="110" cy="110" r="100" fill="none" stroke="var(--line)"></circle>
+              <circle cx="110" cy="110" r="66" fill="none" stroke="var(--line)"></circle>
+              <circle cx="110" cy="110" r="33" fill="none" stroke="var(--line)"></circle>
+              <line x1="110" y1="10" x2="110" y2="210" stroke="var(--line)"></line>
+              <line x1="10" y1="110" x2="210" y2="110" stroke="var(--line)"></line>
+              <line data-vec x1="110" y1="110" x2="164" y2="66" stroke="var(--warm)" stroke-width="2.5"></line>
+              <circle data-dot cx="164" cy="66" r="8" fill="var(--warm)" stroke="var(--surface)" stroke-width="2.5"></circle>
+              <circle cx="110" cy="110" r="3" fill="var(--ink-3)"></circle>
+            </svg>
+          </div>
+          <div class="radial-legend">
+            <div><span class="dot" style="background:var(--warm)"></span><span><b>↗ Conveniencia</b> — me servía a mí</span></div>
+            <div><span class="dot" style="background:var(--cold)"></span><span><b>↘ Miedo</b> — a la consecuencia</span></div>
+            <div><span class="dot" style="background:var(--ok)"></span><span><b>↙ Cuidado</b> — proteger a otro del daño</span></div>
+            <div><span class="dot" style="background:var(--warn)"></span><span><b>↖ Lealtad</b> — a una persona, no a la regla</span></div>
+          </div>
+        </div>
+      </div>
+      <aside class="tele">
+        <p class="tele-title">Telemetría</p>
+        <div class="tele-main"><div class="tele-val" data-out="x">71</div><div class="tele-unit">INTENSIDAD · 0 a 100</div></div>
+        <div class="tele-rows">
+          <div class="tele-row"><span class="k">motivo</span><span class="v" data-out="cat">Conveniencia</span></div>
+          <div class="tele-row"><span class="k">ángulo</span><span class="v" data-out="ang">39°</span></div>
+          <div class="tele-row"><span class="k">latencia</span><span class="v" data-out="lat">2 890 ms</span></div>
+          <div class="tele-row"><span class="k">cambios de sector</span><span class="v" data-out="corr">1</span></div>
+          <div class="tele-row"><span class="k">salida</span><span class="v">polar → 2 campos</span></div>
+        </div>
+        <p class="demo" data-demo>◆ valores de demostración</p>
+      </aside>
+    </article>
+
+    <!-- D -->
+    <article class="est" data-est="D">
+      <div class="est-main">
+        <div class="est-tag"><span class="est-code">MEC · D</span><span class="eyebrow">Sostener · el cuerpo responde</span></div>
+        <h3>Presión sostenida</h3>
+        <p class="est-desc">Se mantiene apretado mientras la frase se sienta verdadera; al soltar, se congela el valor. Es el único mecanismo donde afirmar más cuesta más: el costo físico del gesto está alineado con la magnitud declarada. Soltar antes de tiempo y volver a apretar deja rastro.</p>
+        <div class="pregunta"><span>Ítem de muestra</span>Sostené mientras esto sea verdad: «Devolvería la plata aunque tuviera la certeza absoluta de que nadie lo notaría jamás.»</div>
+        <div class="presion">
+          <button class="hold" data-hold type="button">
+            <span class="hold-fill" data-fill style="height:58%"></span>
+            <span class="hold-lbl" data-lbl>Mantené<br>presionado</span>
+          </button>
+          <p class="presion-note">El llenado avanza a ritmo constante y se detiene en 100 a los 4 segundos. Nadie ve un número: ve un nivel subiendo y decide cuándo parar.</p>
+        </div>
+      </div>
+      <aside class="tele">
+        <p class="tele-title">Telemetría</p>
+        <div class="tele-main"><div class="tele-val" data-out="x">58</div><div class="tele-unit">NIVEL · 0 a 100</div></div>
+        <div class="tele-rows">
+          <div class="tele-row"><span class="k">sostenido</span><span class="v" data-out="ms">2 320 ms</span></div>
+          <div class="tele-row"><span class="k">latencia</span><span class="v" data-out="lat">970 ms</span></div>
+          <div class="tele-row"><span class="k">re-intentos</span><span class="v" data-out="corr">1</span></div>
+          <div class="tele-row"><span class="k">tope alcanzado</span><span class="v" data-out="tope">no</span></div>
+          <div class="tele-row"><span class="k">costo del gesto</span><span class="v">creciente</span></div>
+        </div>
+        <p class="demo" data-demo>◆ valores de demostración</p>
+      </aside>
+    </article>
+
+    <!-- E -->
+    <article class="est" data-est="E">
+      <div class="est-main">
+        <div class="est-tag"><span class="est-code">MEC · E</span><span class="eyebrow">Un arrastre · sin salida neutra</span></div>
+        <h3>Balanza de dos platos</h3>
+        <p class="est-desc">Dos valores concretos que no pueden ganar los dos. Se mueve el peso y la viga se inclina. No hay adjetivos, no hay "ninguno de los dos": el equilibrio perfecto es una posición que hay que sostener a propósito, y como tal también se mide.</p>
+        <div class="pregunta"><span>Ítem de muestra</span>Un amigo te pide que lo recomiendes para un puesto que sabés que no puede hacer.</div>
+        <div class="balanza">
+          <div class="beam-box"><div class="beam" data-beam style="transform:rotate(4.2deg)"><span class="pan l"></span><span class="pan r"></span></div><span class="pivot"></span></div>
+          <div class="rail" data-rail tabindex="0" role="slider" aria-label="Peso entre dos valores" aria-valuemin="-100" aria-valuemax="100" aria-valuenow="35">
+            <div class="peso" data-peso style="left:67.5%"></div>
+          </div>
+          <div class="polos"><span>Mi palabra ante la empresa</span><span>Mi lealtad con él</span></div>
+        </div>
+      </div>
+      <aside class="tele">
+        <p class="tele-title">Telemetría</p>
+        <div class="tele-main"><div class="tele-val" data-out="x">+35</div><div class="tele-unit">INCLINACIÓN · −100 a +100</div></div>
+        <div class="tele-rows">
+          <div class="tele-row"><span class="k">gana</span><span class="v" data-out="cat">Lealtad</span></div>
+          <div class="tele-row"><span class="k">latencia</span><span class="v" data-out="lat">3 640 ms</span></div>
+          <div class="tele-row"><span class="k">cruces del centro</span><span class="v" data-out="corr">2</span></div>
+          <div class="tele-row"><span class="k">deliberación</span><span class="v" data-out="dwell">5 100 ms</span></div>
+          <div class="tele-row"><span class="k">empate exacto</span><span class="v" data-out="tie">no</span></div>
+        </div>
+        <p class="demo" data-demo>◆ valores de demostración</p>
+      </aside>
+    </article>
+
+    <!-- F -->
+    <article class="est" data-est="F">
+      <div class="est-main">
+        <div class="est-tag"><span class="est-code">MEC · F</span><span class="eyebrow">Una palabra · la IA hace la escala</span></div>
+        <h3>Palabra libre interpretada</h3>
+        <p class="est-desc">Ninguna escala a la vista. La persona escribe una palabra y el modelo la ubica en el continuo, devolviendo posición y confianza. Máxima libertad para el evaluado, máxima carga para el diseño: dos palabras distintas tienen que caer en el mismo punto de forma estable, o el instrumento no mide nada.</p>
+        <div class="pregunta"><span>Ítem de muestra</span>En una palabra: ¿qué hiciste la última vez que te convenía callar?</div>
+        <div class="palabra">
+          <input type="text" data-input value="omití" aria-label="Tu respuesta en una palabra" maxlength="40">
+          <button type="button" data-go>Ubicar</button>
+        </div>
+        <div class="sugerencias">
+          <button class="chip" type="button" data-chip="lo dije igual">lo dije igual</button>
+          <button class="chip" type="button" data-chip="maticé">maticé</button>
+          <button class="chip" type="button" data-chip="me callé">me callé</button>
+          <button class="chip" type="button" data-chip="mentí">mentí</button>
+          <button class="chip" type="button" data-chip="lo negué">lo negué</button>
+        </div>
+        <div class="mapa" data-mapa>
+          <div class="mapa-band" data-band style="left:64%; width:14%"></div>
+          <div class="mapa-mark" data-mark style="left:71%"></div>
+        </div>
+        <div class="axis-lbl"><span>Dije la verdad completa</span><span class="mid-lbl">omisión</span><span>Mentí de frente</span></div>
+      </div>
+      <aside class="tele">
+        <p class="tele-title">Telemetría</p>
+        <div class="tele-main"><div class="tele-val" data-out="x">+42</div><div class="tele-unit">POSICIÓN INFERIDA · −100 a +100</div></div>
+        <div class="tele-rows">
+          <div class="tele-row"><span class="k">término</span><span class="v" data-out="cat">omití</span></div>
+          <div class="tele-row"><span class="k">confianza</span><span class="v" data-out="conf">86 %</span></div>
+          <div class="tele-row"><span class="k">banda de error</span><span class="v" data-out="band">± 14</span></div>
+          <div class="tele-row"><span class="k">latencia</span><span class="v" data-out="lat">6 200 ms</span></div>
+          <div class="tele-row"><span class="k">mapeo</span><span class="v">léxico local</span></div>
+        </div>
+        <p class="demo" data-demo>◆ mapeo simulado en la página</p>
+      </aside>
+    </article>
+
+  </div>
+  <div style="margin-top:22px"><button class="reset" id="reset" type="button">Reiniciar todas las estaciones</button></div>
+</section>
+
+<section id="comparacion">
+  <div class="sec-head">
+    <p class="eyebrow">03 · Comparación</p>
+    <h2>Cuál gana en qué</h2>
+    <p>"Simple" no es una sola cosa. Un mecanismo puede pedir un gesto y aun así exigir que la persona entienda dos ejes a la vez. Estas son las cuatro variables que importan al elegir.</p>
+  </div>
+  <div class="tabla-scroll">
+    <table>
+      <thead>
+        <tr><th>Mecanismo</th><th>Gestos</th><th>Simpleza percibida</th><th>Resistencia al maquillaje</th><th>Qué entrega de más</th><th>Su punto débil</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="nom">A · Panel cromático</td>
+          <td>1 clic</td>
+          <td><div class="bar"><i style="width:63px"></i>7/10</div></td>
+          <td><div class="bar"><i class="w" style="width:72px"></i>8/10</div></td>
+          <td>Certeza en el mismo gesto</td>
+          <td>Dos ejes a la vez: hay que explicarlo, y el eje vertical se contesta mal si no está clarísimo</td>
+        </tr>
+        <tr>
+          <td class="nom">B · Barra ciega</td>
+          <td>1 arrastre</td>
+          <td><div class="bar"><i style="width:90px"></i>10/10</div></td>
+          <td><div class="bar"><i class="w" style="width:63px"></i>7/10</div></td>
+          <td>Elimina el imán del punto medio</td>
+          <td>Sin referencias, dos personas calibran distinto la misma banda</td>
+        </tr>
+        <tr>
+          <td class="nom">C · Vector radial</td>
+          <td>1 arrastre</td>
+          <td><div class="bar"><i style="width:45px"></i>5/10</div></td>
+          <td><div class="bar"><i class="w" style="width:81px"></i>9/10</div></td>
+          <td>Motivo y fuerza en un solo dato</td>
+          <td>Cuatro sectores hay que leerlos antes de mover: es el más lento de entender</td>
+        </tr>
+        <tr>
+          <td class="nom">D · Presión sostenida</td>
+          <td>1 pulsación</td>
+          <td><div class="bar"><i style="width:81px"></i>9/10</div></td>
+          <td><div class="bar"><i class="w" style="width:90px"></i>10/10</div></td>
+          <td>Alinea costo físico con magnitud declarada</td>
+          <td>Mide tanto decisión como impulsividad; lento si el test tiene 40 ítems</td>
+        </tr>
+        <tr>
+          <td class="nom">E · Balanza</td>
+          <td>1 arrastre</td>
+          <td><div class="bar"><i style="width:72px"></i>8/10</div></td>
+          <td><div class="bar"><i class="w" style="width:72px"></i>8/10</div></td>
+          <td>Obliga a un canje explícito entre dos valores</td>
+          <td>Exige escribir pares de valores realmente equilibrados; si uno es obvio, el ítem muere</td>
+        </tr>
+        <tr>
+          <td class="nom">F · Palabra libre</td>
+          <td>1 escritura</td>
+          <td><div class="bar"><i style="width:54px"></i>6/10</div></td>
+          <td><div class="bar"><i class="w" style="width:54px"></i>6/10</div></td>
+          <td>Cero escala impuesta; vocabulario propio</td>
+          <td>La interpretación agrega ruido: dos personas honestas pueden quedar a 30 puntos de distancia por redacción</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="cierre" style="border-bottom:none">
+  <div class="cierre">
+    <div class="veredicto">
+      <p class="eyebrow">04 · Recomendación</p>
+      <h2>No elijas uno. Elegí tres y repartilos.</h2>
+      <p>Su idea del panel cromático <span class="clave">sobrevive la comparación</span>, pero no como mecanismo único: el eje vertical de certeza es valioso y a la vez es lo que la vuelve la más difícil de explicar en cinco segundos.</p>
+      <p>La combinación que rinde más: <span class="clave">B como base</span> para el grueso de los ítems, porque es el gesto más barato y el único que no le muestra a nadie dónde está el centro. <span class="clave">A para los ítems donde la duda importa</span> tanto como la posición. Y <span class="clave">D para tres o cuatro ítems ancla</span> de alto costo, distribuidos en el test: el sostener funciona como verificación cruzada de lo que la barra ya declaró.</p>
+      <p>C y E son excelentes pero caros: C requiere lectura previa, E requiere que vos escribas pares de valores genuinamente parejos. Guardalos para los ítems que de verdad los merezcan. F, por ahora, como máximo dos ítems abiertos al final: es el que más ruido introduce en la comparación entre personas.</p>
+    </div>
+    <div class="decidir">
+      <h3>Lo que falta decidir antes de generar el test</h3>
+      <ol>
+        <li><b>Para qué se usa.</b> Selección laboral, autoconocimiento, o dinámica de equipo. Cambia todo: en selección hay incentivo a mentir y los ítems tienen que ser indirectos; en autoconocimiento no lo hay y se puede preguntar de frente.</li>
+        <li><b>Largo.</b> Bajo 15 ítems no se puede medir consistencia entre pares invertidos, que es donde está la señal real. Sobre 40, con mecanismos de arrastre, la gente abandona.</li>
+        <li><b>Qué devuelve al final.</b> ¿Un puntaje, un perfil de motivos, o un mapa de dónde tus principios se doblan? Los tres se construyen con datos distintos.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="honesto">
+    <p><b>Una advertencia, porque te sirve más que el entusiasmo:</b> la capa de telemetría es un buen argumento de diseño y un mal detector de mentiras. La evidencia sobre latencia y trayectoria del cursor como indicadores de engaño muestra efectos reales pero modestos, y bastante frágiles fuera del laboratorio: gente lenta, mala conexión, pantalla táctil o simple relectura del ítem producen el mismo patrón que la vacilación culpable. Úsala como señal secundaria para marcar ítems que valga la pena repreguntar, nunca como puntaje. Y ningún mecanismo continuo salva un ítem mal escrito: la resolución del input no puede superar la calidad de la pregunta.</p>
+  </div>
+
+  <div class="foot">
+    <p>Semilla v0 · seis mecanismos · ningún ítem definitivo todavía</p>
+    <button class="reset" id="tema" type="button">Cambiar tema</button>
+  </div>
+</section>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var nf = function(n){ return n.toLocaleString('es-CL'); };
+  var ms = function(n){ return nf(Math.round(n)) + ' ms'; };
+  var clamp = function(v,a,b){ return v<a?a:(v>b?b:v); };
+
+  function Est(el){
+    this.el = el;
+    this.t0 = performance.now();
+    this.first = null;
+    this.corr = 0;
+    this.lastDir = 0;
+    this.firstVal = null;
+    this.dwellStart = null;
+    this.demo = el.querySelector('[data-demo]');
+  }
+  Est.prototype.out = function(k, v){
+    var n = this.el.querySelector('[data-out="'+k+'"]');
+    if(n) n.textContent = v;
+  };
+  Est.prototype.live = function(){
+    if(this.demo){ this.demo.remove(); this.demo = null; }
+  };
+  Est.prototype.touch = function(){
+    this.live();
+    if(this.first === null){
+      this.first = performance.now();
+      this.out('lat', ms(this.first - this.t0));
+    }
+    if(this.dwellStart === null) this.dwellStart = performance.now();
+  };
+  Est.prototype.track = function(v){
+    if(this.firstVal === null) this.firstVal = v;
+    var d = v - this.last;
+    if(this.last !== undefined && Math.abs(d) > 0.4){
+      var dir = d > 0 ? 1 : -1;
+      if(this.lastDir !== 0 && dir !== this.lastDir){ this.corr++; this.out('corr', nf(this.corr)); }
+      this.lastDir = dir;
+    }
+    this.last = v;
+  };
+  Est.prototype.release = function(v){
+    if(this.firstVal !== null) this.out('drift', nf(Math.round(Math.abs(v - this.firstVal))) + ' pts');
+    if(this.dwellStart !== null) this.out('dwell', ms(performance.now() - this.dwellStart));
+  };
+
+  function drag(node, onMove, onUp){
+    var active = false;
+    function pt(e){
+      var r = node.getBoundingClientRect();
+      return { x: clamp((e.clientX - r.left)/r.width, 0, 1), y: clamp((e.clientY - r.top)/r.height, 0, 1), r: r };
+    }
+    node.addEventListener('pointerdown', function(e){
+      active = true; node.setPointerCapture(e.pointerId); e.preventDefault();
+      onMove(pt(e), true);
+    });
+    node.addEventListener('pointermove', function(e){ if(active) onMove(pt(e), false); });
+    node.addEventListener('pointerup', function(e){ if(!active) return; active = false; if(onUp) onUp(pt(e)); });
+    node.addEventListener('pointercancel', function(){ active = false; });
+  }
+
+  var ests = {};
+  Array.prototype.forEach.call(document.querySelectorAll('.est'), function(el){
+    ests[el.getAttribute('data-est')] = new Est(el);
+  });
+
+  /* ---- A: panel cromático ---- */
+  (function(){
+    var E = ests.A, node = E.el.querySelector('[data-panel]'), mark = E.el.querySelector('[data-mark]');
+    function apply(p){
+      E.touch();
+      var x = Math.round(p.x*200 - 100), y = Math.round((1-p.y)*100);
+      mark.style.left = (p.x*100)+'%'; mark.style.top = (p.y*100)+'%';
+      mark.style.background = 'color-mix(in srgb, ' + (x<0?'var(--cold)':'var(--warm)') + ' ' + (35 + Math.abs(x)*0.55) + '%, var(--mid))';
+      E.out('x', (x>0?'+':(x<0?'−':'')) + Math.abs(x));
+      E.out('y', nf(y));
+      node.setAttribute('aria-valuenow', x);
+      E.track(x);
+      return x;
+    }
+    drag(node, apply, function(p){ E.release(apply(p)); });
+    node.addEventListener('keydown', function(e){
+      var r = node.getBoundingClientRect(), L = parseFloat(mark.style.left)/100, T = parseFloat(mark.style.top)/100, s = 0.02;
+      if(e.key==='ArrowRight') L+=s; else if(e.key==='ArrowLeft') L-=s;
+      else if(e.key==='ArrowUp') T-=s; else if(e.key==='ArrowDown') T+=s; else return;
+      e.preventDefault(); apply({x:clamp(L,0,1), y:clamp(T,0,1), r:r});
+    });
+  })();
+
+  /* ---- B: barra ciega ---- */
+  (function(){
+    var E = ests.B, node = E.el.querySelector('[data-ciega]'),
+        fill = E.el.querySelector('[data-fill]'), hand = E.el.querySelector('[data-hand]');
+    function apply(p){
+      E.touch();
+      var v = p.x*100;
+      fill.style.width = v+'%'; hand.style.left = v+'%';
+      E.out('x', v.toFixed(1).replace('.', ','));
+      node.setAttribute('aria-valuenow', v.toFixed(1));
+      E.track(v);
+      return v;
+    }
+    drag(node, apply, function(p){ E.release(apply(p)); });
+    node.addEventListener('keydown', function(e){
+      var v = parseFloat(hand.style.left)/100;
+      if(e.key==='ArrowRight') v+=0.02; else if(e.key==='ArrowLeft') v-=0.02; else return;
+      e.preventDefault(); apply({x:clamp(v,0,1), y:0});
+    });
+  })();
+
+  /* ---- C: vector radial ---- */
+  (function(){
+    var E = ests.C, node = E.el.querySelector('[data-radial]'),
+        vec = E.el.querySelector('[data-vec]'), dot = E.el.querySelector('[data-dot]');
+    var SEC = [
+      {min:0,   max:90,  name:'Conveniencia', col:'var(--warm)'},
+      {min:90,  max:180, name:'Lealtad',      col:'var(--warn)'},
+      {min:180, max:270, name:'Cuidado',      col:'var(--ok)'},
+      {min:270, max:360, name:'Miedo',        col:'var(--cold)'}
+    ];
+    var lastSec = null;
+    function apply(p){
+      E.touch();
+      var dx = p.x*220 - 110, dy = p.y*220 - 110;
+      var r = Math.sqrt(dx*dx + dy*dy);
+      if(r > 100){ dx = dx/r*100; dy = dy/r*100; r = 100; }
+      var ang = Math.atan2(-dy, dx) * 180 / Math.PI; if(ang < 0) ang += 360;
+      var sec = SEC[0];
+      for(var i=0;i<SEC.length;i++){ if(ang >= SEC[i].min && ang < SEC[i].max){ sec = SEC[i]; break; } }
+      if(r < 8) sec = {name:'Ninguno / centro', col:'var(--ink-3)'};
+      vec.setAttribute('x2', 110+dx); vec.setAttribute('y2', 110+dy);
+      vec.setAttribute('stroke', sec.col);
+      dot.setAttribute('cx', 110+dx); dot.setAttribute('cy', 110+dy);
+      dot.setAttribute('fill', sec.col);
+      E.out('x', nf(Math.round(r)));
+      E.out('cat', sec.name);
+      E.out('ang', nf(Math.round(ang)) + '°');
+      if(lastSec !== null && lastSec !== sec.name){ E.corr++; E.out('corr', nf(E.corr)); }
+      lastSec = sec.name;
+      return r;
+    }
+    drag(node, apply, function(p){ apply(p); });
+  })();
+
+  /* ---- D: presión sostenida ---- */
+  (function(){
+    var E = ests.D, btn = E.el.querySelector('[data-hold]'),
+        fill = E.el.querySelector('[data-fill]'), lbl = E.el.querySelector('[data-lbl]');
+    var DUR = 4000, raf = null, start = 0, presses = 0;
+    function tick(){
+      var el = performance.now() - start;
+      var v = clamp(el/DUR*100, 0, 100);
+      fill.style.height = v+'%';
+      E.out('x', nf(Math.round(v)));
+      E.out('ms', ms(el));
+      E.out('tope', v >= 100 ? 'sí' : 'no');
+      if(v < 100) raf = requestAnimationFrame(tick); else raf = null;
+    }
+    function down(e){
+      e.preventDefault();
+      E.touch(); presses++;
+      E.out('corr', nf(presses - 1));
+      lbl.innerHTML = 'Sostené<br>mientras sea<br>verdad';
+      start = performance.now();
+      if(raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(tick);
+    }
+    function up(){
+      if(raf){ cancelAnimationFrame(raf); raf = null; }
+      lbl.innerHTML = 'Registrado<br>· soltá para fijar ·';
+    }
+    btn.addEventListener('pointerdown', down);
+    btn.addEventListener('pointerup', up);
+    btn.addEventListener('pointerleave', up);
+    btn.addEventListener('pointercancel', up);
+    btn.addEventListener('keydown', function(e){ if((e.key===' '||e.key==='Enter') && !e.repeat) down(e); });
+    btn.addEventListener('keyup', function(e){ if(e.key===' '||e.key==='Enter') up(); });
+  })();
+
+  /* ---- E: balanza ---- */
+  (function(){
+    var E = ests.E, rail = E.el.querySelector('[data-rail]'),
+        peso = E.el.querySelector('[data-peso]'), beam = E.el.querySelector('[data-beam]');
+    var lastSide = null;
+    function apply(p){
+      E.touch();
+      var v = p.x*200 - 100;
+      peso.style.left = (p.x*100)+'%';
+      beam.style.transform = 'rotate(' + (v/100*12).toFixed(2) + 'deg)';
+      peso.style.background = v > 0 ? 'var(--warm)' : (v < 0 ? 'var(--cold)' : 'var(--mid)');
+      E.out('x', (v>0?'+':(v<0?'−':'')) + Math.abs(Math.round(v)));
+      E.out('cat', Math.abs(v) < 3 ? 'Empate' : (v > 0 ? 'Lealtad' : 'Mi palabra'));
+      E.out('tie', Math.abs(v) < 3 ? 'sí' : 'no');
+      rail.setAttribute('aria-valuenow', Math.round(v));
+      var side = v > 0 ? 1 : -1;
+      if(lastSide !== null && side !== lastSide){ E.corr++; E.out('corr', nf(E.corr)); }
+      lastSide = side;
+      E.last = v; if(E.firstVal === null) E.firstVal = v;
+      return v;
+    }
+    drag(rail, apply, function(p){ var v = apply(p); if(E.dwellStart !== null) E.out('dwell', ms(performance.now() - E.dwellStart)); });
+    rail.addEventListener('keydown', function(e){
+      var v = parseFloat(peso.style.left)/100;
+      if(e.key==='ArrowRight') v+=0.02; else if(e.key==='ArrowLeft') v-=0.02; else return;
+      e.preventDefault(); apply({x:clamp(v,0,1), y:0});
+    });
+  })();
+
+  /* ---- F: palabra libre ---- */
+  (function(){
+    var E = ests.F, input = E.el.querySelector('[data-input]'), go = E.el.querySelector('[data-go]'),
+        mark = E.el.querySelector('[data-mark]'), band = E.el.querySelector('[data-band]');
+    var LEX = [
+      ['dije la verdad',-92],['lo dije igual',-78],['lo dije',-72],['confesé',-88],['confese',-88],
+      ['avisé',-70],['avise',-70],['aclaré',-58],['aclare',-58],['transparenté',-80],['denuncié',-84],
+      ['nada',-8],['dudé',6],['dude',6],['esperé',18],['espere',18],['postergué',24],
+      ['maticé',32],['matice',32],['suavicé',38],['suavice',38],['relativicé',40],
+      ['omití',45],['omiti',45],['evadí',50],['evadi',50],['cambié el tema',48],
+      ['me callé',55],['me calle',55],['callé',55],['calle',55],['guardé silencio',52],
+      ['adorné',58],['exageré',62],['exagere',62],['inventé',88],['invente',88],
+      ['mentí',88],['menti',88],['lo negué',92],['lo negue',92],['negué',90]
+    ];
+    function score(txt){
+      var t = txt.toLowerCase().trim();
+      if(!t) return null;
+      var best = null;
+      for(var i=0;i<LEX.length;i++){
+        var k = LEX[i][0];
+        if(t === k) return {v:LEX[i][1], conf:93, term:k};
+        if(t.indexOf(k) !== -1 && (!best || k.length > best.term.length)) best = {v:LEX[i][1], conf:80, term:k};
+      }
+      if(best) return best;
+      return {v:0, conf:31, term:t};
+    }
+    function apply(){
+      E.touch();
+      var s = score(input.value);
+      if(!s) return;
+      var half = Math.round((100 - s.conf) * 0.45);
+      var pos = (s.v + 100) / 2;
+      mark.style.left = pos + '%';
+      band.style.left = clamp(pos - half/2, 0, 100) + '%';
+      band.style.width = clamp(half, 2, 100) + '%';
+      E.out('x', (s.v>0?'+':(s.v<0?'−':'')) + Math.abs(s.v));
+      E.out('cat', s.term.length > 18 ? s.term.slice(0,17) + '…' : s.term);
+      E.out('conf', s.conf + ' %');
+      E.out('band', '± ' + half);
+    }
+    go.addEventListener('click', apply);
+    input.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); apply(); } });
+    Array.prototype.forEach.call(E.el.querySelectorAll('[data-chip]'), function(c){
+      c.addEventListener('click', function(){ input.value = c.getAttribute('data-chip'); apply(); });
+    });
+  })();
+
+  /* ---- reinicio y tema ---- */
+  document.getElementById('reset').addEventListener('click', function(){ location.reload(); });
+  document.getElementById('tema').addEventListener('click', function(){
+    var r = document.documentElement, cur = r.getAttribute('data-theme');
+    if(!cur){ cur = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+    r.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+  });
+})();
+</script>
+
+</body>
+</html>

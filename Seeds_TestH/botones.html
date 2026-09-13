@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Las piezas · Test Honestidad</title>
+<link rel="stylesheet" href="seed.css">
+<style>
+  /* Sólo del catálogo. Nada de esto va en una página.
+     Sin filetes: las piezas se separan con aire, como manda la regla nº1. Los
+     tuvieron un rato, y era la propia referencia incumpliendo lo que explica. */
+  .pieza{padding:4.5rem 0 0}
+  .pieza h2{margin:0}
+  .pieza .porque{max-width:62ch;margin-top:1rem;color:var(--t65)}
+  .muestra{margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
+  .codigo{margin-top:1.5rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:12px;line-height:1.7;color:var(--t65);
+    background:var(--raised);border-radius:14px;padding:14px 18px;
+    overflow-x:auto;white-space:pre}
+</style>
+
+<!--
+  ═══════════════════════════════════════════════════════════════════════════
+  LAS PIEZAS — catálogo
+
+  Esto no es una página: es el catálogo. Cada pieza con lo que hace, cuándo se
+  usa y por qué existe separada de las demás.
+
+  Las piezas se separan con AIRE y no con filetes. Un catálogo que se salta lo
+  que enseña no enseña nada.
+
+  ⚠️  SEIS BOTONES Y NO CUATRO, y la diferencia con el original tiene motivo:
+  allí el primario es TINTA y existe además un botón de acento. Aquí la tinta
+  no puede rellenar un botón -es regla dura, está en `seed.css`- así que el
+  primario ES el acento, el botón `accent` se retiró por ser el mismo, y
+  entraron dos que allí no existían porque esta paleta tiene dos colores más.
+  ═══════════════════════════════════════════════════════════════════════════
+-->
+</head>
+
+<body>
+<div class="wrap" style="padding-top:5rem;padding-bottom:6rem;max-width:900px">
+
+  <p class="t-label ink-30 reveal">Referencia interna</p>
+  <h1 class="t-title is-hero ink reveal" data-delay=".05" style="margin-top:1rem">
+    Las piezas<span class="punto">.</span>
+  </h1>
+  <p class="t-body ink-65 reveal" data-delay=".1" style="margin-top:1.5rem;max-width:62ch">
+    Un componente base con seis variantes y tres tamaños, y cuatro piezas más
+    que existen porque hacen algo que un botón no puede hacer. Pasa el cursor
+    por encima de todo: <strong>ninguna dibuja una línea ni proyecta sombra en reposo.</strong>
+  </p>
+
+
+  <!-- 1 ─────────────────────────────────────────────────────────────────── -->
+  <section class="pieza reveal">
+    <h2 class="t-title ink">1 · El botón</h2>
+    <p class="t-body porque">
+      Seis variantes, tres tamaños. <strong>El tamaño varía la caja, nunca la
+      letra</strong>: las etiquetas usan dos de los tres estilos del documento y
+      jamás inventan un cuarto.
+    </p>
+
+    <div class="muestra">
+      <button class="btn primary lg">Primario lg</button>
+      <button class="btn primary md">md</button>
+      <button class="btn primary sm">sm</button>
+    </div>
+    <div class="muestra">
+      <button class="btn primary md">Primario</button>
+      <button class="btn senal md">Señal</button>
+      <button class="btn lienzo md">Callado, sobre lienzo</button>
+      <button class="btn edge md">Filete</button>
+      <button class="btn primary md" disabled>Deshabilitado</button>
+    </div>
+
+    <p class="t-body is-small porque" style="margin-top:2rem">
+      <strong>Primario</strong> es el acento a pelo. En el original este botón era
+      tinta y saltaba al acento al pasar; aquí la tinta no puede rellenar un
+      botón, así que el primario ya <em>es</em> el color de marca. Su relleno no se
+      mueve al pasar —no puede aclararse sin romper el rótulo— y lo que responde
+      es el relieve: se levanta, y con el halo, se enciende.
+    </p>
+    <p class="t-body is-small porque">
+      Y lleva una <strong>desviación conocida</strong>, escrita donde ocurre: sobre
+      este naranja el rótulo blanco da <span class="ink">3,73</span> y la tinta
+      <span class="ink">4,41</span>, y la norma pide 4,50. Las dos suspenden, así
+      que no había una opción correcta sino dos fallos. Se eligió el blanco.
+    </p>
+    <p class="t-body is-small porque">
+      <strong>Señal</strong> es lo que sale bien: confirmar, aceptar, terminar. El
+      verde es relleno y el rótulo va en tinta, 8,64. Al revés —verde como letra
+      sobre claro— son 1,91 y no se lee.
+    </p>
+    <p class="t-body is-small porque">
+      <strong>Los dos callados</strong> son el mismo botón en dos vecindades. Un
+      callado <em>nace del color de su sección</em> —en reposo casi no está, que
+      es justo su trabajo: no competir con el principal— y al pasar el cursor
+      <strong>salta a la otra superficie clara</strong>.
+    </p>
+    <div class="muestra" style="background:var(--raised);border-radius:var(--card);padding:1.5rem">
+      <button class="btn quiet md">Callado, sobre blanco</button>
+      <span class="t-body is-small ink-30">blanco → lienzo</span>
+    </div>
+    <p class="t-body is-small porque">
+      Cuál se usa lo decide la superficie que hay detrás, no el gusto. Puesto al
+      revés, un botón salta al color que ya tiene debajo y desaparece al
+      tocarlo, que es peor que no reaccionar.
+    </p>
+    <p class="t-body is-small porque">
+      <strong>Deshabilitado</strong> no tiene relleno ni anillo: sólo el rótulo en
+      el peldaño más callado. Un botón apagado no necesita que se le dibuje un
+      contorno; necesita no invitar. Y apagarlo dejando una versión pálida de sí
+      mismo dejaría una mancha en una página cuya regla es que el color sólo
+      aparece bajo el cursor.
+    </p>
+    <div class="codigo">&lt;button class="btn primary md"&gt;Etiqueta&lt;/button&gt;</div>
+  </section>
+
+
+  <!-- 2 ─────────────────────────────────────────────────────────────────── -->
+  <section class="pieza reveal">
+    <h2 class="t-title ink">2 · El halo</h2>
+    <p class="t-body porque">
+      Un resplandor del acento que existe <strong>sólo bajo el cursor</strong>.
+      Opacidad cero en reposo, así que una captura de la página quieta sigue
+      sin tener sombras. Crece de −6 a −14 px mientras aparece, y su desenfoque
+      de 12 a 20.
+    </p>
+    <p class="t-body is-small porque">
+      <strong>Es un envoltorio, no una clase del botón.</strong> Lo que brilla es
+      un pseudoelemento detrás. Intentar resolverlo con un <code>box-shadow</code>
+      en el propio botón da otra cosa mucho más floja: una sombra proyectada no
+      se desenfoca a 24 px ni crece hacia fuera.
+    </p>
+    <p class="t-body is-small porque">
+      Va en el botón que lleva la acción principal de la pantalla, <strong>y en
+      uno solo</strong>. Dos halos a la vez son dos acciones principales, que es
+      ninguna.
+    </p>
+    <div class="muestra">
+      <span class="halo"><button class="btn primary lg">Con halo</button></span>
+      <button class="btn primary lg">Sin halo</button>
+    </div>
+    <div class="codigo">&lt;span class="halo"&gt;&lt;button class="btn primary lg"&gt;…&lt;/button&gt;&lt;/span&gt;</div>
+  </section>
+
+
+  <!-- 3 ─────────────────────────────────────────────────────────────────── -->
+  <section class="pieza reveal">
+    <h2 class="t-title ink">3 · El botón que es un enlace</h2>
+    <p class="t-body porque">
+      La misma receta sobre una etiqueta <code>&lt;a&gt;</code>. No es cosmética:
+      un <code>&lt;button&gt;</code> que navega con <code>window.location</code> es
+      un enlace disfrazado, y pierde <strong>el clic central, el abrir en pestaña
+      nueva y la dirección en la barra de estado</strong>. Un
+      <code>&lt;button&gt;</code> dentro de un <code>&lt;a&gt;</code> es marcado
+      inválido.
+    </p>
+    <p class="t-body is-small porque">
+      La regla: si lleva a otro sitio, es un enlace. Si hace algo aquí, es un
+      botón. Se ven igual a propósito.
+    </p>
+    <div class="muestra">
+      <a class="btn primary md" href="index.html">Enlace con forma de botón</a>
+      <span class="halo"><a class="btn primary md" href="login.html">Con halo</a></span>
+    </div>
+    <div class="codigo">&lt;a class="btn primary md" href="/donde"&gt;…&lt;/a&gt;</div>
+  </section>
+
+
+  <!-- 4 ─────────────────────────────────────────────────────────────────── -->
+  <section class="pieza reveal">
+    <h2 class="t-title ink">4 · El filete</h2>
+    <p class="t-body porque">
+      Un botón callado cuyo filete sólo existe bajo el cursor.
+      <strong>Ésta es la pieza que hace lo que parece pedir un borde</strong>, y
+      por eso existe sólo en <code>:hover</code>: un filete en reposo rompería la
+      regla de que un borde es un cambio de tono.
+    </p>
+    <p class="t-body is-small porque">
+      Se dibuja con <code>box-shadow: inset</code> y <strong>no con
+      <code>border</code></strong>. Un borde ocupa sitio: aparecer al pasar el
+      ratón empujaría el contenido un píxel y toda la fila daría un salto. Una
+      sombra interior no ocupa nada y no mueve nada.
+    </p>
+    <div class="muestra">
+      <button class="btn edge md">Filete</button>
+      <button class="btn edge sm">Más pequeño</button>
+    </div>
+    <div class="codigo">&lt;button class="btn edge md"&gt;…&lt;/button&gt;</div>
+  </section>
+
+
+  <!-- 5 ─────────────────────────────────────────────────────────────────── -->
+  <section class="pieza reveal">
+    <h2 class="t-title ink">5 · El enlace que rueda</h2>
+    <p class="t-body porque">
+      El enlace de la barra. El rótulo sube y sale de cuadro mientras su gemelo
+      entra por debajo, ya en acento. Puro <code>transform</code>.
+    </p>
+    <p class="t-body is-small porque">
+      La ventana mide <strong>exactamente un renglón</strong> y recorta lo que
+      sobra: si midiera más, se verían las dos copias a la vez y el efecto no se
+      leería. Por eso el relleno va en el enlace y no en la ventana.
+    </p>
+    <p class="t-body is-small porque">
+      <strong>Dos copias de texto y no un <code>::after</code>:</strong> un
+      pseudoelemento no se selecciona, no se traduce y no lo lee un lector de
+      pantalla. Y el gemelo va <code>aria-hidden</code>, o la etiqueta se
+      anunciaría dos veces seguidas.
+    </p>
+    <p class="t-body is-small porque">
+      Y por eso <code>white-space: nowrap</code> aquí es más grave que en un
+      botón: <strong>un rótulo partido no se vería torcido, no se vería.</strong>
+    </p>
+    <div class="muestra" style="gap:2.25rem">
+      <a class="slide" href="#"><span class="ventana"><span class="par">
+        <span>UN ENLACE</span><span aria-hidden="true">UN ENLACE</span></span></span></a>
+      <a class="slide" href="#"><span class="ventana"><span class="par">
+        <span>OTRO</span><span aria-hidden="true">OTRO</span></span></span></a>
+    </div>
+    <div class="codigo">&lt;a class="slide" href="#"&gt;
+  &lt;span class="ventana"&gt;&lt;span class="par"&gt;
+    &lt;span&gt;RÓTULO&lt;/span&gt;&lt;span aria-hidden="true"&gt;RÓTULO&lt;/span&gt;
+  &lt;/span&gt;&lt;/span&gt;
+&lt;/a&gt;</div>
+  </section>
+
+
+  <!-- 6 ─────────────────────────────────────────────────────────────────── -->
+  <section class="pieza reveal">
+    <h2 class="t-title ink">6 · La flecha</h2>
+    <p class="t-body porque">
+      Un envío circular. Al pasar el cursor, la flecha se va por la derecha
+      mientras otra entra por la izquierda, así que el trazo no parece pararse
+      nunca.
+    </p>
+    <p class="t-body is-small porque">
+      <strong>Esta flecha significa «adelante», así que se voltea.</strong> No es
+      un adorno redondo: es la punta que dice hacia dónde sigue esto. En una
+      página que se lee de derecha a izquierda, adelante es a la izquierda, y
+      una flecha a la derecha ahí dice «atrás». Se voltea la punta y también el
+      movimiento. Lo que <em>no</em> se voltea es la caja: un círculo volteado es
+      el mismo círculo.
+    </p>
+    <p class="t-body is-small porque">
+      En el original nace de tinta. Aquí nace <strong>callada</strong> y se
+      enciende al pasar, porque la tinta no rellena botones.
+    </p>
+    <div class="muestra">
+      <button class="arrow" aria-label="Continuar"><span class="pista">
+        <span><svg width="17" height="12" viewBox="0 0 17 12" fill="none" aria-hidden="true"><path d="M1 6h14M10.5 1.5 15 6l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span><svg width="17" height="12" viewBox="0 0 17 12" fill="none" aria-hidden="true"><path d="M1 6h14M10.5 1.5 15 6l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </span></button>
+      <button class="arrow tono-acento" aria-label="Enviar"><span class="pista">
+        <span><svg width="17" height="12" viewBox="0 0 17 12" fill="none" aria-hidden="true"><path d="M1 6h14M10.5 1.5 15 6l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span><svg width="17" height="12" viewBox="0 0 17 12" fill="none" aria-hidden="true"><path d="M1 6h14M10.5 1.5 15 6l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </span></button>
+      <button class="arrow" aria-label="Continuar" disabled><span class="pista">
+        <span><svg width="17" height="12" viewBox="0 0 17 12" fill="none" aria-hidden="true"><path d="M1 6h14M10.5 1.5 15 6l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span></span>
+      </span></button>
+
+      <!-- La misma, de derecha a izquierda. Pasa el cursor: la punta y el
+           movimiento se han volteado; la caja no. -->
+      <span dir="rtl" style="display:inline-flex;align-items:center;gap:.75rem">
+        <button class="arrow" aria-label="Continuar"><span class="pista">
+          <span><svg width="17" height="12" viewBox="0 0 17 12" fill="none" aria-hidden="true"><path d="M1 6h14M10.5 1.5 15 6l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span><svg width="17" height="12" viewBox="0 0 17 12" fill="none" aria-hidden="true"><path d="M1 6h14M10.5 1.5 15 6l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </span></button>
+        <span class="t-body is-small ink-30" dir="ltr">← en rtl</span>
+      </span>
+    </div>
+  </section>
+
+
+  <!-- 7 ─────────────────────────────────────────────────────────────────── -->
+  <section class="pieza reveal">
+    <h2 class="t-title ink">7 · El campo</h2>
+    <p class="t-body porque">
+      El único estilo de entrada del sistema. Relleno en reposo, sin contorno, y
+      se aclara al tocarlo. <strong>La misma altura y el mismo radio que un botón
+      del mismo tamaño</strong>, para que un campo y su botón formen una fila y no
+      dos objetos distintos.
+    </p>
+    <div class="muestra" style="max-width:420px;flex-direction:column;align-items:stretch">
+      <input class="campo" placeholder="Un campo normal">
+      <div style="position:relative">
+        <input class="campo alto" placeholder="Con su flecha dentro"
+               style="padding-inline-end:4rem">
+        <button class="arrow" aria-label="Continuar"
+                style="position:absolute;inset-inline-end:6px;top:6px"><span class="pista">
+          <span><svg width="17" height="12" viewBox="0 0 17 12" fill="none" aria-hidden="true"><path d="M1 6h14M10.5 1.5 15 6l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span><svg width="17" height="12" viewBox="0 0 17 12" fill="none" aria-hidden="true"><path d="M1 6h14M10.5 1.5 15 6l-4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </span></button>
+      </div>
+    </div>
+    <p class="t-body is-small porque" style="margin-top:1.5rem">
+      La flecha vive <strong>dentro</strong> del campo y no debajo. Un campo con su
+      botón debajo son dos objetos; con el botón dentro es uno solo, y se
+      entiende que uno es la salida del otro.
+    </p>
+  </section>
+
+
+  <!-- 8 ─────────────────────────────────────────────────────────────────── -->
+  <section class="pieza reveal">
+    <h2 class="t-title ink">Y el aviso</h2>
+    <p class="t-body porque">
+      Todo lo que la página dice cuando algo se tuerce pasa por una sola pieza.
+      <strong>Va en tinta, nunca en acento:</strong> el acento es el color de lo
+      que invita a avanzar, y gastarlo en lo que frena es celebrar el fallo.
+    </p>
+    <p class="t-body is-small porque">
+      Aparecer ya es la señal: un texto que no estaba y ahora está basta para
+      quien mira la pantalla.
+    </p>
+    <div class="muestra" style="flex-direction:column;align-items:flex-start;gap:.75rem">
+      <p class="aviso">No hemos podido continuar.</p>
+      <p class="aviso">
+        No hemos podido continuar. Si sigue pasando,
+        <a href="mailto:hola@ejemplo.com">escríbenos</a>.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- 9 · LA ÚNICA SUPERFICIE DE TINTA QUE QUEDA ──────────────────────────── -->
+  <section class="pieza reveal">
+    <h2 class="t-title ink">Y el invertido, que sólo vive en el pie</h2>
+    <p class="t-body porque">
+      <strong>La tinta es para las letras y para el pie.</strong> Es regla dura y
+      está escrita en <code>seed.css</code>: ni botones ni secciones ni tarjetas
+      de tinta, porque los colores de marca son otros y una sección negra dice
+      otra marca.
+    </p>
+    <p class="t-body is-small porque">
+      Así que el botón invertido y los cuatro espejos claros
+      (<code>--c80</code>, <code>--c45</code>, <code>--c40</code>,
+      <code>--c25</code>) siguen existiendo enteros, pero <strong>sólo tienen un
+      sitio donde vivir</strong>. Esto de abajo es ese sitio, y es la única
+      superficie de tinta de todo el sistema.
+    </p>
+    <div class="muestra" style="background:var(--ink);border-radius:var(--card);padding:1.75rem;gap:1.5rem">
+      <button class="btn invert md">Invertido</button>
+      <span class="t-body is-small claro-45">Texto en el espejo del 45 %</span>
+    </div>
+  </section>
+
+
+  <p class="t-body is-small ink-30 reveal" style="margin-top:4rem">
+    ← <a href="index.html" style="color:inherit">volver al muestrario</a>
+    &nbsp;·&nbsp; <a href="efectos.html" style="color:inherit">los efectos</a>
+    &nbsp;·&nbsp; <a href="tarjetas.html" style="color:inherit">las tarjetas</a>
+    &nbsp;·&nbsp; <a href="estados.html" style="color:inherit">los estados rotos</a>
+    &nbsp;·&nbsp; <a href="login.html" style="color:inherit">la entrada</a>
+  </p>
+
+</div>
+
+<script src="seed.js"></script>
+</body>
+</html>
