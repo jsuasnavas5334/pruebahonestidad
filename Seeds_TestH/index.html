@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Test Honestidad · el sistema</title>
+<link rel="stylesheet" href="seed.css">
+
+<!--
+  ═══════════════════════════════════════════════════════════════════════════
+  EL MUESTRARIO — COPIA REPINTADA DEL SISTEMA DE ORIGEN
+
+  ⚠️  Estructura, clases, comportamientos y medidas son los del original. Lo
+  único que cambia es la paleta y las palabras. Si una pieza de aquí no existe
+  en el original, o existe con otra forma, es un error.
+
+  ── LAS TRES COSAS QUE MÁS SE ROMPEN AL COPIAR ESTO ───────────────────────
+
+  1 · LA BANDA DE FOTO. Son DOS divs y un `data-ventana`:
+
+        <div class="banda-foto" data-ventana>
+          <div class="ventana"><img src="..."></div>
+        </div>
+
+      El CSS NO esconde nada. Es `seed.js` quien escribe el `clip-path` en
+      línea, midiendo dónde está la banda en la pantalla, y el recorte máximo
+      es del 14 %: en el peor momento se ve el 72 % de la foto. Si alguien
+      escribe aquí un recorte del 100 %, la foto desaparece y parece un fallo
+      de carga. NO LO ES: es el efecto mal copiado.
+
+  2 · EL HALO ES UN ENVOLTORIO, no una clase del botón:
+
+        <span class="halo"><a class="btn primary md">…</a></span>
+
+      Lo que brilla es un pseudoelemento DETRÁS del botón, desenfocado a 16 px
+      y que crece a 24. Un `box-shadow` en el propio botón da otra cosa, mucho
+      más floja.
+
+  3 · EL MENÚ RUEDA con el rótulo escrito DOS VECES:
+
+        <a class="slide"><span class="ventana"><span class="par">
+          <span>Color</span><span>Color</span></span></span></a>
+
+      Y aquí `.ventana` es otra cosa distinta de la de la foto: la desambigua
+      el padre (`.slide .ventana`). Las dos son del original y las dos se
+      llaman igual.
+
+  ── SI NO VES NINGÚN EFECTO, MIRA LA PASTILLA DE ABAJO A LA DERECHA ───────
+  La dibuja `seed.js`, así que si no está, el guion no llegó a correr. Y dice
+  si el sistema operativo tiene el movimiento reducido, que lo apaga todo.
+  ═══════════════════════════════════════════════════════════════════════════
+-->
+</head>
+<body>
+
+<header class="barra">
+  <div class="fila">
+    <!-- NI LOGOTIPO NI ICONO: la marca es una palabra. -->
+    <a class="marca" href="#">Test Honestidad</a>
+
+    <!-- LOS RÓTULOS VAN EN MAYÚSCULAS, Y LAS ESCRIBE EL CONTENIDO.
+         No hay `text-transform` en `.slide`, igual que en el sitio de origen:
+         allí los rótulos del menú se escriben ya en versales en el diccionario
+         de textos. Es una decisión de copy y no de hoja de estilos, y así el
+         rótulo que se lee es exactamente el que está escrito. -->
+    <nav>
+      <a class="slide" href="#color"><span class="ventana"><span class="par">
+        <span>COLOR</span><span aria-hidden="true">COLOR</span></span></span></a>
+      <a class="slide" href="#piezas"><span class="ventana"><span class="par">
+        <span>PIEZAS</span><span aria-hidden="true">PIEZAS</span></span></span></a>
+      <a class="slide" href="#tarjetas"><span class="ventana"><span class="par">
+        <span>TARJETAS</span><span aria-hidden="true">TARJETAS</span></span></span></a>
+      <a class="slide" href="efectos.html"><span class="ventana"><span class="par">
+        <span>EFECTOS</span><span aria-hidden="true">EFECTOS</span></span></span></a>
+      <a class="slide" href="#preguntas"><span class="ventana"><span class="par">
+        <span>PREGUNTAS</span><span aria-hidden="true">PREGUNTAS</span></span></span></a>
+    </nav>
+
+    <div class="acciones">
+      <!-- EN TIPO TÍTULO, COMO TODOS LOS BOTONES. Las versales son de los
+           ENLACES del menú, que están a su izquierda y son otra cosa: un
+           enlace de navegación no es una acción. Mezclar los dos registros en
+           la misma fila hace que uno de los dos parezca un descuido. -->
+      <a class="btn quiet md" href="login.html">Entrar</a>
+      <span class="halo"><a class="btn primary md" href="#color">Ver el sistema</a></span>
+    </div>
+  </div>
+</header>
+
+
+<!-- ═════════════════════════════════════════════════════════════════════════
+     1 · LA PORTADA
+     ═════════════════════════════════════════════════════════════════════════ -->
+<!-- ── EL TURNO DE SUPERFICIES ───────────────────────────────────────────────
+     blanca · (banda) · lienzo · blanca · lienzo · blanca · lienzo · y el pie,
+     que es tinta y no entra en el turno.
+
+     Y CADA PIEZA CAE SOBRE SU VECINA, que es la mitad que se olvida: las
+     tarjetas de color van en la sección de LIENZO para poder ser blancas y que
+     la muestra de lienzo que llevan dentro se vea; la hoja destacada va en la
+     BLANCA y por eso lleva `.lienzo`. Una tarjeta blanca sobre una sección
+     blanca mide 1,00: no es sutil, es que no está. -->
+<section class="sup-raised" style="padding-top:11rem">
+  <div class="wrap centro">
+    <p class="t-label ink-30 reveal">El sistema, de un vistazo</p>
+
+    <h1 class="t-title is-hero reveal" data-delay=".05" style="margin-top:1.25rem">
+      Seis colores<span class="punto">.</span><br>
+      Tres tamaños de letra<span class="punto">.</span>
+    </h1>
+
+    <p class="t-body measure ink-65 reveal" data-delay=".1" style="margin-top:1.75rem">
+      Todo lo que hay debajo sale de un solo archivo de reglas. Ninguna pieza
+      declara un tono propio, ningún componente inventa un tamaño, y nada
+      dibuja una línea para explicarse.
+    </p>
+
+    <div class="reveal" data-delay=".1"
+         style="display:flex;gap:.75rem;margin-top:2.5rem;flex-wrap:wrap;justify-content:center">
+      <span class="halo"><a class="btn lg primary" href="#color">Ver la paleta</a></span>
+      <!-- `quiet` PORQUE ESTA SECCIÓN ES BLANCA. Un callado nace del color de
+             su sección -en reposo casi no está, que es su trabajo- y al pasar
+             salta a la otra superficie clara. Aquí: blanco → lienzo. -->
+      <a class="btn lg quiet" href="#piezas">Ver las piezas</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═════════════════════════════════════════════════════════════════════════
+     2 · LA FOTOGRAFÍA
+
+     Una banda entera para ella sola. Nada comparte renglón con una fotografía:
+     una foto al lado de un párrafo es una foto que ilustra un párrafo, y éstas
+     tienen que sostenerse solas.
+     ═════════════════════════════════════════════════════════════════════════ -->
+<!-- UNA BANDA A SANGRE NO ENTRA EN EL TURNO: no tiene superficie, tiene
+     contenido. La sección de antes y la de después siguen siendo distintas. -->
+<section class="corta">
+  <div class="banda-foto" data-ventana>
+    <div class="ventana">
+      <img src="img/apreton.webp"
+           alt="Dos personas se dan la mano por encima de una mesa al cerrar un acuerdo">
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:1rem">
+    <p class="t-body is-small ink-30 reveal" style="text-align:center">
+      Se destapa desde un recorte del 14 % mientras la imagen se posa desde una
+      escala de 1,12. La esquina pasa de 28 px a sangre con ella.
+    </p>
+  </div>
+</section>
+
+
+<!-- ═════════════════════════════════════════════════════════════════════════
+     3 · EL COLOR
+     ═════════════════════════════════════════════════════════════════════════ -->
+<section id="color" class="sup-lienzo">
+  <div class="wrap centro">
+    <p class="t-label ink-30 reveal">01 · El color</p>
+    <h2 class="t-title reveal" data-delay=".05" style="margin-top:1rem">
+      Seis, y ni uno más<span class="punto">.</span>
+    </h2>
+    <p class="t-body measure ink-65 reveal" data-delay=".1" style="margin-top:1.25rem">
+      Cinco de marca más un gris. Dos de los cinco vienen heredados y no se
+      tocan: el blanco que no es blanco y el negro que no es negro. Todo lo
+      demás que parece un color es una opacidad de estos seis.
+    </p>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════════
+       LA REGLA DE COLOR, ESCRITA · y `chismoso.mjs` LA LEE DE AQUÍ.
+
+       Cada tarjeta lleva su hexadecimal en un `data-color`. El comprobador
+       los extrae de este archivo y falla si el sistema renderiza cualquier
+       otro tono de superficie. O sea que esta lista no DESCRIBE la paleta:
+       ES la paleta, y si alguien añade una fila sin añadir el color, o al
+       revés, el chismoso lo dice.
+
+       Es la única forma de que una lista escrita no envejezca: que sea la
+       misma lista que se comprueba.
+       ══════════════════════════════════════════════════════════════════════ -->
+  <div class="wrap reveal" data-delay=".1" style="margin-top:3.5rem">
+    <div id="la-paleta" class="rejilla-paleta">
+      <div class="tarjeta" data-color="#e8f9fd" style="text-align:start">
+        <div style="height:56px;border-radius:var(--card-in);background:var(--lienzo)"></div>
+        <p class="t-label ink-30" style="margin-top:1rem">El fondo</p>
+        <p class="t-body is-small ink" style="margin-top:.25rem"><code>--lienzo</code> · <code>#e8f9fd</code></p>
+        <p class="t-body is-small ink-65" style="margin-top:.5rem">Una de las dos superficies claras que se turnan.</p>
+      </div>
+      <div class="tarjeta" data-color="#fbfbfb" style="text-align:start">
+        <div style="height:56px;border-radius:var(--card-in);background:var(--raised)"></div>
+        <p class="t-label ink-30" style="margin-top:1rem">El blanco que no es blanco</p>
+        <p class="t-body is-small ink" style="margin-top:.25rem"><code>--raised</code> · <code>#fbfbfb</code></p>
+        <p class="t-body is-small ink-65" style="margin-top:.5rem">Heredado. Lo que sube: tarjetas, hojas, menús.</p>
+      </div>
+      <div class="tarjeta" data-color="#1c1c1d" style="text-align:start">
+        <div style="height:56px;border-radius:var(--card-in);background:var(--ink)"></div>
+        <p class="t-label ink-30" style="margin-top:1rem">El negro que no es negro</p>
+        <p class="t-body is-small ink" style="margin-top:.25rem"><code>--ink</code> · <code>#1c1c1d</code></p>
+        <p class="t-body is-small ink-65" style="margin-top:.5rem">Heredado. El texto, y el pie. Ninguna otra cosa.</p>
+      </div>
+      <div class="tarjeta" data-color="#ff1e00" style="text-align:start">
+        <div style="height:56px;border-radius:var(--card-in);background:var(--accent)"></div>
+        <p class="t-label ink-30" style="margin-top:1rem">El acento</p>
+        <p class="t-body is-small ink" style="margin-top:.25rem"><code>--accent</code> · <code>#ff1e00</code></p>
+        <p class="t-body is-small ink-65" style="margin-top:.5rem">Menos del 5 % de la página. Nunca como letra.</p>
+      </div>
+      <div class="tarjeta" data-color="#59ce8f" style="text-align:start">
+        <div style="height:56px;border-radius:var(--card-in);background:var(--senal)"></div>
+        <p class="t-label ink-30" style="margin-top:1rem">La señal</p>
+        <p class="t-body is-small ink" style="margin-top:.25rem"><code>--senal</code> · <code>#59ce8f</code></p>
+        <p class="t-body is-small ink-65" style="margin-top:.5rem">Lo que sale bien. Relleno o filo, jamás letra.</p>
+      </div>
+      <div class="tarjeta" data-color="#63696b" style="text-align:start">
+        <div style="height:56px;border-radius:var(--card-in);background:var(--gris)"></div>
+        <p class="t-label ink-30" style="margin-top:1rem">El gris</p>
+        <p class="t-body is-small ink" style="margin-top:.25rem"><code>--gris</code> · <code>#63696b</code></p>
+        <p class="t-body is-small ink-65" style="margin-top:.5rem">El anillo del filete, y el texto que acompaña.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap reveal" data-delay=".1" style="margin-top:1rem">
+    <div class="cita">
+      <p class="t-body is-small ink-65">
+        <strong>Seis y ni uno más.</strong> Una superficie es siempre uno de
+        estos colores, pleno: no se fabrica una séptima bajando la opacidad de
+        otra. Un velo de tinta sirve para una letra o para una línea, nunca
+        para un relleno — y ése es el fallo que mete un tono nuevo sin que
+        nadie lo decida.
+      </p>
+      <p class="t-body is-small ink-65" style="margin-top:.75rem">
+        Sobre el acento no hay ningún rótulo pequeño que llegue a los 4,50 que
+        pide la norma: el blanco da <span class="ink">3,73</span> y la tinta
+        <span class="ink">4,41</span>. Las dos suspenden, así que no había una
+        opción correcta sino dos fallos. Se eligió el blanco, y el número queda
+        escrito donde ocurre para que sea una decisión y no un descuido.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═════════════════════════════════════════════════════════════════════════
+     4 · LAS PIEZAS
+     ═════════════════════════════════════════════════════════════════════════ -->
+<section id="piezas" class="sup-raised">
+  <div class="wrap centro">
+    <p class="t-label ink-30 reveal">02 · Las piezas</p>
+    <h2 class="t-title reveal" data-delay=".05" style="margin-top:1rem">
+      Seis botones, y ni uno más<span class="punto">.</span>
+    </h2>
+    <p class="t-body measure ink-65 reveal" data-delay=".1" style="margin-top:1.25rem">
+      El primario es el acento: aquí la tinta no rellena botones. Los dos que
+      no existen en el original entraron por aritmética, no por gusto —esta
+      paleta tiene dos colores más, y cada color que puede rellenar un botón
+      trae el suyo—.
+    </p>
+    <p class="t-body is-small ink-30 reveal" data-delay=".1" style="margin-top:.75rem">
+      Cada uno con su porqué y su medida en
+      <a href="botones.html" style="color:var(--t65)">el catálogo de piezas</a>.
+    </p>
+  </div>
+
+  <div class="wrap reveal" data-delay=".1" style="margin-top:3rem">
+    <div style="display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center;align-items:center">
+      <a class="btn md primary" href="#">Primario</a>
+      <a class="btn md senal" href="#">Señal</a>
+      <a class="btn md quiet" href="#">Callado</a>
+      <a class="btn md edge" href="#">Filete</a>
+      <button class="btn md primary" disabled>Apagado</button>
+    </div>
+
+    <!-- EL OTRO CALLADO, SOBRE SU VECINDAD. No puede enseñarse en esta fila:
+         esta sección es blanca y `.btn.lienzo` es el callado de las secciones
+         de LIENZO. Así que se le pone debajo el suelo que le toca. -->
+    <div style="margin-top:1rem;background:var(--lienzo);border-radius:var(--card);
+                padding:1.5rem;display:flex;gap:.75rem;align-items:center;justify-content:center;flex-wrap:wrap">
+      <a class="btn md lienzo" href="#">El mismo, sobre lienzo</a>
+      <span class="t-body is-small ink-30">← nace del color de su sección y salta al blanco</span>
+    </div>
+
+    <p class="t-body is-small ink-30" style="text-align:center;margin-top:2.5rem">
+      Y las dos piezas que no son botones: el halo y la flecha.
+    </p>
+    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center;align-items:center;margin-top:1rem">
+      <span class="halo"><a class="btn lg primary" href="#">Con halo</a></span>
+      <button class="arrow" type="button" aria-label="Continuar">
+        <span class="pista">
+          <span><svg width="17" height="12" viewBox="0 0 17 12" fill="none" aria-hidden="true">
+            <path d="M1 6h14M10.5 1.5 15 6l-4.5 4.5" stroke="currentColor"
+                  stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span><svg width="17" height="12" viewBox="0 0 17 12" fill="none" aria-hidden="true">
+            <path d="M1 6h14M10.5 1.5 15 6l-4.5 4.5" stroke="currentColor"
+                  stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </span>
+      </button>
+      <button class="arrow tono-acento" type="button" aria-label="Continuar en acento">
+        <span class="pista">
+          <span><svg width="17" height="12" viewBox="0 0 17 12" fill="none" aria-hidden="true">
+            <path d="M1 6h14M10.5 1.5 15 6l-4.5 4.5" stroke="currentColor"
+                  stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span><svg width="17" height="12" viewBox="0 0 17 12" fill="none" aria-hidden="true">
+            <path d="M1 6h14M10.5 1.5 15 6l-4.5 4.5" stroke="currentColor"
+                  stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </span>
+      </button>
+    </div>
+
+    <div class="centro" style="margin-top:2.5rem;max-width:420px">
+      <input class="campo" type="text" placeholder="Un campo en reposo">
+    </div>
+  </div>
+</section>
+
+
+<!-- ═════════════════════════════════════════════════════════════════════════
+     5 · LAS TRES REGLAS
+     ═════════════════════════════════════════════════════════════════════════ -->
+<section class="sup-lienzo">
+  <div class="wrap centro">
+    <p class="t-label ink-30 reveal">03 · Las reglas</p>
+    <h2 class="t-title reveal" data-delay=".05" style="margin-top:1rem">
+      Un borde es un cambio de tono<span class="punto">.</span>
+    </h2>
+  </div>
+
+  <div class="wrap reveal" data-delay=".1" style="margin-top:3.5rem">
+    <div class="tres">
+      <div>
+        <!-- EL ICONO ES UN TRAZO SUELTO, SIN CÁPSULA. Ningún disco debajo: un
+             disco es una superficie dibujada en reposo, y eso lo prohíbe la
+             regla de la tarjeta. Va en `--t30`, que es el peldaño de lo que
+             ordena sin pedir que se lea. -->
+        <span class="icono-col"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 12h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><rect x="3" y="4" width="18" height="6" rx="2" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="14" width="18" height="6" rx="2" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        <p class="t-title" style="font-size:1.5rem;margin-top:1rem">Nada dibuja una línea</p>
+        <p class="t-body ink-65" style="margin-top:.75rem">
+          Si dos zonas necesitan separarse, una de las dos cambia de
+          superficie. Nunca un filete de un píxel.
+        </p>
+        <!-- Y SU HUECO DE FOTO. Conserva proporción, superficie y rótulo, y
+             dice cuánto va a medir. No se quita «hasta que llegue la imagen»:
+             el día que llegue cambiaría la altura de las tres columnas. -->
+        <div class="hueco-foto" style="margin-top:1.25rem;aspect-ratio:4/3">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="8.5" cy="10" r="1.5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="m4 17 5-5 4 4 3-3 4 4" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          <span class="t-label">Aquí va una imagen · 4:3</span>
+        </div>
+      </div>
+      <div>
+        <!-- EL ICONO ES UN TRAZO SUELTO, SIN CÁPSULA. Ningún disco debajo: un
+             disco es una superficie dibujada en reposo, y eso lo prohíbe la
+             regla de la tarjeta. Va en `--t30`, que es el peldaño de lo que
+             ordena sin pedir que se lea. -->
+        <span class="icono-col"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        <p class="t-title" style="font-size:1.5rem;margin-top:1rem">Nada proyecta sombra</p>
+        <p class="t-body ink-65" style="margin-top:.75rem">
+          En reposo, ninguna. Bajo el cursor sí: el halo, el anillo y la raya
+          responden a una mano que ya está.
+        </p>
+        <!-- Y SU HUECO DE FOTO. Conserva proporción, superficie y rótulo, y
+             dice cuánto va a medir. No se quita «hasta que llegue la imagen»:
+             el día que llegue cambiaría la altura de las tres columnas. -->
+        <div class="hueco-foto" style="margin-top:1.25rem;aspect-ratio:4/3">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="8.5" cy="10" r="1.5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="m4 17 5-5 4 4 3-3 4 4" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          <span class="t-label">Aquí va una imagen · 4:3</span>
+        </div>
+      </div>
+      <div>
+        <!-- EL ICONO ES UN TRAZO SUELTO, SIN CÁPSULA. Ningún disco debajo: un
+             disco es una superficie dibujada en reposo, y eso lo prohíbe la
+             regla de la tarjeta. Va en `--t30`, que es el peldaño de lo que
+             ordena sin pedir que se lea. -->
+        <span class="icono-col"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M4 7V5h16v2M12 5v14M9 19h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <p class="t-title" style="font-size:1.5rem;margin-top:1rem">Tres estilos de letra</p>
+        <p class="t-body ink-65" style="margin-top:.75rem">
+          Titular, cuerpo y rótulo. Si una pieza pide un cuarto tamaño, lo que
+          está mal es la pieza, no la letra.
+        </p>
+        <!-- Y SU HUECO DE FOTO. Conserva proporción, superficie y rótulo, y
+             dice cuánto va a medir. No se quita «hasta que llegue la imagen»:
+             el día que llegue cambiaría la altura de las tres columnas. -->
+        <div class="hueco-foto" style="margin-top:1.25rem;aspect-ratio:4/3">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/>
+            <circle cx="8.5" cy="10" r="1.5" stroke="currentColor" stroke-width="1.5"/>
+            <path d="m4 17 5-5 4 4 3-3 4 4" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          <span class="t-label">Aquí va una imagen · 4:3</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap reveal" data-delay=".1" style="margin-top:5rem">
+    <div class="pasos">
+      <div class="paso">
+        <p class="t-title num" style="font-size:1.5rem">01</p>
+        <div>
+          <p class="t-title" style="font-size:1.5rem">Se elige una superficie</p>
+          <p class="t-body ink-65" style="margin-top:.5rem">
+            Lienzo para la página y blanco para lo que sube. No hay una
+            tercera: se turnan, y el pie es la única de tinta.
+          </p>
+        </div>
+      </div>
+      <div class="paso">
+        <p class="t-title num" style="font-size:1.5rem">02</p>
+        <div>
+          <p class="t-title" style="font-size:1.5rem">Se compone con tres clases</p>
+          <p class="t-body ink-65" style="margin-top:.5rem">
+            Y con la escalera de tinta. El suelo de lo que hay que leer es
+            el peldaño del 65 %; por debajo sólo vive lo decorativo.
+          </p>
+        </div>
+      </div>
+      <div class="paso">
+        <p class="t-title num" style="font-size:1.5rem">03</p>
+        <div>
+          <p class="t-title" style="font-size:1.5rem">El color entra al final</p>
+          <p class="t-body ink-65" style="margin-top:.5rem">
+            Y ocupa menos del 5 %. Si una pantalla necesita más acento para
+            entenderse, lo que falla no es el color: es la jerarquía.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═════════════════════════════════════════════════════════════════════════
+     6 · LA HOJA DE TINTA
+     ═════════════════════════════════════════════════════════════════════════ -->
+<section class="corta sup-raised">
+  <div class="wrap reveal">
+    <div class="precio lienzo">
+      <p class="t-label ink-30">04 · La hoja que sube</p>
+      <p class="t-title ink" style="margin-top:1rem">La tinta es para las letras y para el pie<span class="punto">.</span></p>
+      <ul class="t-body ink-65">
+        <li>Ni un botón, ni una sección, ni una tarjeta de tinta.</li>
+        <li>Los colores de marca son el azul, el naranja y el verde.</li>
+        <li>Lo que hace mirarse a esta hoja es que SUBE, no que se oscurezca.</li>
+        <li>El pie es la única superficie oscura, y los cuatro espejos claros
+            existen sólo para él.</li>
+      </ul>
+      <div style="margin-top:2.5rem">
+        <span class="halo"><a class="btn lg primary" href="botones.html">Ver las piezas</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═════════════════════════════════════════════════════════════════════════
+     7 · LAS PREGUNTAS
+     ═════════════════════════════════════════════════════════════════════════ -->
+<section id="preguntas" class="sup-lienzo">
+  <div class="wrap centro">
+    <p class="t-label ink-30 reveal">05 · Las preguntas</p>
+    <h2 class="t-title reveal" data-delay=".05" style="margin-top:1rem">
+      Lo que se pregunta siempre<span class="punto">.</span>
+    </h2>
+  </div>
+
+  <div class="wrap reveal" data-delay=".1" style="margin-top:3rem">
+    <div class="faq">
+
+      <button class="faq-fila" aria-expanded="false">
+        <span class="faq-cab">
+          <span class="faq-num"><span class="t-label">01</span></span>
+          <span class="faq-q t-body">¿Por qué no hay bordes ni sombras?</span>
+          <span class="faq-mas"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M8 1v14M1 8h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </span>
+        <span class="faq-raya"></span>
+      </button>
+      <div class="faq-r"><div>
+        <p class="t-body ink-65">
+          Porque cada uno es una decisión que hay que volver a tomar en cada
+          pieza, y a los veinte sitios ya no coinciden. Un cambio de superficie
+          se decide una vez, en la hoja, y no se puede desajustar.
+        </p>
+      </div></div>
+
+      <button class="faq-fila" aria-expanded="false">
+        <span class="faq-cab">
+          <span class="faq-num"><span class="t-label">02</span></span>
+          <span class="faq-q t-body">¿Y si un botón se pierde contra el fondo?</span>
+          <span class="faq-mas"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M8 1v14M1 8h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </span>
+        <span class="faq-raya"></span>
+      </button>
+      <div class="faq-r"><div>
+        <p class="t-body ink-65">
+          Entonces lleva el relleno equivocado, no le falta un borde. Sobre el
+          lienzo el secundario nace del lienzo y salta al blanco; sobre blanco
+          nace del blanco y salta al lienzo. Un callado casi no se ve en reposo:
+          ése es su trabajo. Puesto al revés, desaparece justo al tocarlo.
+        </p>
+      </div></div>
+
+      <button class="faq-fila" aria-expanded="false">
+        <span class="faq-cab">
+          <span class="faq-num"><span class="t-label">03</span></span>
+          <span class="faq-q t-body">No veo ningún efecto. ¿Está roto?</span>
+          <span class="faq-mas"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M8 1v14M1 8h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span>
+        </span>
+        <span class="faq-raya"></span>
+      </button>
+      <div class="faq-r"><div>
+        <p class="t-body ink-65">
+          Mira la pastilla de abajo a la derecha. La dibuja el guion, así que si
+          no está, el guion no llegó a correr. Y si dice que el movimiento
+          reducido está en «sí», lo apaga el sistema operativo: en Windows es
+          Accesibilidad, Efectos visuales, Efectos de animación. La pastilla
+          ofrece un botón para verlo igualmente.
+        </p>
+      </div></div>
+
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="wrap">
+    <p class="marca">Test Honestidad</p>
+    <p class="t-body is-small claro-45" style="margin-top:1rem;max-width:44ch">
+      Un sistema de diseño portátil. Todas las reglas viven en un solo archivo,
+      y este muestrario existe para poder comprobarlas de un vistazo.
+    </p>
+    <nav>
+      <a href="efectos.html">Los efectos</a>
+      <a href="botones.html">Las piezas</a>
+      <a href="tarjetas.html">Las tarjetas</a>
+      <a href="estados.html">Los estados rotos</a>
+      <a href="login.html">La entrada</a>
+    </nav>
+    <p class="t-body is-small claro-25" style="margin-top:2rem">
+      © <span data-anio>2026</span> · Muestrario interno
+    </p>
+  </div>
+</footer>
+
+<script src="seed.js"></script>
+</body>
+</html>

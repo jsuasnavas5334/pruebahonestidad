@@ -1,0 +1,50 @@
+LAS CINCO FUENTES NO ESTAN EN EL REPOSITORIO, Y ES A PROPOSITO
+==============================================================
+
+Si clonaste esto y la tipografia no se ve como en las capturas, no esta roto:
+faltan los cinco .woff2 de esta carpeta, y faltan por licencia.
+
+QUE FALTA
+  SFProDisplay-Regular.woff2     titulares
+  SFProDisplay-Medium.woff2
+  SFProDisplay-Semibold.woff2
+  SFProText-Regular.woff2        lo que se lee en frases
+  SFProText-Medium.woff2
+
+  544 KB en total. Las carga `seed.css` con @font-face y rutas relativas, en
+  su seccion 1.
+
+POR QUE
+  La licencia de Apple para SF Pro cubre disenar y desarrollar PARA
+  plataformas Apple. Incrustarlas en un sitio comercial publico, o
+  distribuirlas en un repositorio, queda FUERA de ese permiso.
+
+  Esto ya estaba escrito como advertencia en `seed.css` y en `README.md`
+  desde antes de subir nada. Queda asi para que sea una decision y no un
+  descuido.
+
+QUE PASA MIENTRAS NO ESTEN
+  Nada se rompe. El @font-face no encuentra el archivo y el navegador cae a
+  la pila de reserva que la propia hoja declara -`-apple-system`, `system-ui`,
+  `sans-serif`-. La pagina se lee perfecta; cambia la letra.
+
+  Lo que SI cambia son las medidas opticas: los `letter-spacing` negativos de
+  `.t-title` (-.035em, y -.042em en el hero) estan calibrados para SF Pro
+  Display. Con otra letra pueden quedar apretados.
+
+COMO SE ARREGLA, Y SON CINCO LINEAS
+  El recambio libre es INTER, metricamente casi identica y con licencia
+  abierta (SIL OFL). Se descarga de rsms.me/inter o de Google Fonts, se
+  ponen los .woff2 en esta carpeta, y se cambian las cinco declaraciones
+  @font-face del principio de `seed.css` por las de Inter.
+
+  NO se enlaza desde Google Fonts con una etiqueta <link>: este sistema no
+  tiene ni una peticion a un tercero, y esa regla esta escrita y comprobada.
+  Los archivos van aqui, con ruta relativa, como los de ahora.
+
+  Si haces el cambio, actualiza tambien:
+    - la advertencia de licencia de `seed.css` seccion 1
+    - `README.md`
+    - este archivo
+
+  Y pasa el comprobador antes de entregar:  node chismoso.mjs

@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Entrar · Test Honestidad</title>
+<link rel="stylesheet" href="seed.css">
+
+<!--
+  ═══════════════════════════════════════════════════════════════════════════
+  LA ENTRADA — COPIA REPINTADA DE LA PANTALLA DE ORIGEN
+
+  ⚠️  Estructura, comportamiento y textos de apoyo son los del original. Lo
+  único que cambia es la paleta y el rótulo. Si algo difiere y no lleva una
+  medida al lado que lo justifique, es un error.
+
+  Los botones funcionan y pasan de una pantalla a otra, pero no llaman a nada.
+  Es la maqueta, no la puerta.
+
+  ── LO QUE HAY QUE ENTENDER ANTES DE TOCARLA ──────────────────────────────
+
+  NO HAY TARJETA. Ni blanca ni de tinta. `.caja` es sólo un ancho máximo de
+  380 px y texto centrado: lo que se ve es EL LIENZO, limpio, con los
+  elementos flotando encima. Ésa es la pantalla, y ponerle una superficie
+  detrás la convierte en un formulario dentro de una página.
+
+  Lo que separa cada botón del fondo NO es un borde: es LA SUPERFICIE VECINA.
+  La pantalla es de lienzo, así que los botones son blancos; al pasar el cursor
+  saltan al lienzo —el color que tenían debajo— y por eso se nota. Un filete
+  alrededor de cada botón haría lo mismo peor, y rompería la regla que gobierna
+  la hoja entera.
+
+  TRES PUERTAS, Y SE EXCLUYEN A PROPÓSITO. Las dos marcas y el correo caben
+  técnicamente a la vez en 380 px; no caben en la cabeza de quien entra. Por
+  eso son dos caras que se cambian, no una lista de tres.
+
+  LAS DOS CARAS VIVEN EN LA MISMA CELDA de una rejilla, así que la caja mide
+  lo que la más alta y NO ENCOGE al cambiar. Sin eso el rótulo sube y baja, y
+  un desvanecido se lee como otra página.
+
+  Y EL FOCO VIAJA CON LA CARA. Al campo cuando se despliega, al primer botón
+  cuando se vuelve. Sin eso, quien navega con teclado se queda encima de algo
+  que `visibility:hidden` acaba de sacar del recorrido.
+  ═══════════════════════════════════════════════════════════════════════════
+-->
+</head>
+
+<body style="position:relative">
+
+<!-- LA SALIDA. UNA FLECHA Y NADA MÁS. Ver la nota de arriba.
+     El `aria-label` sí lleva las palabras: un lector no ve la flecha. -->
+<div class="volver">
+  <a class="atras" href="index.html" aria-label="Volver al muestrario">
+    <svg width="18" height="18" viewBox="0 0 17 12" fill="none" aria-hidden="true">
+      <path d="M16 6H2M6.5 1.5 2 6l4.5 4.5" stroke="currentColor"
+            stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+</div>
+
+
+<!-- ═════════════════════════════════════════════════════════════════════════
+     PANTALLA 1 · QUIÉN ERES
+     ═════════════════════════════════════════════════════════════════════════ -->
+<main class="pantalla" id="paso-correo">
+  <div class="caja">
+
+    <!-- NI LOGOTIPO NI ICONO: la marca es una palabra, compuesta con las
+         clases del documento. Una imagen aquí obligaría a tener un archivo, y
+         esta pantalla tiene que poder copiarse sola. -->
+    <p class="t-title ink" style="font-size:1.5rem">Test Honestidad</p>
+
+    <p class="t-body ink-65" style="margin-top:1.25rem">
+      Entra y sigue donde lo dejaste.
+    </p>
+
+    <!-- LAS DOS CARAS, EN LA MISMA CELDA DE UNA REJILLA.
+         Las dos ocupan `1/1`, así que la caja mide lo que la más alta y no
+         encoge al cambiar. Es lo que hace que se lea como un desvanecido y
+         no como otra página. -->
+    <div class="caras">
+
+      <!-- ══ CARA 1 · LAS DOS MARCAS ══════════════════════════════════════ -->
+      <div class="cara" id="cara-marcas">
+
+        <!-- GOOGLE — alto 3.5rem, la misma altura que el campo de la otra
+             cara, para que las puertas midan lo mismo.
+
+             EN MONOCROMO, y esto se corrigió el 24 de agosto. Los cuatro
+             tonos de marca de Google son los únicos colores que existirían
+             en todo el sistema fuera de la tinta y el acento. Va en
+             `currentColor`: hereda el tono del botón y se enciende con él,
+             como cualquier otro icono del sitio. La forma basta para
+             reconocer la marca.
+
+             Y dibujada aquí dentro, no traída de google.com. Una petición
+             externa rompe sin internet y además le cuenta a Google quién
+             está mirando el diseño antes de que exista el producto. -->
+        <button class="btn quiet" type="button" id="btn-google"
+                style="height:3.5rem;width:100%;margin-top:3rem;gap:.75rem;font-size:1rem">
+          <svg width="18" height="18" viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">
+            <path d="M45 24c0-1.6-.1-2.7-.4-4H24v7.5h12c-.2 2-1.5 5-4.4 7l6.7 5.2C42.2 36 45 30.6 45 24z"/>
+            <path d="M24 46c5.9 0 10.9-2 14.5-5.3l-6.9-5.4C29.7 36.6 27.1 37.5 24 37.5c-5.7 0-10.6-3.8-12.3-9l-7.1 5.5C8.2 41.2 15.5 46 24 46z"/>
+            <path d="M11.7 28.5c-.5-1.4-.7-2.9-.7-4.5s.3-3.1.7-4.5l-7.1-5.5C3 17.1 2 20.4 2 24s1 6.9 2.6 10z"/>
+            <path d="M24 10.5c3.2 0 6.1 1.1 8.4 3.3l6.2-6.2C34.9 4.1 29.9 2 24 2 15.5 2 8.2 6.8 4.6 14l7.1 5.5c1.7-5.2 6.6-9 12.3-9z"/>
+          </svg>
+          Continuar con Google
+        </button>
+
+        <!-- FACEBOOK, y en monocromo por lo mismo: su azul es #1877F2 y no
+             está en ninguna ficha. Mismo `viewBox` de 48 que el de Google,
+             para que los dos dibujos ocupen lo mismo dentro de botones que
+             miden lo mismo. -->
+        <button class="btn quiet" type="button"
+                style="height:3.5rem;width:100%;margin-top:.75rem;gap:.75rem;font-size:1rem">
+          <svg width="18" height="18" viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">
+            <path d="M48 24C48 10.7 37.3 0 24 0S0 10.7 0 24c0 12 8.8 21.9 20.3 23.7V30.9h-6.1V24h6.1v-5.3c0-6 3.6-9.3 9.1-9.3 2.6 0 5.4.5 5.4.5v5.9h-3c-3 0-3.9 1.9-3.9 3.7V24h6.7l-1.1 6.9h-5.6v16.8C39.2 45.9 48 36 48 24z"/>
+          </svg>
+          Continuar con Facebook
+        </button>
+
+        <!-- EL SEPARADOR — la única línea en reposo del sistema. Va en LAS
+             DOS caras, porque son gemelas. -->
+        <div class="raya">
+          <span></span><span class="t-body is-small ink-30">o</span><span></span>
+        </div>
+
+        <!-- EL GEMELO. Mismo verbo que el de la otra cara, y sin nombrar las
+             marcas: «Google o Facebook» se queda viejo el día que entre una
+             tercera. -->
+        <button type="button" class="enlace-quieto" onclick="mostrarCorreo()">
+          Usar mi correo
+        </button>
+      </div>
+
+      <!-- ══ CARA 2 · EL CORREO ═══════════════════════════════════════════ -->
+      <div class="cara oculta" id="cara-correo">
+
+        <!-- EL CORREO, con la flecha DENTRO del campo. Un campo con su botón
+             debajo son dos objetos; con el botón dentro es uno solo, y se
+             entiende que uno es la salida del otro. -->
+        <form style="position:relative;margin-top:3rem" onsubmit="return irAlCodigo(event)">
+          <input class="campo alto" type="email" inputmode="email" autocomplete="email"
+                 placeholder="tu@correo.com" required
+                 style="padding-inline-end:4rem;text-align:center" id="correo">
+          <button class="arrow" type="submit" aria-label="Continuar"
+                  style="position:absolute;inset-inline-end:6px;top:6px">
+            <span class="pista">
+              <span><svg width="17" height="12" viewBox="0 0 17 12" fill="none" aria-hidden>
+                <path d="M1 6h14M10.5 1.5 15 6l-4.5 4.5" stroke="currentColor"
+                      stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span><svg width="17" height="12" viewBox="0 0 17 12" fill="none" aria-hidden>
+                <path d="M1 6h14M10.5 1.5 15 6l-4.5 4.5" stroke="currentColor"
+                      stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </span>
+          </button>
+        </form>
+
+        <div class="raya">
+          <span></span><span class="t-body is-small ink-30">o</span><span></span>
+        </div>
+
+        <button type="button" class="enlace-quieto" onclick="mostrarMarcas()">
+          Usar mis redes sociales
+        </button>
+      </div>
+    </div>
+
+    <!-- EL AVISO — en tinta, nunca en acento. Aparece y ya está. -->
+    <p class="aviso" style="margin-top:1.5rem;display:none" id="aviso-1">
+      No hemos podido continuar. Si sigue pasando, <a href="mailto:hola@ejemplo.com">escríbenos</a>.
+    </p>
+
+    <!-- LA NOTA DE ESPERA. Sólo existe mientras no se pueda entrar de verdad:
+         el día que haya cuentas nadie está esperando nada y se apaga sola con
+         el estado. Es una cadena que depende de un dato, no de esta pantalla. -->
+    <p class="t-body is-small ink-30" style="margin-top:2.5rem">
+      Esto es una demostración del sistema. No hay cuentas todavía.
+    </p>
+
+  </div>
+</main>
+
+
+<!-- ═════════════════════════════════════════════════════════════════════════
+     PANTALLA 2 · LOS SEIS DÍGITOS
+     ═════════════════════════════════════════════════════════════════════════ -->
+<main class="pantalla" id="paso-codigo" style="display:none">
+  <div class="caja">
+
+    <h1 class="t-title ink">Revisa tu correo</h1>
+    <p class="t-body ink-65" style="margin-top:1rem">
+      Seis dígitos, a <span class="ink" id="eco-correo">tu@correo.com</span>.
+    </p>
+
+    <!-- LAS SEIS CASILLAS
+         El fondo teñido envuelve a las seis: son una sola cosa, no seis
+         campos sueltos. Por eso el relleno va en el contenedor y las casillas
+         son transparentes. -->
+    <!-- SIN RELLENO Y CON ANILLO: un velo de tinta sobre el lienzo daría un
+         segundo celeste, y una superficie es siempre un color pleno. El anillo
+         es el gris del filete. -->
+    <div style="margin-top:3rem;border-radius:999px;box-shadow:inset 0 0 0 1px var(--t65);padding:1rem 1.25rem">
+      <div style="display:flex;align-items:center;justify-content:center" id="casillas">
+        <input class="t-title digito" inputmode="numeric" maxlength="1" aria-label="Dígito 1">
+        <span class="t-title" aria-hidden style="color:var(--t30);opacity:.4">|</span>
+        <input class="t-title digito" inputmode="numeric" maxlength="1" aria-label="Dígito 2">
+        <span class="t-title" aria-hidden style="color:var(--t30);opacity:.4">|</span>
+        <input class="t-title digito" inputmode="numeric" maxlength="1" aria-label="Dígito 3">
+        <span class="t-title" aria-hidden style="color:var(--t30);opacity:.4">|</span>
+        <input class="t-title digito" inputmode="numeric" maxlength="1" aria-label="Dígito 4">
+        <span class="t-title" aria-hidden style="color:var(--t30);opacity:.4">|</span>
+        <input class="t-title digito" inputmode="numeric" maxlength="1" aria-label="Dígito 5">
+        <span class="t-title" aria-hidden style="color:var(--t30);opacity:.4">|</span>
+        <input class="t-title digito" inputmode="numeric" maxlength="1" aria-label="Dígito 6">
+      </div>
+    </div>
+
+    <p class="aviso" style="margin-top:1.5rem;display:none" id="aviso-2">
+      Ese código no coincide. Escríbelo otra vez.
+    </p>
+
+    <!-- LAS DOS SALIDAS — texto, no botones. No son la acción de esta
+         pantalla: la acción es teclear. Un botón aquí competiría con las
+         casillas, que es donde tiene que estar la atención. -->
+    <div style="margin-top:2rem;display:flex;align-items:center;justify-content:center;gap:2rem">
+      <button type="button" class="enlace-quieto" onclick="volverAlCorreo()">Cambiar el correo</button>
+      <button type="button" class="enlace-quieto" id="reenviar">Enviar otro código</button>
+    </div>
+
+  </div>
+</main>
+
+<style>
+  /* Sólo de esta pantalla. En el proyecto real esto vive en el sistema. */
+
+  /* LA SALIDA. Vive en `landing.css` del proyecto y se copia aquí para que
+     esta página se abra con doble clic sin él. */
+  .atras{display:inline-flex;align-items:center;justify-content:center;
+    height:2.75rem;width:2.75rem;border-radius:999px;color:var(--t30);
+    transition:color .3s var(--ease),background-color .3s var(--ease)}
+  /* La flecha es un ICONO, o sea un componente de interfaz: pide 3,0 y el
+     acento de marca da 3,57 sobre el lienzo. Aquí sí va el de marca. */
+  .atras:hover{color:var(--accent)}
+
+  /* LAS DOS CARAS, APILADAS EN LA MISMA CELDA.
+     Las dos ocupan `grid-area:1/1`, así que la rejilla mide lo que la más
+     alta y la caja NO ENCOGE al cambiar de cara. Antes encogía, y como está
+     centrada en la pantalla, el logotipo subía y bajaba: eso se lee como otra
+     página, que es justo lo que este desvanecido evita.
+
+     `visibility:hidden` y no `display:none`: la que está oculta sigue
+     ocupando su celda, que es lo que sostiene el alto común. Y sí saca sus
+     botones del recorrido del teclado, que es lo que `opacity:0` a solas no
+     haría. */
+  .caras{display:grid}
+  .cara{grid-area:1/1;transition:opacity .3s var(--ease),visibility .3s}
+  .cara.oculta{opacity:0;visibility:hidden}
+
+  /* EL SEPARADOR. Los dos filetes son la única línea en reposo del sistema. */
+  .raya{margin:2rem 0;display:flex;align-items:center;gap:1.25rem}
+  .raya > span:first-child,.raya > span:last-child{
+    height:1px;flex:1;background:var(--t30)}
+
+  .digito{width:2.25rem;appearance:none;background:transparent;border:0;
+          text-align:center;color:var(--ink);outline:none;padding:0}
+  .digito::-webkit-outer-spin-button,.digito::-webkit-inner-spin-button{display:none}
+  .enlace-quieto{background:none;border:0;cursor:pointer;padding:0;
+    font-family:"SFProText",-apple-system,system-ui,sans-serif;font-size:.875rem;
+    color:var(--t30);transition:color .3s var(--ease)}
+  /* Esto es TEXTO de 14 px: pide 4,5. El acento de marca da 3,57 y suspende,
+     el gris da 5,39 y pasa. Es el único cambio de color de esta pantalla
+     respecto al original, y es una medida, no un gusto. */
+  .enlace-quieto:hover{color:var(--t100)}
+  .enlace-quieto:disabled{opacity:.4;pointer-events:none}
+</style>
+
+<script src="seed.js"></script>
+<script>
+/* La maqueta, sin servidor. Nada de esto viaja a ningún sitio. */
+
+/* EL CAMBIO DE CARA, Y EL FOCO VIAJA CON ELLA.
+   Sin mover el foco, quien navega con teclado se queda encima de un botón que
+   `visibility:hidden` acaba de sacar del recorrido: el foco cae al documento y
+   el siguiente tabulador empieza otra vez por el principio de la página. */
+function mostrarCorreo(){
+  document.getElementById("cara-marcas").classList.add("oculta");
+  document.getElementById("cara-correo").classList.remove("oculta");
+  document.getElementById("correo").focus();
+}
+function mostrarMarcas(){
+  document.getElementById("cara-correo").classList.add("oculta");
+  document.getElementById("cara-marcas").classList.remove("oculta");
+  document.getElementById("btn-google").focus();
+}
+
+function irAlCodigo(e){
+  e.preventDefault();
+  document.getElementById("eco-correo").textContent =
+    document.getElementById("correo").value || "tu@correo.com";
+  document.getElementById("paso-correo").style.display = "none";
+  document.getElementById("paso-codigo").style.display = "flex";
+  document.querySelector(".digito").focus();
+  return false;
+}
+function volverAlCorreo(){
+  document.getElementById("paso-codigo").style.display = "none";
+  document.getElementById("paso-correo").style.display = "flex";
+}
+
+/* EL SALTO ENTRE CASILLAS
+   Avanza al escribir y retrocede al borrar en una casilla vacía. Sin lo
+   segundo, corregir el tercer dígito obliga a pulsar la casilla con el ratón
+   — que es exactamente el momento en que alguien abandona. */
+const digitos = [...document.querySelectorAll(".digito")];
+digitos.forEach((d, i) => {
+  d.addEventListener("input", () => {
+    d.value = d.value.replace(/\D/g, "").slice(0, 1);
+    if (d.value && digitos[i + 1]) digitos[i + 1].focus();
+  });
+  d.addEventListener("keydown", (e) => {
+    if (e.key === "Backspace" && !d.value && digitos[i - 1]) digitos[i - 1].focus();
+  });
+  /* Pegar el código entero reparte los seis dígitos. Es lo que hace todo el
+     mundo: copiar del correo y pegar. Sin esto, sólo entra el primero. */
+  d.addEventListener("paste", (e) => {
+    const t = (e.clipboardData.getData("text") || "").replace(/\D/g, "").slice(0, 6);
+    if (!t) return;
+    e.preventDefault();
+    [...t].forEach((c, k) => { if (digitos[k]) digitos[k].value = c; });
+    digitos[Math.min(t.length, 5)].focus();
+  });
+});
+
+/* EL BOTÓN DE REENVIAR SE APAGA UN RATO
+   Sin espera, quien no ve llegar el correo pulsa cinco veces en diez
+   segundos, recibe cinco códigos y sólo el último sirve — así que el que
+   teclea es el equivocado. La cuenta atrás no es cortesía, es lo que hace
+   que el código que tiene delante sea el bueno. */
+const boton = document.getElementById("reenviar");
+const textoOriginal = boton.textContent;
+boton.onclick = () => {
+  let quedan = 30;
+  boton.disabled = true;
+  const tic = setInterval(() => {
+    boton.textContent = `Otro código en ${quedan}s`;
+    if (--quedan < 0) { clearInterval(tic); boton.disabled = false; boton.textContent = textoOriginal; }
+  }, 1000);
+};
+</script>
+</body>
+</html>

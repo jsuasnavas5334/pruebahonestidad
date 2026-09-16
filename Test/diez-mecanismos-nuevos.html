@@ -1,0 +1,845 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diez mecanismos nuevos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>html{color-scheme:light dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<style>
+:root{
+  --ground:#E7EAEE; --surface:#F3F5F8; --surface-2:#DBDFE5; --sunken:#CED4DB;
+  --ink:#15181C; --ink-2:#484F58; --ink-3:#79818B; --line:#C3C9D1;
+  --cold:#2B6B8E; --warm:#BE5730; --mid:#8B9199;
+  --ok:#3F7A52; --warn:#9A6B1F;
+  --shadow:0 1px 2px rgba(20,25,32,.08), 0 8px 24px -16px rgba(20,25,32,.35);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#121519; --surface:#191D22; --surface-2:#222831; --sunken:#0C0F12;
+    --ink:#E5E9ED; --ink-2:#A6AEB7; --ink-3:#737B85; --line:#2C333C;
+    --cold:#5FA8CA; --warm:#E0825A; --mid:#79818B;
+    --ok:#68A87C; --warn:#C9A055;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#121519; --surface:#191D22; --surface-2:#222831; --sunken:#0C0F12;
+  --ink:#E5E9ED; --ink-2:#A6AEB7; --ink-3:#737B85; --line:#2C333C;
+  --cold:#5FA8CA; --warm:#E0825A; --mid:#79818B;
+  --ok:#68A87C; --warn:#C9A055;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+}
+*{box-sizing:border-box}
+body{background:var(--ground); color:var(--ink); font-family:"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif; font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased; padding:0 20px 96px}
+.wrap{max-width:1060px; margin:0 auto}
+h1,h2,h3{text-wrap:balance; margin:0}
+.mono{font-family:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace}
+.eyebrow{font-family:"IBM Plex Mono", monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3)}
+p{margin:0}
+a{color:var(--cold)}
+:focus-visible{outline:2px solid var(--cold); outline-offset:3px; border-radius:2px}
+button{font:inherit}
+
+header{padding:64px 0 40px; border-bottom:1px solid var(--line)}
+h1{font-family:"Instrument Serif", Georgia, serif; font-size:clamp(38px,5.6vw,64px); line-height:1.05; letter-spacing:-.01em}
+h1 em{font-style:italic; color:var(--cold)}
+.lede{margin-top:18px; font-size:17px; color:var(--ink-2); max-width:62ch}
+
+section{padding:52px 0; border-bottom:1px solid var(--line)}
+.sec-head{display:flex; flex-direction:column; gap:8px; margin-bottom:28px; max-width:66ch}
+.sec-head h2{font-family:"Instrument Serif",Georgia,serif; font-size:clamp(24px,3vw,34px); line-height:1.12}
+.sec-head p{color:var(--ink-2); font-size:15.5px}
+
+.estaciones{display:flex; flex-direction:column; gap:26px}
+.est{background:var(--surface); border:1px solid var(--line); display:grid; grid-template-columns:minmax(0,1fr) 240px}
+.est-main{padding:24px 26px 28px; display:flex; flex-direction:column; gap:16px; min-width:0}
+.est-tag{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+.est-code{font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.12em; color:var(--surface); background:var(--ink); padding:3px 8px}
+.est-main h3{font-family:"Instrument Serif",Georgia,serif; font-size:25px; line-height:1.15}
+.est-desc{font-size:14.5px; color:var(--ink-2); max-width:62ch}
+.pregunta{font-size:14.5px; color:var(--ink); background:var(--surface-2); padding:11px 14px; border-left:2px solid var(--cold); max-width:62ch}
+.pregunta span{display:block; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); font-family:"IBM Plex Mono",monospace; margin-bottom:4px}
+
+.tele{background:var(--sunken); border-left:1px solid var(--line); padding:20px 18px; display:flex; flex-direction:column; gap:12px; font-family:"IBM Plex Mono",monospace}
+.tele-title{font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3)}
+.tele-main{display:flex; flex-direction:column; gap:2px}
+.tele-val{font-size:30px; line-height:1; font-weight:500; font-variant-numeric:tabular-nums; letter-spacing:-.02em}
+.tele-unit{font-size:10.5px; color:var(--ink-3); letter-spacing:.07em}
+.tele-rows{display:flex; flex-direction:column; gap:6px; border-top:1px solid var(--line); padding-top:10px}
+.tele-row{display:flex; justify-content:space-between; align-items:baseline; gap:8px; font-size:11.5px}
+.tele-row .k{color:var(--ink-3)}
+.tele-row .v{font-variant-numeric:tabular-nums; color:var(--ink-2); font-weight:500; text-align:right}
+.demo{font-size:10.5px; color:var(--warn); letter-spacing:.06em}
+
+/* G: trazo */
+.trazo{border:1px solid var(--line); background:var(--surface-2); height:150px; cursor:crosshair; touch-action:none; position:relative}
+.trazo svg{width:100%; height:100%; display:block}
+.axis-lbl{display:flex; justify-content:space-between; font-size:12px; color:var(--ink-2); margin-top:8px}
+
+/* H: fichas */
+.fichas{display:flex; gap:14px; align-items:flex-end; height:140px}
+.ficha-rail{position:relative; flex:1; height:100%; background:var(--surface-2); border:1px solid var(--line); cursor:ns-resize; touch-action:none}
+.ficha-fill{position:absolute; left:0; right:0; bottom:0; background:color-mix(in srgb, var(--warm) 55%, transparent)}
+.ficha-lbl{position:absolute; bottom:-24px; left:0; right:0; text-align:center; font-size:11.5px; color:var(--ink-2)}
+.ficha-n{position:absolute; top:6px; left:0; right:0; text-align:center; font-family:"IBM Plex Mono",monospace; font-size:13px; color:var(--ink)}
+.fichas-wrap{display:flex; flex-direction:column; gap:30px}
+.pool{font-size:12.5px; color:var(--ink-3); font-family:"IBM Plex Mono",monospace}
+
+/* I: cascada */
+.cascada{position:relative; height:120px}
+.carta{position:absolute; inset:0; background:var(--surface-2); border:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; padding:0 18px; cursor:grab; touch-action:none; user-select:none}
+.carta .lado{font-size:13.5px; color:var(--ink-2); max-width:40%}
+.carta .lado.izq{text-align:left} .carta .lado.der{text-align:right}
+.carta-ctr{font-family:"IBM Plex Mono",monospace; font-size:10.5px; color:var(--ink-3)}
+.cascada-btns{display:flex; justify-content:space-between; margin-top:8px}
+.cascada-btns button{background:transparent; border:1px solid var(--line); color:var(--ink-2); padding:7px 14px; font-size:12px; cursor:pointer}
+.cascada-btns button:hover{border-color:var(--cold); color:var(--ink)}
+.cascada-progress{display:flex; gap:4px; margin-top:8px}
+.cascada-progress span{flex:1; height:3px; background:var(--line)}
+.cascada-progress span.done{background:var(--warm)}
+
+/* J: mapa de calor */
+.pintar{position:relative; height:52px; background:var(--surface-2); border:1px solid var(--line); cursor:crosshair; touch-action:none; user-select:none; overflow:hidden}
+.pintar-band{position:absolute; top:0; bottom:0; background:color-mix(in srgb, var(--cold) 45%, transparent)}
+.pintar-mark{position:absolute; top:0; bottom:0; width:2px; background:var(--ink)}
+
+/* K: arrepentimiento */
+.arrep{position:relative}
+.arrep-bar{position:relative; height:56px; background:var(--surface-2); border:1px solid var(--line); cursor:ew-resize; touch-action:none; user-select:none}
+.arrep-fill{position:absolute; inset:0 auto 0 0; background:color-mix(in srgb, var(--warm) 30%, transparent)}
+.arrep-hand{position:absolute; top:0; bottom:0; width:3px; margin-left:-1.5px; background:var(--ink)}
+.arrep-window{height:4px; background:var(--surface-2); margin-top:8px; overflow:hidden; border:1px solid var(--line)}
+.arrep-window i{display:block; height:100%; width:100%; background:var(--cold); transform-origin:left; transform:scaleX(0)}
+.arrep-actions{display:flex; justify-content:space-between; align-items:center; margin-top:6px}
+.arrep-actions button{background:transparent; border:1px solid var(--line); color:var(--ink-2); padding:6px 12px; font-size:11.5px; cursor:pointer}
+.arrep-status{font-size:12px; color:var(--ink-3); font-family:"IBM Plex Mono",monospace}
+
+/* L: inclinacion */
+.tilt-wrap{display:flex; gap:22px; align-items:center; flex-wrap:wrap}
+.tilt-stage{width:150px; height:150px; border:1px solid var(--line); border-radius:50%; position:relative; background:var(--surface-2); touch-action:none; cursor:grab}
+.tilt-phone{position:absolute; left:50%; top:50%; width:34px; height:64px; margin:-32px 0 0 -17px; background:var(--ink); border-radius:4px; transform:rotate(0deg)}
+.tilt-lbl{font-size:13px; color:var(--ink-2); max-width:30ch}
+.tilt-perm{font-size:11.5px; background:transparent; border:1px solid var(--line); color:var(--ink-2); padding:6px 12px; cursor:pointer}
+
+/* M: nube semantica */
+.nube{position:relative; height:200px; border:1px solid var(--line); background:var(--surface-2); touch-action:none; user-select:none; overflow:hidden}
+.nube-word{position:absolute; font-size:13px; font-family:"IBM Plex Mono",monospace; color:var(--ink-2); transform:translate(-50%,-50%); pointer-events:none; padding:2px 6px}
+.nube-word.near{color:var(--ink); background:var(--surface)}
+.nube-dot{position:absolute; width:16px; height:16px; margin:-8px 0 0 -8px; border-radius:50%; background:var(--warm); border:2px solid var(--surface); box-shadow:0 0 0 1.5px var(--ink); cursor:grab}
+
+/* N: revelado */
+.revelado{position:relative}
+.rev-text{position:relative; min-height:70px; background:var(--surface-2); border:1px solid var(--line); overflow:hidden; padding:14px 16px; font-size:14.5px; color:var(--ink)}
+.rev-curtain{position:absolute; top:0; bottom:0; right:0; background:var(--surface-2); border-left:1px dashed var(--ink-3)}
+.rev-rail{position:relative; height:28px; background:var(--surface-2); border:1px solid var(--line); margin-top:8px; cursor:ew-resize; touch-action:none}
+.rev-hand{position:absolute; top:0; bottom:0; width:3px; margin-left:-1.5px; background:var(--ink)}
+.rev-actions{display:flex; justify-content:space-between; align-items:center; margin-top:8px}
+.rev-actions button{background:var(--ink); color:var(--surface); border:none; padding:9px 16px; font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; cursor:pointer}
+.rev-actions button:hover{background:var(--cold)}
+
+/* O: bimanual */
+.bimanual{display:flex; gap:24px}
+.bim-col{flex:1; display:flex; flex-direction:column; align-items:center; gap:8px}
+.bim-rail{position:relative; width:44px; height:150px; background:var(--surface-2); border:1px solid var(--line); cursor:ns-resize; touch-action:none}
+.bim-fill{position:absolute; left:0; right:0; bottom:0; background:color-mix(in srgb, var(--cold) 45%, transparent)}
+.bim-lbl{font-size:12px; color:var(--ink-2); text-align:center; max-width:16ch}
+
+/* P: reorden */
+.reorden{display:flex; flex-direction:column; gap:2px}
+.reit{background:var(--surface-2); border:1px solid var(--line); padding:12px 14px; font-size:14px; display:flex; align-items:center; gap:10px; cursor:grab; touch-action:none; user-select:none}
+.reit .n{font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--ink-3); width:16px}
+.reit.dragging{opacity:.5}
+.reorden-fix{margin-top:10px; background:transparent; border:1px solid var(--line); color:var(--ink-2); padding:8px 14px; font-size:12px; cursor:pointer}
+
+.reset{background:transparent; color:var(--ink-3); border:1px solid var(--line); padding:8px 14px; cursor:pointer; font-family:"IBM Plex Mono",monospace; font-size:12px}
+.reset:hover{background:transparent; color:var(--ink); border-color:var(--ink-3)}
+.foot{padding-top:36px; display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap}
+.foot p{font-size:12.5px; color:var(--ink-3); font-family:"IBM Plex Mono",monospace; letter-spacing:.04em}
+
+@media (max-width:880px){
+  .est{grid-template-columns:1fr}
+  .tele{border-left:none; border-top:1px solid var(--line)}
+  .tilt-wrap{flex-direction:column; align-items:flex-start}
+  .fichas{height:170px}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none !important; animation:none !important}}
+</style>
+
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Semilla · Extensión · diez mecanismos nuevos</p>
+  <h1>Diez formas más<br>de <em>responder</em></h1>
+  <p class="lede">Continuación del banco de mecanismos. Estos diez no repiten gesto con los seis originales ni con los cinco de la primera tanda: hay trazo libre, presupuesto fijo, swipe en cascada, pintura de zona, confirmación demorada, inclinación, arrastre hacia palabras, revelado progresivo, control con dos manos y reordenamiento. Probálos — la telemetría de cada uno es de demostración hasta que interactuás.</p>
+</header>
+
+<section id="mecanismos">
+  <div class="sec-head">
+    <p class="eyebrow">Estaciones</p>
+    <h2>Diez mecanismos, diez gestos distintos</h2>
+    <p>Cada estación es independiente. El panel de la derecha muestra exactamente lo que quedaría registrado por respuesta.</p>
+  </div>
+
+  <div class="estaciones">
+
+    <!-- G: trazo de conviccion -->
+    <article class="est" data-est="G">
+      <div class="est-main">
+        <div class="est-tag"><span class="est-code">MEC · G</span><span class="eyebrow">Un trazo libre · la forma es el dato</span></div>
+        <h3>Trazo de convicción</h3>
+        <p class="est-desc">Se dibuja un trazo continuo de un lado a otro, sin punto ni manija a la vista. La posición final da la respuesta; la forma del trazo —recto y rápido versus tembloroso y lento— es la firma de certeza.</p>
+        <div class="pregunta"><span>Ítem de muestra</span>Dibujá un trazo de izquierda a derecha según cuánto se aplica: «Acepto instrucciones que no entiendo del todo si vienen de mi jefe.»</div>
+        <div class="trazo" data-trazo tabindex="0" role="img" aria-label="Lienzo de trazo libre">
+          <svg viewBox="0 0 600 150" aria-hidden="true"><polyline data-poly points="" fill="none" stroke="var(--warm)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></polyline></svg>
+        </div>
+        <div class="axis-lbl"><span>Nunca</span><span>Siempre</span></div>
+      </div>
+      <aside class="tele">
+        <p class="tele-title">Telemetría</p>
+        <div class="tele-main"><div class="tele-val" data-out="x">+38</div><div class="tele-unit">POSICIÓN FINAL · −100 a +100</div></div>
+        <div class="tele-rows">
+          <div class="tele-row"><span class="k">longitud / desplaz.</span><span class="v" data-out="ratio">1,8×</span></div>
+          <div class="tele-row"><span class="k">latencia</span><span class="v" data-out="lat">1 020 ms</span></div>
+          <div class="tele-row"><span class="k">duración trazo</span><span class="v" data-out="dur">2 240 ms</span></div>
+          <div class="tele-row"><span class="k">variación de velocidad</span><span class="v" data-out="vv">alta</span></div>
+        </div>
+        <p class="demo" data-demo>◆ valores de demostración</p>
+      </aside>
+    </article>
+
+    <!-- H: fichas -->
+    <article class="est" data-est="H">
+      <div class="est-main">
+        <div class="est-tag"><span class="est-code">MEC · H</span><span class="eyebrow">Un arrastre repetido · presupuesto fijo</span></div>
+        <h3>Reparto de fichas</h3>
+        <p class="est-desc">Diez fichas para repartir entre cuatro motivos. Subir una baja el total disponible para las otras: no hay forma de aprobar los cuatro a la vez.</p>
+        <div class="pregunta"><span>Ítem de muestra</span>La última vez que aceptaste una tarea que sabías mal planteada, ¿qué pesó y cuánto? Repartí 10 fichas.</div>
+        <div class="fichas-wrap">
+          <div class="fichas">
+            <div class="ficha-rail" data-rail="0"><div class="ficha-fill" data-fill style="height:30%"></div><div class="ficha-n" data-n>3</div><div class="ficha-lbl">Evitar el conflicto</div></div>
+            <div class="ficha-rail" data-rail="1"><div class="ficha-fill" data-fill style="height:30%"></div><div class="ficha-n" data-n>3</div><div class="ficha-lbl">Quedar bien</div></div>
+            <div class="ficha-rail" data-rail="2"><div class="ficha-fill" data-fill style="height:20%"></div><div class="ficha-n" data-n>2</div><div class="ficha-lbl">Falta de tiempo</div></div>
+            <div class="ficha-rail" data-rail="3"><div class="ficha-fill" data-fill style="height:20%"></div><div class="ficha-n" data-n>2</div><div class="ficha-lbl">Me convenía</div></div>
+          </div>
+          <p class="pool">Fichas sin repartir: <span data-pool>0</span> / 10</p>
+        </div>
+      </div>
+      <aside class="tele">
+        <p class="tele-title">Telemetría</p>
+        <div class="tele-main"><div class="tele-val" data-out="top">Evitar el conflicto</div><div class="tele-unit">MOTIVO PRINCIPAL</div></div>
+        <div class="tele-rows">
+          <div class="tele-row"><span class="k">distribución</span><span class="v" data-out="dist">3-3-2-2</span></div>
+          <div class="tele-row"><span class="k">latencia</span><span class="v" data-out="lat">1 660 ms</span></div>
+          <div class="tele-row"><span class="k">ajustes totales</span><span class="v" data-out="corr">0</span></div>
+          <div class="tele-row"><span class="k">concentración</span><span class="v" data-out="conc">baja</span></div>
+        </div>
+        <p class="demo" data-demo>◆ valores de demostración</p>
+      </aside>
+    </article>
+
+    <!-- I: cascada -->
+    <article class="est" data-est="I">
+      <div class="est-main">
+        <div class="est-tag"><span class="est-code">MEC · I</span><span class="eyebrow">Tres swipes · elección forzada en cascada</span></div>
+        <h3>Cascada de pares forzados</h3>
+        <p class="est-desc">El mismo dilema, redactado tres veces distinto. Se desliza a izquierda o derecha en cada carta; la posición sale de agregar las tres, la vacilación de cada swipe individual.</p>
+        <div class="pregunta"><span>Ítem de muestra</span>Un compañero se atribuye una idea tuya en una reunión.</div>
+        <div class="cascada" data-cascada>
+          <div class="carta" data-carta="0"><span class="lado izq">Lo aclaro ahí mismo, delante de todos</span><span class="carta-ctr">← / →</span><span class="lado der">Lo hablo después, en privado</span></div>
+        </div>
+        <div class="cascada-btns"><button data-swipe="-1" type="button">◄ Izquierda</button><button data-swipe="1" type="button">Derecha ►</button></div>
+        <div class="cascada-progress"><span data-p="0"></span><span data-p="1"></span><span data-p="2"></span></div>
+      </div>
+      <aside class="tele">
+        <p class="tele-title">Telemetría</p>
+        <div class="tele-main"><div class="tele-val" data-out="x">+22</div><div class="tele-unit">POSICIÓN AGREGADA · −100 a +100</div></div>
+        <div class="tele-rows">
+          <div class="tele-row"><span class="k">patrón</span><span class="v" data-out="pat">D · D · I</span></div>
+          <div class="tele-row"><span class="k">latencia media</span><span class="v" data-out="lat">1 240 ms</span></div>
+          <div class="tele-row"><span class="k">reversos</span><span class="v" data-out="corr">1</span></div>
+          <div class="tele-row"><span class="k">consistencia interna</span><span class="v" data-out="cons">2/3</span></div>
+        </div>
+        <p class="demo" data-demo>◆ valores de demostración</p>
+      </aside>
+    </article>
+
+    <!-- J: mapa de calor -->
+    <article class="est" data-est="J">
+      <div class="est-main">
+        <div class="est-tag"><span class="est-code">MEC · J</span><span class="eyebrow">Un arrastre · se pinta una zona, no un punto</span></div>
+        <h3>Mapa de calor</h3>
+        <p class="est-desc">Se sombrea una franja del espectro, no se marca un punto. El ancho de la franja es la variabilidad que la persona misma declara; el centro, la posición.</p>
+        <div class="pregunta"><span>Ítem de muestra</span>Pintá cuánto de «cumplo lo que prometo» te aplica, en general, no en un momento puntual.</div>
+        <div class="pintar" data-pintar tabindex="0" role="slider" aria-label="Zona pintada" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+          <div class="pintar-band" data-band style="left:40%; width:24%"></div>
+          <div class="pintar-mark" data-mark style="left:52%"></div>
+        </div>
+        <div class="axis-lbl"><span>Casi nunca</span><span>Casi siempre</span></div>
+      </div>
+      <aside class="tele">
+        <p class="tele-title">Telemetría</p>
+        <div class="tele-main"><div class="tele-val" data-out="x">52</div><div class="tele-unit">CENTRO · 0 a 100</div></div>
+        <div class="tele-rows">
+          <div class="tele-row"><span class="k">ancho de zona</span><span class="v" data-out="w">24 pts</span></div>
+          <div class="tele-row"><span class="k">latencia</span><span class="v" data-out="lat">1 480 ms</span></div>
+          <div class="tele-row"><span class="k">rehecho</span><span class="v" data-out="corr">0</span></div>
+          <div class="tele-row"><span class="k">ambivalencia</span><span class="v" data-out="amb">moderada</span></div>
+        </div>
+        <p class="demo" data-demo>◆ valores de demostración</p>
+      </aside>
+    </article>
+
+    <!-- K: arrepentimiento -->
+    <article class="est" data-est="K">
+      <div class="est-main">
+        <div class="est-tag"><span class="est-code">MEC · K</span><span class="eyebrow">Un tap · ventana de 2,5 s para corregir</span></div>
+        <h3>Ventana de arrepentimiento</h3>
+        <p class="est-desc">Se responde rápido, y la respuesta queda abierta un momento antes de fijarse sola. Si la ajustás durante esa ventana, o si la dejás pasar sin tocarla, es el dato: intuición versus deliberación.</p>
+        <div class="pregunta"><span>Ítem de muestra</span>Encontraste un billete en el piso de una oficina que no es tuya.</div>
+        <div class="arrep">
+          <div class="arrep-bar" data-bar tabindex="0" role="slider" aria-label="Respuesta con ventana de corrección" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70">
+            <div class="arrep-fill" data-fill style="width:70%"></div>
+            <div class="arrep-hand" data-hand style="left:70%"></div>
+          </div>
+          <div class="arrep-window"><i data-ring></i></div>
+          <div class="arrep-actions"><span class="arrep-status" data-status>sin responder</span><button data-confirm type="button">Confirmar ya</button></div>
+        </div>
+      </div>
+      <aside class="tele">
+        <p class="tele-title">Telemetría</p>
+        <div class="tele-main"><div class="tele-val" data-out="x">70</div><div class="tele-unit">VALOR FIJADO · 0 a 100</div></div>
+        <div class="tele-rows">
+          <div class="tele-row"><span class="k">latencia 1ª marca</span><span class="v" data-out="lat">640 ms</span></div>
+          <div class="tele-row"><span class="k">ajuste en ventana</span><span class="v" data-out="adj">+3 pts</span></div>
+          <div class="tele-row"><span class="k">cierre</span><span class="v" data-out="close">auto</span></div>
+          <div class="tele-row"><span class="k">tipo</span><span class="v" data-out="tipo">intuitiva</span></div>
+        </div>
+        <p class="demo" data-demo>◆ valores de demostración</p>
+      </aside>
+    </article>
+
+    <!-- L: inclinacion -->
+    <article class="est" data-est="L">
+      <div class="est-main">
+        <div class="est-tag"><span class="est-code">MEC · L</span><span class="eyebrow">Sin tocar la pantalla · se inclina el aparato</span></div>
+        <h3>Inclinación del dispositivo</h3>
+        <p class="est-desc">Se inclina el celular en vez de tocar la pantalla. En este navegador de escritorio se simula arrastrando el círculo; en un celular real puede pedir permiso al giroscopio.</p>
+        <div class="pregunta"><span>Ítem de muestra</span>Inclinalo hacia la izquierda si dirías la verdad igual, hacia la derecha si la matizarías.</div>
+        <div class="tilt-wrap">
+          <div class="tilt-stage" data-tilt tabindex="0" role="slider" aria-label="Inclinación" aria-valuemin="-45" aria-valuemax="45" aria-valuenow="0">
+            <div class="tilt-phone" data-phone></div>
+          </div>
+          <div>
+            <p class="tilt-lbl">Arrastrá el círculo (o inclinás el celular, si el navegador lo permite).</p>
+            <button class="tilt-perm" data-perm type="button">Pedir giroscopio</button>
+          </div>
+        </div>
+      </div>
+      <aside class="tele">
+        <p class="tele-title">Telemetría</p>
+        <div class="tele-main"><div class="tele-val" data-out="x">0°</div><div class="tele-unit">ÁNGULO AL SOLTAR</div></div>
+        <div class="tele-rows">
+          <div class="tele-row"><span class="k">ángulo máximo</span><span class="v" data-out="max">0°</span></div>
+          <div class="tele-row"><span class="k">sobrepaso</span><span class="v" data-out="over">0°</span></div>
+          <div class="tele-row"><span class="k">latencia a 20°</span><span class="v" data-out="lat">—</span></div>
+          <div class="tele-row"><span class="k">fuente</span><span class="v" data-out="src">arrastre</span></div>
+        </div>
+        <p class="demo" data-demo>◆ valores de demostración</p>
+      </aside>
+    </article>
+
+    <!-- M: nube semantica -->
+    <article class="est" data-est="M">
+      <div class="est-main">
+        <div class="est-tag"><span class="est-code">MEC · M</span><span class="eyebrow">Un arrastre · hacia la palabra que resuena</span></div>
+        <h3>Nube semántica</h3>
+        <p class="est-desc">Palabras dispersas al azar. Se arrastra un punto hacia la que más se acerca a lo sentido; el recorrido revela qué otras palabras se rozaron antes de asentarse.</p>
+        <div class="pregunta"><span>Ítem de muestra</span>La última vez que ocultaste algo: ¿qué sentiste al hacerlo?</div>
+        <div class="nube" data-nube tabindex="0" role="application" aria-label="Nube de palabras">
+          <span class="nube-word" data-word="alivio" style="left:18%; top:24%">alivio</span>
+          <span class="nube-word" data-word="vergüenza" style="left:72%; top:20%">vergüenza</span>
+          <span class="nube-word" data-word="nada en particular" style="left:50%; top:50%">nada en particular</span>
+          <span class="nube-word" data-word="miedo" style="left:22%; top:76%">miedo</span>
+          <span class="nube-word" data-word="rabia" style="left:80%; top:70%">rabia</span>
+          <span class="nube-word" data-word="orgullo" style="left:48%; top:14%">orgullo</span>
+          <div class="nube-dot" data-dot style="left:50%; top:50%"></div>
+        </div>
+      </div>
+      <aside class="tele">
+        <p class="tele-title">Telemetría</p>
+        <div class="tele-main"><div class="tele-val" data-out="x">vergüenza</div><div class="tele-unit">PALABRA ELEGIDA</div></div>
+        <div class="tele-rows">
+          <div class="tele-row"><span class="k">segunda más cercana</span><span class="v" data-out="second">rabia</span></div>
+          <div class="tele-row"><span class="k">palabras rozadas</span><span class="v" data-out="touched">2</span></div>
+          <div class="tele-row"><span class="k">latencia</span><span class="v" data-out="lat">2 040 ms</span></div>
+          <div class="tele-row"><span class="k">directo o exploró</span><span class="v" data-out="path">exploró</span></div>
+        </div>
+        <p class="demo" data-demo>◆ valores de demostración</p>
+      </aside>
+    </article>
+
+    <!-- N: revelado -->
+    <article class="est" data-est="N">
+      <div class="est-main">
+        <div class="est-tag"><span class="est-code">MEC · N</span><span class="eyebrow">Se revela de a poco · responder antes de leer todo cuenta</span></div>
+        <h3>Revelado progresivo</h3>
+        <p class="est-desc">El enunciado se descubre arrastrando la cortina. Se puede responder en cualquier punto de la lectura: cuánto pediste ver antes de decidir es parte del dato.</p>
+        <div class="revelado">
+          <div class="rev-text"><span data-fulltext>Tu jefe te pide que le digas a un cliente que el envío está en camino, cuando en realidad todavía ni salió del depósito, porque «total, va a llegar antes de que se dé cuenta».</span><div class="rev-curtain" data-curtain style="left:6%"></div></div>
+          <div class="rev-rail" data-rail tabindex="0" role="slider" aria-label="Revelar y posicionar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div class="rev-hand" data-hand style="left:6%"></div>
+          </div>
+          <div class="rev-actions"><span class="arrep-status" data-status>0% leído</span><button data-commit type="button">Responder ahora</button></div>
+        </div>
+      </div>
+      <aside class="tele">
+        <p class="tele-title">Telemetría</p>
+        <div class="tele-main"><div class="tele-val" data-out="x">—</div><div class="tele-unit">% REVELADO AL RESPONDER</div></div>
+        <div class="tele-rows">
+          <div class="tele-row"><span class="k">latencia a responder</span><span class="v" data-out="lat">—</span></div>
+          <div class="tele-row"><span class="k">posición al soltar</span><span class="v" data-out="pos">—</span></div>
+          <div class="tele-row"><span class="k">leyó todo</span><span class="v" data-out="full">—</span></div>
+        </div>
+        <p class="demo" data-demo>◆ valores de demostración</p>
+      </aside>
+    </article>
+
+    <!-- O: bimanual -->
+    <article class="est" data-est="O">
+      <div class="est-main">
+        <div class="est-tag"><span class="est-code">MEC · O</span><span class="eyebrow">Dos gestos a la vez · dos ejes independientes</span></div>
+        <h3>Control bimanual</h3>
+        <p class="est-desc">Dos ejes que se mueven por separado. En celular, con los dos pulgares a la vez; acá, arrastrá cada riel con el mouse. El desfase entre ambos también se registra.</p>
+        <div class="pregunta"><span>Ítem de muestra</span>Izquierda: qué tan de acuerdo estás. Derecha: qué tan dispuesto a decirlo en público.</div>
+        <div class="bimanual">
+          <div class="bim-col"><div class="bim-rail" data-bim="0"><div class="bim-fill" data-fill style="height:55%"></div></div><span class="bim-lbl">Acuerdo</span></div>
+          <div class="bim-col"><div class="bim-rail" data-bim="1"><div class="bim-fill" data-fill style="height:30%"></div></div><span class="bim-lbl">Lo diría en público</span></div>
+        </div>
+      </div>
+      <aside class="tele">
+        <p class="tele-title">Telemetría</p>
+        <div class="tele-main"><div class="tele-val" data-out="x">55 / 30</div><div class="tele-unit">ACUERDO / PÚBLICO</div></div>
+        <div class="tele-rows">
+          <div class="tele-row"><span class="k">brecha entre ejes</span><span class="v" data-out="gap">25 pts</span></div>
+          <div class="tele-row"><span class="k">desfase temporal</span><span class="v" data-out="lag">no medible</span></div>
+          <div class="tele-row"><span class="k">latencia</span><span class="v" data-out="lat">—</span></div>
+        </div>
+        <p class="demo" data-demo>◆ valores de demostración</p>
+      </aside>
+    </article>
+
+    <!-- P: reorden -->
+    <article class="est" data-est="P">
+      <div class="est-main">
+        <div class="est-tag"><span class="est-code">MEC · P</span><span class="eyebrow">Se arrastra para reordenar · no hay posición, hay orden</span></div>
+        <h3>Reordenamiento por arrastre</h3>
+        <p class="est-desc">Se ordenan las consecuencias de más a menos pesadas. No sale una posición en un continuo sino una jerarquía completa; los cruces antes de soltar son la señal extra.</p>
+        <div class="pregunta"><span>Ítem de muestra</span>Si mintieras y te descubrieran, ¿qué te pesaría más? Ordená de mayor a menor peso.</div>
+        <div class="reorden" data-reorden>
+          <div class="reit" data-item="0"><span class="n">1</span>Perder la confianza del equipo</div>
+          <div class="reit" data-item="1"><span class="n">2</span>Que se entere mi jefe directo</div>
+          <div class="reit" data-item="2"><span class="n">3</span>Sentirme mal conmigo mismo</div>
+          <div class="reit" data-item="3"><span class="n">4</span>Tener que dar explicaciones</div>
+        </div>
+        <button class="reorden-fix" data-fix type="button">Fijar orden</button>
+      </div>
+      <aside class="tele">
+        <p class="tele-title">Telemetría</p>
+        <div class="tele-main"><div class="tele-val" data-out="x">Perder la confianza…</div><div class="tele-unit">MAYOR PESO</div></div>
+        <div class="tele-rows">
+          <div class="tele-row"><span class="k">cruces antes de fijar</span><span class="v" data-out="swaps">0</span></div>
+          <div class="tele-row"><span class="k">tiempo hasta fijar</span><span class="v" data-out="lat">—</span></div>
+          <div class="tele-row"><span class="k">orden final</span><span class="v" data-out="orden">1-2-3-4</span></div>
+        </div>
+        <p class="demo" data-demo>◆ valores de demostración</p>
+      </aside>
+    </article>
+
+  </div>
+  <div style="margin-top:22px"><button class="reset" id="reset" type="button">Reiniciar todas las estaciones</button></div>
+</section>
+
+<section style="border-bottom:none">
+  <div class="sec-head">
+    <p class="eyebrow">Notas</p>
+    <h2>Antes de sumar más mecanismos que ítems</h2>
+    <p>Con estos diez y los seis originales hay dieciséis formas de capturar una respuesta. Cubren casi todo el vocabulario de gestos táctiles disponible: tap, arrastre, mantener presionado, swipe, inclinar, pintar y reordenar. El riesgo ya no es la falta de mecanismos, es la falta de criterio para elegir tres o cuatro y quedarse con ellos el tiempo suficiente para validarlos con datos reales, no con esta telemetría simulada.</p>
+  </div>
+  <div class="foot">
+    <p>Extensión v0 · diez mecanismos · demostración local, sin backend</p>
+    <button class="reset" id="tema" type="button">Cambiar tema</button>
+  </div>
+</section>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var nf = function(n){ return n.toLocaleString('es-CL'); };
+  var ms = function(n){ return nf(Math.round(n)) + ' ms'; };
+  var clamp = function(v,a,b){ return v<a?a:(v>b?b:v); };
+
+  function Est(el){
+    this.el = el; this.t0 = performance.now(); this.first = null;
+    this.demo = el.querySelector('[data-demo]');
+  }
+  Est.prototype.out = function(k, v){ var n = this.el.querySelector('[data-out="'+k+'"]'); if(n) n.textContent = v; };
+  Est.prototype.live = function(){ if(this.demo){ this.demo.remove(); this.demo = null; } };
+  Est.prototype.touch = function(){
+    this.live();
+    if(this.first === null){ this.first = performance.now(); this.out('lat', ms(this.first - this.t0)); }
+  };
+
+  var ests = {};
+  Array.prototype.forEach.call(document.querySelectorAll('.est'), function(el){ ests[el.getAttribute('data-est')] = new Est(el); });
+
+  function drag(node, onMove, onUp, onDown){
+    var active = false;
+    function pt(e){ var r = node.getBoundingClientRect(); return { x: clamp((e.clientX-r.left)/r.width,0,1), y: clamp((e.clientY-r.top)/r.height,0,1), r:r, cx:e.clientX, cy:e.clientY }; }
+    node.addEventListener('pointerdown', function(e){ active = true; node.setPointerCapture(e.pointerId); e.preventDefault(); if(onDown) onDown(pt(e)); onMove(pt(e), true); });
+    node.addEventListener('pointermove', function(e){ if(active) onMove(pt(e), false); });
+    node.addEventListener('pointerup', function(e){ if(!active) return; active = false; if(onUp) onUp(pt(e)); });
+    node.addEventListener('pointercancel', function(){ active = false; });
+  }
+
+  /* G: trazo de conviccion */
+  (function(){
+    var E = ests.G, node = E.el.querySelector('[data-trazo]'), poly = E.el.querySelector('[data-poly]');
+    var pts = [], t0 = null;
+    function toVB(p){ return { x: p.x*600, y: p.y*150 }; }
+    drag(node, function(p, first){
+      E.touch();
+      if(first){ pts = []; t0 = performance.now(); }
+      var v = toVB(p); pts.push({x:v.x, y:v.y, t:performance.now()});
+      poly.setAttribute('points', pts.map(function(q){ return q.x.toFixed(1)+','+q.y.toFixed(1); }).join(' '));
+    }, function(){
+      if(pts.length < 2) return;
+      var len = 0;
+      for(var i=1;i<pts.length;i++){ len += Math.hypot(pts[i].x-pts[i-1].x, pts[i].y-pts[i-1].y); }
+      var net = Math.hypot(pts[pts.length-1].x-pts[0].x, pts[pts.length-1].y-pts[0].y);
+      var ratio = net > 0 ? (len/net) : len;
+      var x = Math.round((pts[pts.length-1].x/600)*200-100);
+      E.out('x', (x>0?'+':(x<0?'−':'')) + Math.abs(x));
+      E.out('ratio', ratio.toFixed(1)+'×');
+      E.out('dur', ms(performance.now()-t0));
+      E.out('vv', ratio > 1.6 ? 'alta' : (ratio > 1.15 ? 'media' : 'baja'));
+    });
+  })();
+
+  /* H: fichas */
+  (function(){
+    var E = ests.H, rails = Array.prototype.slice.call(E.el.querySelectorAll('[data-rail]'));
+    var labels = ['Evitar el conflicto','Quedar bien','Falta de tiempo','Me convenía'];
+    var vals = [3,3,2,2], corr = 0;
+    function render(){
+      var sum = vals.reduce(function(a,b){return a+b;},0);
+      rails.forEach(function(r,i){
+        r.querySelector('[data-fill]').style.height = (vals[i]/10*100)+'%';
+        r.querySelector('[data-n]').textContent = vals[i];
+      });
+      E.el.querySelector('[data-pool]').textContent = 10 - sum;
+      var maxI = 0; for(var i=1;i<4;i++) if(vals[i]>vals[maxI]) maxI = i;
+      E.out('top', labels[maxI]);
+      E.out('dist', vals.join('-'));
+      var sorted = vals.slice().sort(function(a,b){return b-a;});
+      E.out('conc', sorted[0] >= 6 ? 'alta' : (sorted[0] >= 4 ? 'media' : 'baja'));
+    }
+    rails.forEach(function(rail, i){
+      drag(rail, function(p){
+        E.touch();
+        var desired = Math.round((1-p.y)*10);
+        var otherSum = vals.reduce(function(a,b,j){ return j===i ? a : a+b; },0);
+        var nv = clamp(desired, 0, 10 - otherSum);
+        if(nv !== vals[i]){ vals[i] = nv; corr++; E.out('corr', nf(corr)); render(); }
+      });
+    });
+    render();
+  })();
+
+  /* I: cascada de pares */
+  (function(){
+    var E = ests.I, wrap = E.el.querySelector('[data-cascada]'), carta = wrap.querySelector('.carta');
+    var pairs = [
+      {i:'Lo aclaro ahí mismo, delante de todos', d:'Lo hablo después, en privado'},
+      {i:'Prefiero que quede claro para el grupo', d:'Prefiero resolverlo entre los dos'},
+      {i:'Me importa más quedar bien parado ahora', d:'Me importa más no generar tensión'}
+    ];
+    var idx = 0, choices = [], reversals = 0, lastDir = 0, tDown = 0;
+    var progress = wrap.parentElement.querySelectorAll('[data-p]');
+    function paintCarta(){
+      if(idx >= pairs.length) return;
+      carta.querySelector('.lado.izq').textContent = pairs[idx].i;
+      carta.querySelector('.lado.der').textContent = pairs[idx].d;
+      carta.style.transform = 'translateX(0)'; carta.style.opacity = 1;
+    }
+    function choose(dir){
+      E.touch();
+      choices.push(dir);
+      if(lastDir !== 0 && dir !== lastDir){ reversals++; }
+      lastDir = dir;
+      progress[idx].classList.add('done');
+      idx++;
+      if(idx < pairs.length){ paintCarta(); }
+      else {
+        var sum = choices.reduce(function(a,b){return a+b;},0);
+        var x = Math.round(sum/choices.length*33);
+        E.out('x', (x>0?'+':(x<0?'−':'')) + Math.abs(x));
+        E.out('pat', choices.map(function(c){return c>0?'D':'I';}).join(' · '));
+        E.out('corr', nf(reversals));
+        var agree = choices.filter(function(c){return c === (sum>0?1:-1);}).length;
+        E.out('cons', agree+'/'+choices.length);
+        carta.style.opacity = .4;
+        carta.querySelector('.lado.izq').textContent = 'listo';
+        carta.querySelector('.lado.der').textContent = 'listo';
+      }
+    }
+    Array.prototype.forEach.call(wrap.parentElement.querySelectorAll('[data-swipe]'), function(b){
+      b.addEventListener('click', function(){ if(idx < pairs.length) choose(parseInt(b.getAttribute('data-swipe'),10)); });
+    });
+    var startX = null;
+    drag(carta, function(p, first){
+      if(first){ startX = p.cx; tDown = performance.now(); }
+      var dx = p.cx - startX;
+      carta.style.transform = 'translateX('+clamp(dx,-140,140)+'px)';
+    }, function(p){
+      var dx = p.cx - startX;
+      if(Math.abs(dx) > 70 && idx < pairs.length) choose(dx > 0 ? 1 : -1);
+      else carta.style.transform = 'translateX(0)';
+    });
+    paintCarta();
+  })();
+
+  /* J: mapa de calor */
+  (function(){
+    var E = ests.J, node = E.el.querySelector('[data-pintar]'), band = E.el.querySelector('[data-band]'), mark = E.el.querySelector('[data-mark]');
+    var startX = null, edits = 0;
+    drag(node, function(p, first){
+      E.touch();
+      if(first){ startX = p.x; edits++; if(edits>1) E.out('corr', nf(edits-1)); }
+      var a = Math.min(startX, p.x)*100, b = Math.max(startX, p.x)*100;
+      band.style.left = a+'%'; band.style.width = Math.max(b-a,1)+'%';
+      var center = (a+b)/2;
+      mark.style.left = center+'%';
+      E.out('x', nf(Math.round(center)));
+      E.out('w', nf(Math.round(b-a))+' pts');
+      E.out('amb', (b-a) > 30 ? 'alta' : ((b-a) > 12 ? 'moderada' : 'baja'));
+      node.setAttribute('aria-valuenow', Math.round(center));
+    });
+  })();
+
+  /* K: ventana de arrepentimiento */
+  (function(){
+    var E = ests.K, bar = E.el.querySelector('[data-bar]'), fill = E.el.querySelector('[data-fill]'), hand = E.el.querySelector('[data-hand]');
+    var ring = E.el.querySelector('[data-ring]'), status = E.el.querySelector('[data-status]'), btn = E.el.querySelector('[data-confirm]');
+    var DUR = 2500, timer = null, raf = null, firstVal = null, locked = false, windowStart = null;
+    function setVal(v, fromDrag){
+      fill.style.width = v+'%'; hand.style.left = v+'%';
+      bar.setAttribute('aria-valuenow', Math.round(v));
+      E.out('x', nf(Math.round(v)));
+      if(firstVal === null) firstVal = v;
+      if(fromDrag && windowStart !== null){
+        E.out('adj', (v-firstVal >= 0 ? '+' : '−') + Math.abs(Math.round(v-firstVal)) + ' pts');
+      }
+    }
+    function startWindow(){
+      if(locked) return;
+      windowStart = performance.now();
+      status.textContent = 'ventana abierta…';
+      if(raf) cancelAnimationFrame(raf);
+      function tick(){
+        var el = performance.now()-windowStart, t = clamp(el/DUR,0,1);
+        ring.style.transform = 'scaleX('+t+')';
+        if(t < 1 && !locked) raf = requestAnimationFrame(tick);
+        else if(!locked) lock('auto');
+      }
+      raf = requestAnimationFrame(tick);
+    }
+    function lock(how){
+      locked = true; if(raf) cancelAnimationFrame(raf);
+      status.textContent = 'fijada (' + (how==='auto'?'automática':'manual') + ')';
+      E.out('close', how);
+      E.out('tipo', (performance.now()-windowStart) < 600 ? 'deliberada' : 'intuitiva');
+    }
+    drag(bar, function(p){ E.touch(); locked = false; setVal(p.x*100, true); }, function(p){ setVal(p.x*100, true); startWindow(); });
+    btn.addEventListener('click', function(){ if(!locked && windowStart !== null) lock('manual'); });
+  })();
+
+  /* L: inclinacion */
+  (function(){
+    var E = ests.L, stage = E.el.querySelector('[data-tilt]'), phone = E.el.querySelector('[data-phone]');
+    var maxAngle = 0, hit20 = false, t0 = null;
+    function setAngle(deg){
+      deg = clamp(deg,-45,45);
+      phone.style.transform = 'rotate('+deg+'deg)';
+      stage.setAttribute('aria-valuenow', Math.round(deg));
+      E.out('x', Math.round(deg)+'°');
+      if(Math.abs(deg) > Math.abs(maxAngle)) maxAngle = deg;
+      E.out('max', Math.round(maxAngle)+'°');
+      if(!hit20 && Math.abs(deg) >= 20 && t0){ hit20 = true; E.out('lat', ms(performance.now()-t0)); }
+    }
+    drag(stage, function(p, first){
+      E.touch(); if(first){ t0 = performance.now(); maxAngle = 0; hit20 = false; }
+      var r = stage.getBoundingClientRect(); var dx = p.cx - (r.left+r.width/2);
+      setAngle(dx/ (r.width/2) * 45);
+    }, function(){
+      E.out('over', Math.round(Math.abs(maxAngle) - Math.abs(parseFloat(phone.style.transform.replace(/[^-\d.]/g,'')) || 0))+'°');
+    });
+    E.el.querySelector('[data-perm]').addEventListener('click', function(){
+      if(typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function'){
+        DeviceOrientationEvent.requestPermission().then(function(res){
+          if(res === 'granted'){
+            E.out('src', 'giroscopio');
+            window.addEventListener('deviceorientation', function(e){ E.touch(); if(e.gamma !== null) setAngle(e.gamma); });
+          }
+        }).catch(function(){});
+      } else if('DeviceOrientationEvent' in window){
+        E.out('src', 'giroscopio');
+        window.addEventListener('deviceorientation', function(e){ E.touch(); if(e.gamma !== null) setAngle(e.gamma); });
+      } else {
+        E.out('src', 'no disponible');
+      }
+    });
+  })();
+
+  /* M: nube semantica */
+  (function(){
+    var E = ests.M, node = E.el.querySelector('[data-nube]'), dot = E.el.querySelector('[data-dot]');
+    var words = Array.prototype.slice.call(E.el.querySelectorAll('[data-word]'));
+    var touched = {}, t0 = null;
+    function dist(p, w){
+      var r = node.getBoundingClientRect(), wr = w.getBoundingClientRect();
+      var wx = (wr.left+wr.width/2-r.left)/r.width, wy = (wr.top+wr.height/2-r.top)/r.height;
+      return Math.hypot(p.x-wx, p.y-wy);
+    }
+    drag(node, function(p, first){
+      E.touch(); if(first){ touched = {}; t0 = performance.now(); }
+      dot.style.left = (p.x*100)+'%'; dot.style.top = (p.y*100)+'%';
+      var ranked = words.map(function(w){ return {w:w, d:dist(p,w)}; }).sort(function(a,b){return a.d-b.d;});
+      words.forEach(function(w){ w.classList.remove('near'); });
+      ranked[0].w.classList.add('near');
+      ranked.forEach(function(r){ if(r.d < 0.14){ touched[r.w.getAttribute('data-word')] = true; } });
+    }, function(p){
+      var ranked = words.map(function(w){ return {w:w, d:dist(p,w)}; }).sort(function(a,b){return a.d-b.d;});
+      E.out('x', ranked[0].w.getAttribute('data-word'));
+      E.out('second', ranked[1].w.getAttribute('data-word'));
+      var n = Object.keys(touched).length;
+      E.out('touched', nf(Math.max(n-1,0)));
+      E.out('lat', ms(performance.now()-t0));
+      E.out('path', n > 2 ? 'exploró' : 'directo');
+    });
+  })();
+
+  /* N: revelado progresivo */
+  (function(){
+    var E = ests.N, rail = E.el.querySelector('[data-rail]'), hand = E.el.querySelector('[data-hand]'), curtain = E.el.querySelector('[data-curtain]');
+    var status = E.el.querySelector('[data-status]'), btn = E.el.querySelector('[data-commit]');
+    var pct = 6, committed = false, t0 = performance.now();
+    function setPct(v){
+      pct = clamp(v,0,100);
+      hand.style.left = pct+'%'; curtain.style.left = pct+'%';
+      status.textContent = Math.round(pct)+'% leído';
+      rail.setAttribute('aria-valuenow', Math.round(pct));
+    }
+    drag(rail, function(p){ if(committed) return; E.touch(); setPct(p.x*100); });
+    btn.addEventListener('click', function(){
+      if(committed) return; committed = true;
+      E.out('x', Math.round(pct)+'%');
+      E.out('lat', ms(performance.now()-t0));
+      E.out('pos', Math.round(pct)+' / 100');
+      E.out('full', pct >= 95 ? 'sí' : 'no');
+      status.textContent = 'respondió al ' + Math.round(pct) + '%';
+    });
+  })();
+
+  /* O: bimanual */
+  (function(){
+    var E = ests.O, rails = Array.prototype.slice.call(E.el.querySelectorAll('[data-bim]'));
+    var vals = [55,30], lastT = [null,null], lagRecorded = false;
+    function render(){
+      rails.forEach(function(r,i){ r.querySelector('[data-fill]').style.height = vals[i]+'%'; });
+      E.out('x', vals[0]+' / '+vals[1]);
+      E.out('gap', nf(Math.abs(vals[0]-vals[1]))+' pts');
+    }
+    rails.forEach(function(rail, i){
+      drag(rail, function(p){
+        E.touch();
+        vals[i] = Math.round((1-p.y)*100);
+        var now = performance.now();
+        if(E.first === null) E.first = now;
+        lastT[i] = now;
+        if(lastT[0] && lastT[1] && !lagRecorded){
+          E.out('lag', ms(Math.abs(lastT[0]-lastT[1])));
+          lagRecorded = true;
+        }
+        if(!E.el.querySelector('[data-out="lat"]').dataset.set){
+          E.out('lat', ms(now - E.t0));
+          E.el.querySelector('[data-out="lat"]').dataset.set = '1';
+        }
+        render();
+      });
+    });
+    render();
+  })();
+
+  /* P: reordenamiento */
+  (function(){
+    var E = ests.P, wrap = E.el.querySelector('[data-reorden]'), fixBtn = E.el.querySelector('[data-fix]');
+    var order = ['Perder la confianza del equipo','Que se entere mi jefe directo','Sentirme mal conmigo mismo','Tener que dar explicaciones'];
+    var swaps = 0, t0 = performance.now(), fixed = false;
+    function render(){
+      var items = wrap.querySelectorAll('.reit');
+      order.forEach(function(txt, i){ items[i].lastChild.textContent = ''; items[i].childNodes[1] ? items[i].childNodes[1].textContent = txt : null; items[i].querySelector('.n').textContent = i+1; items[i].innerHTML = '<span class="n">'+(i+1)+'</span>'+txt; });
+      E.out('x', order[0].length > 24 ? order[0].slice(0,23)+'…' : order[0]);
+      E.out('orden', order.map(function(_,i){return i+1;}).join('-'));
+    }
+    var dragging = null, fromIdx = null;
+    Array.prototype.forEach.call(wrap.querySelectorAll('.reit'), function(item){
+      item.addEventListener('pointerdown', function(e){
+        if(fixed) return;
+        E.touch();
+        dragging = item; fromIdx = parseInt(item.getAttribute('data-item'),10);
+        item.classList.add('dragging'); item.setPointerCapture(e.pointerId);
+      });
+      item.addEventListener('pointermove', function(e){
+        if(!dragging || fixed) return;
+        var items = Array.prototype.slice.call(wrap.querySelectorAll('.reit'));
+        var overIdx = items.findIndex(function(it){
+          var r = it.getBoundingClientRect(); return e.clientY >= r.top && e.clientY <= r.bottom;
+        });
+        var curIdx = items.indexOf(dragging);
+        if(overIdx > -1 && overIdx !== curIdx){
+          var moved = order.splice(curIdx,1)[0];
+          order.splice(overIdx,0,moved);
+          swaps++;
+          E.out('swaps', nf(swaps));
+          render();
+          Array.prototype.forEach.call(wrap.querySelectorAll('.reit'), function(it,i){ it.setAttribute('data-item', i); });
+        }
+      });
+      item.addEventListener('pointerup', function(){ if(dragging){ dragging.classList.remove('dragging'); dragging = null; } });
+    });
+    fixBtn.addEventListener('click', function(){
+      if(fixed) return; fixed = true;
+      E.out('lat', ms(performance.now()-t0));
+      fixBtn.textContent = 'orden fijado';
+    });
+    render();
+  })();
+
+  document.getElementById('reset').addEventListener('click', function(){ location.reload(); });
+  document.getElementById('tema').addEventListener('click', function(){
+    var r = document.documentElement, cur = r.getAttribute('data-theme');
+    if(!cur){ cur = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'; }
+    r.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+  });
+})();
+</script>
+
+</body>
+</html>

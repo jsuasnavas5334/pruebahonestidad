@@ -20,3 +20,18 @@ recalced/
 # (colaboradores, repositorio público, etc.), déjalo excluido.
 CONFIDENCIAL_Formulas_Calculo_IGI.docx
 _to_delete/
+
+# ── Anadido por Jorge, 13-sep-2026, al subir Seeds_TestH ──────────────────
+# ESTO VA EN .gitignore Y NO EN .git/info/exclude A PROPOSITO: la regla tiene
+# que valer para los dos, no solo para quien la escribio.
+#
+# LAS FUENTES DE APPLE NO SE SUBEN. Su licencia cubre disenar y desarrollar
+# PARA plataformas Apple; un repositorio de GitHub queda fuera. Son 544 KB y
+# el recambio libre es Inter, metricamente casi identica: son las cinco lineas
+# de @font-face al principio de seed.css. Ver Seeds_TestH/fonts/LEEME.txt
+Seeds_TestH/fonts/*.woff2
+
+# EL PNG SIN COMPRIMIR TAMPOCO. 2,8 MB que no enlaza ninguna pagina: esta solo
+# para poder reencuadrar. La que se usa es img/apreton.webp, 108 KB, y esa si
+# se sube.
+Seeds_TestH/img/original/
