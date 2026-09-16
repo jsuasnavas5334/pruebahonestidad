@@ -2,47 +2,265 @@
   "project": "Nuevo Instrumento de Integridad - construccion desde cero",
   "created": "2026-09-06",
   "current_phase": null,
-  "architecture_version": "v4-21-dimensiones-210-reactivos-2026-09-10",
+  "architecture_version": "v4-21-dimensiones-210-reactivos-2026-09-10 + rigor-psicometrico-y-baremos-por-pais-2026-09-11 + reduccion-de-obviedad-pas1-2026-09-11 + cierre-6-huecos-tecnicos-2026-09-15",
   "phases": [
-    {"id": 1, "name": "Arquitectura de dimensiones (v2, 21 dimensiones)", "status": "completed", "completed_at": "2026-09-09T00:00:00", "note": "Fase1_Dimensiones_NuevoInstrumento.docx: 21 dimensiones v2 (5 Base + 7 Adicionales + 9 Contextuales), cada una con fuente teorica citada, definicion operacional 100% original, 4 indicadores conductuales, nota de mini-test independiente y regla de configuracion por puesto. Sin cambios en la revision de reactivos del 2026-09-10 (el numero y nombres de dimensiones no cambiaron)."},
-    {"id": "1B", "name": "Diccionario de traduccion de nombres v1 a v2", "status": "completed", "completed_at": "2026-09-09T00:10:00", "note": "Fase1B_Diccionario_Nombres_v1_a_v2.md: tabla de equivalencia de los 20 nombres v1 a los 21 nombres v2, con notas de division (Sustancias), renombre con ampliacion de alcance (Ludopatia) y cambio de polaridad (Egoismo)."},
-    {"id": 2, "name": "Marco de reactivos y escalas (v4, banco de 210 reactivos)", "status": "completed", "completed_at": "2026-09-10T13:00:00", "note": "Fase2_Marco_Reactivos_Escalas.docx regenerado: 5 tipos de reactivo con distribucion fija de 2 por tipo en cada dimension, escala de opcion variable, reglas de direccionalidad (2 reactivos inversos por dimension, en las 21 dimensiones), diseno de 5 pares espejo obligatorios por dimension (105 en total, ahora tambien en las 9 Contextuales) y los 4 indicadores de validez con reglas de invalidacion que nunca alteran el numero calculado (solo su color de presentacion)."},
-    {"id": 3, "name": "Banco de reactivos parte 1 (Nucleo Base: Robo, Mentira, Fraude, Irresponsabilidad, Soborno)", "status": "completed", "completed_at": "2026-09-10T13:05:00", "note": "Fase3_Banco_Reactivos_Parte1.docx: 50 reactivos originales (R001-R050, 10 por dimension, 5 variantes de redaccion cada uno, formato de 16 campos) para las 5 dimensiones Base, con 5 pares espejo por dimension."},
-    {"id": 4, "name": "Banco de reactivos parte 2 (Nucleo Adicionales: 7 dimensiones)", "status": "completed", "completed_at": "2026-09-10T13:05:00", "note": "Fase4_Banco_Reactivos_Parte2.docx: 70 reactivos originales (R051-R120, 10 por dimension, 5 variantes de redaccion cada uno, formato de 16 campos) para las 7 dimensiones Adicionales, con 5 pares espejo por dimension."},
-    {"id": 5, "name": "Banco de reactivos parte 3 (Factores Contextuales: 9 dimensiones) y consolidado", "status": "completed", "completed_at": "2026-09-10T13:05:00", "note": "Fase5_Banco_Reactivos_Parte3_y_Consolidado.docx: 90 reactivos originales (R121-R210, 10 por dimension, 5 variantes de redaccion cada uno) para las 9 dimensiones Contextuales (ahora con 5 pares espejo por dimension, igual que Nucleo), mas tabla consolidada de los 210 reactivos y tabla de cobertura por grupo (105 pares espejo totales)."},
-    {"id": 6, "name": "Matriz de scoring (v4, 210 reactivos)", "status": "completed", "completed_at": "2026-09-10T13:10:00", "note": "Fase6_Matriz_Scoring.xlsx (hojas Reactivos/Pesos_Dimensiones/Resumen_Dimensiones/Notas, 210 filas generadas desde reactivos_flat.json, formulas en vivo verificadas por recalculo) + Fase6_Modelo_Calculo.docx (formula completa reactivo->dimension->Puntaje de Riesgo Base->IGI reportado = (1-PRB)x100x0.95, multiplicador de nivel de exigencia por puesto, renormalizacion de pesos solo ante bateria reducida por puesto, invalidacion parcial/total que nunca cambia el numero, solo su color)."},
-    {"id": 7, "name": "Ejemplo de calculo paso a paso (v4)", "status": "completed", "completed_at": "2026-09-10T13:15:00", "note": "Fase7_Ejemplo_Calculo.docx reescrito: candidato ficticio 'Persona X' con reactivos reales de la Version 4 (Robo, Acoso Sexual, Ludopatia), deteccion de una contradiccion real en un par espejo, correccion de la orientacion PRB->IGI y correccion del tratamiento de invalidacion (ya no excluye ni renormaliza pesos por invalidacion; solo cambia el color de presentacion), resultado en ambas capas de salida."},
-    {"id": 8, "name": "Marco de normas y plan de recoleccion", "status": "completed", "completed_at": "2026-09-10T17:50:00", "note": "CORREGIDO en la auditoria de coherencia del 2026-09-10 (ver revision_note): pese a que se penso que no dependia de nombres/numero de dimensiones/reactivos, si mencionaba el 'IIC' retirado (punto 19) y el numero de reactivos del banco v1 (80). Corregido: solo IGI, y el ratio casos/reactivo recalculado sobre el banco vigente de 210. Verificado renderizando a PDF."},
-    {"id": 9, "name": "Plan de validacion psicometrica", "status": "completed", "completed_at": "2026-09-10T17:50:00", "note": "CORREGIDO en la auditoria de coherencia del 2026-09-10 (ver revision_note): este documento nunca se habia actualizado desde la version v1 original (20 dimensiones, 80 reactivos = 20x4, agrupadas en '2 familias'), pese a que dos revisiones de constructo ya habian cambiado esa arquitectura. Corregido: 21 dimensiones, 210 reactivos, 10 por dimension, y la estructura factorial descrita ahora refleja el modelo vigente (12 dimensiones Nucleo bajo un factor general IGI + 9 Contextuales independientes que nunca entran al IGI), en las 5 secciones afectadas (Alfa de Cronbach, AFE, AFC, TRI, DIF). Verificado renderizando a PDF."},
-    {"id": 10, "name": "Diseno de producto y modelo de negocio (v4)", "status": "completed", "completed_at": "2026-09-10T13:20:00", "note": "Fase10_Producto_Modelo_Negocio.docx actualizado: flujo B2C viral con capa gratuita fija de 5 dimensiones Base (50 reactivos, ya no bateria completa) y B2B de pago con bateria configurable por puesto (hasta 21 dimensiones/210 reactivos), mismo motor psicometrico, niveles de precio conceptuales sin cifras reales."},
-    {"id": 11, "name": "Documento consolidado final (v4)", "status": "completed", "completed_at": "2026-09-10T13:25:00", "note": "Fase11_Resumen_Ejecutivo_Consolidado.docx regenerado: tabla de estado de las 11 fases bajo v4 (210 reactivos, R-IDs actualizados), texto de resumen (Seccion 1) y bullets (Secciones 3-7) corregidos a 210 reactivos y a la orientacion PRB/IGI sin renormalizacion por invalidacion, checklist de pendientes de datos reales y de decision de George, checklist final antes de piloto. PROYECTO MARCADO COMO COMPLETED bajo la Version 4."}
+    {
+      "id": 1,
+      "name": "Arquitectura de dimensiones (v2, 21 dimensiones)",
+      "status": "completed",
+      "completed_at": "2026-09-09T00:00:00",
+      "note": "Fase1_Dimensiones_NuevoInstrumento.docx: 21 dimensiones v2 (5 Base + 7 Adicionales + 9 Contextuales), cada una con fuente teorica citada, definicion operacional 100% original, 4 indicadores conductuales, nota de mini-test independiente y regla de configuracion por puesto. Sin cambios en la revision de reactivos del 2026-09-10 (el numero y nombres de dimensiones no cambiaron)."
+    },
+    {
+      "id": "1B",
+      "name": "Diccionario de traduccion de nombres v1 a v2",
+      "status": "completed",
+      "completed_at": "2026-09-09T00:10:00",
+      "note": "Fase1B_Diccionario_Nombres_v1_a_v2.md: tabla de equivalencia de los 20 nombres v1 a los 21 nombres v2, con notas de division (Sustancias), renombre con ampliacion de alcance (Ludopatia) y cambio de polaridad (Egoismo)."
+    },
+    {
+      "id": 2,
+      "name": "Marco de reactivos y escalas (v4, banco de 210 reactivos)",
+      "status": "completed",
+      "completed_at": "2026-09-10T13:00:00",
+      "note": "Fase2_Marco_Reactivos_Escalas.docx regenerado: 5 tipos de reactivo con distribucion fija de 2 por tipo en cada dimension, escala de opcion variable, reglas de direccionalidad (2 reactivos inversos por dimension, en las 21 dimensiones), diseno de 5 pares espejo obligatorios por dimension (105 en total, ahora tambien en las 9 Contextuales) y los 4 indicadores de validez con reglas de invalidacion que nunca alteran el numero calculado (solo su color de presentacion)."
+    },
+    {
+      "id": 3,
+      "name": "Banco de reactivos parte 1 (Nucleo Base: Robo, Mentira, Fraude, Irresponsabilidad, Soborno)",
+      "status": "completed",
+      "completed_at": "2026-09-10T13:05:00",
+      "note": "Fase3_Banco_Reactivos_Parte1.docx: 50 reactivos originales (R001-R050, 10 por dimension, 5 variantes de redaccion cada uno, formato de 16 campos) para las 5 dimensiones Base, con 5 pares espejo por dimension. ACTUALIZADO 2026-09-11 (reduccion de obviedad): reescrita la clausula pas1 de Robo, Mentira, Fraude, Irresponsabilidad y Soborno (menos autoincriminatoria, mismo indicador/direccion). Regenerado y validado."
+    },
+    {
+      "id": 4,
+      "name": "Banco de reactivos parte 2 (Nucleo Adicionales: 7 dimensiones)",
+      "status": "completed",
+      "completed_at": "2026-09-10T13:05:00",
+      "note": "Fase4_Banco_Reactivos_Parte2.docx: 70 reactivos originales (R051-R120, 10 por dimension, 5 variantes de redaccion cada uno, formato de 16 campos) para las 7 dimensiones Adicionales, con 5 pares espejo por dimension. ACTUALIZADO 2026-09-11 (reduccion de obviedad): reescrita la clausula pas1 de Deslealtad, Favoritismo, Discriminacion y Asociacion Criminal (menos autoincriminatoria, mismo indicador/direccion). Regenerado y validado."
+    },
+    {
+      "id": 5,
+      "name": "Banco de reactivos parte 3 (Factores Contextuales: 9 dimensiones) y consolidado",
+      "status": "completed",
+      "completed_at": "2026-09-10T13:05:00",
+      "note": "Fase5_Banco_Reactivos_Parte3_y_Consolidado.docx: 90 reactivos originales (R121-R210, 10 por dimension, 5 variantes de redaccion cada uno) para las 9 dimensiones Contextuales (ahora con 5 pares espejo por dimension, igual que Nucleo), mas tabla consolidada de los 210 reactivos y tabla de cobertura por grupo (105 pares espejo totales). ACTUALIZADO 2026-09-11 (reduccion de obviedad): reescrita la clausula pas1 de Incumplimiento de Normas, Violencia y Egoismo (menos autoincriminatoria, mismo indicador/direccion); corregido bug gramatical de 'en el ultimo ano' duplicado en Deudas e Impulsividad. Regenerado (incluye Reactivos_por_Dimension/ y su .zip) y validado."
+    },
+    {
+      "id": 6,
+      "name": "Matriz de scoring (v4, 210 reactivos)",
+      "status": "completed",
+      "completed_at": "2026-09-10T13:10:00",
+      "note": "Fase6_Matriz_Scoring.xlsx (hojas Reactivos/Pesos_Dimensiones/Resumen_Dimensiones/Notas, 210 filas generadas desde reactivos_flat.json, formulas en vivo verificadas por recalculo) + Fase6_Modelo_Calculo.docx (formula completa reactivo->dimension->Puntaje de Riesgo Base->IGI reportado = (1-PRB)x100x0.95, multiplicador de nivel de exigencia por puesto, renormalizacion de pesos solo ante bateria reducida por puesto, invalidacion parcial/total que nunca cambia el numero, solo su color). ACTUALIZADO 2026-09-11 (rigor psicometrico): se agrego la hoja 'SEM_IC' (error estandar de medicion e intervalo de confianza del 95% del IGI, DECISIONS.md punto 32) y la hoja 'Deseabilidad_Social' (5o indicador de validez del protocolo, 8 reactivos, no entra al calculo, DECISIONS.md punto 35) al xlsx; Fase6_Modelo_Calculo.docx gano una nueva Seccion 9 (SEM/IC) y la Seccion de invalidacion paso de 4 a 5 indicadores (11.3). Todas las secciones posteriores se renumeraron (9->10->11->12->13). Verificado renderizando a PDF."
+    },
+    {
+      "id": 7,
+      "name": "Ejemplo de calculo paso a paso (v4)",
+      "status": "completed",
+      "completed_at": "2026-09-10T13:15:00",
+      "note": "Fase7_Ejemplo_Calculo.docx reescrito: candidato ficticio 'Persona X' con reactivos reales de la Version 4 (Robo, Acoso Sexual, Ludopatia), deteccion de una contradiccion real en un par espejo, correccion de la orientacion PRB->IGI y correccion del tratamiento de invalidacion (ya no excluye ni renormaliza pesos por invalidacion; solo cambia el color de presentacion), resultado en ambas capas de salida. ACTUALIZADO 2026-09-11 (rigor psicometrico): se agregaron la Seccion 6 (intervalo de confianza del 95% del IGI de 'Persona X', [PENDIENTE DE DATO PILOTO]) y la Seccion 7 (resultado de 'Persona X' en la Escala de Deseabilidad Social, 3/8 endosados, no llega al umbral de invalidacion), con las secciones de resultado por capa renumeradas a 8 y 9. Verificado renderizando a PDF."
+    },
+    {
+      "id": 8,
+      "name": "Marco de normas y plan de recoleccion",
+      "status": "completed",
+      "completed_at": "2026-09-10T17:50:00",
+      "note": "CORREGIDO en la auditoria de coherencia del 2026-09-10 (ver revision_note): pese a que se penso que no dependia de nombres/numero de dimensiones/reactivos, si mencionaba el 'IIC' retirado (punto 19) y el numero de reactivos del banco v1 (80). Corregido: solo IGI, y el ratio casos/reactivo recalculado sobre el banco vigente de 210. Verificado renderizando a PDF. ACTUALIZADO 2026-09-11 (arquitectura de baremos): el pais de aplicacion paso de variable demografica opcional (Seccion 5.4) a dato tecnico obligatorio de captura automatica; se agrego la nueva Seccion 2.4 (Baremo General + baremos por pais, activacion automatica a >=300 casos, regla de no prestamo entre paises, DECISIONS.md punto 39) y se actualizo la tabla de la Seccion 3 y el cierre de la Seccion 5.4 en consecuencia. Editado via XML (unzip->editar->rezip), validado (0 errores) y verificado renderizando a PDF."
+    },
+    {
+      "id": 9,
+      "name": "Plan de validacion psicometrica",
+      "status": "completed",
+      "completed_at": "2026-09-10T17:50:00",
+      "note": "CORREGIDO en la auditoria de coherencia del 2026-09-10 (ver revision_note): este documento nunca se habia actualizado desde la version v1 original (20 dimensiones, 80 reactivos = 20x4, agrupadas en '2 familias'), pese a que dos revisiones de constructo ya habian cambiado esa arquitectura. Corregido: 21 dimensiones, 210 reactivos, 10 por dimension, y la estructura factorial descrita ahora refleja el modelo vigente (12 dimensiones Nucleo bajo un factor general IGI + 9 Contextuales independientes que nunca entran al IGI), en las 5 secciones afectadas (Alfa de Cronbach, AFE, AFC, TRI, DIF). Verificado renderizando a PDF. ACTUALIZADO 2026-09-11 (rigor psicometrico): se corrigieron referencias residuales a nombres de dimensiones de la version v1 (Apego a la Norma Social, Integridad Transaccional, Conflicto de Interes, etc., ya retirados por el Diccionario v1->v2) y un error de conteo heredado (\"20 factores de primer orden\" en el AFC, debia ser 21). Se agregaron: panel de jueces CVR + cognitive interviewing pre-piloto (Seccion 1), umbrales cuantitativos de retencion/eliminacion de item (Seccion 2, DECISIONS.md punto 33), umbrales de confiabilidad pre-registrados omega/alfa + confiabilidad test-retest (Seccion 3, DECISIONS.md punto 30, a peticion explicita de George de respaldo tecnico ante clientes), AFE/AFC/DIF tambien por pais una vez haya volumen (Seccion 6, DECISIONS.md punto 39), validez convergente/discriminante actualizada con Big Five y la Escala de Deseabilidad Social ya integrada, nueva Seccion 7.3 (validez de grupos conocidos), y nueva Seccion 11 (impacto adverso, regla 4/5, DECISIONS.md punto 34). El documento paso de 11 a 12 secciones. Validado (0 errores) y verificado renderizando a PDF."
+    },
+    {
+      "id": 10,
+      "name": "Diseno de producto y modelo de negocio (v4)",
+      "status": "completed",
+      "completed_at": "2026-09-10T13:20:00",
+      "note": "Fase10_Producto_Modelo_Negocio.docx actualizado: flujo B2C viral con capa gratuita fija de 5 dimensiones Base (50 reactivos, ya no bateria completa) y B2B de pago con bateria configurable por puesto (hasta 21 dimensiones/210 reactivos), mismo motor psicometrico, niveles de precio conceptuales sin cifras reales. ACTUALIZADO 2026-09-11: la Seccion 2.1 aclara que el pais se captura automaticamente (no es parte de las variables demograficas opcionales); la Seccion 3.3 (reporte de riesgo) ahora incluye el intervalo de confianza del IGI, los 5 indicadores de validez, la transparencia de contra que baremo se calculo cada comparacion normativa, y la advertencia de uso responsable explicita (IGI nunca como unico criterio, DECISIONS.md punto 38, Fase 12 Seccion 10). Verificado renderizando a PDF."
+    },
+    {
+      "id": 11,
+      "name": "Documento consolidado final (v4)",
+      "status": "completed",
+      "completed_at": "2026-09-10T13:25:00",
+      "note": "Fase11_Resumen_Ejecutivo_Consolidado.docx regenerado: tabla de estado de las 11 fases bajo v4 (210 reactivos, R-IDs actualizados), texto de resumen (Seccion 1) y bullets (Secciones 3-7) corregidos a 210 reactivos y a la orientacion PRB/IGI sin renormalizacion por invalidacion, checklist de pendientes de datos reales y de decision de George, checklist final antes de piloto. PROYECTO MARCADO COMO COMPLETED bajo la Version 4. ACTUALIZADO 2026-09-11: tabla de estado ampliada a 12 componentes (se agrega la Fase 12), los 4 indicadores de validez pasan a 5 en las descripciones, se agregan pendientes de datos reales (test-retest, baremos por pais, impacto adverso) y de checklist pre-piloto (captura de pais, Escala de Deseabilidad Social, espacio reservado para el IC del IGI) derivados de la revision de rigor psicometrico. Verificado renderizando a PDF."
+    },
+    {
+      "id": 12,
+      "name": "Marco de rigor psicometrico (nuevo, 2026-09-11)",
+      "status": "completed",
+      "completed_at": "2026-09-11T06:00:00",
+      "note": "Fase12_Marco_Rigor_Psicometrico.docx (nuevo documento): a peticion explicita de George de que se adoptara un rol de psicometra profesional, consolida el marco normativo de referencia (AERA/APA/NCME, SIOP, ISO 10667, ITC), el objetivo de confiabilidad (omega/alfa pre-registrados, test-retest), las 4 fuentes de evidencia de validez (contenido/CVR Lawshe, proceso de respuesta/cognitive interviewing, estructura interna, relacion con otras variables/Big Five/grupos conocidos), el SEM e intervalo de confianza del 95% del IGI, los umbrales de analisis de item, el impacto adverso (regla 4/5), la Escala de Deseabilidad Social (5o indicador de validez, 8 reactivos originales), la arquitectura de baremos (Baremo General + baremos por pais), el equating para la futura migracion a TRI, la seguridad del test, y la advertencia de uso responsable. Corresponde a DECISIONS.md puntos 29-39. Validado (0 errores) y verificado renderizando a PDF."
+    }
   ],
   "project_status": "completed",
   "revision_note": "2026-09-10: Segunda revision del proyecto, a peticion de George: expansion del banco de reactivos de 3 a 10 reactivos por dimension (con 5 variantes de redaccion cada uno, antes 4), aplicada a las 21 dimensiones sin excepcion (75->210 reactivos, 300->1050 textos). Se extendieron los pares espejo (antes solo en las 12 Nucleo) a las 9 Contextuales (5 pares espejo por dimension, 105 en total), y se fijo una distribucion de exactamente 2 reactivos de cada uno de los 5 tipos por dimension para evitar sesgo de patron de respuesta. Arquitectura documentada en DECISIONS.md punto 28. Se genero el banco con un metodo de plantillas (contenido autorado una vez por reactivo, envuelto en 5 formulas de encabezado por tipo) para poder escalar a 1050 textos sin perder consistencia de espanol neutro (verificado sin modismos por regex de limite de palabra). Durante la auditoria de consistencia de esta revision se encontraron y corrigieron dos inconsistencias reales heredadas de la revision anterior (build_fase2.js Seccion 5.5 y build_fase7.js seguian describiendo que la invalidacion excluia la dimension del calculo del IGI y renormalizaba pesos, contradiciendo la Decision 23 ya aprobada de que la invalidacion nunca cambia el numero, solo su color) y una inconsistencia de contenido en build_fase10.js (decia que B2C usaba la bateria completa de 75 reactivos, cuando la Decision 14 ya establecia que B2C = solo las 5 dimensiones Base). Todas las fases afectadas (2-7, 10, 11, mas Fase6 xlsx y por-dimension) fueron regeneradas y verificadas (docx renderizados a PDF sin errores, xlsx recalculado sin errores, sin referencias residuales a conteos antiguos salvo en notas de changelog intencionales) antes de subir los archivos de vuelta a la carpeta del proyecto. Ademas se creo un script subir_a_git.sh y un .gitignore (que excluye por defecto CONFIDENCIAL_Formulas_Calculo_IGI.docx) para que George pueda versionar el proyecto el mismo. El proyecto de diseno conceptual de la Version 4 queda COMPLETO. No debe ejecutarse ninguna fase adicional de forma automatica, salvo que George solicite una nueva revision de constructo o de banco de reactivos (en cuyo caso debe documentarse en DECISIONS.md/ASSUMPTIONS.md antes de regenerar fases, siguiendo el mismo patron de esta revision).",
   "revision_note_2": "2026-09-10 (mismo dia, pasada posterior): George pidio una revision general de coherencia de normas en todo lo trabajado. Se audito DECISIONS.md contra si mismo (los puntos 3, 10, 13, 14 y 16-18 seguian mostrando cifras de versiones intermedias ya superadas por el punto 28, sin nota de reemplazo en el propio punto) y se corrigieron con notas de 'superado por el punto 28' en el mismo estilo que ya usaba el punto 1. Ademas se encontro que Fase8_Marco_Normas_Plan_Recoleccion.docx y Fase9_Plan_Validacion.docx, marcados como 'sin cambios' en ambas revisiones bajo el supuesto de que no dependian de nombres/numero de dimensiones o reactivos, en realidad tenian cifras hardcodeadas incorrectas: Fase8 definia el 'IIC' (retirado por el punto 19) como indice vigente; Fase9 nunca se habia actualizado desde la arquitectura v1 original (20 dimensiones, 80 reactivos, agrupadas en '2 familias') en ninguna de las dos revisiones previas. Ambos se corrigieron editando directamente el XML del .docx (unzip -> editar document.xml -> rezip), validados con el validador XSD del skill de docx (0 errores) y verificados renderizando a PDF. Durante esta pasada, el bloqueo temporal fue una caida del servicio de clasificacion de seguridad que aprueba comandos de shell (~20 minutos sin poder ejecutar ningun comando), ajena al proyecto; se le informo a George en el momento y se retomo el trabajo apenas se restablecio, sin perder ningun cambio ya guardado (los cambios en DECISIONS.md, hechos con herramientas de archivo que no dependen de ese servicio, se mantuvieron intactos durante la caida).",
   "log": [
-    {"ts": "2026-09-06T00:00:00", "note": "Plan maestro y decisiones creados. Fases 1-11 pendientes de ejecucion autonoma cada ~1 hora."},
-    {"ts": "2026-09-06T18:38:00", "note": "Fase 1 (v1, obsoleta) completada con las 20 dimensiones originales."},
-    {"ts": "2026-09-06T22:07:00", "note": "Fase 2 (v1, obsoleta) completada."},
-    {"ts": "2026-09-06T22:16:00", "note": "Fase 3 (v1, obsoleta) completada."},
-    {"ts": "2026-09-06T22:20:00", "note": "Fase 4 (v1, obsoleta) completada."},
-    {"ts": "2026-09-06T22:24:00", "note": "Fase 5 (v1, obsoleta) completada."},
-    {"ts": "2026-09-06T22:29:00", "note": "Fase 6 (v1, obsoleta) completada."},
-    {"ts": "2026-09-06T22:33:00", "note": "Fase 7 (v1, obsoleta) completada."},
-    {"ts": "2026-09-06T22:36:00", "note": "Fase 8 completada (sin cambios en v2)."},
-    {"ts": "2026-09-06T22:39:00", "note": "Fase 9 completada (sin cambios en v2)."},
-    {"ts": "2026-09-06T22:42:00", "note": "Fase 10 (v1, obsoleta) completada."},
-    {"ts": "2026-09-06T22:45:00", "note": "Fase 11 (v1, obsoleta) completada. PROYECTO MARCADO COMO COMPLETED bajo v1 (obsoleto tras revision del 2026-09-09)."},
-    {"ts": "2026-09-09T00:00:00", "note": "Revision de constructo a Version 2 (21 dimensiones). DECISIONS.md y PLAN.md actualizados. PROGRESS.json reiniciado. Bloqueo tecnico de sandbox impidio regenerar entregables .docx en ese momento (ver ASSUMPTIONS.md)."},
-    {"ts": "2026-09-09T00:05:00", "note": "Fase 1 regenerada con exito (sandbox del contenedor en la nube funcional; el acceso de shell directo a la carpeta del proyecto en el dispositivo del usuario seguia sin montar, se trabajo generando el archivo en el contenedor y subiendolo de vuelta). Verificado renderizando a PDF antes de subir."},
-    {"ts": "2026-09-09T01:10:00", "note": "Resto del plan ejecutado en la misma sesion, a peticion explicita de George ('sigue con las siguientes fases'): Fase 1B (nueva), Fase 2, Fase 3, Fase 4, Fase 5, Fase 6 (xlsx+docx), Fase 7, Fase 10 y Fase 11, todas regeneradas y verificadas (docx renderizados a PDF, xlsx recalculado sin errores) antes de subirse de vuelta a la carpeta del proyecto. PROYECTO VERSION 2 MARCADO COMO COMPLETED."},
-    {"ts": "2026-09-10T12:00:00", "note": "George solicito expandir el banco de 3 a 10 reactivos por dimension (5 variantes de redaccion, antes 4), en las 21 dimensiones sin excepcion, y confirmo via preguntas guiadas: 5 pares espejo tambien en las 9 Contextuales, y distribucion fija de 2 reactivos por cada uno de los 5 tipos. Se diseno un metodo de plantillas (build_bank_v3.js, content_v3.js) para generar los 210 reactivos x 5 variantes = 1050 textos de forma escalable."},
-    {"ts": "2026-09-10T12:10:00", "note": "Interrupcion del usuario: 'CREA EL ARCHIVO SUBIR AL GIT...'. Se crearon .gitignore y subir_a_git.sh en la carpeta del proyecto y se entregaron al dispositivo del usuario."},
-    {"ts": "2026-09-10T13:00:00", "note": "DECISIONS.md actualizado con el punto 28 (arquitectura completa de la Version 4). Se regeneraron con exito Fase2, Fase3, Fase4, Fase5, Fase6 (xlsx+docx), Fase7, Fase10, Fase11, Reactivos_por_Dimension y CONFIDENCIAL_Formulas_Calculo_IGI, corrigiendo en el camino dos inconsistencias de invalidacion (Fase2 Seccion 5.5, Fase7 completo) y una de composicion de bateria B2C (Fase10) heredadas de la revision anterior."},
-    {"ts": "2026-09-10T13:30:00", "note": "Verificacion completa: banco programaticamente verificado (210 items, 1050 textos, 0 duplicados, distribucion 2x5 correcta en 21/21 dimensiones, 0 modismos por regex de limite de palabra); todos los .docx/.xlsx afectados renderizados a PDF sin errores y sin referencias residuales a conteos antiguos (salvo notas de changelog intencionales); PROGRESS.json actualizado. PROYECTO VERSION 4 MARCADO COMO COMPLETED."},
-    {"ts": "2026-09-10T17:00:00", "note": "George pidio una revision general de coherencia de normas en todo lo trabajado. Auditoria de DECISIONS.md contra si mismo: se encontraron los puntos 3, 10, 13, 14 y 16-18 con cifras de versiones intermedias ya superadas por el punto 28 pero nunca reescritas; corregidos con notas de 'superado por el punto 28', en el mismo estilo que ya usaba el punto 1 para la revision de dimensiones."},
-    {"ts": "2026-09-10T17:20:00", "note": "Auditoria extendida a Fase8 y Fase9 (marcados como 'sin cambios' en ambas revisiones previas bajo el supuesto de que no dependian de dimensiones/reactivos). Se encontro que Fase8 definia el 'IIC' (retirado por el punto 19) como indice vigente, y que Fase9 nunca se habia actualizado desde la arquitectura v1 original (20 dimensiones, 80 reactivos, agrupadas en 2 familias) en ninguna de las dos revisiones de constructo previas -- un supuesto incorrecto que quedo sin detectar hasta esta auditoria."},
-    {"ts": "2026-09-10T17:30:00", "note": "Bloqueo tecnico temporal: el servicio de clasificacion de seguridad que aprueba comandos de shell estuvo caido ~20 minutos (ajeno al proyecto). Se le informo a George de inmediato; ningun cambio se perdio (las ediciones a DECISIONS.md, hechas con herramientas de archivo independientes de ese servicio, se mantuvieron intactas)."},
-    {"ts": "2026-09-10T17:50:00", "note": "Con el servicio restablecido: Fase8 y Fase9 corregidos editando directamente el XML de cada .docx (unzip -> editar document.xml -> rezip), validados con el validador XSD del skill de docx (0 errores en ambos) y verificados renderizando a PDF (sin referencias residuales a IIC, 80 reactivos, 20 dimensiones, 3-4 reactivos o 2 familias). Fase8, Fase9 y DECISIONS.md reentregados a la carpeta del proyecto. Revision de coherencia general COMPLETA."}
-  ]
+    {
+      "ts": "2026-09-06T00:00:00",
+      "note": "Plan maestro y decisiones creados. Fases 1-11 pendientes de ejecucion autonoma cada ~1 hora."
+    },
+    {
+      "ts": "2026-09-06T18:38:00",
+      "note": "Fase 1 (v1, obsoleta) completada con las 20 dimensiones originales."
+    },
+    {
+      "ts": "2026-09-06T22:07:00",
+      "note": "Fase 2 (v1, obsoleta) completada."
+    },
+    {
+      "ts": "2026-09-06T22:16:00",
+      "note": "Fase 3 (v1, obsoleta) completada."
+    },
+    {
+      "ts": "2026-09-06T22:20:00",
+      "note": "Fase 4 (v1, obsoleta) completada."
+    },
+    {
+      "ts": "2026-09-06T22:24:00",
+      "note": "Fase 5 (v1, obsoleta) completada."
+    },
+    {
+      "ts": "2026-09-06T22:29:00",
+      "note": "Fase 6 (v1, obsoleta) completada."
+    },
+    {
+      "ts": "2026-09-06T22:33:00",
+      "note": "Fase 7 (v1, obsoleta) completada."
+    },
+    {
+      "ts": "2026-09-06T22:36:00",
+      "note": "Fase 8 completada (sin cambios en v2)."
+    },
+    {
+      "ts": "2026-09-06T22:39:00",
+      "note": "Fase 9 completada (sin cambios en v2)."
+    },
+    {
+      "ts": "2026-09-06T22:42:00",
+      "note": "Fase 10 (v1, obsoleta) completada."
+    },
+    {
+      "ts": "2026-09-06T22:45:00",
+      "note": "Fase 11 (v1, obsoleta) completada. PROYECTO MARCADO COMO COMPLETED bajo v1 (obsoleto tras revision del 2026-09-09)."
+    },
+    {
+      "ts": "2026-09-09T00:00:00",
+      "note": "Revision de constructo a Version 2 (21 dimensiones). DECISIONS.md y PLAN.md actualizados. PROGRESS.json reiniciado. Bloqueo tecnico de sandbox impidio regenerar entregables .docx en ese momento (ver ASSUMPTIONS.md)."
+    },
+    {
+      "ts": "2026-09-09T00:05:00",
+      "note": "Fase 1 regenerada con exito (sandbox del contenedor en la nube funcional; el acceso de shell directo a la carpeta del proyecto en el dispositivo del usuario seguia sin montar, se trabajo generando el archivo en el contenedor y subiendolo de vuelta). Verificado renderizando a PDF antes de subir."
+    },
+    {
+      "ts": "2026-09-09T01:10:00",
+      "note": "Resto del plan ejecutado en la misma sesion, a peticion explicita de George ('sigue con las siguientes fases'): Fase 1B (nueva), Fase 2, Fase 3, Fase 4, Fase 5, Fase 6 (xlsx+docx), Fase 7, Fase 10 y Fase 11, todas regeneradas y verificadas (docx renderizados a PDF, xlsx recalculado sin errores) antes de subirse de vuelta a la carpeta del proyecto. PROYECTO VERSION 2 MARCADO COMO COMPLETED."
+    },
+    {
+      "ts": "2026-09-10T12:00:00",
+      "note": "George solicito expandir el banco de 3 a 10 reactivos por dimension (5 variantes de redaccion, antes 4), en las 21 dimensiones sin excepcion, y confirmo via preguntas guiadas: 5 pares espejo tambien en las 9 Contextuales, y distribucion fija de 2 reactivos por cada uno de los 5 tipos. Se diseno un metodo de plantillas (build_bank_v3.js, content_v3.js) para generar los 210 reactivos x 5 variantes = 1050 textos de forma escalable."
+    },
+    {
+      "ts": "2026-09-10T12:10:00",
+      "note": "Interrupcion del usuario: 'CREA EL ARCHIVO SUBIR AL GIT...'. Se crearon .gitignore y subir_a_git.sh en la carpeta del proyecto y se entregaron al dispositivo del usuario."
+    },
+    {
+      "ts": "2026-09-10T13:00:00",
+      "note": "DECISIONS.md actualizado con el punto 28 (arquitectura completa de la Version 4). Se regeneraron con exito Fase2, Fase3, Fase4, Fase5, Fase6 (xlsx+docx), Fase7, Fase10, Fase11, Reactivos_por_Dimension y CONFIDENCIAL_Formulas_Calculo_IGI, corrigiendo en el camino dos inconsistencias de invalidacion (Fase2 Seccion 5.5, Fase7 completo) y una de composicion de bateria B2C (Fase10) heredadas de la revision anterior."
+    },
+    {
+      "ts": "2026-09-10T13:30:00",
+      "note": "Verificacion completa: banco programaticamente verificado (210 items, 1050 textos, 0 duplicados, distribucion 2x5 correcta en 21/21 dimensiones, 0 modismos por regex de limite de palabra); todos los .docx/.xlsx afectados renderizados a PDF sin errores y sin referencias residuales a conteos antiguos (salvo notas de changelog intencionales); PROGRESS.json actualizado. PROYECTO VERSION 4 MARCADO COMO COMPLETED."
+    },
+    {
+      "ts": "2026-09-10T17:00:00",
+      "note": "George pidio una revision general de coherencia de normas en todo lo trabajado. Auditoria de DECISIONS.md contra si mismo: se encontraron los puntos 3, 10, 13, 14 y 16-18 con cifras de versiones intermedias ya superadas por el punto 28 pero nunca reescritas; corregidos con notas de 'superado por el punto 28', en el mismo estilo que ya usaba el punto 1 para la revision de dimensiones."
+    },
+    {
+      "ts": "2026-09-10T17:20:00",
+      "note": "Auditoria extendida a Fase8 y Fase9 (marcados como 'sin cambios' en ambas revisiones previas bajo el supuesto de que no dependian de dimensiones/reactivos). Se encontro que Fase8 definia el 'IIC' (retirado por el punto 19) como indice vigente, y que Fase9 nunca se habia actualizado desde la arquitectura v1 original (20 dimensiones, 80 reactivos, agrupadas en 2 familias) en ninguna de las dos revisiones de constructo previas -- un supuesto incorrecto que quedo sin detectar hasta esta auditoria."
+    },
+    {
+      "ts": "2026-09-10T17:30:00",
+      "note": "Bloqueo tecnico temporal: el servicio de clasificacion de seguridad que aprueba comandos de shell estuvo caido ~20 minutos (ajeno al proyecto). Se le informo a George de inmediato; ningun cambio se perdio (las ediciones a DECISIONS.md, hechas con herramientas de archivo independientes de ese servicio, se mantuvieron intactas)."
+    },
+    {
+      "ts": "2026-09-10T17:50:00",
+      "note": "Con el servicio restablecido: Fase8 y Fase9 corregidos editando directamente el XML de cada .docx (unzip -> editar document.xml -> rezip), validados con el validador XSD del skill de docx (0 errores en ambos) y verificados renderizando a PDF (sin referencias residuales a IIC, 80 reactivos, 20 dimensiones, 3-4 reactivos o 2 familias). Fase8, Fase9 y DECISIONS.md reentregados a la carpeta del proyecto. Revision de coherencia general COMPLETA."
+    },
+    {
+      "ts": "2026-09-11T05:30:00",
+      "note": "George pidio adoptar rol de psicometra profesional y aportar criterios tecnicos de validez/confiabilidad al proyecto completo. Se redactaron los puntos 29-38 en DECISIONS.md (marco normativo AERA/APA/NCME/SIOP/ISO 10667/ITC, objetivo de confiabilidad, 4 fuentes de evidencia de validez, SEM/IC, umbrales de item, impacto adverso, Escala de Deseabilidad Social como 5o indicador, equating para TRI, seguridad del test, uso responsable)."
+    },
+    {
+      "ts": "2026-09-11T05:46:00",
+      "note": "Interrupcion del usuario en el mismo turno: exigir arquitectura de baremos de dos niveles (General + por pais), con pais como dato tecnico obligatorio. Documentado como DECISIONS.md punto 39. Se genero la Escala de Deseabilidad Social (8 reactivos originales, build_deseabilidad_social.js) y se creo Fase12_Marco_Rigor_Psicometrico.docx (nuevo)."
+    },
+    {
+      "ts": "2026-09-11T05:50:00",
+      "note": "Fase 8 (Marco de Normas y Plan de Recoleccion) actualizado via XML: pais pasa de variable demografica opcional a dato tecnico obligatorio, nueva Seccion 2.4 de arquitectura de baremos. Validado y verificado renderizando a PDF, entregado al dispositivo del usuario."
+    },
+    {
+      "ts": "2026-09-11T05:57:00",
+      "note": "El usuario reporto de forma independiente: 'siguen solo 4 reactivos por minitest cuando pedi minimo 10'. Se investigo y se confirmo que solo la carpeta Reactivos_por_Dimension/ del dispositivo del usuario (no el .zip, no el resto de documentos) habia quedado desactualizada de una entrega intermedia previa a la expansion a 10 reactivos. Se sobreescribieron los 22 archivos con la version correcta y se informo la causa exacta al usuario."
+    },
+    {
+      "ts": "2026-09-11T06:02:00",
+      "note": "Fase 6 (xlsx + docx) actualizado: hojas SEM_IC y Deseabilidad_Social, nueva Seccion 9 (SEM/IC) y Seccion 11.3 (Deseabilidad Social) en el docx. Fase 7 actualizado con Secciones 6-7 (IC del IGI y resultado de Deseabilidad Social de 'Persona X'). Ambos validados, renderizados y entregados."
+    },
+    {
+      "ts": "2026-09-11T06:10:00",
+      "note": "El usuario pidio explicitamente que se ejecuten Alfa de Cronbach, test-retest y pruebas similares como respaldo tecnico verificable ante clientes. Fase 9 (Plan de Validacion) actualizado extensamente: umbrales de item, umbrales de confiabilidad pre-registrados (omega/alfa) mas confiabilidad test-retest, validez de grupos conocidos (nueva Seccion 7.3), impacto adverso/regla 4/5 (nueva Seccion 11), AFE/AFC/DIF por pais, y correccion de nombres de dimensiones v1 obsoletos que habian quedado sin detectar en las dos auditorias de coherencia previas. Validado, renderizado y entregado."
+    },
+    {
+      "ts": "2026-09-11T06:20:00",
+      "note": "Fase 10 y Fase 11 actualizadas para propagar la advertencia de uso responsable explicita (Fase 10, Seccion 3.3) y el estado de todos los componentes incluida la nueva Fase 12 (Fase 11, tabla de 12 componentes y checklists ampliados). Validadas, renderizadas y entregadas. Revision de rigor psicometrico y arquitectura de baremos COMPLETA."
+    },
+    {
+      "ts": "2026-09-11T07:00:00",
+      "note": "George pidio revisar las 210 preguntas para que ninguna deje ver de forma obvia cual es la mejor respuesta. Se detecto que el reactivo pas1 (Involucramiento pasado, indicador 1) era sistematicamente mas blunt/autoincriminatorio que su contraparte pas2 en 12 de las 21 dimensiones; se reescribio content_v3.js en esas 12 (Robo, Mentira, Fraude, Irresponsabilidad, Soborno, Deslealtad, Favoritismo, Discriminacion, Asociacion Criminal, Incumplimiento de Normas, Violencia, Egoismo), aplicando la misma tecnica de atenuacion ya usada en el resto del banco, sin cambiar indicador ni direccion de puntuacion. De paso se corrigio un bug gramatical real (frase temporal duplicada) en Deudas e Impulsividad. Documentado en DECISIONS.md punto 40."
+    },
+    {
+      "ts": "2026-09-11T07:10:00",
+      "note": "Regenerados reactivos_data.js/variantes_data.js (build_bank_v3.js) y verify_v3.js (210 items, 1050 textos, 0 duplicados, 2x5 correcto en 21/21). Regenerados y validados (XSD, 0 errores) Fase3, Fase4, Fase5 y las 22 archivos + .zip de Reactivos_por_Dimension; verificado en texto renderizado a PDF que las 5 variantes de cada reactivo corregido quedaran gramaticalmente correctas. No fue necesario tocar CONFIDENCIAL ni la hoja Reactivos de Fase6 xlsx (no dependen del texto de la pregunta). Entregado al dispositivo del usuario."
+    },
+    {
+      "ts": "2026-09-11T07:20:00",
+      "note": "George pidio, con rol de psicologo/psicometra, un diagnostico de que le falta al proyecto para operar correctamente. Se genero Diagnostico_Elementos_Faltantes_para_Operar.docx (documento nuevo, no es una fase del PLAN.md): confirma que el diseno psicometrico (Fases 1-12) esta completo, pero identifica que no existe ningun sistema/software real (bot de WhatsApp, web app, base de datos) -el vacio mas grande-, ademas de tres hallazgos nuevos no senalados en ningun documento anterior: restriccion legal de ejercicio profesional por pais (ej. Ley 1090 en Colombia), falta de verificacion de identidad/anti-suplantacion en un test remoto no supervisado, y ausencia de un protocolo de deber de cuidado ante contenido sensible (violencia, sustancias, ludopatia). Organiza todo en un orden de trabajo recomendado. Validado (0 errores) y verificado renderizando a PDF. Entregado al dispositivo del usuario."
+    },
+    {
+      "ts": "2026-09-15T00:00:00",
+      "note": "George aclaro que el diagnostico pedido no era sobre la plataforma/software (ya sabe que esa etapa viene despues), sino sobre si el diseno TECNICO del instrumento (formulas, reglas de validez, algoritmo de armado del test) esta completo como insumo para cuando se construya el software. Se genero Diagnostico_Completitud_Tecnica_Instrumento.docx: confirma que el motor de calculo (reactivo->dimension->PRB->IGI) esta completo y sin contradicciones, pero identifica 6 huecos reales de contenido/especificacion verificados contra el contenido generado: (1) los 3-4 reactivos de control de Azarosidad descritos en Fase 2 nunca se escribieron en el banco real; (2) regla contradictoria entre Fase 6 Seccion 2 (denominador fijo de 10) y Seccion 11 (denominador variable segun respondidos) para reactivos sin responder dentro de una dimension; (3) el algoritmo de entrelazado de reactivos (Fase 10) no especifica una distancia minima entre los dos reactivos de un mismo par espejo; (4) no existe ningun texto narrativo redactado para lo que el reporte debe decir en cada uno de los 6 niveles; (5) los arquetipos B2C tienen el mecanismo definido pero no el contenido real (nombres/descripciones/tabla de activacion), ya senalado en Fase 11 como pendiente de George; (6) la hoja Niveles_Corte de Fase6_Matriz_Scoring.xlsx quedo en blanco pese a que el propio texto ya sugiere usar sextiles provisionales. Se incluye tambien un hallazgo menor (7): falta un ejemplo numerico de la renormalizacion de pesos por bateria reducida. Documento validado (0 errores), verificado renderizando a PDF, entregado al dispositivo del usuario."
+    },
+    {
+      "ts": "2026-09-15T01:30:00",
+      "note": "2026-09-15: Se cerraron los 6 (7) huecos tecnicos reales identificados en Diagnostico_Completitud_Tecnica_Instrumento.docx (DECISIONS.md punto 41): (1) 4 reactivos de control de Azarosidad redactados y cerrados (azarosidad_control_data.json + Fase 2 Seccion 5.1bis + hoja Azarosidad_Control en el xlsx); (2) regla unica de denominador (promedio sobre reactivos efectivamente respondidos) en Fase 6 Seccion 2, resuelve la contradiccion con la Seccion 11; (3) regla de distancia minima (8 posiciones) entre los 2 reactivos de un mismo par espejo + algoritmo de armado de secuencia en Fase 10 Seccion 2.2; (4) 6x2 textos interpretativos por nivel (IGI general, B2C y B2B) en la nueva Fase 10 Seccion 6, con plantilla para dimensiones individuales; (5) propuesta borrador de 11 arquetipos B2C (4 familias tematicas x combinacion) en la nueva Fase 10 Seccion 7, pendiente de confirmacion de George; (6) hoja Niveles_Corte del xlsx completada con sextiles provisionales marcados [PROVISIONAL]; (7) ejemplo numerico de re-parametrizacion de pesos agregado a Fase 6 Seccion 5. Documentos regenerados y validados (XSD, 0 errores): Fase2_Marco_Reactivos_Escalas.docx, Fase6_Modelo_Calculo.docx, Fase10_Producto_Modelo_Negocio.docx, Fase6_Matriz_Scoring.xlsx. No se toco el banco sustantivo de 210 reactivos."
+    },
+    {
+      "ts": "2026-09-15T03:00:00",
+      "note": "2026-09-15 (turno posterior): George senalo que la escala de 5 niveles resulta confusa para nivel operativo y pidio explorar reactivos de opciones concretas (referencia: capturas de otra prueba), mas apoyo visual de iconos/color. Tras 4 rondas de precision (AskUserQuestion), decision final (DECISIONS.md punto 42): la escala de 5 niveles se mantiene sin cambios (se le agrega icono/color, no se reemplaza); se agregan 2 reactivos NUEVOS de opciones concretas por dimension (banco crece, no convierte), mediante un mecanismo de slots duales (op1/op2/perc1, pool de 13 candidatos por dimension, 10 seleccionados al azar por aplicacion, preservando intactos pares espejo/formulas/pesos). Se autoraron 63 reactivos alternativos 100% originales (21 dimensiones x 3, 315 textos con variantes), documentados en reactivos_alternativos_data.json (build_alternates.js + content_alternates_v1.js) y en la nueva Fase 2 Seccion 9 (con ejemplo trabajado de la Dimension Deudas y tabla resumen de las 21 dimensiones); Fase 10 Seccion 2.2 se amplio con la nota de resolucion de slots duales antes del armado de secuencia. Durante el trabajo, George comparto una extraccion extensa de un banco de reactivos de un instrumento comercial de terceros pidiendo tomarlo de referencia; aplicando la politica ya vigente del proyecto contra reproducir/parafrasear contenido de terceros, ese texto NO se uso como fuente, solo como inspiracion de formato para 3 ideas nuevas aprobadas por George: controles de atencion por trivia obvia (CTRL05-CTRL06, azarosidad_control_data.json, ahora con 6 controles de 2 mecanismos y regla de cantidad 2/4/6 por bateria) y un bloque de bio-data de 6 reactivos transversales sin puntaje (BIO01-BIO06, biodata_data.json). Documentos regenerados y validados (XSD, 0 errores): Fase2_Marco_Reactivos_Escalas.docx (Secciones 5.1/5.1bis actualizadas + Seccion 9 nueva), Fase10_Producto_Modelo_Negocio.docx (Seccion 2.2 ampliada), Fase6_Matriz_Scoring.xlsx (hoja Azarosidad_Control actualizada con CTRL05-06 y columna de mecanismo). No se toco el banco sustantivo de 210 reactivos ni content_v3.js/build_bank_v3.js/build_reactivos.js."
+    },
+    {
+      "ts": "2026-09-16T00:00:00",
+      "note": "2026-09-16: George preguntó si ya hay suficiente evidencia tecnica o falta algo. Auditoria contra Fase 9 (plan de validacion) encontro un hueco real generado por el punto 42 (reactivos alternativos de opciones concretas): el plan no exigia verificar la equivalencia entre la version clasica y la version de opciones concretas de un mismo slot dual (op1/op1_alt, op2/op2_alt, perc1/perc1_alt), solo entre las 5 variantes de redaccion de una misma version. Se agrego un nuevo punto [HIPOTESIS, pendiente de piloto] a la Seccion 2 de Fase9_Plan_Validacion.docx exigiendo esa comparacion (indice de endoso y discriminacion) con datos del piloto, documentado en DECISIONS.md. Documento regenerado (patch con python-docx, no existe build script fuente para Fase 8/9 en este entorno) y validado (XSD, 0 errores). El resto de lo que falta para pasar de diseno completo a evidencia real no cambio: sigue pendiente el software (no existe), el panel de jueces CVR, las entrevistas cognitivas, el piloto real y la revision legal por pais, ya documentados en Diagnostico_Elementos_Faltantes_para_Operar.docx."
+    },
+    {
+      "ts": "2026-09-16T02:00:00",
+      "note": "2026-09-16 (turno posterior): George subio un segundo conjunto de 12 documentos de arquitectura de producto/software (Documento Maestro Final, Documento Maestro V2 [historico], Blueprint Funcional, Matriz RACI y Roadmap, Backlog Maestro, Plan de Construccion MVP, Arquitectura Tecnica, Arquitectura de Datos, Especificacion del Motor de Evaluacion y Scoring, PRD Funcional, y 2 sets de Wireframes Conceptuales) pidiendo revisarlos, ajustarlos contra todo el respaldo ya creado, y guardarlos en la carpeta del proyecto. Se repartio la revision entre 7 sub-agentes en paralelo (cada uno con el resumen completo de hechos autoritativos de DECISIONS.md: formula IGI/PRB con multiplicador de puesto y tope 95%, 21 dimensiones, banco real de 210+63+8+6+6 reactivos ya cerrado, 6 niveles, 5 indicadores de validez, SEM/IC95%, baremos General+pais con pais obligatorio, terminologia IGI/PRB/Puntaje_dimension), editando cada documento en sitio (Markdown) para corregir contradicciones y marcando ambiguedades genuinas como [PENDIENTE DE CONFIRMACION DE GEORGE]. Detalle completo de hallazgos y correcciones en DECISIONS.md punto 43. Los 12 documentos ajustados se entregaron a George y se guardaron en la subcarpeta nueva Arquitectura_Producto_Software/ dentro de Proyecto_Nuevo_Instrumento/. No se toco ningun archivo de Fase 1-12 ni los generadores del banco de reactivos."
+    },
+    {
+      "ts": "2026-09-16T02:30:00",
+      "note": "2026-09-16 (cierre del turno): George respondio (AskUserQuestion) la pregunta abierta dejada en DECISIONS.md punto 43: confirmo RETIRAR el concepto de \"nivel de exigencia 1-6 por dimension\" (mencionado, sin coordinacion entre si, en Documento_Maestro_V2, Blueprint_Funcional y el wireframe E06 del dashboard empresarial), en favor del mecanismo unico ya vigente (nivel de puesto 1-6 + personal a cargo, DECISIONS.md punto 27). Se actualizaron los 3 documentos: Documento_Maestro_V2 Seccion 8 marcada RETIRADO (se conserva por trazabilidad, documento ya superado por el Maestro Final); Blueprint_Funcional Secciones 62-63 rediseñadas en torno a nivel de puesto + personal a cargo; Wireframe E06 (Dashboard Empresarial) rediseñada con los 2 campos vigentes en vez del dial de exigencia por dimension. Reentregados a George y reescritos en Arquitectura_Producto_Software/. No queda ningun PENDIENTE DE CONFIRMACION DE GEORGE relacionado con este punto."
+    }
+  ],
+  "revision_note_3": "2026-09-11: Tercera revision del proyecto. George pidio explicitamente que se adoptara el rol de un psicometra profesional y se aportaran criterios tecnicos de validez y confiabilidad (DECISIONS.md puntos 29-38), y en el mismo turno amplio el pedido para exigir una arquitectura de normas de dos niveles: un Baremo General/Global desde el inicio del piloto, mas baremos especificos por pais que se activan automaticamente conforme cada pais acumula su propia data, identificando siempre el pais de origen de cada respuesta (DECISIONS.md punto 39). Se diseno y genero una Escala de Deseabilidad Social original de 8 reactivos (5o indicador de validez del protocolo, no entra al IGI ni a ninguna dimension) y se creo la Fase 12 (Marco de Rigor Psicometrico) como documento nuevo. Se propago todo lo anterior a Fase 6 (xlsx + docx: hojas SEM_IC y Deseabilidad_Social, nueva Seccion 9), Fase 7 (ejemplo con IC y resultado de Deseabilidad Social), Fase 8 (pais como dato tecnico obligatorio + nueva Seccion 2.4 de arquitectura de baremos), Fase 9 (umbrales de item, confiabilidad test-retest -a peticion explicita adicional de George de contar con respaldo tecnico verificable ante clientes-, validez de grupos conocidos, impacto adverso, AFE/AFC/DIF por pais, y correccion de nombres de dimensiones obsoletos heredados de la version v1 que habian quedado sin detectar en las dos revisiones de coherencia anteriores), Fase 10 (advertencia de uso responsable explicita en el reporte B2B) y Fase 11 (tabla de estado y checklists actualizados a 12 componentes). Durante esta revision, George reporto de forma independiente un hallazgo real: la carpeta Reactivos_por_Dimension/ en su escritorio (21 archivos .docx individuales, uno por dimension, mas indice) habia quedado desactualizada de una entrega intermedia (2026-09-10 02:57, previa a la expansion a 10 reactivos por dimension) y nunca se habia vuelto a sobreescribir en la entrega final de las 12:44 del mismo dia -a diferencia del .zip de esa misma carpeta, que si estaba correcto-, por lo que George vio, por ejemplo, solo 4 reactivos en 01_Robo.docx y solo 3 en 21_Impunidad.docx (el mismo caso que el originalmente motivo la expansion a 10). Se verifico la causa exacta comparando tamanos/fechas del dispositivo contra el .zip correcto, y se sobreescribieron los 22 archivos de esa carpeta con la version vigente de 210 reactivos (10 por dimension). Ningun otro documento del proyecto tenia esta inconsistencia. Todos los documentos afectados fueron validados con el validador XSD del skill de docx (0 errores) y verificados renderizando a PDF antes de reentregarse a la carpeta del proyecto del usuario.",
+  "revision_note_4": "2026-09-11 (mismo dia, turno posterior a la revision de rigor psicometrico): George pidio revisar cada una de las 210 preguntas para que ninguna deje ver de forma obvia cual es la mejor respuesta, mantenendo la claridad de la pregunta. Se comparo sistematicamente, dimension por dimension, el reactivo pas1 (tipo 3-Involucramiento pasado, indicador 1) contra su contraparte pas2 (mismo tipo, indicador 3): pas2 ya usaba desde su diseno original alguna tecnica de reduccion de transparencia (racionalizacion interna o encuadre de testigo), mientras que pas1 en 12 de las 21 dimensiones usaba lenguaje maximalmente autoincriminatorio (\"sin autorizacion\", \"deliberadamente... sabiendo que lo estabas haciendo\", \"con la intencion de perjudicar\", \"de forma indebida\"). Se reescribieron esas 12 clausulas en content_v3.js (Robo, Mentira, Fraude, Irresponsabilidad, Soborno, Deslealtad, Favoritismo, Discriminacion, Asociacion Criminal, Incumplimiento de Normas, Violencia, Egoismo), quitando la palabra/frase que declaraba la intencionalidad/ilegitimidad de forma explicita y, cuando aplico, envolviendo la conducta en un matiz atenuante ya usado en otras partes del propio banco -sin cambiar el indicador conductual objetivo, la direccion de puntuacion ni el ajuste gramatical a la plantilla fija del tipo 3-. Las 9 dimensiones restantes (incluidas Deudas e Impulsividad) no mostraban ese patron y se dejaron sin cambio de obviedad. Colateralmente, al verificar la redaccion final se encontro y corrigio un bug gramatical real en Deudas e Impulsividad: su clausula pas1 repetia la frase temporal 'en el ultimo ano', duplicando la que ya aporta la plantilla del tipo 3. Documentado en DECISIONS.md punto 40. Se regeneraron reactivos_data.js/variantes_data.js/pares_espejo_v3.json (build_bank_v3.js) y se verifico con verify_v3.js (210 items, 1050 textos, 0 duplicados, distribucion 2x5 correcta en 21/21 dimensiones). Se regeneraron y validaron (XSD, 0 errores) Fase3_Banco_Reactivos_Parte1.docx, Fase4_Banco_Reactivos_Parte2.docx, Fase5_Banco_Reactivos_Parte3_y_Consolidado.docx, y los 22 archivos + .zip de Reactivos_por_Dimension/, verificando en texto renderizado a PDF que las 5 variantes de redaccion de cada reactivo corregido (incluidos Deudas e Impulsividad) quedaran gramaticalmente correctas. No fue necesario regenerar CONFIDENCIAL_Formulas_Calculo_IGI.docx ni la hoja Reactivos de Fase 6 xlsx ni reactivos_flat.json, porque ninguno de los campos que usan (id, dimension, grupo, subdimension/indicador, tipo, valor maximo, direccion, contraste) cambio -solo cambio el texto de la pregunta, que esos archivos no muestran-. Bloqueo tecnico temporal: el servicio de clasificacion de seguridad de Bash volvio a estar temporalmente no disponible durante aproximadamente 10-12 minutos (mismo tipo de interrupcion de infraestructura ya documentada en la revision anterior); se le informo a George de inmediato y se programo un recordatorio automatico para reintentar en vez de dejar la tarea bloqueada; el trabajo se completo sin perdida en cuanto el servicio se restablecio.",
+  "revision_note_5": "2026-09-15: Se cerraron los 6 (7) huecos tecnicos reales identificados en Diagnostico_Completitud_Tecnica_Instrumento.docx (DECISIONS.md punto 41): (1) 4 reactivos de control de Azarosidad redactados y cerrados (azarosidad_control_data.json + Fase 2 Seccion 5.1bis + hoja Azarosidad_Control en el xlsx); (2) regla unica de denominador (promedio sobre reactivos efectivamente respondidos) en Fase 6 Seccion 2, resuelve la contradiccion con la Seccion 11; (3) regla de distancia minima (8 posiciones) entre los 2 reactivos de un mismo par espejo + algoritmo de armado de secuencia en Fase 10 Seccion 2.2; (4) 6x2 textos interpretativos por nivel (IGI general, B2C y B2B) en la nueva Fase 10 Seccion 6, con plantilla para dimensiones individuales; (5) propuesta borrador de 11 arquetipos B2C (4 familias tematicas x combinacion) en la nueva Fase 10 Seccion 7, pendiente de confirmacion de George; (6) hoja Niveles_Corte del xlsx completada con sextiles provisionales marcados [PROVISIONAL]; (7) ejemplo numerico de re-parametrizacion de pesos agregado a Fase 6 Seccion 5. Documentos regenerados y validados (XSD, 0 errores): Fase2_Marco_Reactivos_Escalas.docx, Fase6_Modelo_Calculo.docx, Fase10_Producto_Modelo_Negocio.docx, Fase6_Matriz_Scoring.xlsx. No se toco el banco sustantivo de 210 reactivos.",
+  "revision_note_6": "2026-09-15 (turno posterior): George senalo que la escala de 5 niveles resulta confusa para nivel operativo y pidio explorar reactivos de opciones concretas (referencia: capturas de otra prueba), mas apoyo visual de iconos/color. Tras 4 rondas de precision (AskUserQuestion), decision final (DECISIONS.md punto 42): la escala de 5 niveles se mantiene sin cambios (se le agrega icono/color, no se reemplaza); se agregan 2 reactivos NUEVOS de opciones concretas por dimension (banco crece, no convierte), mediante un mecanismo de slots duales (op1/op2/perc1, pool de 13 candidatos por dimension, 10 seleccionados al azar por aplicacion, preservando intactos pares espejo/formulas/pesos). Se autoraron 63 reactivos alternativos 100% originales (21 dimensiones x 3, 315 textos con variantes), documentados en reactivos_alternativos_data.json (build_alternates.js + content_alternates_v1.js) y en la nueva Fase 2 Seccion 9 (con ejemplo trabajado de la Dimension Deudas y tabla resumen de las 21 dimensiones); Fase 10 Seccion 2.2 se amplio con la nota de resolucion de slots duales antes del armado de secuencia. Durante el trabajo, George comparto una extraccion extensa de un banco de reactivos de un instrumento comercial de terceros pidiendo tomarlo de referencia; aplicando la politica ya vigente del proyecto contra reproducir/parafrasear contenido de terceros, ese texto NO se uso como fuente, solo como inspiracion de formato para 3 ideas nuevas aprobadas por George: controles de atencion por trivia obvia (CTRL05-CTRL06, azarosidad_control_data.json, ahora con 6 controles de 2 mecanismos y regla de cantidad 2/4/6 por bateria) y un bloque de bio-data de 6 reactivos transversales sin puntaje (BIO01-BIO06, biodata_data.json). Documentos regenerados y validados (XSD, 0 errores): Fase2_Marco_Reactivos_Escalas.docx (Secciones 5.1/5.1bis actualizadas + Seccion 9 nueva), Fase10_Producto_Modelo_Negocio.docx (Seccion 2.2 ampliada), Fase6_Matriz_Scoring.xlsx (hoja Azarosidad_Control actualizada con CTRL05-06 y columna de mecanismo). No se toco el banco sustantivo de 210 reactivos ni content_v3.js/build_bank_v3.js/build_reactivos.js.",
+  "revision_note_7": "2026-09-16: George preguntó si ya hay suficiente evidencia tecnica o falta algo. Auditoria contra Fase 9 (plan de validacion) encontro un hueco real generado por el punto 42 (reactivos alternativos de opciones concretas): el plan no exigia verificar la equivalencia entre la version clasica y la version de opciones concretas de un mismo slot dual (op1/op1_alt, op2/op2_alt, perc1/perc1_alt), solo entre las 5 variantes de redaccion de una misma version. Se agrego un nuevo punto [HIPOTESIS, pendiente de piloto] a la Seccion 2 de Fase9_Plan_Validacion.docx exigiendo esa comparacion (indice de endoso y discriminacion) con datos del piloto, documentado en DECISIONS.md. Documento regenerado (patch con python-docx, no existe build script fuente para Fase 8/9 en este entorno) y validado (XSD, 0 errores). El resto de lo que falta para pasar de diseno completo a evidencia real no cambio: sigue pendiente el software (no existe), el panel de jueces CVR, las entrevistas cognitivas, el piloto real y la revision legal por pais, ya documentados en Diagnostico_Elementos_Faltantes_para_Operar.docx.",
+  "revision_note_8": "2026-09-16 (turno posterior): reconciliacion de la suite de 12 documentos de arquitectura de producto/software contra el respaldo tecnico vigente (ver DECISIONS.md punto 43 para el detalle completo). Pregunta abierta principal dejada para George: si el concepto de \"nivel de exigencia 1-6 por dimension\" (mencionado en 3 de los 12 documentos, independientemente) debe retirarse en favor del mecanismo vigente de multiplicador unico por nivel de puesto + personal a cargo, o formalizarse como capa adicional real."
 }

@@ -1,0 +1,154 @@
+{
+  "nombre": "Datos Biográficos (bio-data)",
+  "descripcion": "Bloque transversal de 6 reactivos factuales/demográficos, contenido original. NO es una dimensión, no entra al IGI ni a ninguna Puntaje_dimensión, no tiene variantes de redacción (no son reactivos de riesgo). Se presenta junto con las variables demográficas ya existentes (Fase 8 Sección 5.4, Fase 10 Sección 2.1: edad, género, educación, industria, país), como contexto adicional opcional para análisis posterior — por ejemplo, correlacionar antigüedad laboral o número de empleos con el IGI en la Fase 9, una vez exista muestra piloto.",
+  "opcionalidad": "Igual que el resto de variables demográficas (Fase 8 Sección 5.4), estas 6 preguntas se presentan como opcionales, nunca como requisito para ver el resultado, con lenguaje que explica brevemente por qué se piden (mejorar el instrumento).",
+  "items": [
+    {
+      "id": "BIO01",
+      "campo": "Nivel de estudios alcanzado",
+      "pregunta": "¿Cuál es el nivel de estudios más alto que has completado?",
+      "opciones": [
+        {
+          "label": "Primaria",
+          "valor": 0
+        },
+        {
+          "label": "Secundaria",
+          "valor": 1
+        },
+        {
+          "label": "Técnico o carrera corta",
+          "valor": 2
+        },
+        {
+          "label": "Universidad",
+          "valor": 3
+        },
+        {
+          "label": "Posgrado",
+          "valor": 4
+        }
+      ]
+    },
+    {
+      "id": "BIO02",
+      "campo": "Años de experiencia laboral total",
+      "pregunta": "En total, ¿cuántos años de experiencia laboral tenés?",
+      "opciones": [
+        {
+          "label": "Menos de 1 año",
+          "valor": 0
+        },
+        {
+          "label": "1 a 3 años",
+          "valor": 1
+        },
+        {
+          "label": "4 a 7 años",
+          "valor": 2
+        },
+        {
+          "label": "8 a 15 años",
+          "valor": 3
+        },
+        {
+          "label": "Más de 15 años",
+          "valor": 4
+        }
+      ]
+    },
+    {
+      "id": "BIO03",
+      "campo": "Tiempo en el empleo más reciente",
+      "pregunta": "¿Cuánto tiempo llevás (o llevaste) en tu empleo más reciente?",
+      "opciones": [
+        {
+          "label": "Menos de 1 año",
+          "valor": 0
+        },
+        {
+          "label": "1 a 2 años",
+          "valor": 1
+        },
+        {
+          "label": "3 a 5 años",
+          "valor": 2
+        },
+        {
+          "label": "Más de 5 años",
+          "valor": 3
+        },
+        {
+          "label": "No he tenido un empleo formal todavía",
+          "valor": 4
+        }
+      ]
+    },
+    {
+      "id": "BIO04",
+      "campo": "Número de empleos formales en los últimos 5 años",
+      "pregunta": "En los últimos 5 años, ¿en cuántos empleos formales distintos has trabajado?",
+      "opciones": [
+        {
+          "label": "Ninguno",
+          "valor": 0
+        },
+        {
+          "label": "Uno",
+          "valor": 1
+        },
+        {
+          "label": "Dos",
+          "valor": 2
+        },
+        {
+          "label": "Tres",
+          "valor": 3
+        },
+        {
+          "label": "Cuatro o más",
+          "valor": 4
+        }
+      ]
+    },
+    {
+      "id": "BIO05",
+      "campo": "Personal a cargo (informativo)",
+      "pregunta": "¿Tenés (o has tenido) personas a tu cargo en tu trabajo actual o más reciente?",
+      "opciones": [
+        {
+          "label": "Sí",
+          "valor": 0
+        },
+        {
+          "label": "No",
+          "valor": 1
+        }
+      ],
+      "nota": "Puramente informativo en este bloque de bio-data. NO alimenta automáticamente el multiplicador de nivel de puesto de Fase 6 Sección 12 — ese campo, en la capa B2B, lo confirma Recursos Humanos, no el propio evaluado, precisamente para no depender de un autorreporte no verificado en un cálculo que afecta el resultado."
+    },
+    {
+      "id": "BIO06",
+      "campo": "Situación laboral actual",
+      "pregunta": "¿Cuál describe mejor tu situación laboral actual?",
+      "opciones": [
+        {
+          "label": "Empleado/a actualmente",
+          "valor": 0
+        },
+        {
+          "label": "Trabajo por cuenta propia / independiente",
+          "valor": 1
+        },
+        {
+          "label": "Buscando empleo actualmente",
+          "valor": 2
+        },
+        {
+          "label": "No estoy buscando empleo actualmente",
+          "valor": 3
+        }
+      ]
+    }
+  ]
+}

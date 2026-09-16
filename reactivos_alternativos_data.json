@@ -1,0 +1,2191 @@
+{
+  "nombre": "Reactivos alternativos de opciones concretas",
+  "descripcion": "Para 3 de los 10 reactivos de cada dimensión (op1, op2, perc1) existe una alternativa de opciones concretas (op1_alt, op2_alt, perc1_alt), pensada para reducir la carga de lectura/abstracción de la escala de acuerdo tradicional en respondientes de nivel operativo. Cada alternativa apunta al MISMO indicador conductual y a la MISMA dirección (Directo) que el reactivo clásico al que reemplaza, así que el par espejo y las fórmulas de Fase 6 no cambian.",
+  "mecanismoSeleccion": "Por dimensión, el pool de reactivos candidatos pasa de 10 a 13 (los 7 reactivos fijos sin alternativa + 3 pares clásico/alternativo). En cada aplicación del test, el motor selecciona 10 reactivos por dimensión: los 7 fijos siempre entran, y para cada uno de los 3 slots duales (op1, op2, perc1) se elige al azar la versión clásica o la alternativa de opciones concretas. El total administrado y puntuado por dimensión sigue siendo exactamente 10, igual que en el resto del banco.",
+  "dimensiones": {
+    "Robo": {
+      "op1_alt": {
+        "id": "ALT-ROBO-OP1_ALT",
+        "dimension": "Robo",
+        "reemplazaA": "op1",
+        "indicadorSlot": 1,
+        "direccion": "Directo",
+        "parRol": "Par 1 (con fut1)",
+        "valorMax": 3,
+        "pregunta": "Ves en tu lugar de trabajo un artículo de poco valor que nadie parece estar usando ni cuidando. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, ves en tu lugar de trabajo un artículo de poco valor que nadie parece estar usando ni cuidando. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, ves en tu lugar de trabajo un artículo de poco valor que nadie parece estar usando ni cuidando. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, ves en tu lugar de trabajo un artículo de poco valor que nadie parece estar usando ni cuidando. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, ves en tu lugar de trabajo un artículo de poco valor que nadie parece estar usando ni cuidando. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Lo dejo donde está o pregunto si lo puedo usar.",
+            "valor": 0
+          },
+          {
+            "label": "Lo uso ahí mismo si lo necesito, y lo devuelvo después.",
+            "valor": 1
+          },
+          {
+            "label": "Me lo llevo para uso personal, es tan poco que no creo que le importe a nadie.",
+            "valor": 2
+          },
+          {
+            "label": "Me lo llevo sin pensarlo mucho, es tan poca cosa que ni cuenta como algo malo.",
+            "valor": 3
+          }
+        ]
+      },
+      "op2_alt": {
+        "id": "ALT-ROBO-OP2_ALT",
+        "dimension": "Robo",
+        "reemplazaA": "op2",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con perc1)",
+        "valorMax": 3,
+        "pregunta": "Un día llegaste tarde o te fuiste antes de tu trabajo, pero terminaste toda la tarea asignada de todas formas. Al reportar tus horas, ¿qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, un día llegaste tarde o te fuiste antes de tu trabajo, pero terminaste toda la tarea asignada de todas formas. Al reportar tus horas, ¿qué es lo más parecido a lo que harías?",
+          "En tu experiencia, un día llegaste tarde o te fuiste antes de tu trabajo, pero terminaste toda la tarea asignada de todas formas. Al reportar tus horas, ¿qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, un día llegaste tarde o te fuiste antes de tu trabajo, pero terminaste toda la tarea asignada de todas formas. Al reportar tus horas, ¿qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, un día llegaste tarde o te fuiste antes de tu trabajo, pero terminaste toda la tarea asignada de todas formas. Al reportar tus horas, ¿qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Reporto las horas reales, aunque sean menos de las programadas.",
+            "valor": 0
+          },
+          {
+            "label": "Reporto las horas reales y explico la situación.",
+            "valor": 1
+          },
+          {
+            "label": "Reporto las horas completas porque de todas formas terminé el trabajo.",
+            "valor": 2
+          },
+          {
+            "label": "Reporto las horas completas, no le veo nada de malo si el trabajo quedó hecho.",
+            "valor": 3
+          }
+        ]
+      },
+      "perc1_alt": {
+        "id": "ALT-ROBO-PERC1_ALT",
+        "dimension": "Robo",
+        "reemplazaA": "perc1",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con op2)",
+        "valorMax": 3,
+        "pregunta": "¿Qué porcentaje de las personas de tu entorno laboral dirías que alguna vez ha reportado horas de trabajo que en realidad no cumplió?",
+        "variantesExtra": [
+          "Pensándolo bien, ¿Qué porcentaje de las personas de tu entorno laboral dirías que alguna vez ha reportado horas de trabajo que en realidad no cumplió?",
+          "En tu experiencia, ¿Qué porcentaje de las personas de tu entorno laboral dirías que alguna vez ha reportado horas de trabajo que en realidad no cumplió?",
+          "Sin pensarlo demasiado, ¿Qué porcentaje de las personas de tu entorno laboral dirías que alguna vez ha reportado horas de trabajo que en realidad no cumplió?",
+          "Según lo que has visto, ¿Qué porcentaje de las personas de tu entorno laboral dirías que alguna vez ha reportado horas de trabajo que en realidad no cumplió?"
+        ],
+        "opciones": [
+          {
+            "label": "Menos del 10%",
+            "valor": 0
+          },
+          {
+            "label": "Entre 10% y 25%",
+            "valor": 1
+          },
+          {
+            "label": "Entre 25% y 50%",
+            "valor": 2
+          },
+          {
+            "label": "Más del 50%",
+            "valor": 3
+          }
+        ]
+      }
+    },
+    "Mentira": {
+      "op1_alt": {
+        "id": "ALT-MENTIR-OP1_ALT",
+        "dimension": "Mentira",
+        "reemplazaA": "op1",
+        "indicadorSlot": 1,
+        "direccion": "Directo",
+        "parRol": "Par 1 (con fut1)",
+        "valorMax": 3,
+        "pregunta": "Cometiste un error en el trabajo y tu jefe te pregunta directamente qué pasó. Contarlo tal cual podría traerte una llamada de atención. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, cometiste un error en el trabajo y tu jefe te pregunta directamente qué pasó. Contarlo tal cual podría traerte una llamada de atención. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, cometiste un error en el trabajo y tu jefe te pregunta directamente qué pasó. Contarlo tal cual podría traerte una llamada de atención. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, cometiste un error en el trabajo y tu jefe te pregunta directamente qué pasó. Contarlo tal cual podría traerte una llamada de atención. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, cometiste un error en el trabajo y tu jefe te pregunta directamente qué pasó. Contarlo tal cual podría traerte una llamada de atención. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Cuento exactamente lo que pasó, aunque me traiga una llamada de atención.",
+            "valor": 0
+          },
+          {
+            "label": "Cuento lo que pasó, pero explico el contexto para que se entienda mejor.",
+            "valor": 1
+          },
+          {
+            "label": "Cuento una versión un poco distinta que suaviza mi parte en el error.",
+            "valor": 2
+          },
+          {
+            "label": "Invento una explicación distinta que no me deje mal parado.",
+            "valor": 3
+          }
+        ]
+      },
+      "op2_alt": {
+        "id": "ALT-MENTIR-OP2_ALT",
+        "dimension": "Mentira",
+        "reemplazaA": "op2",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con perc1)",
+        "valorMax": 3,
+        "pregunta": "Un compañero te pregunta directamente qué opinas de un trabajo suyo que en realidad no te gustó nada. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, un compañero te pregunta directamente qué opinas de un trabajo suyo que en realidad no te gustó nada. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, un compañero te pregunta directamente qué opinas de un trabajo suyo que en realidad no te gustó nada. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, un compañero te pregunta directamente qué opinas de un trabajo suyo que en realidad no te gustó nada. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, un compañero te pregunta directamente qué opinas de un trabajo suyo que en realidad no te gustó nada. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Le doy mi opinión real, con el mayor tacto posible.",
+            "valor": 0
+          },
+          {
+            "label": "Le digo lo que no funcionó, pero también resalto lo que sí.",
+            "valor": 1
+          },
+          {
+            "label": "Le digo que está bien, aunque no sea del todo lo que pienso, para evitar el mal rato.",
+            "valor": 2
+          },
+          {
+            "label": "Le digo que me encantó, aunque no sea cierto, para no tener que dar explicaciones.",
+            "valor": 3
+          }
+        ]
+      },
+      "perc1_alt": {
+        "id": "ALT-MENTIR-PERC1_ALT",
+        "dimension": "Mentira",
+        "reemplazaA": "perc1",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con op2)",
+        "valorMax": 3,
+        "pregunta": "¿Qué porcentaje de las personas de tu entorno dirías que dice cosas que no son del todo ciertas cuando siente que no le hace daño a nadie?",
+        "variantesExtra": [
+          "Pensándolo bien, ¿Qué porcentaje de las personas de tu entorno dirías que dice cosas que no son del todo ciertas cuando siente que no le hace daño a nadie?",
+          "En tu experiencia, ¿Qué porcentaje de las personas de tu entorno dirías que dice cosas que no son del todo ciertas cuando siente que no le hace daño a nadie?",
+          "Sin pensarlo demasiado, ¿Qué porcentaje de las personas de tu entorno dirías que dice cosas que no son del todo ciertas cuando siente que no le hace daño a nadie?",
+          "Según lo que has visto, ¿Qué porcentaje de las personas de tu entorno dirías que dice cosas que no son del todo ciertas cuando siente que no le hace daño a nadie?"
+        ],
+        "opciones": [
+          {
+            "label": "Menos del 10%",
+            "valor": 0
+          },
+          {
+            "label": "Entre 10% y 25%",
+            "valor": 1
+          },
+          {
+            "label": "Entre 25% y 50%",
+            "valor": 2
+          },
+          {
+            "label": "Más del 50%",
+            "valor": 3
+          }
+        ]
+      }
+    },
+    "Fraude": {
+      "op1_alt": {
+        "id": "ALT-FRAUDE-OP1_ALT",
+        "dimension": "Fraude",
+        "reemplazaA": "op1",
+        "indicadorSlot": 1,
+        "direccion": "Directo",
+        "parRol": "Par 1 (con fut1)",
+        "valorMax": 3,
+        "pregunta": "Estás por entregar un reporte y ves que un número quedó un poco peor de lo esperado, aunque nadie lo notaría si lo ajustas levemente. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, estás por entregar un reporte y ves que un número quedó un poco peor de lo esperado, aunque nadie lo notaría si lo ajustas levemente. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, estás por entregar un reporte y ves que un número quedó un poco peor de lo esperado, aunque nadie lo notaría si lo ajustas levemente. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, estás por entregar un reporte y ves que un número quedó un poco peor de lo esperado, aunque nadie lo notaría si lo ajustas levemente. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, estás por entregar un reporte y ves que un número quedó un poco peor de lo esperado, aunque nadie lo notaría si lo ajustas levemente. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Entrego el número real, tal como quedó.",
+            "valor": 0
+          },
+          {
+            "label": "Entrego el número real, y agrego una nota explicando el contexto.",
+            "valor": 1
+          },
+          {
+            "label": "Redondeo el número a mi favor, no es una diferencia grande.",
+            "valor": 2
+          },
+          {
+            "label": "Ajusto el número para que el resultado se vea como se esperaba.",
+            "valor": 3
+          }
+        ]
+      },
+      "op2_alt": {
+        "id": "ALT-FRAUDE-OP2_ALT",
+        "dimension": "Fraude",
+        "reemplazaA": "op2",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con perc1)",
+        "valorMax": 3,
+        "pregunta": "Necesitás un documento o certificado para un trámite legítimo, y el que tenés está un poco desactualizado o no calza exactamente. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, necesitás un documento o certificado para un trámite legítimo, y el que tenés está un poco desactualizado o no calza exactamente. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, necesitás un documento o certificado para un trámite legítimo, y el que tenés está un poco desactualizado o no calza exactamente. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, necesitás un documento o certificado para un trámite legítimo, y el que tenés está un poco desactualizado o no calza exactamente. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, necesitás un documento o certificado para un trámite legítimo, y el que tenés está un poco desactualizado o no calza exactamente. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Consigo el documento correcto antes de presentar el trámite.",
+            "valor": 0
+          },
+          {
+            "label": "Presento el trámite y aviso que voy a actualizar el documento pronto.",
+            "valor": 1
+          },
+          {
+            "label": "Presento el documento como está, de todas formas el objetivo del trámite es válido.",
+            "valor": 2
+          },
+          {
+            "label": "Modifico el documento para que calce exactamente, de todas formas el trámite es válido.",
+            "valor": 3
+          }
+        ]
+      },
+      "perc1_alt": {
+        "id": "ALT-FRAUDE-PERC1_ALT",
+        "dimension": "Fraude",
+        "reemplazaA": "perc1",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con op2)",
+        "valorMax": 3,
+        "pregunta": "¿Qué porcentaje de las personas de tu entorno dirías que ha usado información falsa en un reporte, solicitud o certificación formal para que le aprueben algo?",
+        "variantesExtra": [
+          "Pensándolo bien, ¿Qué porcentaje de las personas de tu entorno dirías que ha usado información falsa en un reporte, solicitud o certificación formal para que le aprueben algo?",
+          "En tu experiencia, ¿Qué porcentaje de las personas de tu entorno dirías que ha usado información falsa en un reporte, solicitud o certificación formal para que le aprueben algo?",
+          "Sin pensarlo demasiado, ¿Qué porcentaje de las personas de tu entorno dirías que ha usado información falsa en un reporte, solicitud o certificación formal para que le aprueben algo?",
+          "Según lo que has visto, ¿Qué porcentaje de las personas de tu entorno dirías que ha usado información falsa en un reporte, solicitud o certificación formal para que le aprueben algo?"
+        ],
+        "opciones": [
+          {
+            "label": "Menos del 10%",
+            "valor": 0
+          },
+          {
+            "label": "Entre 10% y 25%",
+            "valor": 1
+          },
+          {
+            "label": "Entre 25% y 50%",
+            "valor": 2
+          },
+          {
+            "label": "Más del 50%",
+            "valor": 3
+          }
+        ]
+      }
+    },
+    "Irresponsabilidad": {
+      "op1_alt": {
+        "id": "ALT-IRRESP-OP1_ALT",
+        "dimension": "Irresponsabilidad",
+        "reemplazaA": "op1",
+        "indicadorSlot": 1,
+        "direccion": "Directo",
+        "parRol": "Par 1 (con fut1)",
+        "valorMax": 3,
+        "pregunta": "Un proyecto en el que participaste con más personas salió mal, y vos también tuviste algo de responsabilidad en eso. ¿Qué es lo más parecido a lo que harías al hablarlo con el equipo?",
+        "variantesExtra": [
+          "Pensándolo bien, un proyecto en el que participaste con más personas salió mal, y vos también tuviste algo de responsabilidad en eso. ¿Qué es lo más parecido a lo que harías al hablarlo con el equipo?",
+          "En tu experiencia, un proyecto en el que participaste con más personas salió mal, y vos también tuviste algo de responsabilidad en eso. ¿Qué es lo más parecido a lo que harías al hablarlo con el equipo?",
+          "Sin pensarlo demasiado, un proyecto en el que participaste con más personas salió mal, y vos también tuviste algo de responsabilidad en eso. ¿Qué es lo más parecido a lo que harías al hablarlo con el equipo?",
+          "Según lo que has visto, un proyecto en el que participaste con más personas salió mal, y vos también tuviste algo de responsabilidad en eso. ¿Qué es lo más parecido a lo que harías al hablarlo con el equipo?"
+        ],
+        "opciones": [
+          {
+            "label": "Reconozco mi parte en lo que salió mal, antes de mirar la de los demás.",
+            "valor": 0
+          },
+          {
+            "label": "Hablo tanto de mi parte como de la de los demás, de forma pareja.",
+            "valor": 1
+          },
+          {
+            "label": "Menciono mi parte, pero le doy más peso a lo que hicieron mal los demás.",
+            "valor": 2
+          },
+          {
+            "label": "Explico que el problema fue sobre todo porque otros no hicieron bien su parte.",
+            "valor": 3
+          }
+        ]
+      },
+      "op2_alt": {
+        "id": "ALT-IRRESP-OP2_ALT",
+        "dimension": "Irresponsabilidad",
+        "reemplazaA": "op2",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con perc1)",
+        "valorMax": 3,
+        "pregunta": "Te diste cuenta de que cometiste un error en una tarea, ya corregido, sin mayores consecuencias visibles. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, te diste cuenta de que cometiste un error en una tarea, ya corregido, sin mayores consecuencias visibles. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, te diste cuenta de que cometiste un error en una tarea, ya corregido, sin mayores consecuencias visibles. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, te diste cuenta de que cometiste un error en una tarea, ya corregido, sin mayores consecuencias visibles. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, te diste cuenta de que cometiste un error en una tarea, ya corregido, sin mayores consecuencias visibles. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Me tomo un momento para entender por qué pasó y evitar que se repita.",
+            "valor": 0
+          },
+          {
+            "label": "Lo anoto mentalmente para tener más cuidado la próxima vez.",
+            "valor": 1
+          },
+          {
+            "label": "Sigo adelante sin darle más vueltas, ya está corregido.",
+            "valor": 2
+          },
+          {
+            "label": "Ni lo pienso más, no tiene caso detenerse en algo ya resuelto.",
+            "valor": 3
+          }
+        ]
+      },
+      "perc1_alt": {
+        "id": "ALT-IRRESP-PERC1_ALT",
+        "dimension": "Irresponsabilidad",
+        "reemplazaA": "perc1",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con op2)",
+        "valorMax": 3,
+        "pregunta": "¿Qué porcentaje de las personas de tu entorno laboral dirías que le echa la culpa a otros o a las circunstancias cuando algo que hicieron sale mal?",
+        "variantesExtra": [
+          "Pensándolo bien, ¿Qué porcentaje de las personas de tu entorno laboral dirías que le echa la culpa a otros o a las circunstancias cuando algo que hicieron sale mal?",
+          "En tu experiencia, ¿Qué porcentaje de las personas de tu entorno laboral dirías que le echa la culpa a otros o a las circunstancias cuando algo que hicieron sale mal?",
+          "Sin pensarlo demasiado, ¿Qué porcentaje de las personas de tu entorno laboral dirías que le echa la culpa a otros o a las circunstancias cuando algo que hicieron sale mal?",
+          "Según lo que has visto, ¿Qué porcentaje de las personas de tu entorno laboral dirías que le echa la culpa a otros o a las circunstancias cuando algo que hicieron sale mal?"
+        ],
+        "opciones": [
+          {
+            "label": "Menos del 10%",
+            "valor": 0
+          },
+          {
+            "label": "Entre 10% y 25%",
+            "valor": 1
+          },
+          {
+            "label": "Entre 25% y 50%",
+            "valor": 2
+          },
+          {
+            "label": "Más del 50%",
+            "valor": 3
+          }
+        ]
+      }
+    },
+    "Soborno": {
+      "op1_alt": {
+        "id": "ALT-SOBORN-OP1_ALT",
+        "dimension": "Soborno",
+        "reemplazaA": "op1",
+        "indicadorSlot": 1,
+        "direccion": "Directo",
+        "parRol": "Par 1 (con fut1)",
+        "valorMax": 3,
+        "pregunta": "Una persona con la que vas a tomar una decisión importante te ofrece un regalo o una atención de bajo valor, sin pedir nada a cambio de forma explícita. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, una persona con la que vas a tomar una decisión importante te ofrece un regalo o una atención de bajo valor, sin pedir nada a cambio de forma explícita. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, una persona con la que vas a tomar una decisión importante te ofrece un regalo o una atención de bajo valor, sin pedir nada a cambio de forma explícita. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, una persona con la que vas a tomar una decisión importante te ofrece un regalo o una atención de bajo valor, sin pedir nada a cambio de forma explícita. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, una persona con la que vas a tomar una decisión importante te ofrece un regalo o una atención de bajo valor, sin pedir nada a cambio de forma explícita. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Lo rechazo y sigo el proceso con la misma imparcialidad de siempre.",
+            "valor": 0
+          },
+          {
+            "label": "Lo acepto, pero aviso a quien corresponda que lo recibí.",
+            "valor": 1
+          },
+          {
+            "label": "Lo acepto sin decir nada, es un detalle pequeño que no cambia mi decisión.",
+            "valor": 2
+          },
+          {
+            "label": "Lo acepto y, sin decirlo abiertamente, tiendo a inclinarme un poco a su favor.",
+            "valor": 3
+          }
+        ]
+      },
+      "op2_alt": {
+        "id": "ALT-SOBORN-OP2_ALT",
+        "dimension": "Soborno",
+        "reemplazaA": "op2",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con perc1)",
+        "valorMax": 3,
+        "pregunta": "Estás por presentar una propuesta a alguien que toma una decisión importante para vos o tu empresa. ¿Qué es lo más parecido a lo que harías para aumentar tus chances?",
+        "variantesExtra": [
+          "Pensándolo bien, estás por presentar una propuesta a alguien que toma una decisión importante para vos o tu empresa. ¿Qué es lo más parecido a lo que harías para aumentar tus chances?",
+          "En tu experiencia, estás por presentar una propuesta a alguien que toma una decisión importante para vos o tu empresa. ¿Qué es lo más parecido a lo que harías para aumentar tus chances?",
+          "Sin pensarlo demasiado, estás por presentar una propuesta a alguien que toma una decisión importante para vos o tu empresa. ¿Qué es lo más parecido a lo que harías para aumentar tus chances?",
+          "Según lo que has visto, estás por presentar una propuesta a alguien que toma una decisión importante para vos o tu empresa. ¿Qué es lo más parecido a lo que harías para aumentar tus chances?"
+        ],
+        "opciones": [
+          {
+            "label": "Preparo la mejor propuesta posible y dejo que se decida por sus méritos.",
+            "valor": 0
+          },
+          {
+            "label": "Preparo la propuesta y busco generar una buena relación profesional, sin regalos.",
+            "valor": 1
+          },
+          {
+            "label": "Además de la propuesta, incluyo alguna atención o detalle de cortesía.",
+            "valor": 2
+          },
+          {
+            "label": "Ofrezco algo de valor a cambio de que la decisión se incline a mi favor.",
+            "valor": 3
+          }
+        ]
+      },
+      "perc1_alt": {
+        "id": "ALT-SOBORN-PERC1_ALT",
+        "dimension": "Soborno",
+        "reemplazaA": "perc1",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con op2)",
+        "valorMax": 3,
+        "pregunta": "¿Qué porcentaje de las personas de tu industria dirías que ve como normal ofrecer un beneficio a cambio de una decisión favorable?",
+        "variantesExtra": [
+          "Pensándolo bien, ¿Qué porcentaje de las personas de tu industria dirías que ve como normal ofrecer un beneficio a cambio de una decisión favorable?",
+          "En tu experiencia, ¿Qué porcentaje de las personas de tu industria dirías que ve como normal ofrecer un beneficio a cambio de una decisión favorable?",
+          "Sin pensarlo demasiado, ¿Qué porcentaje de las personas de tu industria dirías que ve como normal ofrecer un beneficio a cambio de una decisión favorable?",
+          "Según lo que has visto, ¿Qué porcentaje de las personas de tu industria dirías que ve como normal ofrecer un beneficio a cambio de una decisión favorable?"
+        ],
+        "opciones": [
+          {
+            "label": "Menos del 10%",
+            "valor": 0
+          },
+          {
+            "label": "Entre 10% y 25%",
+            "valor": 1
+          },
+          {
+            "label": "Entre 25% y 50%",
+            "valor": 2
+          },
+          {
+            "label": "Más del 50%",
+            "valor": 3
+          }
+        ]
+      }
+    },
+    "Deslealtad": {
+      "op1_alt": {
+        "id": "ALT-DESLEA-OP1_ALT",
+        "dimension": "Deslealtad",
+        "reemplazaA": "op1",
+        "indicadorSlot": 1,
+        "direccion": "Directo",
+        "parRol": "Par 1 (con fut1)",
+        "valorMax": 3,
+        "pregunta": "Tuviste una mala experiencia en tu trabajo (un trato injusto, un conflicto sin resolver) y alguien externo a la empresa te pregunta con curiosidad detalles internos. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, tuviste una mala experiencia en tu trabajo (un trato injusto, un conflicto sin resolver) y alguien externo a la empresa te pregunta con curiosidad detalles internos. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, tuviste una mala experiencia en tu trabajo (un trato injusto, un conflicto sin resolver) y alguien externo a la empresa te pregunta con curiosidad detalles internos. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, tuviste una mala experiencia en tu trabajo (un trato injusto, un conflicto sin resolver) y alguien externo a la empresa te pregunta con curiosidad detalles internos. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, tuviste una mala experiencia en tu trabajo (un trato injusto, un conflicto sin resolver) y alguien externo a la empresa te pregunta con curiosidad detalles internos. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Mantengo la información interna para mí, sin importar cómo me sienta con la empresa.",
+            "valor": 0
+          },
+          {
+            "label": "Comento en términos generales, sin detalles internos sensibles.",
+            "valor": 1
+          },
+          {
+            "label": "Comparto algunos detalles internos, total ya no me tratan bien.",
+            "valor": 2
+          },
+          {
+            "label": "Comparto la información completa, siento que ya no le debo lealtad a la empresa.",
+            "valor": 3
+          }
+        ]
+      },
+      "op2_alt": {
+        "id": "ALT-DESLEA-OP2_ALT",
+        "dimension": "Deslealtad",
+        "reemplazaA": "op2",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con perc1)",
+        "valorMax": 3,
+        "pregunta": "Te surge la oportunidad de hacer un trabajo remunerado, de forma discreta, para un competidor directo de tu empleador actual, mientras seguís empleado ahí. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, te surge la oportunidad de hacer un trabajo remunerado, de forma discreta, para un competidor directo de tu empleador actual, mientras seguís empleado ahí. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, te surge la oportunidad de hacer un trabajo remunerado, de forma discreta, para un competidor directo de tu empleador actual, mientras seguís empleado ahí. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, te surge la oportunidad de hacer un trabajo remunerado, de forma discreta, para un competidor directo de tu empleador actual, mientras seguís empleado ahí. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, te surge la oportunidad de hacer un trabajo remunerado, de forma discreta, para un competidor directo de tu empleador actual, mientras seguís empleado ahí. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "La rechazo, mientras siga empleado ahí no trabajo para la competencia.",
+            "valor": 0
+          },
+          {
+            "label": "Le consulto a mi empleador si hay algún inconveniente antes de aceptar.",
+            "valor": 1
+          },
+          {
+            "label": "La acepto, siempre que no se cruce directamente con mis tareas actuales.",
+            "valor": 2
+          },
+          {
+            "label": "La acepto sin decir nada, mientras nadie se entere no hay problema.",
+            "valor": 3
+          }
+        ]
+      },
+      "perc1_alt": {
+        "id": "ALT-DESLEA-PERC1_ALT",
+        "dimension": "Deslealtad",
+        "reemplazaA": "perc1",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con op2)",
+        "valorMax": 3,
+        "pregunta": "¿Qué porcentaje de las personas de tu entorno laboral dirías que mantiene su empleo mientras colabora, en paralelo, con la competencia de su empleador?",
+        "variantesExtra": [
+          "Pensándolo bien, ¿Qué porcentaje de las personas de tu entorno laboral dirías que mantiene su empleo mientras colabora, en paralelo, con la competencia de su empleador?",
+          "En tu experiencia, ¿Qué porcentaje de las personas de tu entorno laboral dirías que mantiene su empleo mientras colabora, en paralelo, con la competencia de su empleador?",
+          "Sin pensarlo demasiado, ¿Qué porcentaje de las personas de tu entorno laboral dirías que mantiene su empleo mientras colabora, en paralelo, con la competencia de su empleador?",
+          "Según lo que has visto, ¿Qué porcentaje de las personas de tu entorno laboral dirías que mantiene su empleo mientras colabora, en paralelo, con la competencia de su empleador?"
+        ],
+        "opciones": [
+          {
+            "label": "Menos del 10%",
+            "valor": 0
+          },
+          {
+            "label": "Entre 10% y 25%",
+            "valor": 1
+          },
+          {
+            "label": "Entre 25% y 50%",
+            "valor": 2
+          },
+          {
+            "label": "Más del 50%",
+            "valor": 3
+          }
+        ]
+      }
+    },
+    "Favoritismo": {
+      "op1_alt": {
+        "id": "ALT-FAVORI-OP1_ALT",
+        "dimension": "Favoritismo",
+        "reemplazaA": "op1",
+        "indicadorSlot": 1,
+        "direccion": "Directo",
+        "parRol": "Par 1 (con fut1)",
+        "valorMax": 3,
+        "pregunta": "Tenés que elegir entre dos personas igual de capaces para una oportunidad (un ascenso, un proyecto, un puesto), y una de ellas es alguien cercano tuyo. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, tenés que elegir entre dos personas igual de capaces para una oportunidad (un ascenso, un proyecto, un puesto), y una de ellas es alguien cercano tuyo. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, tenés que elegir entre dos personas igual de capaces para una oportunidad (un ascenso, un proyecto, un puesto), y una de ellas es alguien cercano tuyo. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, tenés que elegir entre dos personas igual de capaces para una oportunidad (un ascenso, un proyecto, un puesto), y una de ellas es alguien cercano tuyo. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, tenés que elegir entre dos personas igual de capaces para una oportunidad (un ascenso, un proyecto, un puesto), y una de ellas es alguien cercano tuyo. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Uso únicamente criterios objetivos, sin que pese la cercanía.",
+            "valor": 0
+          },
+          {
+            "label": "Uso criterios objetivos, y si hay empate real, lo declaro para que otro decida.",
+            "valor": 1
+          },
+          {
+            "label": "Me inclino un poco por la persona cercana, al final son igual de capaces.",
+            "valor": 2
+          },
+          {
+            "label": "Elijo directamente a la persona cercana, prefiero trabajar con alguien de confianza.",
+            "valor": 3
+          }
+        ]
+      },
+      "op2_alt": {
+        "id": "ALT-FAVORI-OP2_ALT",
+        "dimension": "Favoritismo",
+        "reemplazaA": "op2",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con perc1)",
+        "valorMax": 3,
+        "pregunta": "Vas a participar en una decisión donde una de las opciones involucra a alguien cercano tuyo (familiar, amigo, ex-pareja), y confiás en que de todas formas vas a decidir de forma justa. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, vas a participar en una decisión donde una de las opciones involucra a alguien cercano tuyo (familiar, amigo, ex-pareja), y confiás en que de todas formas vas a decidir de forma justa. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, vas a participar en una decisión donde una de las opciones involucra a alguien cercano tuyo (familiar, amigo, ex-pareja), y confiás en que de todas formas vas a decidir de forma justa. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, vas a participar en una decisión donde una de las opciones involucra a alguien cercano tuyo (familiar, amigo, ex-pareja), y confiás en que de todas formas vas a decidir de forma justa. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, vas a participar en una decisión donde una de las opciones involucra a alguien cercano tuyo (familiar, amigo, ex-pareja), y confiás en que de todas formas vas a decidir de forma justa. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Declaro el conflicto de interés y me aparto de la decisión.",
+            "valor": 0
+          },
+          {
+            "label": "Declaro el conflicto de interés, pero participo con supervisión.",
+            "valor": 1
+          },
+          {
+            "label": "No lo declaro, pero decido con cuidado de ser justo.",
+            "valor": 2
+          },
+          {
+            "label": "No lo declaro, no hace falta si de todas formas voy a ser justo.",
+            "valor": 3
+          }
+        ]
+      },
+      "perc1_alt": {
+        "id": "ALT-FAVORI-PERC1_ALT",
+        "dimension": "Favoritismo",
+        "reemplazaA": "perc1",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con op2)",
+        "valorMax": 3,
+        "pregunta": "¿Qué porcentaje de las personas de tu entorno laboral dirías que participa en decisiones donde tiene un conflicto de interés, sin declararlo?",
+        "variantesExtra": [
+          "Pensándolo bien, ¿Qué porcentaje de las personas de tu entorno laboral dirías que participa en decisiones donde tiene un conflicto de interés, sin declararlo?",
+          "En tu experiencia, ¿Qué porcentaje de las personas de tu entorno laboral dirías que participa en decisiones donde tiene un conflicto de interés, sin declararlo?",
+          "Sin pensarlo demasiado, ¿Qué porcentaje de las personas de tu entorno laboral dirías que participa en decisiones donde tiene un conflicto de interés, sin declararlo?",
+          "Según lo que has visto, ¿Qué porcentaje de las personas de tu entorno laboral dirías que participa en decisiones donde tiene un conflicto de interés, sin declararlo?"
+        ],
+        "opciones": [
+          {
+            "label": "Menos del 10%",
+            "valor": 0
+          },
+          {
+            "label": "Entre 10% y 25%",
+            "valor": 1
+          },
+          {
+            "label": "Entre 25% y 50%",
+            "valor": 2
+          },
+          {
+            "label": "Más del 50%",
+            "valor": 3
+          }
+        ]
+      }
+    },
+    "Abuso de Recursos": {
+      "op1_alt": {
+        "id": "ALT-ABUSOD-OP1_ALT",
+        "dimension": "Abuso de Recursos",
+        "reemplazaA": "op1",
+        "indicadorSlot": 1,
+        "direccion": "Directo",
+        "parRol": "Par 1 (con fut1)",
+        "valorMax": 3,
+        "pregunta": "Estás en tu horario laboral y tenés un asunto personal breve que podrías resolver usando el equipo o el tiempo del trabajo (una llamada, una impresión, un trámite en línea). ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, estás en tu horario laboral y tenés un asunto personal breve que podrías resolver usando el equipo o el tiempo del trabajo (una llamada, una impresión, un trámite en línea). ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, estás en tu horario laboral y tenés un asunto personal breve que podrías resolver usando el equipo o el tiempo del trabajo (una llamada, una impresión, un trámite en línea). ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, estás en tu horario laboral y tenés un asunto personal breve que podrías resolver usando el equipo o el tiempo del trabajo (una llamada, una impresión, un trámite en línea). ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, estás en tu horario laboral y tenés un asunto personal breve que podrías resolver usando el equipo o el tiempo del trabajo (una llamada, una impresión, un trámite en línea). ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Lo dejo para mi tiempo personal, fuera del horario de trabajo.",
+            "valor": 0
+          },
+          {
+            "label": "Pregunto si está permitido antes de usarlo.",
+            "valor": 1
+          },
+          {
+            "label": "Lo resuelvo rápido usando recursos del trabajo, es algo mínimo.",
+            "valor": 2
+          },
+          {
+            "label": "Lo resuelvo con calma usando recursos del trabajo, no creo que le importe a nadie.",
+            "valor": 3
+          }
+        ]
+      },
+      "op2_alt": {
+        "id": "ALT-ABUSOD-OP2_ALT",
+        "dimension": "Abuso de Recursos",
+        "reemplazaA": "op2",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con perc1)",
+        "valorMax": 3,
+        "pregunta": "Te das cuenta de que varios compañeros usan regularmente recursos del trabajo (materiales, tiempo, equipo) para asuntos personales. ¿Qué es lo más parecido a lo que harías vos?",
+        "variantesExtra": [
+          "Pensándolo bien, te das cuenta de que varios compañeros usan regularmente recursos del trabajo (materiales, tiempo, equipo) para asuntos personales. ¿Qué es lo más parecido a lo que harías vos?",
+          "En tu experiencia, te das cuenta de que varios compañeros usan regularmente recursos del trabajo (materiales, tiempo, equipo) para asuntos personales. ¿Qué es lo más parecido a lo que harías vos?",
+          "Sin pensarlo demasiado, te das cuenta de que varios compañeros usan regularmente recursos del trabajo (materiales, tiempo, equipo) para asuntos personales. ¿Qué es lo más parecido a lo que harías vos?",
+          "Según lo que has visto, te das cuenta de que varios compañeros usan regularmente recursos del trabajo (materiales, tiempo, equipo) para asuntos personales. ¿Qué es lo más parecido a lo que harías vos?"
+        ],
+        "opciones": [
+          {
+            "label": "Sigo mi propio criterio y evito usarlos para asuntos personales.",
+            "valor": 0
+          },
+          {
+            "label": "Los uso solo en casos puntuales y necesarios, no como costumbre.",
+            "valor": 1
+          },
+          {
+            "label": "Empiezo a usarlos también, ya que es lo que hace la mayoría.",
+            "valor": 2
+          },
+          {
+            "label": "Los uso sin problema, sería raro ser el único que no lo hace.",
+            "valor": 3
+          }
+        ]
+      },
+      "perc1_alt": {
+        "id": "ALT-ABUSOD-PERC1_ALT",
+        "dimension": "Abuso de Recursos",
+        "reemplazaA": "perc1",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con op2)",
+        "valorMax": 3,
+        "pregunta": "¿Qué porcentaje de las personas de tu entorno laboral dirías que usa recursos o tiempo del trabajo para asuntos personales porque siente que todos lo hacen?",
+        "variantesExtra": [
+          "Pensándolo bien, ¿Qué porcentaje de las personas de tu entorno laboral dirías que usa recursos o tiempo del trabajo para asuntos personales porque siente que todos lo hacen?",
+          "En tu experiencia, ¿Qué porcentaje de las personas de tu entorno laboral dirías que usa recursos o tiempo del trabajo para asuntos personales porque siente que todos lo hacen?",
+          "Sin pensarlo demasiado, ¿Qué porcentaje de las personas de tu entorno laboral dirías que usa recursos o tiempo del trabajo para asuntos personales porque siente que todos lo hacen?",
+          "Según lo que has visto, ¿Qué porcentaje de las personas de tu entorno laboral dirías que usa recursos o tiempo del trabajo para asuntos personales porque siente que todos lo hacen?"
+        ],
+        "opciones": [
+          {
+            "label": "Menos del 10%",
+            "valor": 0
+          },
+          {
+            "label": "Entre 10% y 25%",
+            "valor": 1
+          },
+          {
+            "label": "Entre 25% y 50%",
+            "valor": 2
+          },
+          {
+            "label": "Más del 50%",
+            "valor": 3
+          }
+        ]
+      }
+    },
+    "Acoso Sexual": {
+      "op1_alt": {
+        "id": "ALT-ACOSOS-OP1_ALT",
+        "dimension": "Acoso Sexual",
+        "reemplazaA": "op1",
+        "indicadorSlot": 1,
+        "direccion": "Directo",
+        "parRol": "Par 1 (con fut1)",
+        "valorMax": 3,
+        "pregunta": "Escuchás que un compañero le hace un comentario de contenido sexual a otra persona en el trabajo, y quien lo dijo parece no tener mala intención. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, escuchás que un compañero le hace un comentario de contenido sexual a otra persona en el trabajo, y quien lo dijo parece no tener mala intención. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, escuchás que un compañero le hace un comentario de contenido sexual a otra persona en el trabajo, y quien lo dijo parece no tener mala intención. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, escuchás que un compañero le hace un comentario de contenido sexual a otra persona en el trabajo, y quien lo dijo parece no tener mala intención. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, escuchás que un compañero le hace un comentario de contenido sexual a otra persona en el trabajo, y quien lo dijo parece no tener mala intención. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Le comento, en privado, que ese tipo de comentarios no son apropiados en el trabajo.",
+            "valor": 0
+          },
+          {
+            "label": "No digo nada en el momento, pero me distancio de ese tipo de comentarios.",
+            "valor": 1
+          },
+          {
+            "label": "No le doy importancia, seguramente no quiso decir nada malo.",
+            "valor": 2
+          },
+          {
+            "label": "Me río o sigo la broma, es solo un comentario sin mala intención.",
+            "valor": 3
+          }
+        ]
+      },
+      "op2_alt": {
+        "id": "ALT-ACOSOS-OP2_ALT",
+        "dimension": "Acoso Sexual",
+        "reemplazaA": "op2",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con perc1)",
+        "valorMax": 3,
+        "pregunta": "Notás que alguien con poder de decisión sobre tu situación laboral empieza a mezclar comentarios de tipo personal o afectivo con temas de trabajo, sin decir nada explícito. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, notás que alguien con poder de decisión sobre tu situación laboral empieza a mezclar comentarios de tipo personal o afectivo con temas de trabajo, sin decir nada explícito. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, notás que alguien con poder de decisión sobre tu situación laboral empieza a mezclar comentarios de tipo personal o afectivo con temas de trabajo, sin decir nada explícito. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, notás que alguien con poder de decisión sobre tu situación laboral empieza a mezclar comentarios de tipo personal o afectivo con temas de trabajo, sin decir nada explícito. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, notás que alguien con poder de decisión sobre tu situación laboral empieza a mezclar comentarios de tipo personal o afectivo con temas de trabajo, sin decir nada explícito. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Marco un límite claro y, si continúa, lo reporto por los canales correspondientes.",
+            "valor": 0
+          },
+          {
+            "label": "Marco un límite claro entre lo personal y lo laboral.",
+            "valor": 1
+          },
+          {
+            "label": "Lo dejo pasar mientras no diga nada más directo.",
+            "valor": 2
+          },
+          {
+            "label": "No le doy importancia, mientras no lo diga de forma explícita no es nada grave.",
+            "valor": 3
+          }
+        ]
+      },
+      "perc1_alt": {
+        "id": "ALT-ACOSOS-PERC1_ALT",
+        "dimension": "Acoso Sexual",
+        "reemplazaA": "perc1",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con op2)",
+        "valorMax": 3,
+        "pregunta": "¿Qué porcentaje de las personas de tu entorno laboral dirías que ha condicionado, directa o indirectamente, un beneficio laboral a cambio de una atención de naturaleza sexual o afectiva?",
+        "variantesExtra": [
+          "Pensándolo bien, ¿Qué porcentaje de las personas de tu entorno laboral dirías que ha condicionado, directa o indirectamente, un beneficio laboral a cambio de una atención de naturaleza sexual o afectiva?",
+          "En tu experiencia, ¿Qué porcentaje de las personas de tu entorno laboral dirías que ha condicionado, directa o indirectamente, un beneficio laboral a cambio de una atención de naturaleza sexual o afectiva?",
+          "Sin pensarlo demasiado, ¿Qué porcentaje de las personas de tu entorno laboral dirías que ha condicionado, directa o indirectamente, un beneficio laboral a cambio de una atención de naturaleza sexual o afectiva?",
+          "Según lo que has visto, ¿Qué porcentaje de las personas de tu entorno laboral dirías que ha condicionado, directa o indirectamente, un beneficio laboral a cambio de una atención de naturaleza sexual o afectiva?"
+        ],
+        "opciones": [
+          {
+            "label": "Menos del 10%",
+            "valor": 0
+          },
+          {
+            "label": "Entre 10% y 25%",
+            "valor": 1
+          },
+          {
+            "label": "Entre 25% y 50%",
+            "valor": 2
+          },
+          {
+            "label": "Más del 50%",
+            "valor": 3
+          }
+        ]
+      }
+    },
+    "Maltrato Laboral": {
+      "op1_alt": {
+        "id": "ALT-MALTRA-OP1_ALT",
+        "dimension": "Maltrato Laboral",
+        "reemplazaA": "op1",
+        "indicadorSlot": 1,
+        "direccion": "Directo",
+        "parRol": "Par 1 (con fut1)",
+        "valorMax": 3,
+        "pregunta": "Un miembro de tu equipo cometió un error importante frente a otras personas y necesitás que quede muy claro que debe mejorar. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, un miembro de tu equipo cometió un error importante frente a otras personas y necesitás que quede muy claro que debe mejorar. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, un miembro de tu equipo cometió un error importante frente a otras personas y necesitás que quede muy claro que debe mejorar. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, un miembro de tu equipo cometió un error importante frente a otras personas y necesitás que quede muy claro que debe mejorar. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, un miembro de tu equipo cometió un error importante frente a otras personas y necesitás que quede muy claro que debe mejorar. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Hablo con esa persona en privado, de forma directa pero respetuosa.",
+            "valor": 0
+          },
+          {
+            "label": "Doy una señal clara en el momento, pero profundizo el tema en privado.",
+            "valor": 1
+          },
+          {
+            "label": "Le hago ver el error frente a los demás, para que quede claro y no se repita.",
+            "valor": 2
+          },
+          {
+            "label": "Lo corrijo con firmeza frente a todos, a veces hace falta que le duela un poco para que aprenda.",
+            "valor": 3
+          }
+        ]
+      },
+      "op2_alt": {
+        "id": "ALT-MALTRA-OP2_ALT",
+        "dimension": "Maltrato Laboral",
+        "reemplazaA": "op2",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con perc1)",
+        "valorMax": 3,
+        "pregunta": "Estás a cargo de un equipo que necesita mejorar su desempeño de forma notoria. ¿Qué es lo más parecido al estilo que usarías?",
+        "variantesExtra": [
+          "Pensándolo bien, estás a cargo de un equipo que necesita mejorar su desempeño de forma notoria. ¿Qué es lo más parecido al estilo que usarías?",
+          "En tu experiencia, estás a cargo de un equipo que necesita mejorar su desempeño de forma notoria. ¿Qué es lo más parecido al estilo que usarías?",
+          "Sin pensarlo demasiado, estás a cargo de un equipo que necesita mejorar su desempeño de forma notoria. ¿Qué es lo más parecido al estilo que usarías?",
+          "Según lo que has visto, estás a cargo de un equipo que necesita mejorar su desempeño de forma notoria. ¿Qué es lo más parecido al estilo que usarías?"
+        ],
+        "opciones": [
+          {
+            "label": "Exijo resultados claros, con un trato firme pero siempre respetuoso.",
+            "valor": 0
+          },
+          {
+            "label": "Soy exigente y directo, sin recurrir a la presión personal.",
+            "valor": 1
+          },
+          {
+            "label": "Subo un poco el tono y la presión, en algunos casos hace falta.",
+            "valor": 2
+          },
+          {
+            "label": "Uso un estilo duro e intimidante, es lo que funciona para que la gente rinda al máximo.",
+            "valor": 3
+          }
+        ]
+      },
+      "perc1_alt": {
+        "id": "ALT-MALTRA-PERC1_ALT",
+        "dimension": "Maltrato Laboral",
+        "reemplazaA": "perc1",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con op2)",
+        "valorMax": 3,
+        "pregunta": "¿Qué porcentaje de los jefes o líderes de tu entorno laboral dirías que usa la humillación o la intimidación como forma de exigir resultados?",
+        "variantesExtra": [
+          "Pensándolo bien, ¿Qué porcentaje de los jefes o líderes de tu entorno laboral dirías que usa la humillación o la intimidación como forma de exigir resultados?",
+          "En tu experiencia, ¿Qué porcentaje de los jefes o líderes de tu entorno laboral dirías que usa la humillación o la intimidación como forma de exigir resultados?",
+          "Sin pensarlo demasiado, ¿Qué porcentaje de los jefes o líderes de tu entorno laboral dirías que usa la humillación o la intimidación como forma de exigir resultados?",
+          "Según lo que has visto, ¿Qué porcentaje de los jefes o líderes de tu entorno laboral dirías que usa la humillación o la intimidación como forma de exigir resultados?"
+        ],
+        "opciones": [
+          {
+            "label": "Menos del 10%",
+            "valor": 0
+          },
+          {
+            "label": "Entre 10% y 25%",
+            "valor": 1
+          },
+          {
+            "label": "Entre 25% y 50%",
+            "valor": 2
+          },
+          {
+            "label": "Más del 50%",
+            "valor": 3
+          }
+        ]
+      }
+    },
+    "Discriminación": {
+      "op1_alt": {
+        "id": "ALT-DISCRI-OP1_ALT",
+        "dimension": "Discriminación",
+        "reemplazaA": "op1",
+        "indicadorSlot": 1,
+        "direccion": "Directo",
+        "parRol": "Par 1 (con fut1)",
+        "valorMax": 3,
+        "pregunta": "Vas a formar un equipo de trabajo y, entre varias personas igual de calificadas, una tiene características personales (edad, apariencia, religión, género) distintas a las que vos preferirías tener cerca, aunque eso no afecta su desempeño. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, vas a formar un equipo de trabajo y, entre varias personas igual de calificadas, una tiene características personales (edad, apariencia, religión, género) distintas a las que vos preferirías tener cerca, aunque eso no afecta su desempeño. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, vas a formar un equipo de trabajo y, entre varias personas igual de calificadas, una tiene características personales (edad, apariencia, religión, género) distintas a las que vos preferirías tener cerca, aunque eso no afecta su desempeño. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, vas a formar un equipo de trabajo y, entre varias personas igual de calificadas, una tiene características personales (edad, apariencia, religión, género) distintas a las que vos preferirías tener cerca, aunque eso no afecta su desempeño. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, vas a formar un equipo de trabajo y, entre varias personas igual de calificadas, una tiene características personales (edad, apariencia, religión, género) distintas a las que vos preferirías tener cerca, aunque eso no afecta su desempeño. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "La incluyo con normalidad, esas características no tienen nada que ver con el trabajo.",
+            "valor": 0
+          },
+          {
+            "label": "La incluyo, aunque al principio me genere algo de duda.",
+            "valor": 1
+          },
+          {
+            "label": "Prefiero, sin decirlo, a alguien con quien me sienta más cómodo por esas características.",
+            "valor": 2
+          },
+          {
+            "label": "Busco, de forma discreta, no incluirla por esas características.",
+            "valor": 3
+          }
+        ]
+      },
+      "op2_alt": {
+        "id": "ALT-DISCRI-OP2_ALT",
+        "dimension": "Discriminación",
+        "reemplazaA": "op2",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con perc1)",
+        "valorMax": 3,
+        "pregunta": "Te das cuenta de que, sin proponértelo, tratás distinto a dos personas de tu equipo por su género, edad o apariencia, aunque no lo hayas hecho a propósito. ¿Qué es lo más parecido a lo que harías al notarlo?",
+        "variantesExtra": [
+          "Pensándolo bien, te das cuenta de que, sin proponértelo, tratás distinto a dos personas de tu equipo por su género, edad o apariencia, aunque no lo hayas hecho a propósito. ¿Qué es lo más parecido a lo que harías al notarlo?",
+          "En tu experiencia, te das cuenta de que, sin proponértelo, tratás distinto a dos personas de tu equipo por su género, edad o apariencia, aunque no lo hayas hecho a propósito. ¿Qué es lo más parecido a lo que harías al notarlo?",
+          "Sin pensarlo demasiado, te das cuenta de que, sin proponértelo, tratás distinto a dos personas de tu equipo por su género, edad o apariencia, aunque no lo hayas hecho a propósito. ¿Qué es lo más parecido a lo que harías al notarlo?",
+          "Según lo que has visto, te das cuenta de que, sin proponértelo, tratás distinto a dos personas de tu equipo por su género, edad o apariencia, aunque no lo hayas hecho a propósito. ¿Qué es lo más parecido a lo que harías al notarlo?"
+        ],
+        "opciones": [
+          {
+            "label": "Me detengo a corregirlo, aunque no haya sido intencional, igual afecta a la persona.",
+            "valor": 0
+          },
+          {
+            "label": "Trato de ajustar mi trato para que sea parejo de ahí en adelante.",
+            "valor": 1
+          },
+          {
+            "label": "No le doy mucha importancia, no fue algo grave ni intencional.",
+            "valor": 2
+          },
+          {
+            "label": "No hago nada distinto, no toda diferencia de trato es discriminación real.",
+            "valor": 3
+          }
+        ]
+      },
+      "perc1_alt": {
+        "id": "ALT-DISCRI-PERC1_ALT",
+        "dimension": "Discriminación",
+        "reemplazaA": "perc1",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con op2)",
+        "valorMax": 3,
+        "pregunta": "¿Qué porcentaje de las personas de tu entorno laboral dirías que minimiza o le resta importancia a episodios de trato desigual que ocurren en el trabajo?",
+        "variantesExtra": [
+          "Pensándolo bien, ¿Qué porcentaje de las personas de tu entorno laboral dirías que minimiza o le resta importancia a episodios de trato desigual que ocurren en el trabajo?",
+          "En tu experiencia, ¿Qué porcentaje de las personas de tu entorno laboral dirías que minimiza o le resta importancia a episodios de trato desigual que ocurren en el trabajo?",
+          "Sin pensarlo demasiado, ¿Qué porcentaje de las personas de tu entorno laboral dirías que minimiza o le resta importancia a episodios de trato desigual que ocurren en el trabajo?",
+          "Según lo que has visto, ¿Qué porcentaje de las personas de tu entorno laboral dirías que minimiza o le resta importancia a episodios de trato desigual que ocurren en el trabajo?"
+        ],
+        "opciones": [
+          {
+            "label": "Menos del 10%",
+            "valor": 0
+          },
+          {
+            "label": "Entre 10% y 25%",
+            "valor": 1
+          },
+          {
+            "label": "Entre 25% y 50%",
+            "valor": 2
+          },
+          {
+            "label": "Más del 50%",
+            "valor": 3
+          }
+        ]
+      }
+    },
+    "Asociación Criminal": {
+      "op1_alt": {
+        "id": "ALT-ASOCIA-OP1_ALT",
+        "dimension": "Asociación Criminal",
+        "reemplazaA": "op1",
+        "indicadorSlot": 1,
+        "direccion": "Directo",
+        "parRol": "Par 1 (con fut1)",
+        "valorMax": 3,
+        "pregunta": "Un amigo cercano tuyo está, con certeza, involucrado en actividades delictivas, aunque nunca te ha pedido que participes en nada. ¿Qué es lo más parecido a lo que harías con esa amistad?",
+        "variantesExtra": [
+          "Pensándolo bien, un amigo cercano tuyo está, con certeza, involucrado en actividades delictivas, aunque nunca te ha pedido que participes en nada. ¿Qué es lo más parecido a lo que harías con esa amistad?",
+          "En tu experiencia, un amigo cercano tuyo está, con certeza, involucrado en actividades delictivas, aunque nunca te ha pedido que participes en nada. ¿Qué es lo más parecido a lo que harías con esa amistad?",
+          "Sin pensarlo demasiado, un amigo cercano tuyo está, con certeza, involucrado en actividades delictivas, aunque nunca te ha pedido que participes en nada. ¿Qué es lo más parecido a lo que harías con esa amistad?",
+          "Según lo que has visto, un amigo cercano tuyo está, con certeza, involucrado en actividades delictivas, aunque nunca te ha pedido que participes en nada. ¿Qué es lo más parecido a lo que harías con esa amistad?"
+        ],
+        "opciones": [
+          {
+            "label": "Me distancio, prefiero no tener ese tipo de vínculo cercano.",
+            "valor": 0
+          },
+          {
+            "label": "Mantengo la relación, pero pongo límites claros y me mantengo alejado de ese tema.",
+            "valor": 1
+          },
+          {
+            "label": "Mantengo la amistad igual que siempre, mientras a mí no me involucre.",
+            "valor": 2
+          },
+          {
+            "label": "No le doy importancia, es su vida y no tiene por qué afectar la mía.",
+            "valor": 3
+          }
+        ]
+      },
+      "op2_alt": {
+        "id": "ALT-ASOCIA-OP2_ALT",
+        "dimension": "Asociación Criminal",
+        "reemplazaA": "op2",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con perc1)",
+        "valorMax": 3,
+        "pregunta": "Estás evaluando si seguir frecuentando a alguien cercano que, sabés, está vinculado a actividades delictivas. ¿Qué tan probable creés que es que esa cercanía te traiga problemas a vos, aunque nunca participes en nada?",
+        "variantesExtra": [
+          "Pensándolo bien, estás evaluando si seguir frecuentando a alguien cercano que, sabés, está vinculado a actividades delictivas. ¿Qué tan probable creés que es que esa cercanía te traiga problemas a vos, aunque nunca participes en nada?",
+          "En tu experiencia, estás evaluando si seguir frecuentando a alguien cercano que, sabés, está vinculado a actividades delictivas. ¿Qué tan probable creés que es que esa cercanía te traiga problemas a vos, aunque nunca participes en nada?",
+          "Sin pensarlo demasiado, estás evaluando si seguir frecuentando a alguien cercano que, sabés, está vinculado a actividades delictivas. ¿Qué tan probable creés que es que esa cercanía te traiga problemas a vos, aunque nunca participes en nada?",
+          "Según lo que has visto, estás evaluando si seguir frecuentando a alguien cercano que, sabés, está vinculado a actividades delictivas. ¿Qué tan probable creés que es que esa cercanía te traiga problemas a vos, aunque nunca participes en nada?"
+        ],
+        "opciones": [
+          {
+            "label": "Bastante probable, prefiero evitar ese riesgo directamente.",
+            "valor": 0
+          },
+          {
+            "label": "Algo probable, así que mantengo bastante distancia.",
+            "valor": 1
+          },
+          {
+            "label": "Poco probable, mientras yo no haga nada no debería afectarme.",
+            "valor": 2
+          },
+          {
+            "label": "Prácticamente nulo, no tiene por qué afectarme si yo no participo.",
+            "valor": 3
+          }
+        ]
+      },
+      "perc1_alt": {
+        "id": "ALT-ASOCIA-PERC1_ALT",
+        "dimension": "Asociación Criminal",
+        "reemplazaA": "perc1",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con op2)",
+        "valorMax": 3,
+        "pregunta": "¿Qué porcentaje dirías que, de las personas cercanas a una actividad delictiva, terminan metiendo en problemas serios a las personas de su entorno?",
+        "variantesExtra": [
+          "Pensándolo bien, ¿Qué porcentaje dirías que, de las personas cercanas a una actividad delictiva, terminan metiendo en problemas serios a las personas de su entorno?",
+          "En tu experiencia, ¿Qué porcentaje dirías que, de las personas cercanas a una actividad delictiva, terminan metiendo en problemas serios a las personas de su entorno?",
+          "Sin pensarlo demasiado, ¿Qué porcentaje dirías que, de las personas cercanas a una actividad delictiva, terminan metiendo en problemas serios a las personas de su entorno?",
+          "Según lo que has visto, ¿Qué porcentaje dirías que, de las personas cercanas a una actividad delictiva, terminan metiendo en problemas serios a las personas de su entorno?"
+        ],
+        "opciones": [
+          {
+            "label": "Menos del 10%",
+            "valor": 0
+          },
+          {
+            "label": "Entre 10% y 25%",
+            "valor": 1
+          },
+          {
+            "label": "Entre 25% y 50%",
+            "valor": 2
+          },
+          {
+            "label": "Más del 50%",
+            "valor": 3
+          }
+        ]
+      }
+    },
+    "Sustancias Lícitas": {
+      "op1_alt": {
+        "id": "ALT-SUSTAN-OP1_ALT",
+        "dimension": "Sustancias Lícitas",
+        "reemplazaA": "op1",
+        "indicadorSlot": 1,
+        "direccion": "Directo",
+        "parRol": "Par 1 (con fut1)",
+        "valorMax": 3,
+        "pregunta": "Tenés un evento social o de trabajo donde hay alcohol disponible. ¿Qué es lo más parecido a lo que harías con el consumo?",
+        "variantesExtra": [
+          "Pensándolo bien, tenés un evento social o de trabajo donde hay alcohol disponible. ¿Qué es lo más parecido a lo que harías con el consumo?",
+          "En tu experiencia, tenés un evento social o de trabajo donde hay alcohol disponible. ¿Qué es lo más parecido a lo que harías con el consumo?",
+          "Sin pensarlo demasiado, tenés un evento social o de trabajo donde hay alcohol disponible. ¿Qué es lo más parecido a lo que harías con el consumo?",
+          "Según lo que has visto, tenés un evento social o de trabajo donde hay alcohol disponible. ¿Qué es lo más parecido a lo que harías con el consumo?"
+        ],
+        "opciones": [
+          {
+            "label": "Tomo con moderación, sin llegar a un estado notorio de embriaguez.",
+            "valor": 0
+          },
+          {
+            "label": "Tomo poco y cuido bien mi límite durante todo el evento.",
+            "valor": 1
+          },
+          {
+            "label": "A veces tomo hasta notarse bastante, de vez en cuando no pasa nada.",
+            "valor": 2
+          },
+          {
+            "label": "Aprovecho para tomar sin mucho límite, son ocasiones especiales.",
+            "valor": 3
+          }
+        ]
+      },
+      "op2_alt": {
+        "id": "ALT-SUSTAN-OP2_ALT",
+        "dimension": "Sustancias Lícitas",
+        "reemplazaA": "op2",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con perc1)",
+        "valorMax": 3,
+        "pregunta": "Tuviste una semana particularmente estresante en el trabajo. ¿Qué es lo más parecido a lo que harías para manejarlo?",
+        "variantesExtra": [
+          "Pensándolo bien, tuviste una semana particularmente estresante en el trabajo. ¿Qué es lo más parecido a lo que harías para manejarlo?",
+          "En tu experiencia, tuviste una semana particularmente estresante en el trabajo. ¿Qué es lo más parecido a lo que harías para manejarlo?",
+          "Sin pensarlo demasiado, tuviste una semana particularmente estresante en el trabajo. ¿Qué es lo más parecido a lo que harías para manejarlo?",
+          "Según lo que has visto, tuviste una semana particularmente estresante en el trabajo. ¿Qué es lo más parecido a lo que harías para manejarlo?"
+        ],
+        "opciones": [
+          {
+            "label": "Uso otras formas de manejar el estrés (ejercicio, descanso, hablar con alguien).",
+            "valor": 0
+          },
+          {
+            "label": "A veces tomo una copa para relajarme, sin que sea mi forma principal.",
+            "valor": 1
+          },
+          {
+            "label": "Tomar alcohol es de las formas que más uso para bajar el estrés.",
+            "valor": 2
+          },
+          {
+            "label": "Necesito tomar para poder desconectarme del estrés de la semana.",
+            "valor": 3
+          }
+        ]
+      },
+      "perc1_alt": {
+        "id": "ALT-SUSTAN-PERC1_ALT",
+        "dimension": "Sustancias Lícitas",
+        "reemplazaA": "perc1",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con op2)",
+        "valorMax": 3,
+        "pregunta": "¿Qué porcentaje de las personas de tu entorno dirías que usa el alcohol o el tabaco como su forma principal de manejar el estrés?",
+        "variantesExtra": [
+          "Pensándolo bien, ¿Qué porcentaje de las personas de tu entorno dirías que usa el alcohol o el tabaco como su forma principal de manejar el estrés?",
+          "En tu experiencia, ¿Qué porcentaje de las personas de tu entorno dirías que usa el alcohol o el tabaco como su forma principal de manejar el estrés?",
+          "Sin pensarlo demasiado, ¿Qué porcentaje de las personas de tu entorno dirías que usa el alcohol o el tabaco como su forma principal de manejar el estrés?",
+          "Según lo que has visto, ¿Qué porcentaje de las personas de tu entorno dirías que usa el alcohol o el tabaco como su forma principal de manejar el estrés?"
+        ],
+        "opciones": [
+          {
+            "label": "Menos del 10%",
+            "valor": 0
+          },
+          {
+            "label": "Entre 10% y 25%",
+            "valor": 1
+          },
+          {
+            "label": "Entre 25% y 50%",
+            "valor": 2
+          },
+          {
+            "label": "Más del 50%",
+            "valor": 3
+          }
+        ]
+      }
+    },
+    "Sustancias Ilícitas": {
+      "op1_alt": {
+        "id": "ALT-SUSTAN-OP1_ALT",
+        "dimension": "Sustancias Ilícitas",
+        "reemplazaA": "op1",
+        "indicadorSlot": 1,
+        "direccion": "Directo",
+        "parRol": "Par 1 (con fut1)",
+        "valorMax": 3,
+        "pregunta": "Estás en un ambiente social donde te ofrecen consumir una sustancia no permitida por la ley, de forma recreativa y ocasional. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, estás en un ambiente social donde te ofrecen consumir una sustancia no permitida por la ley, de forma recreativa y ocasional. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, estás en un ambiente social donde te ofrecen consumir una sustancia no permitida por la ley, de forma recreativa y ocasional. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, estás en un ambiente social donde te ofrecen consumir una sustancia no permitida por la ley, de forma recreativa y ocasional. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, estás en un ambiente social donde te ofrecen consumir una sustancia no permitida por la ley, de forma recreativa y ocasional. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "La rechazo, prefiero no consumir sustancias no permitidas.",
+            "valor": 0
+          },
+          {
+            "label": "La rechazo casi siempre, salvo en contadas ocasiones muy puntuales.",
+            "valor": 1
+          },
+          {
+            "label": "La acepto de vez en cuando, con moderación no creo que sea un problema.",
+            "valor": 2
+          },
+          {
+            "label": "La acepto sin mucho reparo, mientras sea ocasional no le veo problema.",
+            "valor": 3
+          }
+        ]
+      },
+      "op2_alt": {
+        "id": "ALT-SUSTAN-OP2_ALT",
+        "dimension": "Sustancias Ilícitas",
+        "reemplazaA": "op2",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con perc1)",
+        "valorMax": 3,
+        "pregunta": "Tenés una jornada de trabajo por delante y la posibilidad de consumir, antes de empezar, una sustancia no permitida por la ley. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, tenés una jornada de trabajo por delante y la posibilidad de consumir, antes de empezar, una sustancia no permitida por la ley. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, tenés una jornada de trabajo por delante y la posibilidad de consumir, antes de empezar, una sustancia no permitida por la ley. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, tenés una jornada de trabajo por delante y la posibilidad de consumir, antes de empezar, una sustancia no permitida por la ley. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, tenés una jornada de trabajo por delante y la posibilidad de consumir, antes de empezar, una sustancia no permitida por la ley. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "No la consumo, menos aún antes de una actividad laboral.",
+            "valor": 0
+          },
+          {
+            "label": "La evito completamente en contextos relacionados con el trabajo.",
+            "valor": 1
+          },
+          {
+            "label": "La consumo si siento que igual puedo cumplir bien con mi trabajo.",
+            "valor": 2
+          },
+          {
+            "label": "La consumo sin mucho problema, mientras cumpla no es tan grave.",
+            "valor": 3
+          }
+        ]
+      },
+      "perc1_alt": {
+        "id": "ALT-SUSTAN-PERC1_ALT",
+        "dimension": "Sustancias Ilícitas",
+        "reemplazaA": "perc1",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con op2)",
+        "valorMax": 3,
+        "pregunta": "¿Qué porcentaje de las personas de tu entorno dirías que ha consumido una sustancia no permitida por la ley antes o durante una actividad laboral?",
+        "variantesExtra": [
+          "Pensándolo bien, ¿Qué porcentaje de las personas de tu entorno dirías que ha consumido una sustancia no permitida por la ley antes o durante una actividad laboral?",
+          "En tu experiencia, ¿Qué porcentaje de las personas de tu entorno dirías que ha consumido una sustancia no permitida por la ley antes o durante una actividad laboral?",
+          "Sin pensarlo demasiado, ¿Qué porcentaje de las personas de tu entorno dirías que ha consumido una sustancia no permitida por la ley antes o durante una actividad laboral?",
+          "Según lo que has visto, ¿Qué porcentaje de las personas de tu entorno dirías que ha consumido una sustancia no permitida por la ley antes o durante una actividad laboral?"
+        ],
+        "opciones": [
+          {
+            "label": "Menos del 10%",
+            "valor": 0
+          },
+          {
+            "label": "Entre 10% y 25%",
+            "valor": 1
+          },
+          {
+            "label": "Entre 25% y 50%",
+            "valor": 2
+          },
+          {
+            "label": "Más del 50%",
+            "valor": 3
+          }
+        ]
+      }
+    },
+    "Incumplimiento de Normas": {
+      "op1_alt": {
+        "id": "ALT-INCUMP-OP1_ALT",
+        "dimension": "Incumplimiento de Normas",
+        "reemplazaA": "op1",
+        "indicadorSlot": 1,
+        "direccion": "Directo",
+        "parRol": "Par 1 (con fut1)",
+        "valorMax": 3,
+        "pregunta": "Seguir una regla o procedimiento de tu trabajo en un momento puntual te resultaría bastante inconveniente, y es poco probable que alguien se entere si no la seguís. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, seguir una regla o procedimiento de tu trabajo en un momento puntual te resultaría bastante inconveniente, y es poco probable que alguien se entere si no la seguís. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, seguir una regla o procedimiento de tu trabajo en un momento puntual te resultaría bastante inconveniente, y es poco probable que alguien se entere si no la seguís. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, seguir una regla o procedimiento de tu trabajo en un momento puntual te resultaría bastante inconveniente, y es poco probable que alguien se entere si no la seguís. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, seguir una regla o procedimiento de tu trabajo en un momento puntual te resultaría bastante inconveniente, y es poco probable que alguien se entere si no la seguís. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Sigo la regla igual, sin importar la probabilidad de que me descubran.",
+            "valor": 0
+          },
+          {
+            "label": "Sigo la regla, aunque me tome un poco más de tiempo o esfuerzo.",
+            "valor": 1
+          },
+          {
+            "label": "La salto en ese caso puntual, el riesgo de que se note es bajo.",
+            "valor": 2
+          },
+          {
+            "label": "La salto sin pensarlo mucho, si nadie se entera no hay problema.",
+            "valor": 3
+          }
+        ]
+      },
+      "op2_alt": {
+        "id": "ALT-INCUMP-OP2_ALT",
+        "dimension": "Incumplimiento de Normas",
+        "reemplazaA": "op2",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con perc1)",
+        "valorMax": 3,
+        "pregunta": "Te encontrás una norma o procedimiento de tu trabajo que te parece más bien una formalidad, sin mucho sentido práctico en el día a día. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, te encontrás una norma o procedimiento de tu trabajo que te parece más bien una formalidad, sin mucho sentido práctico en el día a día. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, te encontrás una norma o procedimiento de tu trabajo que te parece más bien una formalidad, sin mucho sentido práctico en el día a día. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, te encontrás una norma o procedimiento de tu trabajo que te parece más bien una formalidad, sin mucho sentido práctico en el día a día. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, te encontrás una norma o procedimiento de tu trabajo que te parece más bien una formalidad, sin mucho sentido práctico en el día a día. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "La sigo de todas formas, y si me parece innecesaria, propongo cambiarla por los canales correspondientes.",
+            "valor": 0
+          },
+          {
+            "label": "La sigo, aunque no esté del todo de acuerdo con ella.",
+            "valor": 1
+          },
+          {
+            "label": "La sigo solo cuando conviene o cuando alguien está mirando.",
+            "valor": 2
+          },
+          {
+            "label": "No le doy mucha importancia, la mayoría de esas normas son solo formalidad.",
+            "valor": 3
+          }
+        ]
+      },
+      "perc1_alt": {
+        "id": "ALT-INCUMP-PERC1_ALT",
+        "dimension": "Incumplimiento de Normas",
+        "reemplazaA": "perc1",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con op2)",
+        "valorMax": 3,
+        "pregunta": "¿Qué porcentaje dirías que, de las personas que incumplen una norma o reglamento en tu entorno laboral, terminan realmente sancionadas por eso?",
+        "variantesExtra": [
+          "Pensándolo bien, ¿Qué porcentaje dirías que, de las personas que incumplen una norma o reglamento en tu entorno laboral, terminan realmente sancionadas por eso?",
+          "En tu experiencia, ¿Qué porcentaje dirías que, de las personas que incumplen una norma o reglamento en tu entorno laboral, terminan realmente sancionadas por eso?",
+          "Sin pensarlo demasiado, ¿Qué porcentaje dirías que, de las personas que incumplen una norma o reglamento en tu entorno laboral, terminan realmente sancionadas por eso?",
+          "Según lo que has visto, ¿Qué porcentaje dirías que, de las personas que incumplen una norma o reglamento en tu entorno laboral, terminan realmente sancionadas por eso?"
+        ],
+        "opciones": [
+          {
+            "label": "Menos del 10%",
+            "valor": 0
+          },
+          {
+            "label": "Entre 10% y 25%",
+            "valor": 1
+          },
+          {
+            "label": "Entre 25% y 50%",
+            "valor": 2
+          },
+          {
+            "label": "Más del 50%",
+            "valor": 3
+          }
+        ]
+      }
+    },
+    "Deudas": {
+      "op1_alt": {
+        "id": "ALT-DEUDAS-OP1_ALT",
+        "dimension": "Deudas",
+        "reemplazaA": "op1",
+        "indicadorSlot": 1,
+        "direccion": "Directo",
+        "parRol": "Par 1 (con fut1)",
+        "valorMax": 3,
+        "pregunta": "Ves algo que realmente te gusta, pero no es algo que necesites, y no tenés el dinero disponible. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, ves algo que realmente te gusta, pero no es algo que necesites, y no tenés el dinero disponible. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, ves algo que realmente te gusta, pero no es algo que necesites, y no tenés el dinero disponible. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, ves algo que realmente te gusta, pero no es algo que necesites, y no tenés el dinero disponible. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, ves algo que realmente te gusta, pero no es algo que necesites, y no tenés el dinero disponible. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Esperaría a juntar el dinero o buscaría pagarlo sin financiarlo.",
+            "valor": 0
+          },
+          {
+            "label": "Vería si puedo pagarlo en partes con lo que ya tengo, sin abrir un crédito nuevo.",
+            "valor": 1
+          },
+          {
+            "label": "Usaría una tarjeta o crédito que ya tengo, aunque no sea algo esencial.",
+            "valor": 2
+          },
+          {
+            "label": "Buscaría un crédito nuevo o un préstamo para conseguirlo de inmediato.",
+            "valor": 3
+          }
+        ]
+      },
+      "op2_alt": {
+        "id": "ALT-DEUDAS-OP2_ALT",
+        "dimension": "Deudas",
+        "reemplazaA": "op2",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con perc1)",
+        "valorMax": 3,
+        "pregunta": "Tenés varios pagos pendientes este mes y te das cuenta de que vas a tener dificultad para cumplir uno a tiempo. ¿Qué es lo más parecido a lo que pensarías?",
+        "variantesExtra": [
+          "Pensándolo bien, tenés varios pagos pendientes este mes y te das cuenta de que vas a tener dificultad para cumplir uno a tiempo. ¿Qué es lo más parecido a lo que pensarías?",
+          "En tu experiencia, tenés varios pagos pendientes este mes y te das cuenta de que vas a tener dificultad para cumplir uno a tiempo. ¿Qué es lo más parecido a lo que pensarías?",
+          "Sin pensarlo demasiado, tenés varios pagos pendientes este mes y te das cuenta de que vas a tener dificultad para cumplir uno a tiempo. ¿Qué es lo más parecido a lo que pensarías?",
+          "Según lo que has visto, tenés varios pagos pendientes este mes y te das cuenta de que vas a tener dificultad para cumplir uno a tiempo. ¿Qué es lo más parecido a lo que pensarías?"
+        ],
+        "opciones": [
+          {
+            "label": "Me preocupa, reviso mis gastos y busco ajustar antes de que pase.",
+            "valor": 0
+          },
+          {
+            "label": "Aviso a quien corresponda y busco una alternativa de pago.",
+            "valor": 1
+          },
+          {
+            "label": "Pienso que es normal, le pasa a cualquiera, no le doy mucha importancia.",
+            "valor": 2
+          },
+          {
+            "label": "No me preocupo, ya se resolverá cuando llegue el momento.",
+            "valor": 3
+          }
+        ]
+      },
+      "perc1_alt": {
+        "id": "ALT-DEUDAS-PERC1_ALT",
+        "dimension": "Deudas",
+        "reemplazaA": "perc1",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con op2)",
+        "valorMax": 3,
+        "pregunta": "¿Qué porcentaje de las personas de tu entorno dirías que tiene dificultad para cumplir con sus compromisos de pago?",
+        "variantesExtra": [
+          "Pensándolo bien, ¿Qué porcentaje de las personas de tu entorno dirías que tiene dificultad para cumplir con sus compromisos de pago?",
+          "En tu experiencia, ¿Qué porcentaje de las personas de tu entorno dirías que tiene dificultad para cumplir con sus compromisos de pago?",
+          "Sin pensarlo demasiado, ¿Qué porcentaje de las personas de tu entorno dirías que tiene dificultad para cumplir con sus compromisos de pago?",
+          "Según lo que has visto, ¿Qué porcentaje de las personas de tu entorno dirías que tiene dificultad para cumplir con sus compromisos de pago?"
+        ],
+        "opciones": [
+          {
+            "label": "Menos del 10%",
+            "valor": 0
+          },
+          {
+            "label": "Entre 10% y 25%",
+            "valor": 1
+          },
+          {
+            "label": "Entre 25% y 50%",
+            "valor": 2
+          },
+          {
+            "label": "Más del 50%",
+            "valor": 3
+          }
+        ]
+      }
+    },
+    "Impulsividad": {
+      "op1_alt": {
+        "id": "ALT-IMPULS-OP1_ALT",
+        "dimension": "Impulsividad",
+        "reemplazaA": "op1",
+        "indicadorSlot": 1,
+        "direccion": "Directo",
+        "parRol": "Par 1 (con fut1)",
+        "valorMax": 3,
+        "pregunta": "Te surge una decisión que te atrae mucho en el momento (una compra, un cambio, una oportunidad), pero no has tenido tiempo de pensarla del todo. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, te surge una decisión que te atrae mucho en el momento (una compra, un cambio, una oportunidad), pero no has tenido tiempo de pensarla del todo. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, te surge una decisión que te atrae mucho en el momento (una compra, un cambio, una oportunidad), pero no has tenido tiempo de pensarla del todo. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, te surge una decisión que te atrae mucho en el momento (una compra, un cambio, una oportunidad), pero no has tenido tiempo de pensarla del todo. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, te surge una decisión que te atrae mucho en el momento (una compra, un cambio, una oportunidad), pero no has tenido tiempo de pensarla del todo. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Me tomo el tiempo necesario para pensarla antes de decidir.",
+            "valor": 0
+          },
+          {
+            "label": "Le doy una vuelta rápida, pero trato de no decidir en caliente.",
+            "valor": 1
+          },
+          {
+            "label": "Decido casi de inmediato, ya después veo los detalles.",
+            "valor": 2
+          },
+          {
+            "label": "Decido en el momento, si algo me atrae no me gusta esperar.",
+            "valor": 3
+          }
+        ]
+      },
+      "op2_alt": {
+        "id": "ALT-IMPULS-OP2_ALT",
+        "dimension": "Impulsividad",
+        "reemplazaA": "op2",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con perc1)",
+        "valorMax": 3,
+        "pregunta": "Tenés que tomar una decisión con cierta urgencia, pero sin toda la información que te gustaría tener. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, tenés que tomar una decisión con cierta urgencia, pero sin toda la información que te gustaría tener. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, tenés que tomar una decisión con cierta urgencia, pero sin toda la información que te gustaría tener. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, tenés que tomar una decisión con cierta urgencia, pero sin toda la información que te gustaría tener. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, tenés que tomar una decisión con cierta urgencia, pero sin toda la información que te gustaría tener. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Busco la información mínima indispensable antes de decidir, aunque tome algo más de tiempo.",
+            "valor": 0
+          },
+          {
+            "label": "Decido con lo que tengo, pero reviso bien antes de confirmar.",
+            "valor": 1
+          },
+          {
+            "label": "Decido rápido, si algo sale mal ya lo corrijo después.",
+            "valor": 2
+          },
+          {
+            "label": "Actúo de inmediato, prefiero corregir después que quedarme pensando demasiado.",
+            "valor": 3
+          }
+        ]
+      },
+      "perc1_alt": {
+        "id": "ALT-IMPULS-PERC1_ALT",
+        "dimension": "Impulsividad",
+        "reemplazaA": "perc1",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con op2)",
+        "valorMax": 3,
+        "pregunta": "¿Qué porcentaje de las personas de tu entorno dirías que se ha arrepentido de decisiones que tomó de forma apresurada?",
+        "variantesExtra": [
+          "Pensándolo bien, ¿Qué porcentaje de las personas de tu entorno dirías que se ha arrepentido de decisiones que tomó de forma apresurada?",
+          "En tu experiencia, ¿Qué porcentaje de las personas de tu entorno dirías que se ha arrepentido de decisiones que tomó de forma apresurada?",
+          "Sin pensarlo demasiado, ¿Qué porcentaje de las personas de tu entorno dirías que se ha arrepentido de decisiones que tomó de forma apresurada?",
+          "Según lo que has visto, ¿Qué porcentaje de las personas de tu entorno dirías que se ha arrepentido de decisiones que tomó de forma apresurada?"
+        ],
+        "opciones": [
+          {
+            "label": "Menos del 10%",
+            "valor": 0
+          },
+          {
+            "label": "Entre 10% y 25%",
+            "valor": 1
+          },
+          {
+            "label": "Entre 25% y 50%",
+            "valor": 2
+          },
+          {
+            "label": "Más del 50%",
+            "valor": 3
+          }
+        ]
+      }
+    },
+    "Violencia": {
+      "op1_alt": {
+        "id": "ALT-VIOLEN-OP1_ALT",
+        "dimension": "Violencia",
+        "reemplazaA": "op1",
+        "indicadorSlot": 1,
+        "direccion": "Directo",
+        "parRol": "Par 1 (con fut1)",
+        "valorMax": 3,
+        "pregunta": "Alguien te provoca fuertemente en una discusión, con la intención clara de hacerte perder la calma. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, alguien te provoca fuertemente en una discusión, con la intención clara de hacerte perder la calma. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, alguien te provoca fuertemente en una discusión, con la intención clara de hacerte perder la calma. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, alguien te provoca fuertemente en una discusión, con la intención clara de hacerte perder la calma. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, alguien te provoca fuertemente en una discusión, con la intención clara de hacerte perder la calma. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Mantengo la calma y busco resolver la discusión sin subir el tono.",
+            "valor": 0
+          },
+          {
+            "label": "Me cuesta, pero trato de no responder con gritos o insultos.",
+            "valor": 1
+          },
+          {
+            "label": "Respondo subiendo el tono, si me provocan fuerte es válido responder igual.",
+            "valor": 2
+          },
+          {
+            "label": "Respondo con gritos o insultos, quien provoca así se lo busca.",
+            "valor": 3
+          }
+        ]
+      },
+      "op2_alt": {
+        "id": "ALT-VIOLEN-OP2_ALT",
+        "dimension": "Violencia",
+        "reemplazaA": "op2",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con perc1)",
+        "valorMax": 3,
+        "pregunta": "Tenés un conflicto serio con alguien y sentís que necesitás que entienda tu punto de una vez. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, tenés un conflicto serio con alguien y sentís que necesitás que entienda tu punto de una vez. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, tenés un conflicto serio con alguien y sentís que necesitás que entienda tu punto de una vez. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, tenés un conflicto serio con alguien y sentís que necesitás que entienda tu punto de una vez. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, tenés un conflicto serio con alguien y sentís que necesitás que entienda tu punto de una vez. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Busco hablarlo directamente, sin recurrir a presión indirecta.",
+            "valor": 0
+          },
+          {
+            "label": "Trato de resolverlo hablando, aunque me cueste encontrar el momento.",
+            "valor": 1
+          },
+          {
+            "label": "Me distancio o dejo de incluirlo en cosas, para que entienda el mensaje.",
+            "valor": 2
+          },
+          {
+            "label": "Dejo entrever, sin decirlo directamente, que las cosas se le pueden complicar.",
+            "valor": 3
+          }
+        ]
+      },
+      "perc1_alt": {
+        "id": "ALT-VIOLEN-PERC1_ALT",
+        "dimension": "Violencia",
+        "reemplazaA": "perc1",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con op2)",
+        "valorMax": 3,
+        "pregunta": "¿Qué porcentaje de las personas de tu entorno dirías que usa el aislamiento social o las amenazas indirectas para controlar o presionar a alguien?",
+        "variantesExtra": [
+          "Pensándolo bien, ¿Qué porcentaje de las personas de tu entorno dirías que usa el aislamiento social o las amenazas indirectas para controlar o presionar a alguien?",
+          "En tu experiencia, ¿Qué porcentaje de las personas de tu entorno dirías que usa el aislamiento social o las amenazas indirectas para controlar o presionar a alguien?",
+          "Sin pensarlo demasiado, ¿Qué porcentaje de las personas de tu entorno dirías que usa el aislamiento social o las amenazas indirectas para controlar o presionar a alguien?",
+          "Según lo que has visto, ¿Qué porcentaje de las personas de tu entorno dirías que usa el aislamiento social o las amenazas indirectas para controlar o presionar a alguien?"
+        ],
+        "opciones": [
+          {
+            "label": "Menos del 10%",
+            "valor": 0
+          },
+          {
+            "label": "Entre 10% y 25%",
+            "valor": 1
+          },
+          {
+            "label": "Entre 25% y 50%",
+            "valor": 2
+          },
+          {
+            "label": "Más del 50%",
+            "valor": 3
+          }
+        ]
+      }
+    },
+    "Ludopatía": {
+      "op1_alt": {
+        "id": "ALT-LUDOPA-OP1_ALT",
+        "dimension": "Ludopatía",
+        "reemplazaA": "op1",
+        "indicadorSlot": 1,
+        "direccion": "Directo",
+        "parRol": "Par 1 (con fut1)",
+        "valorMax": 3,
+        "pregunta": "Te gusta apostar de vez en cuando (lotería, casino, apuestas deportivas, etc.), y siempre has podido cubrir lo que perdés. ¿Qué es lo más parecido a la frecuencia con la que lo harías?",
+        "variantesExtra": [
+          "Pensándolo bien, te gusta apostar de vez en cuando (lotería, casino, apuestas deportivas, etc.), y siempre has podido cubrir lo que perdés. ¿Qué es lo más parecido a la frecuencia con la que lo harías?",
+          "En tu experiencia, te gusta apostar de vez en cuando (lotería, casino, apuestas deportivas, etc.), y siempre has podido cubrir lo que perdés. ¿Qué es lo más parecido a la frecuencia con la que lo harías?",
+          "Sin pensarlo demasiado, te gusta apostar de vez en cuando (lotería, casino, apuestas deportivas, etc.), y siempre has podido cubrir lo que perdés. ¿Qué es lo más parecido a la frecuencia con la que lo harías?",
+          "Según lo que has visto, te gusta apostar de vez en cuando (lotería, casino, apuestas deportivas, etc.), y siempre has podido cubrir lo que perdés. ¿Qué es lo más parecido a la frecuencia con la que lo harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Muy ocasionalmente, casi nunca.",
+            "valor": 0
+          },
+          {
+            "label": "De vez en cuando, sin que sea una costumbre.",
+            "valor": 1
+          },
+          {
+            "label": "Con cierta frecuencia, mientras pueda pagarlo no le veo problema.",
+            "valor": 2
+          },
+          {
+            "label": "Bastante seguido, es algo que disfruto hacer regularmente.",
+            "valor": 3
+          }
+        ]
+      },
+      "op2_alt": {
+        "id": "ALT-LUDOPA-OP2_ALT",
+        "dimension": "Ludopatía",
+        "reemplazaA": "op2",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con perc1)",
+        "valorMax": 3,
+        "pregunta": "Se presenta una oportunidad de apuesta que te parece muy buena, pero el dinero disponible en ese momento estaba destinado a otro gasto. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, se presenta una oportunidad de apuesta que te parece muy buena, pero el dinero disponible en ese momento estaba destinado a otro gasto. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, se presenta una oportunidad de apuesta que te parece muy buena, pero el dinero disponible en ese momento estaba destinado a otro gasto. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, se presenta una oportunidad de apuesta que te parece muy buena, pero el dinero disponible en ese momento estaba destinado a otro gasto. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, se presenta una oportunidad de apuesta que te parece muy buena, pero el dinero disponible en ese momento estaba destinado a otro gasto. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Dejo pasar la oportunidad, ese dinero tiene otro destino.",
+            "valor": 0
+          },
+          {
+            "label": "La dejo pasar, aunque me cueste un poco.",
+            "valor": 1
+          },
+          {
+            "label": "Uso una parte de ese dinero, ya luego lo reajusto.",
+            "valor": 2
+          },
+          {
+            "label": "Aprovecho la oportunidad, ocasionalmente no es grave hacerlo.",
+            "valor": 3
+          }
+        ]
+      },
+      "perc1_alt": {
+        "id": "ALT-LUDOPA-PERC1_ALT",
+        "dimension": "Ludopatía",
+        "reemplazaA": "perc1",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con op2)",
+        "valorMax": 3,
+        "pregunta": "¿Qué porcentaje de las personas de tu entorno dirías que ha usado dinero destinado a otras necesidades (renta, alimentación) para apostar?",
+        "variantesExtra": [
+          "Pensándolo bien, ¿Qué porcentaje de las personas de tu entorno dirías que ha usado dinero destinado a otras necesidades (renta, alimentación) para apostar?",
+          "En tu experiencia, ¿Qué porcentaje de las personas de tu entorno dirías que ha usado dinero destinado a otras necesidades (renta, alimentación) para apostar?",
+          "Sin pensarlo demasiado, ¿Qué porcentaje de las personas de tu entorno dirías que ha usado dinero destinado a otras necesidades (renta, alimentación) para apostar?",
+          "Según lo que has visto, ¿Qué porcentaje de las personas de tu entorno dirías que ha usado dinero destinado a otras necesidades (renta, alimentación) para apostar?"
+        ],
+        "opciones": [
+          {
+            "label": "Menos del 10%",
+            "valor": 0
+          },
+          {
+            "label": "Entre 10% y 25%",
+            "valor": 1
+          },
+          {
+            "label": "Entre 25% y 50%",
+            "valor": 2
+          },
+          {
+            "label": "Más del 50%",
+            "valor": 3
+          }
+        ]
+      }
+    },
+    "Egoísmo": {
+      "op1_alt": {
+        "id": "ALT-EGOÍSM-OP1_ALT",
+        "dimension": "Egoísmo",
+        "reemplazaA": "op1",
+        "indicadorSlot": 1,
+        "direccion": "Directo",
+        "parRol": "Par 1 (con fut1)",
+        "valorMax": 3,
+        "pregunta": "Estás en una situación donde podés tomar una decisión que te beneficia claramente a vos, aunque eso implique un costo menor para el grupo o equipo. ¿Qué es lo más parecido a lo que harías?",
+        "variantesExtra": [
+          "Pensándolo bien, estás en una situación donde podés tomar una decisión que te beneficia claramente a vos, aunque eso implique un costo menor para el grupo o equipo. ¿Qué es lo más parecido a lo que harías?",
+          "En tu experiencia, estás en una situación donde podés tomar una decisión que te beneficia claramente a vos, aunque eso implique un costo menor para el grupo o equipo. ¿Qué es lo más parecido a lo que harías?",
+          "Sin pensarlo demasiado, estás en una situación donde podés tomar una decisión que te beneficia claramente a vos, aunque eso implique un costo menor para el grupo o equipo. ¿Qué es lo más parecido a lo que harías?",
+          "Según lo que has visto, estás en una situación donde podés tomar una decisión que te beneficia claramente a vos, aunque eso implique un costo menor para el grupo o equipo. ¿Qué es lo más parecido a lo que harías?"
+        ],
+        "opciones": [
+          {
+            "label": "Busco una opción que beneficie a ambas partes, no solo a mí.",
+            "valor": 0
+          },
+          {
+            "label": "Considero al grupo, aunque a veces eso implique ceder algo mío.",
+            "valor": 1
+          },
+          {
+            "label": "Me inclino por lo que me conviene a mí, el grupo puede ajustarse.",
+            "valor": 2
+          },
+          {
+            "label": "Elijo lo que me conviene sin pensarlo mucho, primero uno mismo.",
+            "valor": 3
+          }
+        ]
+      },
+      "op2_alt": {
+        "id": "ALT-EGOÍSM-OP2_ALT",
+        "dimension": "Egoísmo",
+        "reemplazaA": "op2",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con perc1)",
+        "valorMax": 3,
+        "pregunta": "Tomaste una decisión que te convenía, y después te enteraste de que afectó de alguna forma a otra persona de tu entorno. ¿Qué es lo más parecido a lo que pensarías?",
+        "variantesExtra": [
+          "Pensándolo bien, tomaste una decisión que te convenía, y después te enteraste de que afectó de alguna forma a otra persona de tu entorno. ¿Qué es lo más parecido a lo que pensarías?",
+          "En tu experiencia, tomaste una decisión que te convenía, y después te enteraste de que afectó de alguna forma a otra persona de tu entorno. ¿Qué es lo más parecido a lo que pensarías?",
+          "Sin pensarlo demasiado, tomaste una decisión que te convenía, y después te enteraste de que afectó de alguna forma a otra persona de tu entorno. ¿Qué es lo más parecido a lo que pensarías?",
+          "Según lo que has visto, tomaste una decisión que te convenía, y después te enteraste de que afectó de alguna forma a otra persona de tu entorno. ¿Qué es lo más parecido a lo que pensarías?"
+        ],
+        "opciones": [
+          {
+            "label": "Me preocupa, y busco ver cómo puedo ayudar a resolverlo.",
+            "valor": 0
+          },
+          {
+            "label": "Me genera algo de incomodidad, aunque ya esté hecho.",
+            "valor": 1
+          },
+          {
+            "label": "No le doy muchas vueltas, ya la decisión me convenía a mí.",
+            "valor": 2
+          },
+          {
+            "label": "No me preocupa demasiado, mientras a mí me haya convenido.",
+            "valor": 3
+          }
+        ]
+      },
+      "perc1_alt": {
+        "id": "ALT-EGOÍSM-PERC1_ALT",
+        "dimension": "Egoísmo",
+        "reemplazaA": "perc1",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con op2)",
+        "valorMax": 3,
+        "pregunta": "¿Qué porcentaje de las personas de tu entorno dirías que toma decisiones que las benefician sin importarles el costo que eso tiene para otros?",
+        "variantesExtra": [
+          "Pensándolo bien, ¿Qué porcentaje de las personas de tu entorno dirías que toma decisiones que las benefician sin importarles el costo que eso tiene para otros?",
+          "En tu experiencia, ¿Qué porcentaje de las personas de tu entorno dirías que toma decisiones que las benefician sin importarles el costo que eso tiene para otros?",
+          "Sin pensarlo demasiado, ¿Qué porcentaje de las personas de tu entorno dirías que toma decisiones que las benefician sin importarles el costo que eso tiene para otros?",
+          "Según lo que has visto, ¿Qué porcentaje de las personas de tu entorno dirías que toma decisiones que las benefician sin importarles el costo que eso tiene para otros?"
+        ],
+        "opciones": [
+          {
+            "label": "Menos del 10%",
+            "valor": 0
+          },
+          {
+            "label": "Entre 10% y 25%",
+            "valor": 1
+          },
+          {
+            "label": "Entre 25% y 50%",
+            "valor": 2
+          },
+          {
+            "label": "Más del 50%",
+            "valor": 3
+          }
+        ]
+      }
+    },
+    "Impunidad": {
+      "op1_alt": {
+        "id": "ALT-IMPUNI-OP1_ALT",
+        "dimension": "Impunidad",
+        "reemplazaA": "op1",
+        "indicadorSlot": 1,
+        "direccion": "Directo",
+        "parRol": "Par 1 (con fut1)",
+        "valorMax": 3,
+        "pregunta": "Estás considerando una conducta que sabés que no está bien, pero creés que, si actuás con cuidado, es poco probable que alguien se entere. ¿Qué tan probable creés que sería que la hicieras?",
+        "variantesExtra": [
+          "Pensándolo bien, estás considerando una conducta que sabés que no está bien, pero creés que, si actuás con cuidado, es poco probable que alguien se entere. ¿Qué tan probable creés que sería que la hicieras?",
+          "En tu experiencia, estás considerando una conducta que sabés que no está bien, pero creés que, si actuás con cuidado, es poco probable que alguien se entere. ¿Qué tan probable creés que sería que la hicieras?",
+          "Sin pensarlo demasiado, estás considerando una conducta que sabés que no está bien, pero creés que, si actuás con cuidado, es poco probable que alguien se entere. ¿Qué tan probable creés que sería que la hicieras?",
+          "Según lo que has visto, estás considerando una conducta que sabés que no está bien, pero creés que, si actuás con cuidado, es poco probable que alguien se entere. ¿Qué tan probable creés que sería que la hicieras?"
+        ],
+        "opciones": [
+          {
+            "label": "Nada probable, no depende de si me descubren o no.",
+            "valor": 0
+          },
+          {
+            "label": "Poco probable, prefiero evitarlo aunque el riesgo sea bajo.",
+            "valor": 1
+          },
+          {
+            "label": "Bastante probable, si el riesgo de que se note es bajo.",
+            "valor": 2
+          },
+          {
+            "label": "Muy probable, si actúo con cuidado no debería haber problema.",
+            "valor": 3
+          }
+        ]
+      },
+      "op2_alt": {
+        "id": "ALT-IMPUNI-OP2_ALT",
+        "dimension": "Impunidad",
+        "reemplazaA": "op2",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con perc1)",
+        "valorMax": 3,
+        "pregunta": "Sabés que tu lugar de trabajo tiene sistemas de control o supervisión, pero también sentís que en la práctica no son muy efectivos. ¿Qué es lo más parecido a cómo eso influye en tus decisiones?",
+        "variantesExtra": [
+          "Pensándolo bien, sabés que tu lugar de trabajo tiene sistemas de control o supervisión, pero también sentís que en la práctica no son muy efectivos. ¿Qué es lo más parecido a cómo eso influye en tus decisiones?",
+          "En tu experiencia, sabés que tu lugar de trabajo tiene sistemas de control o supervisión, pero también sentís que en la práctica no son muy efectivos. ¿Qué es lo más parecido a cómo eso influye en tus decisiones?",
+          "Sin pensarlo demasiado, sabés que tu lugar de trabajo tiene sistemas de control o supervisión, pero también sentís que en la práctica no son muy efectivos. ¿Qué es lo más parecido a cómo eso influye en tus decisiones?",
+          "Según lo que has visto, sabés que tu lugar de trabajo tiene sistemas de control o supervisión, pero también sentís que en la práctica no son muy efectivos. ¿Qué es lo más parecido a cómo eso influye en tus decisiones?"
+        ],
+        "opciones": [
+          {
+            "label": "No influye, actúo igual de bien exista o no un sistema de control efectivo.",
+            "valor": 0
+          },
+          {
+            "label": "Influye poco, trato de comportarme igual sin importar el control.",
+            "valor": 1
+          },
+          {
+            "label": "Influye algo, si el control es flojo me relajo un poco más.",
+            "valor": 2
+          },
+          {
+            "label": "Influye bastante, si el control no funciona, el riesgo real es bajo.",
+            "valor": 3
+          }
+        ]
+      },
+      "perc1_alt": {
+        "id": "ALT-IMPUNI-PERC1_ALT",
+        "dimension": "Impunidad",
+        "reemplazaA": "perc1",
+        "indicadorSlot": 3,
+        "direccion": "Directo",
+        "parRol": "Par 3 (con op2)",
+        "valorMax": 3,
+        "pregunta": "¿Qué porcentaje dirías que, de los sistemas de control o supervisión de tu entorno laboral, realmente logran detectar una conducta deshonesta?",
+        "variantesExtra": [
+          "Pensándolo bien, ¿Qué porcentaje dirías que, de los sistemas de control o supervisión de tu entorno laboral, realmente logran detectar una conducta deshonesta?",
+          "En tu experiencia, ¿Qué porcentaje dirías que, de los sistemas de control o supervisión de tu entorno laboral, realmente logran detectar una conducta deshonesta?",
+          "Sin pensarlo demasiado, ¿Qué porcentaje dirías que, de los sistemas de control o supervisión de tu entorno laboral, realmente logran detectar una conducta deshonesta?",
+          "Según lo que has visto, ¿Qué porcentaje dirías que, de los sistemas de control o supervisión de tu entorno laboral, realmente logran detectar una conducta deshonesta?"
+        ],
+        "opciones": [
+          {
+            "label": "Menos del 10%",
+            "valor": 0
+          },
+          {
+            "label": "Entre 10% y 25%",
+            "valor": 1
+          },
+          {
+            "label": "Entre 25% y 50%",
+            "valor": 2
+          },
+          {
+            "label": "Más del 50%",
+            "valor": 3
+          }
+        ]
+      }
+    }
+  }
+}

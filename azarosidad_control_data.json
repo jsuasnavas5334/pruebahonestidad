@@ -1,0 +1,254 @@
+{
+  "nombre": "Reactivos de control de Azarosidad",
+  "descripcion": "Indicador de validez 5.1 (Fase 2, Sección 5). No es una dimensión, no entra al IGI ni a ninguna Puntaje_dimensión: su única función es traer un chequeo de atención/lectura, ya sea por instrucción explícita embebida (CTRL01-04) o por una pregunta de trivia obvia sin instrucción (CTRL05-06) — dos mecanismos distintos para que los controles no compartan un único patrón reconocible entre sí.",
+  "reglaInvalidacion": "Fallar (no marcar la opción objetivo/correcta) 1 de los reactivos de control aplicados genera una alerta interna, sin invalidar el resultado. Fallar 2 o más se marca como invalidación total del protocolo (mismo tratamiento visual que los otros indicadores: el IGI y cada Puntaje_dimensión se siguen calculando y mostrando con su valor real, en color gris, con advertencia visible — Fase 6, Sección 11).",
+  "reglaDeCantidadPorBateria": [
+    {
+      "bateria": "B2C — 5 dimensiones Base (50 reactivos sustantivos)",
+      "cantidadControles": 2,
+      "ids": [
+        "CTRL01",
+        "CTRL05"
+      ],
+      "nota": "1 de cada mecanismo (instrucción + trivia), incluso en la batería más corta."
+    },
+    {
+      "bateria": "B2B intermedia — Base + algunas Adicionales/Contextuales (51 a 150 reactivos sustantivos)",
+      "cantidadControles": 4,
+      "ids": [
+        "CTRL01",
+        "CTRL02",
+        "CTRL05",
+        "CTRL06"
+      ],
+      "nota": "2 de cada mecanismo."
+    },
+    {
+      "bateria": "B2B completa — 21 dimensiones (151 a 210 reactivos sustantivos)",
+      "cantidadControles": 6,
+      "ids": [
+        "CTRL01",
+        "CTRL02",
+        "CTRL03",
+        "CTRL04",
+        "CTRL05",
+        "CTRL06"
+      ],
+      "nota": "los 6 controles disponibles (los 4 de instrucción + los 2 de trivia)."
+    }
+  ],
+  "items": [
+    {
+      "id": "CTRL01",
+      "subdim": "Azarosidad — control de atención por instrucción embebida (transversal, no es dimensión)",
+      "tipo": "Control de atención (formato variable, indistinguible en apariencia de un reactivo real)",
+      "mecanismo": "instrucción embebida",
+      "direccion": "N/A (no se puntúa como riesgo; solo se evalúa si la respuesta coincide con la instrucción embebida)",
+      "pregunta": "Este reactivo es un control de atención, no evalúa tu opinión: para continuar, selecciona la opción \"De acuerdo\" en la escala que aparece a continuación.",
+      "variantesExtra": [
+        "Para confirmar que estás leyendo cada pregunta, en este reactivo marca la opción \"De acuerdo\", sin importar lo que pienses realmente.",
+        "Este reactivo no mide ningún rasgo tuyo: es un chequeo de atención. Marca \"De acuerdo\" para poder continuar con la prueba.",
+        "Instrucción de control: selecciona \"De acuerdo\" en la escala siguiente, sin importar el contenido de la frase.",
+        "Reactivo de verificación: para que el sistema confirme que sigues atento, elige la opción \"De acuerdo\"."
+      ],
+      "opciones": [
+        {
+          "label": "Totalmente en desacuerdo",
+          "valor": 0
+        },
+        {
+          "label": "En desacuerdo",
+          "valor": 1
+        },
+        {
+          "label": "Algo de acuerdo",
+          "valor": 2
+        },
+        {
+          "label": "De acuerdo",
+          "valor": 3
+        },
+        {
+          "label": "Totalmente de acuerdo",
+          "valor": 4
+        }
+      ],
+      "valorObjetivo": 3,
+      "etiquetaObjetivo": "De acuerdo"
+    },
+    {
+      "id": "CTRL02",
+      "subdim": "Azarosidad — control de atención por instrucción embebida (transversal, no es dimensión)",
+      "tipo": "Control de atención (formato variable, indistinguible en apariencia de un reactivo real)",
+      "mecanismo": "instrucción embebida",
+      "direccion": "N/A (no se puntúa como riesgo; solo se evalúa si la respuesta coincide con la instrucción embebida)",
+      "pregunta": "Reactivo de control de atención: selecciona la opción \"Rara vez\" para confirmar que sigues leyendo cada pregunta con cuidado.",
+      "variantesExtra": [
+        "Este reactivo no describe ninguna situación real: es una verificación de lectura. Marca \"Rara vez\" para continuar.",
+        "Para demostrar que estás prestando atención, en esta pregunta elige la opción \"Rara vez\", sin importar tu experiencia real.",
+        "Control de calidad de tus respuestas: selecciona \"Rara vez\" en la escala que sigue.",
+        "Esta pregunta es únicamente un chequeo de atención: marca la opción \"Rara vez\" para seguir avanzando."
+      ],
+      "opciones": [
+        {
+          "label": "Nunca o muy raro",
+          "valor": 0
+        },
+        {
+          "label": "Rara vez",
+          "valor": 1
+        },
+        {
+          "label": "Frecuentemente",
+          "valor": 2
+        },
+        {
+          "label": "Muy frecuentemente",
+          "valor": 3
+        }
+      ],
+      "valorObjetivo": 1,
+      "etiquetaObjetivo": "Rara vez"
+    },
+    {
+      "id": "CTRL03",
+      "subdim": "Azarosidad — control de atención por instrucción embebida (transversal, no es dimensión)",
+      "tipo": "Control de atención (formato variable, indistinguible en apariencia de un reactivo real)",
+      "mecanismo": "instrucción embebida",
+      "direccion": "N/A (no se puntúa como riesgo; solo se evalúa si la respuesta coincide con la instrucción embebida)",
+      "pregunta": "Este reactivo no describe una situación real: es un control de calidad de tus respuestas. Selecciona la opción \"Poco probable\".",
+      "variantesExtra": [
+        "Para confirmar que sigues leyendo con atención, en este reactivo marca \"Poco probable\", sin importar la situación descrita.",
+        "Reactivo de verificación (no evalúa un escenario real): elige la opción \"Poco probable\" para continuar.",
+        "Instrucción de control: selecciona \"Poco probable\" en la escala siguiente.",
+        "Este no es un escenario real, es un chequeo de atención: marca \"Poco probable\" para poder avanzar en la prueba."
+      ],
+      "opciones": [
+        {
+          "label": "Nada probable",
+          "valor": 0
+        },
+        {
+          "label": "Poco probable",
+          "valor": 1
+        },
+        {
+          "label": "Probable",
+          "valor": 2
+        },
+        {
+          "label": "Muy probable",
+          "valor": 3
+        }
+      ],
+      "valorObjetivo": 1,
+      "etiquetaObjetivo": "Poco probable"
+    },
+    {
+      "id": "CTRL04",
+      "subdim": "Azarosidad — control de atención por instrucción embebida (transversal, no es dimensión)",
+      "tipo": "Control de atención (formato variable, indistinguible en apariencia de un reactivo real)",
+      "mecanismo": "instrucción embebida",
+      "direccion": "N/A (no se puntúa como riesgo; solo se evalúa si la respuesta coincide con la instrucción embebida)",
+      "pregunta": "Control de atención: para continuar, selecciona la opción \"Ninguna vez\" en la siguiente escala, sin importar tu historial real.",
+      "variantesExtra": [
+        "Este reactivo no pregunta por tu historial real: es una verificación de lectura. Marca \"Ninguna vez\" para seguir.",
+        "Para confirmar que estás respondiendo con atención, en esta pregunta elige \"Ninguna vez\", independientemente de tu experiencia.",
+        "Reactivo de control (no mide tu conducta real): selecciona \"Ninguna vez\" para continuar con la prueba.",
+        "Esta pregunta es únicamente un chequeo de atención: marca la opción \"Ninguna vez\" para poder avanzar."
+      ],
+      "opciones": [
+        {
+          "label": "Ninguna vez",
+          "valor": 0
+        },
+        {
+          "label": "Pocas veces",
+          "valor": 1
+        },
+        {
+          "label": "Algunas veces",
+          "valor": 2
+        },
+        {
+          "label": "Varias veces",
+          "valor": 3
+        },
+        {
+          "label": "Muchas veces o de forma habitual",
+          "valor": 4
+        }
+      ],
+      "valorObjetivo": 0,
+      "etiquetaObjetivo": "Ninguna vez"
+    },
+    {
+      "id": "CTRL05",
+      "subdim": "Azarosidad — control de atención por trivia obvia (transversal, no es dimensión)",
+      "tipo": "Control de atención por conocimiento trivial (pregunta de cultura general obvia, sin instrucción embebida)",
+      "mecanismo": "trivia obvia",
+      "direccion": "N/A (no se puntúa como riesgo; solo se evalúa si la respuesta es la correcta)",
+      "pregunta": "¿En qué continente se encuentra Ecuador?",
+      "variantesExtra": [
+        "Ecuador está ubicado en el continente de...",
+        "¿A qué continente pertenece el país Ecuador?",
+        "Geográficamente, ¿en qué continente queda Ecuador?",
+        "Señala el continente donde se encuentra Ecuador."
+      ],
+      "opciones": [
+        {
+          "label": "América",
+          "valor": 0
+        },
+        {
+          "label": "Europa",
+          "valor": 1
+        },
+        {
+          "label": "África",
+          "valor": 2
+        },
+        {
+          "label": "Oceanía",
+          "valor": 3
+        }
+      ],
+      "valorObjetivo": 0,
+      "etiquetaObjetivo": "América"
+    },
+    {
+      "id": "CTRL06",
+      "subdim": "Azarosidad — control de atención por trivia obvia (transversal, no es dimensión)",
+      "tipo": "Control de atención por conocimiento trivial (pregunta de cultura general obvia, sin instrucción embebida)",
+      "mecanismo": "trivia obvia",
+      "direccion": "N/A (no se puntúa como riesgo; solo se evalúa si la respuesta es la correcta)",
+      "pregunta": "¿De qué color es el cielo en un día despejado, sin nubes?",
+      "variantesExtra": [
+        "En un día completamente despejado, el cielo se ve de color...",
+        "¿Qué color tiene el cielo cuando no hay nubes?",
+        "Señala el color que normalmente tiene el cielo en un día despejado.",
+        "Un día sin nubes, ¿de qué color se ve el cielo?"
+      ],
+      "opciones": [
+        {
+          "label": "Azul",
+          "valor": 0
+        },
+        {
+          "label": "Verde",
+          "valor": 1
+        },
+        {
+          "label": "Rojo",
+          "valor": 2
+        },
+        {
+          "label": "Amarillo",
+          "valor": 3
+        }
+      ],
+      "valorObjetivo": 0,
+      "etiquetaObjetivo": "Azul"
+    }
+  ]
+}
